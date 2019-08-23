@@ -1,0 +1,194 @@
+[
+  {
+    "name": "header",
+    "type": "text",
+    "label": "Header",
+    "importance": "medium"
+  },
+  {
+    "name": "description",
+    "type": "text",
+    "label": "Task description",
+    "importance": "low",
+    "optional": true
+  },
+  {
+    "name": "statementsList",
+    "type": "list",
+    "label": "Statements",
+    "entity": "statement",
+    "importance": "high",
+    "min": 1,
+    "defaultNum": 1,
+    "field": {
+      "name": "text",
+      "type": "text",
+      "label": "Text",
+      "importance": "high",
+      "description": "The statement that the user needs to order"
+    }
+  },
+  {
+    "name": "resourcesList",
+    "type": "library",
+    "label": "Resources",
+    "importance": "medium",
+    "options": [
+      "H5P.ResourceList 1.0"
+    ],
+    "description": "Optional links to resources."
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings",
+    "importance": "low",
+    "description": "These options will let you control the behaviour.",
+    "fields": [
+      {
+        "name": "enableRetry",
+        "type": "boolean",
+        "label": "Enable retry?",
+        "description": "Tick off this if you want the user to be able to retry",
+        "default": true
+      },
+      {
+        "name": "prepopulate",
+        "type": "boolean",
+        "label": "Pre-populate the statements",
+        "description": "The user starts off with the statements already ordered",
+        "default": false
+      },
+      {
+        "name": "randomizeStatements",
+        "type": "boolean",
+        "label": "Randomize the statements",
+        "description": "Will randomize the pre-populated statements",
+        "default": false,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "prepopulate",
+              "equals": true
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "name": "l10n",
+    "type": "group",
+    "importance": "low",
+    "label": "Localize",
+    "common": true,
+    "fields": [
+      {
+        "name": "summary",
+        "type": "text",
+        "label": "Summary",
+        "default": "Summary"
+      },
+      {
+        "name": "typeYourReasonsForSuchAnswers",
+        "type": "text",
+        "label": "Placeholder for the text boxes",
+        "default": "Type your reasons for such answers"
+      },
+      {
+        "name": "resources",
+        "type": "text",
+        "label": "Label for \"Resources\"-button",
+        "default": "Resources"
+      },
+      {
+        "name": "restart",
+        "type": "text",
+        "label": "Label for \"Restart\"-button",
+        "default": "Restart"
+      }
+    ]
+  },
+  {
+    "label": "Resource report",
+    "importance": "low",
+    "name": "resourceReport",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "name": "createDocument",
+        "type": "text",
+        "label": "Label for \"Create document\"-button",
+        "default": "Create document"
+      },
+      {
+        "name": "export",
+        "type": "text",
+        "label": "Label on \"Export\" button",
+        "default": "Export"
+      },
+      {
+        "name": "selectAll",
+        "type": "text",
+        "label": "Label on \"Select all\" button",
+        "default": "Select all"
+      },
+      {
+        "name": "headerStatement",
+        "type": "text",
+        "label": "Statement header in statement table",
+        "default": "Statements"
+      },
+      {
+        "name": "headerComment",
+        "type": "text",
+        "label": "Comment header in statement table",
+        "default": "Comment"
+      },
+      {
+        "name": "header",
+        "type": "text",
+        "label": "Header above the \"Resource\" table",
+        "default": "Resources"
+      },
+      {
+        "name": "headerTitle",
+        "type": "text",
+        "label": "Title header in resource table",
+        "default": "Title"
+      },
+      {
+        "name": "headerIntro",
+        "type": "text",
+        "label": "Intro header in resource table",
+        "default": "Intro"
+      },
+      {
+        "name": "headerUrl",
+        "type": "text",
+        "label": "Url header in resource table",
+        "default": "Url"
+      },
+      {
+        "name": "labelNoResources",
+        "type": "text",
+        "label": "Label when no resources are found",
+        "default": "No resources"
+      },
+      {
+        "name": "labelSummaryComment",
+        "type": "text",
+        "label": "Header for summary comment",
+        "default": "Summary comment"
+      },
+      {
+        "name": "labelNoSummaryComment",
+        "type": "text",
+        "label": "Label when no summary is provided",
+        "default": "No comment"
+      }
+    ]
+  }
+]

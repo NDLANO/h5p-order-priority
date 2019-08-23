@@ -1,0 +1,114 @@
+{
+  "semantics": [
+    {
+      "label": "Overskrift"
+    },
+    {
+      "label": "Beskrivelse"
+    },
+    {
+      "label": "Påstander",
+      "entity": "påstand",
+      "field": {
+        "label": "Påstand",
+        "description": "Påstand som brukeren skal ta stilling til"
+      }
+    },
+    {
+      "label": "Ressurser",
+      "description": "Valgfrie lenker til ressurser."
+    },
+    {
+      "label": "Innstillinger",
+      "description": "Disse innstillingene lar deg bestemme oppførsel.",
+      "fields": [
+        {
+          "label": "Tillat å ta på nytt?",
+          "description": "Kryss av hvis du vil at brukeren skal kunne besvare på nytt"
+        },
+        {
+          "label": "Vis oppsummering",
+          "description": "Vil du at brukeren skal oppgi en oppsummering der vedkommende begrunner sine valg?"
+        },
+        {
+          "label": "Forhåndsutfyll påstandene",
+          "description": "Når brukeren starter er påstandene ferdig plassert i rekkefølge"
+        }
+      ]
+    },
+    {
+      "label": "Localize",
+      "fields": [
+        {
+          "label": "Oppsummering",
+          "default": "Oppsummering"
+        },
+        {
+          "label": "Midlertidig tekst for tekstfeltene",
+          "default": "Skriv en begrunnelse for dine svar"
+        },
+        {
+          "label": "Tekst på \"Ressurs\"-knappen",
+          "default": "Ressurser"
+        },
+        {
+          "label": "Tekst på \"Start på nytt\"-knappen",
+          "default": "Start på nytt"
+        }
+      ]
+    },
+    {
+      "label": "Ressursrapport",
+      "fields": [
+        {
+          "label": "Tekst på \"Opprett dokument\"-knappen",
+          "default": "Opprett dokument"
+        },
+        {
+          "label": "Tekst på \"Eksporter\"-knappen",
+          "default": "Eksporter"
+        },
+        {
+          "label": "Tekst på \"Velg alt\"-knappen",
+          "default": "Velg alt"
+        },
+        {
+          "label": "Overskrift i \"Påstand\"-kolonnen,",
+          "default": "Påstand"
+        },
+        {
+          "label": "Overskrift i \"Kommentar\"-kolonnen,",
+          "default": "Kommentar"
+        },
+        {
+          "label": "Overskrift over \"Ressurser\"-tabellen",
+          "default": "Ressurser"
+        },
+        {
+          "label": "Overskrift i 'Tittel'-kolonnen",
+          "default": "Tittel"
+        },
+        {
+          "label": "Overskrift i 'Ingress'-kolonnen",
+          "default": "Ingress"
+        },
+        {
+          "label": "Overskrift i 'Lenke'-kolonnen",
+          "default": "Lenke"
+        },
+        {
+          "label": "Tekst når ingen ressurser er registrert",
+          "default": "Ingen ressurser"
+        },
+        {
+          "label": "Overskrift for \"Oppsummering kommentar\"",
+          "default": "Oppsummering kommentar"
+        },
+        {
+          "label": "Tekst som vises når ingen oppsummering er gitt",
+          "default": "Ingen oppsummering"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Order item/priority list",
+  "description": "Reflect upon statements and put them in an order based on your thoughts and values",
+  "majorVersion": 0,
+  "minorVersion": 9,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "Cerpus",
+  "license": "MIT",
+  "machineName": "H5P.OrderPriority",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist/h5p-order-priority.js"
+    }
+  ],
+  "preloadedDependencies": [
+    {
+      "machineName": "H5P.ResourceList",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "MustacheJS",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "FontAwesome",
+      "majorVersion": 4,
+      "minorVersion": 5
+    },
+    {
+      "machineName": "filesaver",
+      "majorVersion": 1,
+      "minorVersion": 0
+    },
+    {
+      "machineName": "H5P.JoubelUI",
+      "majorVersion": 1,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5P.ExportPage",
+      "majorVersion": 1,
+      "minorVersion": 1
+    }
+  ],
+  "editorDependencies": [
+    {
+      "machineName": "H5PEditor.VerticalTabs",
+      "majorVersion": 1,
+      "minorVersion": 3
+    },
+    {
+      "machineName": "H5PEditor.ShowWhen",
+      "majorVersion": 1,
+      "minorVersion": 0
+    }
+  ]
+}
