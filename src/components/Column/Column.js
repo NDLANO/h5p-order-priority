@@ -32,7 +32,7 @@ export default class Column extends React.Component {
         return (
             <div
                 className={classnames({
-                    "h5p-order-priority-dropzone": columnType === "sequenced",
+                    "h5p-order-priority-dropzone": columnType === "prioritized",
                     "h5p-order-priority-select-list": columnType === 'remaining',
                 })}
             >

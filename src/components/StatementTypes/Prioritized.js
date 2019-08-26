@@ -1,11 +1,10 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import PriorityNumber from "./components/PriorityNumber";
 
 const Prioritized = ({
                        statement,
                        actions,
-                       labels,
                        displayIndex,
                    }) => {
     return (
@@ -17,7 +16,7 @@ const Prioritized = ({
                 className="h5p-droparea"
             >
                 <div
-                    className="order-priority"
+                    className="h5p-order-priority-statement"
                 >
                     <div>
                         <div className={"h5p-order-priority-drag-element"}>
@@ -36,12 +35,7 @@ const Prioritized = ({
 Prioritized.propTypes = {
     statement: PropTypes.string,
     actions: PropTypes.object,
-    labels: PropTypes.array,
     displayIndex: PropTypes.number,
-};
-
-Prioritized.defaultProps = {
-    labels: [],
 };
 
 export default Prioritized;

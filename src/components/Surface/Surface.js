@@ -16,8 +16,6 @@ export default class Surface extends React.Component {
         showOneColumn: false,
     };
 
-    enablePriorityNumber = false;
-
     constructor(props) {
         super(props);
 
@@ -30,13 +28,33 @@ export default class Surface extends React.Component {
 
     onDropUpdate(result) {
 
-        if (this.enablePriorityNumber !== true || !result.destination || (result.source && result.source.droppableId === 'start')) {
+        if (!result.destination || (result.source && result.source.droppableId === 'start')) {
             return;
         }
-        console.log(result);
-        console.log(result.destination);
-        console.log(result.source);
 
+        const {
+            statements
+        } = this.state;
+
+        const statementClone = JSON.parse(JSON.stringify(statements));
+        const destinationIndex = result.destination.index;
+        const prioritizedStatements = Array.from(this.state.prioritizedStatements);
+
+        const dragged = statementClone[prioritizedStatements[result.source.index]];
+        const previousDraggedIndex = dragged.displayIndex;
+        dragged.displayIndex = destinationIndex + 1;
+        const draggedIndexDifference = dragged.displayIndex - previousDraggedIndex;
+        prioritizedStatements
+            .map(statementId => statementClone[statementId])
+            .map((statementClone, index) => {
+                if (statementClone.displayIndex === destinationIndex + 1 && index !== result.source.index) {
+                    statementClone.displayIndex -= draggedIndexDifference;
+                }
+            });
+
+        this.setState({
+            statements: statementClone,
+        });
     }
 
     onDropEnd(dragResult) {
@@ -84,11 +102,14 @@ export default class Surface extends React.Component {
         const draggedStatement = Object.assign({}, this.state.statements[draggableId]);
         draggedStatement.isPlaceholder = destination === 'processed';
 
+        const newStatements = Object.assign({}, {
+            ...this.state.statements,
+            [draggableId]: draggedStatement
+        });
+        prioritizedStatements.forEach((statementId, index) => newStatements[statementId].displayIndex = index + 1);
+
         this.setState({
-            statements: {
-                ...this.state.statements,
-                [draggableId]: draggedStatement
-            },
+            statements: newStatements,
             prioritizedStatements: prioritizedStatements,
             remainingStatements: remainingStatements,
             showOneColumn: remainingStatements.length === 0,
@@ -110,12 +131,8 @@ export default class Surface extends React.Component {
         const {
             registerReset,
             collectExportValues,
-            behaviour: {
-                enablePriorityNumbers = false
-            },
         } = this.context;
         this.init();
-        this.enablePriorityNumber = enablePriorityNumbers;
 
         registerReset(this.init);
         collectExportValues('userInput', this.sendExportValues);
@@ -131,13 +148,14 @@ export default class Surface extends React.Component {
             }
         } = this.context;
 
-        const statements = statementsList.reduce((existing, current) => {
+        const statements = statementsList.reduce((existing, current, index) => {
             const id = md5(current);
             existing[id] = {
                 id: id,
                 statement: current,
                 isPlaceholder: !prepopulated,
                 comment: null,
+                displayIndex: index + 1,
             };
             return existing;
         }, {});
@@ -179,8 +197,7 @@ export default class Surface extends React.Component {
                                 index={index}
                                 isSingleColumn={true}
                                 onStatementChange={this.handleOnStatementChange}
-                                displayPriorityNumbers={this.enablePriorityNumber}
-                                displayIndex={index+1}
+                                displayIndex={statement.displayIndex}
                             />
                         ))
                     }

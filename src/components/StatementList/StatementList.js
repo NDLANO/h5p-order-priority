@@ -41,7 +41,6 @@ export default class StatementList extends React.Component {
             statement,
             draggableType,
             isSingleColumn,
-            displayPriorityNumbers,
             displayIndex,
         } = this.props;
 
@@ -64,7 +63,6 @@ export default class StatementList extends React.Component {
             }
             return (
                 <Prioritized
-                    useIndex={displayPriorityNumbers}
                     statement={statement.statement}
                     actions={actions}
                     displayIndex={displayIndex}
@@ -74,7 +72,6 @@ export default class StatementList extends React.Component {
             return (
                 <Placeholder
                     statement={statement}
-                    useIndex={displayPriorityNumbers}
                     displayIndex={displayIndex}
                 />
             );
@@ -93,7 +90,7 @@ export default class StatementList extends React.Component {
                 draggableId={draggableType + "-" + statement.id}
                 index={index}
             >
-                {(provided, snapshot) => (
+                {provided => (
                     <div className={"h5p-order-priority-draggable-container"}>
                         <div
                             className={"h5p-order-priority-draggable-element"}
