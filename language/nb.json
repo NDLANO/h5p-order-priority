@@ -27,12 +27,16 @@
           "description": "Kryss av hvis du vil at brukeren skal kunne besvare på nytt"
         },
         {
-          "label": "Vis oppsummering",
-          "description": "Vil du at brukeren skal oppgi en oppsummering der vedkommende begrunner sine valg?"
-        },
-        {
           "label": "Forhåndsutfyll påstandene",
           "description": "Når brukeren starter er påstandene ferdig plassert i rekkefølge"
+        },
+        {
+          "label": "Sett inn påstandende i tilfeldig rekkefølge",
+          "description": "Skal påstandene vises i tilfeldig rekkefølge?"
+        },
+        {
+          "label": "Antall påstander",
+          "description": "Hvor mange påstander skal brukeren ta stilling til?"
         }
       ]
     },

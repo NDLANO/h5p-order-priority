@@ -38,8 +38,9 @@ export default class Export extends Component {
             hasSummaryComment: summary.length > 0,
             summaryComment: summary,
             resources: resources,
-            sortedStatementList: userInput.sequencedStatements
+            sortedStatementList: userInput.prioritizedStatements
                 .map(statement => userInput.statements[statement])
+                .filter(statement => statement.isPlaceholder === false)
                 .map(statement => {
                     return {
                         comment: statement.comment || "",

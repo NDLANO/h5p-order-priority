@@ -27,13 +27,17 @@
           "description": "Tick off this if you want the user to be able to retry"
         },
         {
-          "label": "Show summary",
-          "description": "Do you want the user to provide a summary explaining the reasons for his/her answers"
-        },
-        {
           "label": "Pre-populate the statements",
           "description": "The user starts off with the statements already ordered"
+        },
+        {
+          "label": "Randomize the statements",
+          "description": "Will randomize the pre-populated statements"
         }
+        },
+        {
+          "label": "Number of statements",
+          "description": "How many statements should the user reflect on?"
       ]
     },
     {

@@ -41,12 +41,7 @@ export default class Summary extends React.PureComponent {
     render() {
         const {
             translations,
-            behaviour
         } = this.context;
-
-        if(behaviour.provideSummary !== true){
-            return null;
-        }
 
         return (
             <div className={classnames('h5p-order-priority-summary')}>

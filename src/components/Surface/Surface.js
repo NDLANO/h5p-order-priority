@@ -5,6 +5,16 @@ import {DragDropContext} from 'react-beautiful-dnd';
 import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
 
+function StatementDataObject(initValues){
+    this.id = null;
+    this.comment = null;
+    this.displayIndex = null;
+    this.added = false;
+    this.statement  = null;
+    this.isPlaceholder = false;
+    return Object.assign(this, initValues);
+}
+
 export default class Surface extends React.Component {
 
     static contextType = OrderPriorityContext;
@@ -74,38 +84,43 @@ export default class Surface extends React.Component {
         }
         const prioritizedStatements = Array.from(this.state.prioritizedStatements);
         const remainingStatements = Array.from(this.state.remainingStatements);
+        const newStatements = Array.from(this.state.statements);
 
-        let droppedIndex = null, draggedIndex;
-        draggableId = draggableId.replace(/\w+-/, "");
-        if (combine !== null) {
-            const droppedOnId = combine.draggableId.replace("prioritized-", "");
-            droppedIndex = prioritizedStatements.indexOf(droppedOnId);
-            draggedIndex = prioritizedStatements.indexOf(draggableId);
+        draggableId = parseInt(draggableId.replace(/\w+-/, ""), 10);
+        if (source && destination && source.droppableId === destination.droppableId) {
+            prioritizedStatements.splice(source.index, 1);
+            prioritizedStatements.splice(destination.index, 0, draggableId);
         } else {
-            if (source.droppableId === destination.droppableId) {
-                prioritizedStatements.splice(source.index, 1);
-                prioritizedStatements.splice(destination.index, 0, draggableId);
+            const statementId = remainingStatements[source.index];
+            let droppedIndex = null;
+            let splicedElement = null;
+            if (combine !== null) {
+                droppedIndex = prioritizedStatements.indexOf(parseInt(combine.draggableId.replace("prioritized-", ""), 10));
             } else {
                 droppedIndex = destination.index < prioritizedStatements.length ? destination.index : prioritizedStatements.length - 1;
-                draggedIndex = prioritizedStatements.indexOf(draggableId);
+            }
+            let draggedIndex = prioritizedStatements.indexOf(statementId);
+            if (droppedIndex !== null && draggedIndex !== -1) {
+                [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
+            } else if (draggedIndex === -1){
+                splicedElement = prioritizedStatements.splice(droppedIndex, 1, statementId);
+            }
+
+            if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
+                if( splicedElement === null || remainingStatements.indexOf(splicedElement[0]) !== -1){
+                    remainingStatements.splice(source.index, 1);
+                } else {
+                    remainingStatements.splice(source.index, 1, splicedElement[0]);
+                }
+            }
+
+            if( statementId !== undefined){
+                const draggedStatement = new StatementDataObject(this.state.statements[draggableId]);
+                draggedStatement.isPlaceholder = destination === 'processed';
+                newStatements[statementId] = draggedStatement;
             }
         }
 
-        if (droppedIndex !== null) {
-            [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
-        }
-
-        if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
-            remainingStatements.splice(source.index, 1);
-        }
-
-        const draggedStatement = Object.assign({}, this.state.statements[draggableId]);
-        draggedStatement.isPlaceholder = destination === 'processed';
-
-        const newStatements = Object.assign({}, {
-            ...this.state.statements,
-            [draggableId]: draggedStatement
-        });
         prioritizedStatements.forEach((statementId, index) => newStatements[statementId].displayIndex = index + 1);
 
         this.setState({
@@ -144,38 +159,44 @@ export default class Surface extends React.Component {
                 statementsList = [],
             },
             behaviour: {
-                prepopulate: prepopulated = false
+                prepopulate = false,
+                numberOfStatements
             }
         } = this.context;
 
-        const statements = statementsList.reduce((existing, current, index) => {
-            const id = md5(current);
-            existing[id] = {
-                id: id,
-                statement: current,
-                isPlaceholder: !prepopulated,
-                comment: null,
+        const statements = statementsList.map((statement, index) => {
+            return new StatementDataObject({
+                id: index,
+                statement,
+                isPlaceholder: !prepopulate,
                 displayIndex: index + 1,
-            };
-            return existing;
-        }, {});
+            });
+        });
 
-//        console.log(statements);
+        if( numberOfStatements > statementsList.length ){
+            for (let i = statementsList.length; i < numberOfStatements; i++){
+                statements.push(new StatementDataObject({
+                    id: i,
+                    added: true,
+                    isPlaceholder: true,
+                    displayIndex: i + 1,
+                }));
+            }
+        }
 
         this.setState({
             statements: statements,
-            remainingStatements: prepopulated === true ? [] : Object.keys(statements),
-            prioritizedStatements: Object.keys(statements),
-            showOneColumn: prepopulated,
+            remainingStatements: prepopulate === true ? [] : statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].added === false),
+            prioritizedStatements: statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].displayIndex <= numberOfStatements), // numberOfStatements >= statementsList.length ? Object.keys(statements) : Object.keys(statements).filter(statementId => statements[statementId].displayIndex <= numberOfStatements),
+            showOneColumn: prepopulate,
         });
     }
 
     handleOnStatementChange(statement) {
+        const statements = Array.from(this.state.statements);
+        statements[statement.id] = statement;
         this.setState({
-            statements: {
-                ...this.state.statements,
-                [statement.id]: statement
-            }
+            statements
         })
     }
 
@@ -185,7 +206,7 @@ export default class Surface extends React.Component {
                 <Column
                     droppableId={"processed"}
                     combine={!this.state.showOneColumn}
-                    columnType="prioritized"
+                    additionalClassName={"h5p-order-priority-dropzone"}
                 >
                     {this.state.prioritizedStatements
                         .map(statementId => this.state.statements[statementId])
@@ -206,7 +227,7 @@ export default class Surface extends React.Component {
                     <Column
                         droppableId="start"
                         disableDrop={true}
-                        columnType="remaining"
+                        additionalClassName={"h5p-order-priority-select-list"}
                     >
                         {this.state.remainingStatements
                             .map(statementId => this.state.statements[statementId])

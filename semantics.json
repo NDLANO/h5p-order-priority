@@ -74,6 +74,11 @@
             }
           ]
         }
+      },
+      {
+        "name": "numberOfStatements",
+        "type": "number",
+        "label": "Number of statements"
       }
     ]
   },

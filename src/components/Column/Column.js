@@ -10,7 +10,7 @@ export default class Column extends React.Component {
         droppableId: PropTypes.string.isRequired,
         combine: PropTypes.bool,
         disableDrop: PropTypes.bool,
-        columnType: PropTypes.string,
+        additionalClassName: PropTypes.string,
     };
 
     static defaultProps = {
@@ -25,16 +25,13 @@ export default class Column extends React.Component {
             droppableId,
             combine,
             children,
-            columnType,
             disableDrop,
+            additionalClassName,
         } = this.props;
 
         return (
             <div
-                className={classnames({
-                    "h5p-order-priority-dropzone": columnType === "prioritized",
-                    "h5p-order-priority-select-list": columnType === 'remaining',
-                })}
+                className={classnames(additionalClassName)}
             >
                 <Droppable
                     droppableId={droppableId}
