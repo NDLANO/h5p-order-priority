@@ -128,7 +128,7 @@ export default class Surface extends React.Component {
             prioritizedStatements: prioritizedStatements,
             remainingStatements: remainingStatements,
             showOneColumn: remainingStatements.length === 0,
-        });
+        }, this.context.trigger('resize'));
     }
 
     sendExportValues() {

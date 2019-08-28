@@ -35,7 +35,6 @@ H5P.OrderPriority = (function () {
         let container;
         this.params = params;
         this.behaviour = params.behaviour || {};
-        this.resizeEvents = [];
         this.resetStack = [];
         this.collectExportValuesStack = [];
         this.wrapper = null;
