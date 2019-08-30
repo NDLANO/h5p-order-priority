@@ -37,6 +37,10 @@
         {
           "label": "Sett inn påstandende i tilfeldig rekkefølge",
           "description": "Skal påstandene vises i tilfeldig rekkefølge?"
+        },
+        {
+          "label": "La brukeren legge inn egne påstander",
+          "description": "Lar brukeren opprette sine egne påstander"
         }
       ]
     },

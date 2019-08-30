@@ -37,6 +37,10 @@
         {
           "label": "Randomize the statements",
           "description": "Will randomize the pre-populated statements"
+        },
+        {
+          "label": "Allow users to add their own statements",
+          "description": "Lets the user add their own statements"
         }
       ]
     },

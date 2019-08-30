@@ -269,10 +269,12 @@ export default class Surface extends React.Component {
                                 />
                             ))
                         }
-                        <AddStatement
-                            onClick={this.handleOnAddNewItem}
-                            translations={{add: "Add"}}
-                        />
+                        {this.context.behaviour && this.context.behaviour.allowAddingOfStatements === true && (
+                            <AddStatement
+                                onClick={this.handleOnAddNewItem}
+                                translations={{add: "Add"}}
+                            />
+                        )}
                     </Column>
                 )}
             </Fragment>
