@@ -15,6 +15,10 @@
       }
     },
     {
+      "label": "Antall påstander",
+      "description": "Hvor mange påstander skal brukeren ta stilling til?"
+    },
+    {
       "label": "Ressurser",
       "description": "Valgfrie lenker til ressurser."
     },
@@ -33,10 +37,6 @@
         {
           "label": "Sett inn påstandende i tilfeldig rekkefølge",
           "description": "Skal påstandene vises i tilfeldig rekkefølge?"
-        },
-        {
-          "label": "Antall påstander",
-          "description": "Hvor mange påstander skal brukeren ta stilling til?"
         }
       ]
     },
@@ -58,6 +58,10 @@
         {
           "label": "Tekst på \"Start på nytt\"-knappen",
           "default": "Start på nytt"
+        },
+        {
+          "label": "Tekst på \"Legg til\"-knappen",
+          "default": "Legg til"
         }
       ]
     },

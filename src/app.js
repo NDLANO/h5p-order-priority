@@ -56,6 +56,7 @@ H5P.OrderPriority = (function () {
             labelResources: "Resources",
             selectAll: "Select all",
             export: "Export",
+            add: "Add",
         }, params.l10n, params.resourceReport);
 
         const createElements = () => {
@@ -120,6 +121,10 @@ H5P.OrderPriority = (function () {
         this.resize = this.resize.bind(this);
         this.on('resize', this.resize);
     }
+
+    // Inherit prototype properties
+    Wrapper.prototype = Object.create(H5P.EventDispatcher.prototype);
+    Wrapper.prototype.constructor = Wrapper;
 
     return Wrapper;
 })();

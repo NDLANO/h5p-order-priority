@@ -2,7 +2,8 @@ import React from 'react';
 import PriorityNumber from "./components/PriorityNumber";
 
 const Placeholder = ({
-                         displayIndex
+                         displayIndex,
+                         children
                      }) => {
 
     return (
@@ -12,7 +13,9 @@ const Placeholder = ({
             />
             <div
                 className="h5p-droparea"
-            />
+            >
+                {children}
+            </div>
         </div>
     );
 };

@@ -21,14 +21,14 @@ export default class Header extends React.Component {
 
     componentDidMount() {
         const {
-            params: {resourcesList},
+            params: {resources: resourcesList},
             id,
             language = 'en',
             collectExportValues,
         } = this.context;
 
         const filterResourceList = element => Object.keys(element).length !== 0 && element.constructor === Object;
-        if( resourcesList.params.resourceList.filter(filterResourceList).length > 0){
+        if( resourcesList.params.resourceList && resourcesList.params.resourceList.filter(filterResourceList).length > 0){
             this.resourceList = new H5P.ResourceList(resourcesList.params, id, language);
             this.resourceList.attach(this.resourceContainer);
 

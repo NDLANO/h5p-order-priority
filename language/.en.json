@@ -15,6 +15,10 @@
       }
     },
     {
+      "label": "Number of statements",
+      "description": "How many statements should the user reflect on?"
+    },
+    {
       "label": "Resources",
       "description": "Optional links to resources."
     },
@@ -34,18 +38,14 @@
           "label": "Randomize the statements",
           "description": "Will randomize the pre-populated statements"
         }
-        },
-        {
-          "label": "Number of statements",
-          "description": "How many statements should the user reflect on?"
       ]
     },
     {
       "label": "Localize",
       "fields": [
         {
-          "label": "Summary",
-          "default": "Summary"
+          "label": "Basis",
+          "default": "Basis"
         },
         {
           "label": "Placeholder for the text boxes",
@@ -56,16 +56,12 @@
           "default": "Resources"
         },
         {
-          "label": "Label for \"Save\"-button",
-          "default": "Resources"
-        },
-        {
-          "label": "Guides text for selecting tags",
-          "default": "Select all labels connected to this item"
-        },
-        {
-          "label": "Label for \"Restart\"-button",
+          "label": "Label for the \"Restart\"-button",
           "default": "Restart"
+        },
+        {
+          "label": "Label for the \"Add\"-button",
+          "default": "Add"
         }
       ]
     },

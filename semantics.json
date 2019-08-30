@@ -14,29 +14,48 @@
   },
   {
     "name": "statementsList",
-    "type": "list",
     "label": "Statements",
-    "entity": "statement",
-    "importance": "high",
-    "min": 1,
-    "defaultNum": 1,
-    "field": {
-      "name": "text",
-      "type": "text",
-      "label": "Text",
-      "importance": "high",
-      "description": "The statement that the user needs to order"
-    }
+    "type": "group",
+    "expanded": true,
+    "fields": [
+        {
+          "name": "statementsList",
+          "type": "list",
+          "label": "Statements",
+          "entity": "statement",
+          "optional": true,
+          "min": 1,
+          "field": {
+            "name": "text",
+            "type": "text",
+            "label": "Statement"
+          }
+        }
+      ]
   },
   {
-    "name": "resourcesList",
-    "type": "library",
+    "name": "numberOfStatements",
+    "type": "number",
+    "optional": true,
+    "label": "Number of statements"
+  },
+  {
+    "name": "resources",
+    "type": "group",
     "label": "Resources",
-    "importance": "medium",
-    "options": [
-      "H5P.ResourceList 1.0"
-    ],
-    "description": "Optional links to resources."
+    "importance": "low",
+    "fields": [
+      {
+        "name": "resourcesList",
+        "type": "library",
+        "label": "Resources",
+        "importance": "medium",
+        "options": [
+          "H5P.ResourceList 1.0"
+        ],
+        "description": "Optional links to resources."
+      }
+    ]
   },
   {
     "name": "behaviour",
@@ -74,11 +93,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "numberOfStatements",
-        "type": "number",
-        "label": "Number of statements"
       }
     ]
   },
@@ -92,8 +106,8 @@
       {
         "name": "summary",
         "type": "text",
-        "label": "Summary",
-        "default": "Summary"
+        "label": "Basis",
+        "default": "Basis"
       },
       {
         "name": "typeYourReasonsForSuchAnswers",
@@ -104,14 +118,20 @@
       {
         "name": "resources",
         "type": "text",
-        "label": "Label for \"Resources\"-button",
+        "label": "Label for the \"Resources\"-button",
         "default": "Resources"
       },
       {
         "name": "restart",
         "type": "text",
-        "label": "Label for \"Restart\"-button",
+        "label": "Label for the \"Restart\"-button",
         "default": "Restart"
+      },
+      {
+        "name": "add",
+        "type": "text",
+        "label": "Label for the \"Add\"-button",
+        "default": "Add"
       }
     ]
   },

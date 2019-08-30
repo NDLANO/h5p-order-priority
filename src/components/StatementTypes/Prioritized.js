@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PriorityNumber from "./components/PriorityNumber";
+import Placeholder from "./Placeholder";
 
 const Prioritized = ({
                        statement,
@@ -8,26 +8,21 @@ const Prioritized = ({
                        displayIndex,
                    }) => {
     return (
-        <div>
-            <PriorityNumber
-                displayIndex={displayIndex}
-            />
+        <Placeholder
+            displayIndex={displayIndex}
+        >
             <div
-                className="h5p-droparea"
+                className="h5p-order-priority-statement"
             >
-                <div
-                    className="h5p-order-priority-statement"
-                >
-                    <div>
-                        <div className={"h5p-order-priority-drag-element"}>
-                            <i className="fa fa-arrows"/>
-                        </div>
-                        {statement}
+                <div>
+                    <div className={"h5p-order-priority-drag-element"}>
+                        <i className="fa fa-arrows"/>
                     </div>
-                    {actions}
+                    {statement}
                 </div>
+                {actions}
             </div>
-        </div>
+        </Placeholder>
     );
 
 };

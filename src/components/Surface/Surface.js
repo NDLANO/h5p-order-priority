@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
-import md5 from 'md5';
 import {OrderPriorityContext} from '../../context/OrderPriorityContext';
 import {DragDropContext} from 'react-beautiful-dnd';
 import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
+import AddStatement from "../AddStatement/AddStatement";
 
 function StatementDataObject(initValues){
     this.id = null;
@@ -12,6 +12,9 @@ function StatementDataObject(initValues){
     this.added = false;
     this.statement  = null;
     this.isPlaceholder = false;
+    this.isUserAdded = false;
+    this.editMode = false;
+    this.touched = false;
     return Object.assign(this, initValues);
 }
 
@@ -24,6 +27,7 @@ export default class Surface extends React.Component {
         prioritizedStatements: [],
         remainingStatements: [],
         showOneColumn: false,
+        isCombineEnabled: true,
     };
 
     constructor(props) {
@@ -31,13 +35,18 @@ export default class Surface extends React.Component {
 
         this.init = this.init.bind(this);
         this.onDropEnd = this.onDropEnd.bind(this);
+        this.onDragStart = this.onDragStart.bind(this);
         this.onDropUpdate = this.onDropUpdate.bind(this);
         this.sendExportValues = this.sendExportValues.bind(this);
         this.handleOnStatementChange = this.handleOnStatementChange.bind(this);
+        this.handleOnAddNewItem = this.handleOnAddNewItem.bind(this);
+    }
+
+    onDragStart(element){
+        this.setState({isCombineEnabled: element.source.droppableId !== 'processed'});
     }
 
     onDropUpdate(result) {
-
         if (!result.destination || (result.source && result.source.droppableId === 'start')) {
             return;
         }
@@ -84,41 +93,41 @@ export default class Surface extends React.Component {
         }
         const prioritizedStatements = Array.from(this.state.prioritizedStatements);
         const remainingStatements = Array.from(this.state.remainingStatements);
-        const newStatements = Array.from(this.state.statements);
+        const newStatements = JSON.parse(JSON.stringify(this.state.statements));
 
-        draggableId = parseInt(draggableId.replace(/\w+-/, ""), 10);
         if (source && destination && source.droppableId === destination.droppableId) {
+            draggableId = parseInt(draggableId.replace(/\w+-/, ""), 10);
             prioritizedStatements.splice(source.index, 1);
             prioritizedStatements.splice(destination.index, 0, draggableId);
         } else {
             const statementId = remainingStatements[source.index];
+            const draggedStatement = newStatements[statementId];
+            const draggedIndex = prioritizedStatements.indexOf(statementId);
             let droppedIndex = null;
-            let splicedElement = null;
             if (combine !== null) {
                 droppedIndex = prioritizedStatements.indexOf(parseInt(combine.draggableId.replace("prioritized-", ""), 10));
             } else {
                 droppedIndex = destination.index < prioritizedStatements.length ? destination.index : prioritizedStatements.length - 1;
             }
-            let draggedIndex = prioritizedStatements.indexOf(statementId);
-            if (droppedIndex !== null && draggedIndex !== -1) {
+            if (droppedIndex !== -1 && draggedIndex !== -1) {
                 [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
             } else if (draggedIndex === -1){
-                splicedElement = prioritizedStatements.splice(droppedIndex, 1, statementId);
-            }
-
-            if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
-                if( splicedElement === null || remainingStatements.indexOf(splicedElement[0]) !== -1){
-                    remainingStatements.splice(source.index, 1);
+                prioritizedStatements.splice(droppedIndex, 0, statementId);
+                const untouched = prioritizedStatements
+                    .filter(elementId => elementId !== statementId && newStatements[elementId].touched === false)
+                    .pop();
+                if( untouched !== undefined){
+                    prioritizedStatements.splice(prioritizedStatements.indexOf(untouched), 1);
                 } else {
-                    remainingStatements.splice(source.index, 1, splicedElement[0]);
+                    remainingStatements.push(prioritizedStatements.pop());
                 }
             }
 
-            if( statementId !== undefined){
-                const draggedStatement = new StatementDataObject(this.state.statements[draggableId]);
-                draggedStatement.isPlaceholder = destination === 'processed';
-                newStatements[statementId] = draggedStatement;
+            if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
+                remainingStatements.splice(source.index, 1);
             }
+            draggedStatement.isPlaceholder = destination === 'processed';
+            draggedStatement.touched = true;
         }
 
         prioritizedStatements.forEach((statementId, index) => newStatements[statementId].displayIndex = index + 1);
@@ -128,7 +137,7 @@ export default class Surface extends React.Component {
             prioritizedStatements: prioritizedStatements,
             remainingStatements: remainingStatements,
             showOneColumn: remainingStatements.length === 0,
-        }, this.context.trigger('resize'));
+        }, () => this.context.trigger('resize'));
     }
 
     sendExportValues() {
@@ -157,10 +166,10 @@ export default class Surface extends React.Component {
         const {
             params: {
                 statementsList = [],
+                numberOfStatements = statementsList.length
             },
             behaviour: {
                 prepopulate = false,
-                numberOfStatements
             }
         } = this.context;
 
@@ -186,8 +195,8 @@ export default class Surface extends React.Component {
 
         this.setState({
             statements: statements,
-            remainingStatements: prepopulate === true ? [] : statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].added === false),
-            prioritizedStatements: statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].displayIndex <= numberOfStatements), // numberOfStatements >= statementsList.length ? Object.keys(statements) : Object.keys(statements).filter(statementId => statements[statementId].displayIndex <= numberOfStatements),
+            remainingStatements: prepopulate === true ? [] : statements.map(statement => statement.id).filter(statementId => statements[statementId].added === false),
+            prioritizedStatements: statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].displayIndex <= numberOfStatements),
             showOneColumn: prepopulate,
         });
     }
@@ -200,12 +209,33 @@ export default class Surface extends React.Component {
         })
     }
 
+    handleOnAddNewItem() {
+        const statements = Array.from(this.state.statements);
+        const remainingStatements = Array.from(this.state.remainingStatements);
+        const id = statements.length;
+        const newItem = new StatementDataObject({
+            id: id,
+            added: true,
+            isUserAdded: true,
+            editMode: true,
+            statement: "item " + id,
+        });
+
+        statements.push(newItem);
+        remainingStatements.push(id);
+
+        this.setState({
+            statements,
+            remainingStatements,
+        },  () => this.context.trigger('resize'));
+    }
+
     handleSurface() {
         return (
             <Fragment>
                 <Column
                     droppableId={"processed"}
-                    combine={!this.state.showOneColumn}
+                    combine={this.state.isCombineEnabled}
                     additionalClassName={"h5p-order-priority-dropzone"}
                 >
                     {this.state.prioritizedStatements
@@ -218,7 +248,6 @@ export default class Surface extends React.Component {
                                 index={index}
                                 isSingleColumn={true}
                                 onStatementChange={this.handleOnStatementChange}
-                                displayIndex={statement.displayIndex}
                             />
                         ))
                     }
@@ -240,6 +269,10 @@ export default class Surface extends React.Component {
                                 />
                             ))
                         }
+                        <AddStatement
+                            onClick={this.handleOnAddNewItem}
+                            translations={{add: "Add"}}
+                        />
                     </Column>
                 )}
             </Fragment>
@@ -255,6 +288,7 @@ export default class Surface extends React.Component {
                     className="h5p-order-prioritySurface"
                     onDragEnd={this.onDropEnd}
                     onDragUpdate={this.onDropUpdate}
+                    onDragStart={this.onDragStart}
                 >
                     {this.handleSurface()}
                 </DragDropContext>

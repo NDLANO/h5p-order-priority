@@ -279,6 +279,25 @@ $h5pOrderPriorityFontSize: 14px;
   display: flex;
 }
 
+.h5p-order-priority-add {
+  border: 1px solid transparent;
+  display: inline-block;
+  text-align: center;
+  padding: 0.375rem;
+  background-color: transparent;
+  color: #2070e3;
+  font-weight: bold;
+  font-size: 1em;
+
+  i {
+    margin-right: 5px;
+  }
+
+  span {
+    text-decoration: underline;
+  }
+}
+
 .joubel-create-document {
   top: 0;
 }

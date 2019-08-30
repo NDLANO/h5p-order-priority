@@ -14,14 +14,11 @@ export default class StatementList extends React.Component {
         draggableType: PropTypes.string.isRequired,
         isSingleColumn: PropTypes.bool,
         onStatementChange: PropTypes.func,
-        displayPriorityNumbers: PropTypes.bool,
-        displayIndex: PropTypes.number,
     };
 
     static defaultProps = {
         isSingleColumn: false,
         statement: {},
-        displayPriorityNumbers: false,
     };
 
     constructor(props){
@@ -41,7 +38,6 @@ export default class StatementList extends React.Component {
             statement,
             draggableType,
             isSingleColumn,
-            displayIndex,
         } = this.props;
 
         if (draggableType === 'remaining') {
@@ -65,14 +61,13 @@ export default class StatementList extends React.Component {
                 <Prioritized
                     statement={statement.statement}
                     actions={actions}
-                    displayIndex={displayIndex}
+                    displayIndex={statement.displayIndex}
                 />
             )
         } else if (draggableType === 'prioritized') {
             return (
                 <Placeholder
-                    statement={statement}
-                    displayIndex={displayIndex}
+                    displayIndex={statement.displayIndex}
                 />
             );
         }

@@ -40,7 +40,7 @@ export default class Export extends Component {
             resources: resources,
             sortedStatementList: userInput.prioritizedStatements
                 .map(statement => userInput.statements[statement])
-                .filter(statement => statement.isPlaceholder === false)
+                .filter(statement => statement.touched === true)
                 .map(statement => {
                     return {
                         comment: statement.comment || "",
