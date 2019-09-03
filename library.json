@@ -3,7 +3,7 @@
   "description": "Reflect upon statements and put them in an order based on your thoughts and values",
   "majorVersion": 0,
   "minorVersion": 9,
-  "patchVersion": 1,
+  "patchVersion": 3,
   "runnable": 1,
   "author": "Cerpus",
   "license": "MIT",

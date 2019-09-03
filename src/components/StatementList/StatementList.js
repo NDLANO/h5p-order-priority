@@ -14,17 +14,20 @@ export default class StatementList extends React.Component {
         draggableType: PropTypes.string.isRequired,
         isSingleColumn: PropTypes.bool,
         onStatementChange: PropTypes.func,
+        enableEditing: PropTypes.bool,
     };
 
     static defaultProps = {
         isSingleColumn: false,
         statement: {},
+        enableEditing: false,
     };
 
     constructor(props){
         super(props);
 
         this.handleOnCommentChange = this.handleOnCommentChange.bind(this);
+        this.handleOnStatementTextEdit = this.handleOnStatementTextEdit.bind(this);
     }
 
     handleOnCommentChange(comment) {
@@ -33,17 +36,27 @@ export default class StatementList extends React.Component {
         this.props.onStatementChange(statement);
     }
 
+    handleOnStatementTextEdit(statementText){
+        const statement = Object.assign({}, this.props.statement);
+        statement.statement = statementText;
+        statement.editMode = false;
+        this.props.onStatementChange(statement);
+    }
+
     handleStatementType() {
         const {
             statement,
             draggableType,
             isSingleColumn,
+            enableEditing,
         } = this.props;
 
         if (draggableType === 'remaining') {
             return (
                 <Remaining
-                    statement={statement.statement}
+                    statement={statement}
+                    onStatementChange={this.handleOnStatementTextEdit}
+                    enableEditing={enableEditing}
                 />
             );
         } else if (draggableType === 'prioritized' && !statement.isPlaceholder) {
@@ -59,9 +72,11 @@ export default class StatementList extends React.Component {
             }
             return (
                 <Prioritized
-                    statement={statement.statement}
+                    statement={statement}
                     actions={actions}
                     displayIndex={statement.displayIndex}
+                    onStatementChange={this.handleOnStatementTextEdit}
+                    enableEditing={enableEditing}
                 />
             )
         } else if (draggableType === 'prioritized') {

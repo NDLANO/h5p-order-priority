@@ -1,9 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import EditableStatement from "./components/EditableStatement";
+import UnEditableStatement from "./components/UnEditableStatement";
 
 const Remaining = props => {
     const {
-        statement
+        statement,
+        onStatementChange,
+        enableEditing = false,
     } = props;
 
     return (
@@ -14,7 +18,18 @@ const Remaining = props => {
                 <div className={"h5p-order-priority-drag-element"}>
                     <i className="fa fa-arrows" />
                 </div>
-                {statement}
+                {enableEditing === true && (
+                    <EditableStatement
+                        statement={statement.statement}
+                        inEditMode={statement.editMode}
+                        onBlur={onStatementChange}
+                    />
+                )}
+                {enableEditing !== true && (
+                    <UnEditableStatement
+                        statement={statement.statement}
+                    />
+                )}
             </div>
         </div>
     );
@@ -22,7 +37,9 @@ const Remaining = props => {
 };
 
 Remaining.propTypes = {
-    statement: PropTypes.string,
+    statement: PropTypes.object,
+    onStatementChange: PropTypes.func,
+    enableEditing: PropTypes.bool,
 };
 
 export default Remaining;

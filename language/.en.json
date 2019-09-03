@@ -15,8 +15,8 @@
       }
     },
     {
-      "label": "Number of statements",
-      "description": "How many statements should the user reflect on?"
+      "label": "Number of landingfields",
+      "description": "How many landingfields should the user reflect on?"
     },
     {
       "label": "Resources",

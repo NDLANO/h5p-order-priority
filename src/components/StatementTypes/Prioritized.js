@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Placeholder from "./Placeholder";
+import EditableStatement from "./components/EditableStatement";
+import UnEditableStatement from "./components/UnEditableStatement";
 
 const Prioritized = ({
-                       statement,
-                       actions,
-                       displayIndex,
-                   }) => {
+                         statement,
+                         actions,
+                         displayIndex,
+                         onStatementChange,
+                         enableEditing,
+                     }) => {
     return (
         <Placeholder
             displayIndex={displayIndex}
@@ -18,7 +22,18 @@ const Prioritized = ({
                     <div className={"h5p-order-priority-drag-element"}>
                         <i className="fa fa-arrows"/>
                     </div>
-                    {statement}
+                    {enableEditing === true && (
+                        <EditableStatement
+                            inEditMode={statement.editMode}
+                            statement={statement.statement}
+                            onBlur={onStatementChange}
+                        />
+                    )}
+                    {enableEditing !== true && (
+                        <UnEditableStatement
+                            statement={statement.statement}
+                        />
+                    )}
                 </div>
                 {actions}
             </div>
@@ -28,9 +43,11 @@ const Prioritized = ({
 };
 
 Prioritized.propTypes = {
-    statement: PropTypes.string,
+    statement: PropTypes.object,
     actions: PropTypes.object,
     displayIndex: PropTypes.number,
+    onStatementChange: PropTypes.func,
+    enableEditing: PropTypes.bool,
 };
 
 export default Prioritized;

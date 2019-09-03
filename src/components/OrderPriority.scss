@@ -115,7 +115,20 @@ $h5pOrderPriorityFontSize: 14px;
 
   & > div {
     display: flex;
+    align-items: stretch;
+    min-height: 44px;
+    flex: auto;
+  }
+
+  & .h5p-order-priority-element{
+    display: flex;
     align-items: center;
+  }
+
+  .h5p-order-priority-actionlist {
+    display: flex;
+    margin-left: auto;
+    flex: initial;
   }
 
   .fa-arrows {
@@ -148,11 +161,6 @@ $h5pOrderPriorityFontSize: 14px;
 .h5p-order-priority-description {
   font-style: italic;
   color: rgba(0, 0, 0, 0.7);
-}
-
-.h5p-order-priority-actionlist {
-  display: flex;
-  margin-left: auto;
 }
 
 .h5p-order-priority-action {
@@ -240,7 +248,6 @@ $h5pOrderPriorityFontSize: 14px;
   display: flex;
   align-items: center;
   margin-right: 13px;
-  min-height: 44px;
 }
 
 .h5p-order-priority-number {
@@ -298,6 +305,23 @@ $h5pOrderPriorityFontSize: 14px;
   }
 }
 
+.h5p-order-priority-editable-container {
+  display: flex;
+  flex: auto;
+
+  div {
+    display: flex;
+    align-items: center;
+    flex: auto;
+  }
+
+  input {
+    min-height: 80%;
+    flex: auto;
+    font-size: inherit;
+  }
+}
+
 .joubel-create-document {
   top: 0;
 }
@@ -324,4 +348,8 @@ $h5pOrderPriorityFontSize: 14px;
   li {
     margin-left: 5px;
   }
+}
+
+.hidden {
+  display: none !important;
 }
