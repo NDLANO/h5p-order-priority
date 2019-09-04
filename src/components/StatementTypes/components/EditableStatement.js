@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -6,12 +6,14 @@ function EditableStatement(props) {
 
     const [inEditMode, toggleEditMode] = useState(props.inEditMode);
 
-    const inputRef = useRef(props.statement);
+    const inputRef = useRef();
 
     const handleClick = () => {
-        toggleEditMode(true);
-        inputRef.current.value = props.statement;
-        inputRef.current.focus();
+        if( inEditMode === false){
+            toggleEditMode(true);
+            inputRef.current.value = props.statement;
+            setTimeout(() => inputRef.current.focus(), 0);
+        }
     };
 
     const handleBlur = () => {
@@ -33,7 +35,7 @@ function EditableStatement(props) {
                     onBlur={handleBlur}
                 />
                 <div
-                    className={classnames("h5p-order-priority-editable", {
+                    className={classnames("h5p-order-priority-noneditable", {
                         "hidden": inEditMode === true,
                     })}
                 >

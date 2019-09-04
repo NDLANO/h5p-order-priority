@@ -28,6 +28,7 @@ export default class Surface extends React.Component {
         remainingStatements: [],
         showOneColumn: false,
         isCombineEnabled: true,
+        canAddPrioritized: false,
     };
 
     constructor(props) {
@@ -39,7 +40,8 @@ export default class Surface extends React.Component {
         this.onDropUpdate = this.onDropUpdate.bind(this);
         this.sendExportValues = this.sendExportValues.bind(this);
         this.handleOnStatementChange = this.handleOnStatementChange.bind(this);
-        this.handleOnAddNewItem = this.handleOnAddNewItem.bind(this);
+        this.handleOnAddNewRemainingItem = this.handleOnAddNewRemainingItem.bind(this);
+        this.handleOnAddNewPrioritizedItem = this.handleOnAddNewPrioritizedItem.bind(this);
     }
 
     onDragStart(element) {
@@ -137,6 +139,7 @@ export default class Surface extends React.Component {
             prioritizedStatements: prioritizedStatements,
             remainingStatements: remainingStatements,
             showOneColumn: remainingStatements.length === 0,
+            canAddPrioritized: remainingStatements.length === 0 && this.context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statementId => !newStatements[statementId].touched).length > 0,
         }, () => this.context.trigger('resize'));
     }
 
@@ -171,6 +174,7 @@ export default class Surface extends React.Component {
             behaviour: {
                 prepopulate = false,
                 randomizeStatements = false,
+                allowAddingOfStatements = false,
             }
         } = this.context;
 
@@ -185,28 +189,30 @@ export default class Surface extends React.Component {
         }
 
         const statements = statementsList.map((statement, index) => {
-            if (statement !== null) {
-                return new StatementDataObject({
-                    id: index,
-                    statement,
-                    isPlaceholder: !prepopulate,
-                    displayIndex: index + 1,
-                });
-            }
-            return new StatementDataObject({
+            const statementObject = new StatementDataObject({
                 id: index,
-                added: true,
-                isPlaceholder: true,
                 displayIndex: index + 1,
             });
 
+            if (statement !== null) {
+                statementObject.statement = statement;
+                statementObject.isPlaceholder = !prepopulate;
+                statementObject.touched = prepopulate && statementObject.displayIndex <= numberOfStatements;
+            } else {
+                statementObject.isPlaceholder = true;
+                statementObject.added = true;
+            }
+            return statementObject;
         });
+
+        const remainingStatements = prepopulate === true ? statements.slice(numberOfStatements) : statements.filter(statement => statement.added === false);
 
         this.setState({
             statements: statements,
-            remainingStatements: prepopulate === true ? statements.slice(numberOfStatements).map(statement => statement.id) : statements.map(statement => statement.id).filter(statementId => statements[statementId].added === false),
-            prioritizedStatements: statements.map(statement => parseInt(statement.id)).filter(statementId => statements[statementId].displayIndex <= numberOfStatements),
+            remainingStatements: remainingStatements.map(statement => statement.id),
+            prioritizedStatements: statements.filter(statement => statement.displayIndex <= numberOfStatements || statement.touched).map(statement => statement.id),
             showOneColumn: prepopulate,
+            canAddPrioritized: allowAddingOfStatements && statements.filter(statement => statement.touched).length < statements.length && remainingStatements.length === 0,
         });
     }
 
@@ -215,12 +221,11 @@ export default class Surface extends React.Component {
         statements[statement.id] = statement;
         this.setState({
             statements
-        })
+        }, () => this.context.trigger('resize'));
     }
 
-    handleOnAddNewItem() {
-        const statements = Array.from(this.state.statements);
-        const remainingStatements = Array.from(this.state.remainingStatements);
+    addNewStatement() {
+        const statements = JSON.parse(JSON.stringify(this.state.statements));
         const id = statements.length;
         const newItem = new StatementDataObject({
             id: id,
@@ -229,13 +234,36 @@ export default class Surface extends React.Component {
             editMode: true,
             statement: "",
         });
-
         statements.push(newItem);
+        return [statements, id];
+    }
+
+    handleOnAddNewRemainingItem() {
+        const [statements, id] = this.addNewStatement();
+        const remainingStatements = Array.from(this.state.remainingStatements);
         remainingStatements.push(id);
 
         this.setState({
             statements,
             remainingStatements,
+        }, () => this.context.trigger('resize'));
+    }
+
+    handleOnAddNewPrioritizedItem() {
+        const statements = JSON.parse(JSON.stringify(this.state.statements));
+        const prioritizedStatements = Array.from(this.state.prioritizedStatements);
+        const untouched = prioritizedStatements.filter(elementId => statements[elementId].touched === false);
+
+        if( untouched.length > 0){
+            const statementId = untouched.shift();
+            statements[statementId].editMode = true;
+            statements[statementId].touched = true;
+            statements[statementId].isPlaceholder = false;
+        }
+
+        this.setState({
+            statements,
+            canAddPrioritized: untouched.length > 0,
         }, () => this.context.trigger('resize'));
     }
 
@@ -261,6 +289,12 @@ export default class Surface extends React.Component {
                             />
                         ))
                     }
+                    {this.state.canAddPrioritized === true && (
+                        <AddStatement
+                            onClick={this.handleOnAddNewPrioritizedItem}
+                            translations={this.context.translations}
+                        />
+                    )}
                 </Column>
                 {this.state.remainingStatements.length > 0 && (
                     <Column
@@ -283,8 +317,8 @@ export default class Surface extends React.Component {
                         }
                         {this.context.behaviour && this.context.behaviour.allowAddingOfStatements === true && (
                             <AddStatement
-                                onClick={this.handleOnAddNewItem}
-                                translations={{add: "Add"}}
+                                onClick={this.handleOnAddNewRemainingItem}
+                                translations={this.context.translations}
                             />
                         )}
                     </Column>
