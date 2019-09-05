@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 
 function StatementComment(props) {
 
-    const inputRef = props.inputRef;
+    const inputRef = useRef();
 
     function handleKeyDown(){
         inputRef.current.style.height = "auto";
@@ -33,7 +33,6 @@ function StatementComment(props) {
 StatementComment.propTypes = {
     comment: PropTypes.string,
     onCommentChange: PropTypes.func,
-    inputRef: PropTypes.object,
 };
 
 export default StatementComment;

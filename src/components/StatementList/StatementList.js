@@ -36,7 +36,6 @@ function StatementList(props) {
                         <Comment
                             onCommentChange={handleOnCommentChange}
                             comment={statement.comment}
-                            inputRef={inputRef}
                         />
                     </ActionsList>
                 )
@@ -50,7 +49,6 @@ function StatementList(props) {
                     enableEditing={enableEditing}
                     enableCommentDisplay={enableCommentDisplay}
                     onCommentChange={handleOnCommentChange}
-                    inputRef={inputRef}
                 />
             )
         } else if (draggableType === 'prioritized') {
