@@ -41,6 +41,10 @@
         {
           "label": "La brukeren legge inn egne påstander",
           "description": "Lar brukeren opprette sine egne påstander"
+        },
+        {
+          "label": "Vis kommentarer under påstanden",
+          "description": "Hvis brukeren har skrevet en kommentar, vis denne i listen med påstander"
         }
       ]
     },

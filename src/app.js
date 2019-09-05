@@ -12,7 +12,7 @@ H5P.OrderPriority = (function () {
     const breakPoints = [
         {
             "className": "h5p-medium-tablet-size",
-            "shouldAdd": width => width >= 480 && width < 768
+            "shouldAdd": width => width >= 500 && width < 768
         },
         {
             "className": "h5p-large-tablet-size",

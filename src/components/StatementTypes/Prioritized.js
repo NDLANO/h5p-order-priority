@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Placeholder from "./Placeholder";
 import EditableStatement from "./components/EditableStatement";
 import UnEditableStatement from "./components/UnEditableStatement";
+import DragArrows from "./components/DragArrows";
+import classnames from 'classnames';
+import StatementComment from "./components/StatementComment";
 
 const Prioritized = ({
                          statement,
@@ -10,18 +13,21 @@ const Prioritized = ({
                          displayIndex,
                          onStatementChange,
                          enableEditing,
+                         enableCommentDisplay,
+                         onCommentChange,
+                         inputRef,
                      }) => {
     return (
         <Placeholder
             displayIndex={displayIndex}
         >
             <div
-                className="h5p-order-priority-statement"
+                className={classnames("h5p-order-priority-statement", {
+                    'h5p-order-priority-statement-extra': enableCommentDisplay && statement.comment && statement.comment.length > 0
+                })}
             >
                 <div>
-                    <div className={"h5p-order-priority-drag-element"}>
-                        <i className="fa fa-arrows"/>
-                    </div>
+                    <DragArrows/>
                     {enableEditing === true && (
                         <EditableStatement
                             inEditMode={statement.editMode}
@@ -37,6 +43,13 @@ const Prioritized = ({
                 </div>
                 {actions}
             </div>
+            {enableCommentDisplay && statement.comment && statement.comment.length > 0 && (
+                <StatementComment
+                    comment={statement.comment}
+                    onCommentChange={onCommentChange}
+                    inputRef={inputRef}
+                />
+            )}
         </Placeholder>
     );
 
@@ -48,6 +61,9 @@ Prioritized.propTypes = {
     displayIndex: PropTypes.number,
     onStatementChange: PropTypes.func,
     enableEditing: PropTypes.bool,
+    enableCommentDisplay: PropTypes.bool,
+    onCommentChange: PropTypes.func,
+    inputRef: PropTypes.object,
 };
 
 export default Prioritized;

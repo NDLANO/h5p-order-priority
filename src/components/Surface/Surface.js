@@ -286,6 +286,7 @@ export default class Surface extends React.Component {
                                 isSingleColumn={true}
                                 onStatementChange={this.handleOnStatementChange}
                                 enableEditing={this.context.behaviour.allowAddingOfStatements}
+                                enableCommentDisplay={this.context.behaviour.displayCommentsBelowStatement}
                             />
                         ))
                     }

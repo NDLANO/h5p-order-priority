@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableStatement from "./components/EditableStatement";
 import UnEditableStatement from "./components/UnEditableStatement";
+import DragArrows from "./components/DragArrows";
 
 const Remaining = props => {
     const {
@@ -15,9 +16,7 @@ const Remaining = props => {
             className="h5p-order-priority-statement"
         >
             <div>
-                <div className={"h5p-order-priority-drag-element"}>
-                    <i className="fa fa-arrows" />
-                </div>
+                <DragArrows />
                 {enableEditing === true && (
                     <EditableStatement
                         statement={statement.statement}

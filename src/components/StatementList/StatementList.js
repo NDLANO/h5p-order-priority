@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from "react-beautiful-dnd";
 import Remaining from "../StatementTypes/Remaining";
@@ -7,55 +7,24 @@ import Placeholder from "../StatementTypes/Placeholder";
 import ActionsList from "../Actions/ActionsList";
 import Comment from "../Actions/Comment";
 
-export default class StatementList extends React.Component {
-    static propTypes = {
-        statement: PropTypes.object,
-        index: PropTypes.number.isRequired,
-        draggableType: PropTypes.string.isRequired,
-        isSingleColumn: PropTypes.bool,
-        onStatementChange: PropTypes.func,
-        enableEditing: PropTypes.bool,
-    };
+function StatementList(props) {
 
-    static defaultProps = {
-        isSingleColumn: false,
-        statement: {},
-        enableEditing: false,
-    };
+    const inputRef = useRef();
 
-    constructor(props){
-        super(props);
-
-        this.handleOnCommentChange = this.handleOnCommentChange.bind(this);
-        this.handleOnStatementTextEdit = this.handleOnStatementTextEdit.bind(this);
-    }
-
-    handleOnCommentChange(comment) {
-        const statement = Object.assign({}, this.props.statement);
-        statement.comment = comment;
-        this.props.onStatementChange(statement);
-    }
-
-    handleOnStatementTextEdit(statementText){
-        const statement = Object.assign({}, this.props.statement);
-        statement.statement = statementText;
-        statement.editMode = false;
-        this.props.onStatementChange(statement);
-    }
-
-    handleStatementType() {
+    function handleStatementType() {
         const {
             statement,
             draggableType,
             isSingleColumn,
             enableEditing,
-        } = this.props;
+            enableCommentDisplay,
+        } = props;
 
         if (draggableType === 'remaining') {
             return (
                 <Remaining
                     statement={statement}
-                    onStatementChange={this.handleOnStatementTextEdit}
+                    onStatementChange={handleOnStatementTextEdit}
                     enableEditing={enableEditing}
                 />
             );
@@ -65,7 +34,9 @@ export default class StatementList extends React.Component {
                 actions = (
                     <ActionsList>
                         <Comment
-                            onCommentChange={this.handleOnCommentChange}
+                            onCommentChange={handleOnCommentChange}
+                            comment={statement.comment}
+                            inputRef={inputRef}
                         />
                     </ActionsList>
                 )
@@ -75,8 +46,11 @@ export default class StatementList extends React.Component {
                     statement={statement}
                     actions={actions}
                     displayIndex={statement.displayIndex}
-                    onStatementChange={this.handleOnStatementTextEdit}
+                    onStatementChange={handleOnStatementTextEdit}
                     enableEditing={enableEditing}
+                    enableCommentDisplay={enableCommentDisplay}
+                    onCommentChange={handleOnCommentChange}
+                    inputRef={inputRef}
                 />
             )
         } else if (draggableType === 'prioritized') {
@@ -88,12 +62,24 @@ export default class StatementList extends React.Component {
         }
     }
 
-    render() {
+    function handleOnCommentChange(comment) {
+        const statement = Object.assign({}, props.statement);
+        statement.comment = comment;
+        props.onStatementChange(statement);
+    }
+
+    function handleOnStatementTextEdit(statementText){
+        const statement = Object.assign({}, props.statement);
+        statement.statement = statementText;
+        statement.editMode = false;
+        props.onStatementChange(statement);
+    }
+
         const {
             index,
             statement,
             draggableType,
-        } = this.props;
+        } = props;
 
         return (
             <Draggable
@@ -108,11 +94,30 @@ export default class StatementList extends React.Component {
                             {...provided.dragHandleProps}
                             {...provided.draggableProps}
                         >
-                            {this.handleStatementType()}
+                            {handleStatementType()}
                         </div>
                     </div>
                 )}
             </Draggable>
         )
-    }
+
 }
+
+StatementList. propTypes = {
+    statement: PropTypes.object,
+    index: PropTypes.number.isRequired,
+    draggableType: PropTypes.string.isRequired,
+    isSingleColumn: PropTypes.bool,
+    onStatementChange: PropTypes.func,
+    enableEditing: PropTypes.bool,
+    enableCommentDisplay: PropTypes.bool,
+};
+
+StatementList.defaultProps = {
+    isSingleColumn: false,
+    statement: {},
+    enableEditing: false,
+    enableCommentDisplay: false,
+};
+
+export default StatementList;

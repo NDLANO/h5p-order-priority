@@ -1,68 +1,57 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import PropTypes from 'prop-types';
 import {OrderPriorityContext} from "../../context/OrderPriorityContext";
 import Popover from "../Popover/Popover";
+import classnames from 'classnames';
 
-export default class Comment extends React.Component {
+function Comment(props) {
 
-    static contextType = OrderPriorityContext;
+    const [showPopover, togglePopover] = useState(false);
+    const [comment, setComment] = useState(props.comment);
 
-    static propTypes = {
-        onCommentChange: PropTypes.func,
-        comment: PropTypes.string,
-    };
+    const context = useContext(OrderPriorityContext);
 
-    state = {
-        showPopover: false,
-        comment: '',
-    };
-
-    constructor(props) {
-        super(props);
-        this.onToggleModal = this.onToggleModal.bind(this);
-        this.handleCommentChange = this.handleCommentChange.bind(this);
+    function handleToggle() {
+        if( !showPopover){
+            setComment(props.comment || "");
+        } else {
+            props.onCommentChange(comment);
+        }
+        togglePopover(!showPopover);
     }
 
-    onToggleModal() {
-        this.setState({
-            showPopover: !this.state.showPopover
-        }, this.props.onCommentChange(this.state.comment))
-    }
-
-    handleCommentChange(event) {
-        this.setState({
-            comment: event.target.value,
-        });
-    }
-
-    render() {
-        const {
-            translations
-        } = this.context;
-
-        return (
-            <Popover
-                handleClose={this.onToggleModal}
-                show={this.state.showPopover}
-                popoverContent={(
-                    <div>
+    return (
+        <Popover
+            handleClose={handleToggle}
+            show={showPopover}
+            popoverContent={(
+                <div>
                         <textarea
-                            placeholder={translations.typeYourReasonsForSuchAnswers}
-                            onChange={this.handleCommentChange}
-                            value={this.state.comment}
+                            placeholder={context.translations.typeYourReasonsForSuchAnswers}
+                            value={comment}
+                            onChange={event => setComment(event.currentTarget.value)}
                         />
-                    </div>
-                )}
-            >
-                <div
-                    onClick={this.onToggleModal}
-                    className={"h5p-order-priority-action"}
-                >
-                    <i
-                        className={"fa fa-commenting-o"}
-                    />
                 </div>
-            </Popover>
-        );
-    }
+            )}
+        >
+            <div
+                onClick={handleToggle}
+                className={classnames("h5p-order-priority-action", {
+                    'h5p-order-priority-action-active': props.comment && props.comment.length > 0,
+                })}
+            >
+                <i
+                    className={"fa fa-commenting-o"}
+                />
+            </div>
+        </Popover>
+    );
 }
+
+Comment.propTypes = {
+    onCommentChange: PropTypes.func,
+    comment: PropTypes.string,
+    translations: PropTypes.object,
+};
+
+export default Comment;

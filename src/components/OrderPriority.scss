@@ -113,6 +113,11 @@ $h5pOrderPriorityFontSize: 14px;
   border-radius: 3px;
   font-weight: bold;
 
+  &.h5p-order-priority-statement-extra {
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+  }
+
   & > div {
     display: flex;
     align-items: stretch;
@@ -135,6 +140,38 @@ $h5pOrderPriorityFontSize: 14px;
     color: #747474;
     width: 40px;
     text-align: center;
+  }
+}
+
+.h5p-order-priority-statement-comment {
+  @extend .h5p-order-priority-statement-common;
+  background-color: #1f71e8;
+  border-radius: 0 0 3px 3px;
+  padding: 8px;
+
+  div {
+    background-color: white;
+    flex: auto;
+    display: flex;
+  }
+
+  textarea {
+    resize: none;
+    border: 0;
+    width: 100%;
+    word-wrap: break-word;
+    padding: 0;
+    margin: 8px;
+    overflow-y: hidden;
+    outline: none;
+    font-size: inherit;
+    height: auto;
+  }
+
+  .fa {
+    font-size: 20px;
+    color: #1f71e8;
+    margin: 8px 0 0 10px;
   }
 }
 
@@ -174,6 +211,10 @@ $h5pOrderPriorityFontSize: 14px;
   align-items: center;
   cursor: pointer;
   font-size: 20px;
+
+  &.h5p-order-priority-action-active{
+    color: #1f71e8;
+  }
 }
 
 .h5p-order-priority-popover {
