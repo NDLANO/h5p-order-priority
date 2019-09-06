@@ -113,6 +113,11 @@ $h5pOrderPriorityFontSize: 14px;
   border-radius: 3px;
   font-weight: bold;
 
+  p,
+  ul {
+    margin: 0;
+  }
+
   &.h5p-order-priority-statement-extra {
     border-bottom: 0;
     border-radius: 3px 3px 0 0;
@@ -164,7 +169,6 @@ $h5pOrderPriorityFontSize: 14px;
     padding: 0;
     margin: 8px;
     overflow-y: hidden;
-    outline: none;
     font-size: inherit;
     height: auto;
   }

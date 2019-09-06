@@ -6,12 +6,15 @@ function StatementComment(props) {
 
     const inputRef = props.inputRef || useRef();
 
-    function handleKeyDown(){
+    function handleOnChange(event){
+        props.onCommentChange(inputRef.current.value);
         inputRef.current.style.height = "auto";
         inputRef.current.style.height = inputRef.current.scrollHeight + "px";
+        if( event.keyCode === 9){
+            return false;
+        }
     }
 
-    setTimeout(handleKeyDown, 0);
     return (
         <div
             className={classsnames("h5p-order-priority-statement-comment", {
@@ -25,8 +28,8 @@ function StatementComment(props) {
                 <textarea
                     ref={inputRef}
                     value={props.comment || ""}
-                    onKeyDown={handleKeyDown}
-                    onChange={() => props.onCommentChange(inputRef.current.value)}
+                    onChange={handleOnChange}
+                    onBlur={handleOnChange}
                 />
             </div>
         </div>

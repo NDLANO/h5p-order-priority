@@ -70,8 +70,8 @@ export default class Header extends React.Component {
                     </button>
                 )}
                 <h2>{header}</h2>
-                <div className={classnames('h5p-order-priority-description')}>{description}</div>
-                <div ref={el => this.resourceContainer = el} />
+                <p className={classnames('h5p-order-priority-description')}>{description}</p>
+                <aside ref={el => this.resourceContainer = el} />
             </header>
         );
     }

@@ -81,7 +81,7 @@
         },
         {
           "label": "Informer brukeren om at all data vil gå tapt om vedkommende fortsetter",
-          "default": "Hvis du fortsetter vil alle data gå tapt.",
+          "default": "Hvis du fortsetter vil alle data gå tapt."
         },
         {
           "label": "Spør brukeren om vedkommende vil fortsette",

@@ -330,7 +330,7 @@ export default class Surface extends React.Component {
 
     render() {
         return (
-            <div
+            <main
                 className="h5p-order-prioritySurface"
             >
                 <DragDropContext
@@ -341,7 +341,7 @@ export default class Surface extends React.Component {
                 >
                     {this.handleSurface()}
                 </DragDropContext>
-            </div>
+            </main>
         );
     }
 }

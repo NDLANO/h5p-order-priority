@@ -34,13 +34,13 @@ function EditableStatement(props) {
                     ref={inputRef}
                     onBlur={handleBlur}
                 />
-                <div
+                <p
                     className={classnames("h5p-order-priority-noneditable", {
                         "hidden": inEditMode === true,
                     })}
                 >
                     {props.statement}
-                </div>
+                </p>
             </div>
         </div>
     );

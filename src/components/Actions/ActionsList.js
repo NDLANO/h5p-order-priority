@@ -4,9 +4,9 @@ const ActionsList = (
     {children}
 ) => {
     return (
-        <div className={"h5p-order-priority-actionlist"}>
+        <ul className={"h5p-order-priority-actionlist"}>
             {children}
-        </div>
+        </ul>
     );
 };
 

@@ -41,11 +41,13 @@ function Reset() {
                                     type={"button"}
                                     onClick={confirmReset}
                                     className={"yes"}
+                                    tabIndex={0}
                                 >{translations.yes}</button>
                                 <button
                                     type={"button"}
                                     onClick={togglePopover}
                                     className={"no"}
+                                    tabIndex={0}
                                 >{translations.no}</button>
                             </div>
                         </div>
