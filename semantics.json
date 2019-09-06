@@ -16,12 +16,14 @@
     "name": "statementsList",
     "label": "Statements",
     "type": "group",
+    "importance": "high",
     "expanded": true,
     "fields": [
         {
           "name": "statementsList",
           "type": "list",
           "label": "Statements",
+          "importance": "high",
           "entity": "statement",
           "optional": true,
           "min": 1,
@@ -146,6 +148,30 @@
         "type": "text",
         "label": "Label for the \"Add\"-button",
         "default": "Add"
+      },
+      {
+        "name": "yes",
+        "type": "text",
+        "label": "Label for the \"Yes\"-button",
+        "default": "Yes"
+      },
+      {
+        "name": "no",
+        "type": "text",
+        "label": "Label for the \"No\"-button",
+        "default": "No"
+      },
+      {
+        "name": "ifYouContinueAllYourChangesWillBeLost",
+        "type": "text",
+        "label": "Inform the user that data will be lost if he/she continues",
+        "default": "If you continue all your changes will be lost"
+      },
+      {
+        "name": "areYouSure",
+        "type": "text",
+        "label": "Ask the user if he/she wants to continue",
+        "default": "Are you sure?"
       }
     ]
   },

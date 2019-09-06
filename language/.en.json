@@ -70,6 +70,22 @@
         {
           "label": "Label for the \"Add\"-button",
           "default": "Add"
+        },
+        {
+          "label": "Label for the \"Yes\"-button",
+          "default": "Yes"
+        },
+        {
+          "label": "Label for the \"No\"-button",
+          "default": "No"
+        },
+        {
+          "label": "Inform the user that data will be lost if he/she continues",
+          "default": "If you continue all your changes will be lost"
+        },
+        {
+          "label": "Ask the user if he/she wants to continue",
+          "default": "Are you sure?"
         }
       ]
     },

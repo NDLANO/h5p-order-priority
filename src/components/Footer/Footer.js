@@ -1,25 +1,13 @@
-import React from 'react';
-import { OrderPriorityContext } from "../../context/OrderPriorityContext";
-import Export from "../Export/Export";
+import React, {useContext, useState} from 'react';
+import Export from '../Export/Export';
+import Reset from './Reset';
 
 function Footer() {
     return (
-        <OrderPriorityContext.Consumer>
-            {({behaviour, reset, translations}) => (
-                <footer>
-                    {behaviour.enableRetry === true && (
-                        <button
-                            className={"h5p-order-priority-button-restart"}
-                            onClick={reset}
-                        >
-                            <i className={"fa fa-refresh"} />
-                            {translations.restart}
-                        </button>
-                    )}
-                    <Export/>
-                </footer>
-            )}
-        </OrderPriorityContext.Consumer>
+        <footer>
+            <Reset/>
+            <Export/>
+        </footer>
     );
 }
 

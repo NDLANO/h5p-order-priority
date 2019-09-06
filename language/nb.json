@@ -52,8 +52,8 @@
       "label": "Localize",
       "fields": [
         {
-          "label": "Oppsummering",
-          "default": "Oppsummering"
+          "label": "Begrunnelse",
+          "default": "Begrunnelse"
         },
         {
           "label": "Midlertidig tekst for tekstfeltene",
@@ -70,6 +70,22 @@
         {
           "label": "Tekst på \"Legg til\"-knappen",
           "default": "Legg til"
+        },
+        {
+          "label": "Tekst på \"Ja\"-knappen",
+          "default": "Yes"
+        },
+        {
+          "label": "Tekst på \"Nei\"-knappen",
+          "default": "Nei"
+        },
+        {
+          "label": "Informer brukeren om at all data vil gå tapt om vedkommende fortsetter",
+          "default": "Hvis du fortsetter vil alle data gå tapt.",
+        },
+        {
+          "label": "Spør brukeren om vedkommende vil fortsette",
+          "default": "Er du sikker?"
         }
       ]
     },
@@ -77,8 +93,8 @@
       "label": "Ressursrapport",
       "fields": [
         {
-          "label": "Tekst på \"Opprett dokument\"-knappen",
-          "default": "Opprett dokument"
+          "label": "Tekst på \"Vis liste\"-knappen",
+          "default": "Vis liste"
         },
         {
           "label": "Tekst på \"Eksporter\"-knappen",

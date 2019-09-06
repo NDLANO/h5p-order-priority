@@ -70,6 +70,22 @@
         {
           "label": "Tekst på \"Legg til\"-knappen",
           "default": "Legg til"
+        },
+        {
+          "label": "Tekst på \"Ja\"-knappen",
+          "default": "Yes"
+        },
+        {
+          "label": "Tekst på \"Nei\"-knappen",
+          "default": "Nei"
+        },
+        {
+          "label": "Informer brukeren om at all data vil gå tapt om vedkommende fortsetter",
+          "default": "Hvis du fortsetter vil alle data gå tapt.",
+        },
+        {
+          "label": "Spør brukeren om vedkommende vil fortsette",
+          "default": "Er du sikker?"
         }
       ]
     },

@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import { Draggable } from "react-beautiful-dnd";
 import Remaining from "../StatementTypes/Remaining";
@@ -10,6 +10,7 @@ import Comment from "../Actions/Comment";
 function StatementList(props) {
 
     const inputRef = useRef();
+    const [showCommentContainer, toggleCommentContainer] = useState(false);
 
     function handleStatementType() {
         const {
@@ -17,7 +18,6 @@ function StatementList(props) {
             draggableType,
             isSingleColumn,
             enableEditing,
-            enableCommentDisplay,
         } = props;
 
         if (draggableType === 'remaining') {
@@ -36,6 +36,7 @@ function StatementList(props) {
                         <Comment
                             onCommentChange={handleOnCommentChange}
                             comment={statement.comment}
+                            onClick={handleCommentClick()}
                         />
                     </ActionsList>
                 )
@@ -47,8 +48,9 @@ function StatementList(props) {
                     displayIndex={statement.displayIndex}
                     onStatementChange={handleOnStatementTextEdit}
                     enableEditing={enableEditing}
-                    enableCommentDisplay={enableCommentDisplay}
+                    enableCommentDisplay={showCommentContainer}
                     onCommentChange={handleOnCommentChange}
+                    inputRef={inputRef}
                 />
             )
         } else if (draggableType === 'prioritized') {
@@ -60,10 +62,24 @@ function StatementList(props) {
         }
     }
 
+    function handleCommentClick() {
+        if( props.enableCommentDisplay !== true){
+            return null;
+        }
+
+        return () => {
+            toggleCommentContainer(true);
+            setTimeout(() => inputRef.current.focus(), 0);
+        }
+    }
+
     function handleOnCommentChange(comment) {
         const statement = Object.assign({}, props.statement);
         statement.comment = comment;
         props.onStatementChange(statement);
+        if( !comment || comment.length === 0){
+            toggleCommentContainer(false);
+        }
     }
 
     function handleOnStatementTextEdit(statementText){

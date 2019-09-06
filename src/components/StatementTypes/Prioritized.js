@@ -43,13 +43,12 @@ const Prioritized = ({
                 </div>
                 {actions}
             </div>
-            {enableCommentDisplay && statement.comment && statement.comment.length > 0 && (
-                <StatementComment
-                    comment={statement.comment}
-                    onCommentChange={onCommentChange}
-                    inputRef={inputRef}
-                />
-            )}
+            <StatementComment
+                comment={statement.comment}
+                onCommentChange={onCommentChange}
+                inputRef={inputRef}
+                show={enableCommentDisplay}
+            />
         </Placeholder>
     );
 

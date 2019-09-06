@@ -12,6 +12,9 @@ function Comment(props) {
     const context = useContext(OrderPriorityContext);
 
     function handleToggle() {
+        if( props.onClick ){
+            return props.onClick();
+        }
         if( !showPopover){
             setComment(props.comment || "");
         } else {
@@ -51,7 +54,7 @@ function Comment(props) {
 Comment.propTypes = {
     onCommentChange: PropTypes.func,
     comment: PropTypes.string,
-    translations: PropTypes.object,
+    onClick: PropTypes.func,
 };
 
 export default Comment;

@@ -57,6 +57,10 @@ H5P.OrderPriority = (function () {
             selectAll: "Select all",
             export: "Export",
             add: "Add",
+            yes: "Yes",
+            no: "No",
+            ifYouContinueAllYourChangesWillBeLost: "If you continue all your changes will be lost.",
+            areYouSure: "Are you sure?",
         }, params.l10n, params.resourceReport);
 
         const createElements = () => {

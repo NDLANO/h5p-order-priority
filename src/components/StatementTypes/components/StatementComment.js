@@ -1,9 +1,10 @@
 import React, {useRef} from 'react';
 import PropTypes from 'prop-types';
+import classsnames from 'classnames';
 
 function StatementComment(props) {
 
-    const inputRef = useRef();
+    const inputRef = props.inputRef || useRef();
 
     function handleKeyDown(){
         inputRef.current.style.height = "auto";
@@ -13,7 +14,9 @@ function StatementComment(props) {
     setTimeout(handleKeyDown, 0);
     return (
         <div
-            className={"h5p-order-priority-statement-comment"}
+            className={classsnames("h5p-order-priority-statement-comment", {
+                "hidden": props.show !== true
+            })}
         >
             <div>
                 <i
@@ -21,7 +24,7 @@ function StatementComment(props) {
                 />
                 <textarea
                     ref={inputRef}
-                    value={props.comment}
+                    value={props.comment || ""}
                     onKeyDown={handleKeyDown}
                     onChange={() => props.onCommentChange(inputRef.current.value)}
                 />
@@ -33,6 +36,12 @@ function StatementComment(props) {
 StatementComment.propTypes = {
     comment: PropTypes.string,
     onCommentChange: PropTypes.func,
+    inputRef: PropTypes.object,
+    show: PropTypes.bool,
+};
+
+StatementComment.defaultProps = {
+    show: false,
 };
 
 export default StatementComment;
