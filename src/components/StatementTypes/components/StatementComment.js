@@ -10,9 +10,6 @@ function StatementComment(props) {
         props.onCommentChange(inputRef.current.value);
         inputRef.current.style.height = "auto";
         inputRef.current.style.height = inputRef.current.scrollHeight + "px";
-        if( event.keyCode === 9){
-            return false;
-        }
     }
 
     return (
