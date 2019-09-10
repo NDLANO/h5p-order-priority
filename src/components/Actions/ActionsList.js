@@ -4,9 +4,12 @@ const ActionsList = (
     {children}
 ) => {
     return (
-        <ul className={"h5p-order-priority-actionlist"}>
+        <div
+            className={"h5p-order-priority-actionlist"}
+            role={"listitem"}
+        >
             {children}
-        </ul>
+        </div>
     );
 };
 

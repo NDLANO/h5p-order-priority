@@ -17,19 +17,22 @@ function Reset() {
     }
 
     const {
-        behaviour,
+        behaviour: {
+            enableRetry = false
+        },
         reset,
         translations
     } = orderPriorityContext;
 
     return (
         <Fragment>
-            {behaviour.enableRetry === true && (
+            {enableRetry === true && (
                 <Popover
                     handleClose={togglePopover}
                     show={showPopover}
                     popoverContent={(
                         <div
+                            role={"dialog"}
                             className={"h5p-order-priority-reset-modal"}
                         >
                             <div>

@@ -1,0 +1,10 @@
+{
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ],
+  "extends": [
+    "plugin:jsx-a11y/recommended"
+  ],
+  "parser": "babel-eslint"
+}

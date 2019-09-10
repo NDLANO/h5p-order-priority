@@ -1,7 +1,8 @@
 $h5pOrderPriorityFontSize: 14px;
+$h5pColor1: #1f71e8;
 
 .h5p-order-priority-button {
-  background-color: #1f71e8;
+  background-color: $h5pColor1;
   border-radius: 5px;
   color: white;
   padding: 10px 15px;
@@ -61,8 +62,8 @@ $h5pOrderPriorityFontSize: 14px;
 
 .h5p-order-priority-resources-btn {
   background-color: transparent;
-  border: 1px solid #2070e3;
-  color: #2070e3;
+  border: 1px solid $h5pColor1;
+  color: $h5pColor1;
   border-radius: 40px;
   padding: 8px;
   font-weight: bold;
@@ -150,18 +151,18 @@ $h5pOrderPriorityFontSize: 14px;
 
 .h5p-order-priority-statement-comment {
   @extend .h5p-order-priority-statement-common;
-  background-color: #1f71e8;
+  border: 2px solid $h5pColor1;
   border-radius: 0 0 3px 3px;
+  background-color: #fbfbfb;
   padding: 2px;
 
   div {
-    background-color: #f5f5f5;
     flex: auto;
     display: flex;
   }
 
   textarea {
-    background-color: #f5f5f5;
+    background-color: inherit;
     resize: none;
     border: 0;
     width: 100%;
@@ -175,8 +176,8 @@ $h5pOrderPriorityFontSize: 14px;
 
   .fa {
     font-size: 20px;
-    color: #1f71e8;
-    margin: 8px 0 0 10px;
+    color: $h5pColor1;
+    margin: 8px 0 0 13px;
   }
 }
 
@@ -207,9 +208,9 @@ $h5pOrderPriorityFontSize: 14px;
 
 .h5p-order-priority-action {
   background-color: white;
+  border-color: transparent;
   border-radius: 50%;
   padding: 10px;
-  height: 18px;
   margin-left: 15px;
   box-shadow: 0 2px 2px #b8b8b8;
   display: flex;
@@ -218,7 +219,7 @@ $h5pOrderPriorityFontSize: 14px;
   font-size: 20px;
 
   &.h5p-order-priority-action-active{
-    color: #1f71e8;
+    color: $h5pColor1;
   }
 }
 

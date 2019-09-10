@@ -37,12 +37,11 @@ function Comment(props) {
                 </div>
             )}
         >
-            <li
+            <button
                 onClick={handleToggle}
                 className={classnames("h5p-order-priority-action", {
                     'h5p-order-priority-action-active': props.comment && props.comment.length > 0,
                 })}
-                tabIndex={0}
                 onKeyDown={event => {
                     if(event.keyCode === 13){
                         handleToggle();
@@ -52,7 +51,7 @@ function Comment(props) {
                 <i
                     className={"fa fa-commenting-o"}
                 />
-            </li>
+            </button>
         </Popover>
     );
 }
