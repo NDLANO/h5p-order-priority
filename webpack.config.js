@@ -40,12 +40,7 @@ const config = {
                 loader: 'url-loader?limit=100000'
             }
         ]
-    },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': (!isDev ? JSON.stringify('production') : JSON.stringify('develop')),
-        }),
-    ]
+    }
 };
 
 if (isDev) {
