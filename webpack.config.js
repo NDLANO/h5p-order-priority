@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
 
-var nodeEnv = process.env.NODE_ENV || 'development';
-var isDev = (nodeEnv !== 'production');
-var config = {
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isDev = (nodeEnv !== 'production');
+const config = {
     entry: {
         dist: path.join(__dirname, 'src', 'app.js')
     },
@@ -40,7 +40,12 @@ var config = {
                 loader: 'url-loader?limit=100000'
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': (!isDev ? JSON.stringify('production') : JSON.stringify('develop')),
+        }),
+    ]
 };
 
 if (isDev) {
