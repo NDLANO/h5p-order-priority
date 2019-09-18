@@ -5,11 +5,11 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = (nodeEnv !== 'production');
 const config = {
     entry: {
-        dist: path.join(__dirname, 'src', 'app.js')
+        'h5p-order-priority': path.join(__dirname, 'src', 'app.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'h5p-order-priority.js'
+        filename: '[name].js'
     },
     resolve: {
         modules: [
@@ -40,6 +40,23 @@ const config = {
                 loader: 'url-loader?limit=100000'
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            name: 'vendor',
+            chunks: 'all',
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10
+                },
+                default: {
+                    minChunks: 2,
+                    priority: -20,
+                    reuseExistingChunk: true
+                }
+            }
+        }
     }
 };
 
