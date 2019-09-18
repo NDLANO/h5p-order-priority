@@ -68,8 +68,8 @@
           "default": "Start på nytt"
         },
         {
-          "label": "Tekst på \"Legg til\"-knappen",
-          "default": "Legg til"
+          "label": "Tekst på \"Lag alternativ\"-knappen",
+          "default": "Lag alternativ"
         },
         {
           "label": "Tekst på \"Ja\"-knappen",

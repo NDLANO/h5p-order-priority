@@ -56,7 +56,7 @@ H5P.OrderPriority = (function () {
             labelResources: "Resources",
             selectAll: "Select all",
             export: "Export",
-            add: "Add",
+            add: "Add alternative",
             yes: "Yes",
             no: "No",
             ifYouContinueAllYourChangesWillBeLost: "If you continue all your changes will be lost.",

@@ -108,7 +108,7 @@
         "type": "boolean",
         "label": "Display the provided comments below the statement",
         "description": "If the user has provided a comment, this is shown in the statements list",
-        "default": false
+        "default": true
       }
     ]
   },
@@ -146,8 +146,8 @@
       {
         "name": "add",
         "type": "text",
-        "label": "Label for the \"Add\"-button",
-        "default": "Add"
+        "label": "Label for the \"Add alternative\"-button",
+        "default": "Add alternative"
       },
       {
         "name": "yes",
