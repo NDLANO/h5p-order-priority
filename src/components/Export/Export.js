@@ -19,7 +19,7 @@ export default class Export extends Component {
         const {
             params: {
                 header,
-                description
+                description = '',
             },
             translations,
             collectExportValues,

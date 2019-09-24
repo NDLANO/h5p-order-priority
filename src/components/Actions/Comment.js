@@ -17,6 +17,7 @@ function Comment(props) {
         }
         if( !showPopover){
             setComment(props.comment || "");
+            setTimeout(() => props.inputRef.current && props.inputRef.current.focus(), 0);
         } else {
             props.onCommentChange(comment);
         }
@@ -29,6 +30,7 @@ function Comment(props) {
             show={showPopover}
             popoverContent={(
                 <textarea
+                    ref={props.inputRef}
                     placeholder={context.translations.typeYourReasonsForSuchAnswers}
                     value={comment}
                     onChange={event => setComment(event.currentTarget.value)}
@@ -58,6 +60,7 @@ Comment.propTypes = {
     onCommentChange: PropTypes.func,
     comment: PropTypes.string,
     onClick: PropTypes.func,
+    inputRef: PropTypes.object,
 };
 
 export default Comment;

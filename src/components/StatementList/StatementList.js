@@ -37,6 +37,7 @@ function StatementList(props) {
                             onCommentChange={handleOnCommentChange}
                             comment={statement.comment}
                             onClick={handleCommentClick()}
+                            inputRef={inputRef}
                         />
                     </ActionsList>
                 )
