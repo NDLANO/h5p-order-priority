@@ -20,7 +20,7 @@ function StatementComment(props) {
         >
             <div>
                 <i
-                    className={"fa fa-commenting-o"}
+                    className={"fa fa-commenting"}
                 />
                 <textarea
                     ref={inputRef}

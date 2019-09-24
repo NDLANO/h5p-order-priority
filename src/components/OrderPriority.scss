@@ -1,11 +1,12 @@
-$h5pOrderPriorityFontSize: 14px;
+$h5pOrderPriorityFontSize: 16px;
 $h5pColor1: #1f71e8;
+$h5pNumberBaseColor: gold;
 
 .h5p-order-priority-button {
   background-color: $h5pColor1;
-  border-radius: 5px;
+  border-radius: 2em;
   color: white;
-  padding: 10px 15px;
+  padding: 0.7em 1em;
   border: none;
   font-weight: bold;
 }
@@ -61,16 +62,14 @@ $h5pColor1: #1f71e8;
 }
 
 .h5p-order-priority-resources-btn {
+  @extend .h5p-order-priority-button;
   background-color: transparent;
   border: 1px solid $h5pColor1;
   color: $h5pColor1;
-  border-radius: 40px;
-  padding: 8px;
-  font-weight: bold;
   float: right;
 
   .fa-stack {
-    margin-right: 10px;
+    margin-right: 0.6em;
   }
 }
 
@@ -110,7 +109,6 @@ $h5pColor1: #1f71e8;
   min-height: 44px;
   border: 1px solid #e6e6e6;
   border-bottom: 4px solid #e6e6e6;
-  align-items: center;
   border-radius: 3px;
   font-weight: bold;
 
@@ -140,6 +138,7 @@ $h5pColor1: #1f71e8;
     display: flex;
     margin-left: auto;
     flex: initial;
+    justify-content: flex-end;
   }
 
   .fa-arrows {
@@ -151,10 +150,10 @@ $h5pColor1: #1f71e8;
 
 .h5p-order-priority-statement-comment {
   @extend .h5p-order-priority-statement-common;
-  border: 2px solid $h5pColor1;
+  border: 0.08em solid #e6e6e6;
   border-radius: 0 0 3px 3px;
   background-color: #fbfbfb;
-  padding: 2px;
+  padding: 0.2em;
 
   div {
     flex: auto;
@@ -176,7 +175,7 @@ $h5pColor1: #1f71e8;
 
   .fa {
     font-size: 20px;
-    color: $h5pColor1;
+    color: black;
     margin: 8px 0 0 13px;
   }
 }
@@ -210,23 +209,25 @@ $h5pColor1: #1f71e8;
   background-color: white;
   border-color: transparent;
   border-radius: 50%;
-  padding: 10px;
-  margin-left: 15px;
-  box-shadow: 0 2px 2px #b8b8b8;
+  padding: 0.5em;
+  margin-left: 1em;
+  box-shadow: 0 0.08em 0.08em #b8b8b8;
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 1.2em;
+  transition: background-color 300ms, color 300ms;
 
   &.h5p-order-priority-action-active{
-    color: $h5pColor1;
+    background-color: black;
+    color: white;
   }
 }
 
 .h5p-order-priority-popover {
   z-index: 1;
-  max-width: 420px;
-  font-size: $h5pOrderPriorityFontSize;
+  background-color: white;
+  overflow: visible !important;
 
   button {
     @extend .h5p-order-priority-button;
@@ -234,14 +235,15 @@ $h5pColor1: #1f71e8;
 }
 
 .h5p-order-priority-popover-content {
-  background-color: black;
-  padding: 10px;
-  box-shadow: 6px 6px 15px #747474;
+  border: 0.15em solid black;
+  box-shadow: 0.4em 0.4em 1em #747474;
+  max-width: 85vw;
 
   textarea {
     min-width: 300px;
-    height: 70px;
-    font-size: $h5pOrderPriorityFontSize;
+    min-height: 100px;
+    box-sizing: border-box;
+    border: 0;
   }
 }
 
@@ -250,22 +252,19 @@ $h5pColor1: #1f71e8;
   right: -13px;
 
   .close-button {
-    width: 19px;
-    height: 19px;
-    border: 2px solid black;
+    height: 1.8em;
+    border: 0.16em solid black;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: white;
-
-    .fa-close {
-      margin-top: -1px;
-    }
+    padding: 0.3em;
+    color: black;
   }
 
   &.close-button-top {
-    top: -15px;
+    top: -13px;
   }
 
   &.close-button-bottom {
@@ -313,6 +312,7 @@ $h5pColor1: #1f71e8;
     margin-right: 8px;
     background-color: white;
     font-size: 1.8em;
+    transition: background-color .5s;
   }
 }
 
@@ -331,6 +331,18 @@ $h5pColor1: #1f71e8;
 .h5p-order-priority-draggable-element > div {
   flex-grow: 1;
   display: flex;
+}
+
+.h5p-order-priority-draggable-container:nth-child(1) .h5p-order-priority-number div{
+  background-color: $h5pNumberBaseColor;
+}
+
+.h5p-order-priority-draggable-container:nth-child(2) .h5p-order-priority-number div{
+  background-color: lighten( $h5pNumberBaseColor, 25% );
+}
+
+.h5p-order-priority-draggable-container:nth-child(3) .h5p-order-priority-number div{
+  background-color: lighten( $h5pNumberBaseColor, 40% );
 }
 
 .h5p-order-priority-add {
@@ -404,8 +416,8 @@ $h5pColor1: #1f71e8;
 
 .h5p-order-priority-reset-modal {
   background-color: white;
-  padding: 20px;
-  width: 200px;
+  padding: 1em;
+  max-width: 85vw;
   display: inline-flex;
   flex-flow: column;
 
@@ -415,19 +427,18 @@ $h5pColor1: #1f71e8;
 
   & div:nth-child(2){
     margin-left: auto;
-    margin-top: 20px;
   }
 
   span {
     font-style: italic;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0.5em 0;
     display: block;
   }
 
   button {
+    @extend .h5p-order-priority-button;
     color: #fff;
-    border-radius: 20px;
     margin-left: 1em;
   }
 

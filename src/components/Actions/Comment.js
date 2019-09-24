@@ -28,13 +28,11 @@ function Comment(props) {
             handleClose={handleToggle}
             show={showPopover}
             popoverContent={(
-                <div>
-                        <textarea
-                            placeholder={context.translations.typeYourReasonsForSuchAnswers}
-                            value={comment}
-                            onChange={event => setComment(event.currentTarget.value)}
-                        />
-                </div>
+                <textarea
+                    placeholder={context.translations.typeYourReasonsForSuchAnswers}
+                    value={comment}
+                    onChange={event => setComment(event.currentTarget.value)}
+                />
             )}
         >
             <button

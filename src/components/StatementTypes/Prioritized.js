@@ -23,7 +23,7 @@ const Prioritized = ({
         >
             <div
                 className={classnames("h5p-order-priority-statement", {
-                    'h5p-order-priority-statement-extra': enableCommentDisplay && statement.comment && statement.comment.length > 0
+                    'h5p-order-priority-statement-extra': enableCommentDisplay
                 })}
             >
                 <div>
