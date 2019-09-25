@@ -19,9 +19,6 @@ function StatementComment(props) {
             })}
         >
             <div>
-                <i
-                    className={"fa fa-commenting"}
-                />
                 <textarea
                     ref={inputRef}
                     value={props.comment || ""}
