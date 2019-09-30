@@ -287,6 +287,7 @@ export default class Surface extends React.Component {
                                 onStatementChange={this.handleOnStatementChange}
                                 enableEditing={this.context.behaviour.allowAddingOfStatements}
                                 enableCommentDisplay={this.context.behaviour.displayCommentsBelowStatement}
+                                disableTransform={this.state.isCombineEnabled}
                             />
                         ))
                     }

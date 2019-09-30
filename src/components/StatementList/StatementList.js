@@ -6,6 +6,7 @@ import Prioritized from "../StatementTypes/Prioritized";
 import Placeholder from "../StatementTypes/Placeholder";
 import ActionsList from "../Actions/ActionsList";
 import Comment from "../Actions/Comment";
+import classnames from "classnames";
 
 function StatementList(props) {
 
@@ -101,10 +102,12 @@ function StatementList(props) {
                 draggableId={draggableType + "-" + statement.id}
                 index={index}
             >
-                {provided => (
-                    <div className={"h5p-order-priority-draggable-container"}>
+                {provided => {
+                    return (<div className={"h5p-order-priority-draggable-container"}>
                         <div
-                            className={"h5p-order-priority-draggable-element"}
+                            className={classnames("h5p-order-priority-draggable-element",{
+                                'h5p-order-priority-no-transform': props.disableTransform
+                            })}
                             ref={provided.innerRef}
                             {...provided.dragHandleProps}
                             {...provided.draggableProps}
@@ -112,7 +115,7 @@ function StatementList(props) {
                             {handleStatementType()}
                         </div>
                     </div>
-                )}
+                    )}}
             </Draggable>
         )
 
@@ -126,6 +129,7 @@ StatementList. propTypes = {
     onStatementChange: PropTypes.func,
     enableEditing: PropTypes.bool,
     enableCommentDisplay: PropTypes.bool,
+    disableTransform: PropTypes.bool,
 };
 
 StatementList.defaultProps = {
@@ -133,6 +137,7 @@ StatementList.defaultProps = {
     statement: {},
     enableEditing: false,
     enableCommentDisplay: false,
+    disableTransform: false,
 };
 
 export default StatementList;
