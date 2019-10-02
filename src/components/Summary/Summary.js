@@ -44,12 +44,22 @@ export default class Summary extends React.PureComponent {
         } = this.context;
 
         return (
-            <div className={classnames('h5p-order-priority-summary')}>
-                <p>{translations.summary}</p>
+            <div
+                className={classnames('h5p-order-priority-summary')}
+                aria-labelledby={"summary-header"}
+            >
+                <label
+                    id={"summary-header"}
+                    htmlFor={'summary'}
+                >
+                    <h2>{translations.summary}</h2>
+                </label>
                 <textarea
+                    id={"summary"}
                     placeholder={translations.typeYourReasonsForSuchAnswers}
                     value={this.state.comment}
                     onChange={event => this.setState({comment: event.target.value})}
+                    aria-label={translations.typeYourReasonsForSuchAnswers}
                 />
             </div>
         );

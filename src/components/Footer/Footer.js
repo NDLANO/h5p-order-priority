@@ -1,13 +1,13 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import Export from '../Export/Export';
 import Reset from './Reset';
 
 function Footer() {
     return (
-        <footer>
+        <section>
             <Reset/>
             <Export/>
-        </footer>
+        </section>
     );
 }
 

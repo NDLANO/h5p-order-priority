@@ -6,7 +6,6 @@ const ActionsList = (
     return (
         <div
             className={"h5p-order-priority-actionlist"}
-            role={"listitem"}
         >
             {children}
         </div>

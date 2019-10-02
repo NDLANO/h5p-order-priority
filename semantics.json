@@ -8,6 +8,7 @@
   {
     "name": "description",
     "type": "text",
+    "widget": "textarea",
     "label": "Task description",
     "importance": "low",
     "optional": true
@@ -253,6 +254,33 @@
         "type": "text",
         "label": "Label when no summary is provided",
         "default": "No comment"
+      }
+    ]
+  },
+  {
+    "label": "Accessibility",
+    "importance": "low",
+    "name": "accessibility",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "name": "addComment",
+        "type": "text",
+        "label": "Used instead of 'Comment'-icon",
+        "default": "Add comment"
+      },
+      {
+        "name": "close",
+        "type": "text",
+        "label": "Used instead of 'Close'-icon",
+        "default": "Close"
+      },
+      {
+        "name": "drag",
+        "type": "text",
+        "label": "Used instead of 'Drag'-icon",
+        "default": "Drag"
       }
     ]
   }

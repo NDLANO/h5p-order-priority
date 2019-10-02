@@ -3,7 +3,7 @@ import TinyPopover, { ArrowContainer } from 'react-tiny-popover';
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const Popover = ({handleClose, show, children, popoverContent}) => {
+const Popover = ({handleClose, show, children, popoverContent, translations}) => {
     return (
         <TinyPopover
             containerClassName={"h5p-order-priority-popover"}
@@ -23,7 +23,10 @@ const Popover = ({handleClose, show, children, popoverContent}) => {
                     arrowColor={'black'}
                     arrowSize={10}
                 >
-                    <div className={"h5p-order-priority-popover-content"}>
+                    <div
+                        className={"h5p-order-priority-popover-content"}
+                        role={"listitem"}
+                    >
                         <div>
                             {popoverContent}
                         </div>
@@ -36,9 +39,11 @@ const Popover = ({handleClose, show, children, popoverContent}) => {
                                     onClick={handleClose}
                                     className={"close-button"}
                                 >
-                                    <i
+                                    <span
                                         className={"fa fa-close"}
+                                        aria-hidden={true}
                                     />
+                                    <span className="visible-hidden">{translations.close}</span>
                                 </button>
                         </div>
                     </div>
@@ -54,6 +59,7 @@ Popover.propTypes = {
     handleClose: PropTypes.func.isRequired,
     show: PropTypes.bool,
     popoverContent: PropTypes.object,
+    translations: PropTypes.object,
 };
 
 export default Popover;

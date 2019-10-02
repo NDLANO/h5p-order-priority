@@ -111,7 +111,7 @@ export default class Export extends Component {
                     className={"h5p-order-priority-button-export pull-right"}
                     onClick={this.handleExport}
                 >
-                    <i className={"fa fa-file-text-o"}/>
+                    <span className={"fa fa-file-text-o"} aria-hidden={"true"}/>
                     {translations.createDocument}
                 </button>
                 <div className={"export-container"} ref={el => this.exportContainer = el}/>

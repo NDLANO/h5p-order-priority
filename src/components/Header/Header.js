@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import { OrderPriorityContext } from '../../context/OrderPriorityContext';
 import classnames from 'classnames';
 
@@ -59,20 +59,32 @@ export default class Header extends React.Component {
         } = this.context;
 
         return (
-            <header className={"h5p-order-priority-header"}>
-                {this.resourceList !== null && this.state.hasResources === true && (
-                    <button className={"h5p-order-priority-resources-btn"} onClick={this.showResourceList}>
-                        <span className={classnames(['fa-stack'])}>
-                            <i className={"fa fa-circle-thin fa-stack-2x"} />
-                            <i className={"fa fa-info fa-stack-1x"} />
-                        </span>
-                        <span>{translations.resources}</span>
-                    </button>
-                )}
-                <h2>{header}</h2>
-                <p className={classnames('h5p-order-priority-description')}>{description}</p>
-                <aside ref={el => this.resourceContainer = el} />
-            </header>
+            <Fragment>
+                <header
+                    className={"h5p-order-priority-header"}
+                    role={"banner"}
+                >
+                    {this.resourceList !== null && this.state.hasResources === true && (
+                        <button
+                            className={"h5p-order-priority-resources-btn"}
+                            onClick={this.showResourceList}
+                            aria-label={"resource-button"}
+                        >
+                            <span className={classnames(['fa-stack'])} aria-hidden={"true"} title={"fsdfds"}>
+                                <span className={"fa fa-circle-thin fa-stack-2x"} aria-hidden={"true"} />
+                                <span className={"fa fa-info fa-stack-1x"} aria-hidden={"true"} />
+                            </span>
+                            <span id={"resource-button"}>{translations.resources}</span>
+                        </button>
+                    )}
+                    <h1>{header}</h1>
+                    <p className={classnames('h5p-order-priority-description')}>{description}</p>
+                </header>
+                <aside
+                    ref={el => this.resourceContainer = el}
+                    aria-labelledby={"resource-button"}
+                />
+            </Fragment>
         );
     }
 

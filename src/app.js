@@ -61,7 +61,10 @@ H5P.OrderPriority = (function () {
             no: "No",
             ifYouContinueAllYourChangesWillBeLost: "If you continue all your changes will be lost.",
             areYouSure: "Are you sure?",
-        }, params.l10n, params.resourceReport);
+            close: "Close",
+            addComment: "Add comment",
+            drag: "Drag",
+        }, params.l10n, params.resourceReport, params.accessibility);
 
         const createElements = () => {
             const wrapper = document.createElement('div');
@@ -119,6 +122,20 @@ H5P.OrderPriority = (function () {
                     this.wrapper.classList.remove(item.className);
                 }
             });
+        };
+
+        /**
+         * Help fetch the correct translations.
+         *
+         * @params {...args}
+         * @return {string}
+         */
+        this.t = function t() {
+            const args = [];
+            for (let i = 0; i < arguments.length; i++) {
+                args.push(arguments[i]);
+            }
+            return H5P.t.apply(window, args);
         };
 
         this.getRect = this.getRect.bind(this);

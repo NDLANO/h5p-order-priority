@@ -21,7 +21,7 @@ function Reset() {
             enableRetry = false
         },
         reset,
-        translations
+        translations,
     } = orderPriorityContext;
 
     return (
@@ -30,6 +30,7 @@ function Reset() {
                 <Popover
                     handleClose={togglePopover}
                     show={showPopover}
+                    translations={translations}
                     popoverContent={(
                         <div
                             role={"dialog"}
@@ -60,7 +61,10 @@ function Reset() {
                         className={"h5p-order-priority-button-restart"}
                         onClick={togglePopover}
                     >
-                        <i className={"fa fa-refresh"}/>
+                        <span
+                            className={"fa fa-refresh"}
+                            aria-hidden={"true"}
+                        />
                         {translations.restart}
                     </button>
                 </Popover>

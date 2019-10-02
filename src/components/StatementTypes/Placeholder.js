@@ -13,6 +13,7 @@ const Placeholder = ({
             />
             <div
                 className="h5p-droparea"
+                aria-label={(children ? "Droparea ": "Empty droparea ") + displayIndex}
             >
                 {children}
             </div>

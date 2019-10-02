@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Placeholder from "./Placeholder";
-import EditableStatement from "./components/EditableStatement";
-import UnEditableStatement from "./components/UnEditableStatement";
 import DragArrows from "./components/DragArrows";
 import classnames from 'classnames';
 import StatementComment from "./components/StatementComment";
+import EditableStatement from "./components/EditableStatement";
 
-const Prioritized = ({
+function Prioritized({
                          statement,
                          actions,
                          displayIndex,
@@ -16,7 +15,7 @@ const Prioritized = ({
                          enableCommentDisplay,
                          onCommentChange,
                          inputRef,
-                     }) => {
+                     }) {
     return (
         <Placeholder
             displayIndex={displayIndex}
@@ -33,6 +32,7 @@ const Prioritized = ({
                             inEditMode={statement.editMode}
                             statement={statement.statement}
                             onBlur={onStatementChange}
+                            idBase={statement.id}
                         />
                     )}
                     {enableEditing !== true && (
@@ -51,8 +51,7 @@ const Prioritized = ({
             />
         </Placeholder>
     );
-
-};
+}
 
 Prioritized.propTypes = {
     statement: PropTypes.object,
@@ -64,5 +63,6 @@ Prioritized.propTypes = {
     onCommentChange: PropTypes.func,
     inputRef: PropTypes.object,
 };
+
 
 export default Prioritized;

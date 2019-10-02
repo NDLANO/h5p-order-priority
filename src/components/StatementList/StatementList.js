@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import { Draggable } from "react-beautiful-dnd";
+import {Draggable} from "react-beautiful-dnd";
 import Remaining from "../StatementTypes/Remaining";
 import Prioritized from "../StatementTypes/Prioritized";
 import Placeholder from "../StatementTypes/Placeholder";
@@ -65,7 +65,7 @@ function StatementList(props) {
     }
 
     function handleCommentClick() {
-        if( props.enableCommentDisplay !== true){
+        if (props.enableCommentDisplay !== true) {
             return null;
         }
 
@@ -79,33 +79,50 @@ function StatementList(props) {
         const statement = Object.assign({}, props.statement);
         statement.comment = comment;
         props.onStatementChange(statement);
-        if( !comment || comment.length === 0){
+        if (!comment || comment.length === 0) {
             toggleCommentContainer(false);
         }
     }
 
-    function handleOnStatementTextEdit(statementText){
+    function handleOnStatementTextEdit(statementText) {
         const statement = Object.assign({}, props.statement);
         statement.statement = statementText;
         statement.editMode = false;
         props.onStatementChange(statement);
     }
 
-        const {
-            index,
-            statement,
-            draggableType,
-        } = props;
+    function getAriaLabel() {
+        let ariaLabel = "Draggable item " + statement.statement;
+        if (draggableType === 'prioritized') {
+            ariaLabel = 'Dropzone ' + statement.displayIndex;
+            if (statement.touched) {
+                ariaLabel += ': value ' + statement.statement;
+            }
+        }
 
-        return (
-            <Draggable
-                draggableId={draggableType + "-" + statement.id}
-                index={index}
-            >
-                {provided => {
-                    return (<div className={"h5p-order-priority-draggable-container"}>
+        return ariaLabel;
+    }
+
+    const {
+        index,
+        statement,
+        draggableType,
+    } = props;
+
+    return (
+        <Draggable
+            draggableId={draggableType + "-" + statement.id}
+            index={index}
+            isDragDisabled={draggableType === 'prioritized' && statement.isPlaceholder}
+        >
+            {provided => {
+                return (
+                    <div
+                        className={"h5p-order-priority-draggable-container"}
+                        aria-label={getAriaLabel()}
+                    >
                         <div
-                            className={classnames("h5p-order-priority-draggable-element",{
+                            className={classnames("h5p-order-priority-draggable-element", {
                                 'h5p-order-priority-no-transform': props.disableTransform
                             })}
                             ref={provided.innerRef}
@@ -115,13 +132,14 @@ function StatementList(props) {
                             {handleStatementType()}
                         </div>
                     </div>
-                    )}}
-            </Draggable>
-        )
+                )
+            }}
+        </Draggable>
+    )
 
 }
 
-StatementList. propTypes = {
+StatementList.propTypes = {
     statement: PropTypes.object,
     index: PropTypes.number.isRequired,
     draggableType: PropTypes.string.isRequired,

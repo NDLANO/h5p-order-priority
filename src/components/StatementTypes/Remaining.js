@@ -1,15 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import EditableStatement from "./components/EditableStatement";
-import UnEditableStatement from "./components/UnEditableStatement";
 import DragArrows from "./components/DragArrows";
+import EditableStatement from "./components/EditableStatement";
 
-const Remaining = props => {
+function Remaining(props) {
     const {
         statement,
         onStatementChange,
         enableEditing = false,
     } = props;
+
+    let displayStatement;
+    if( enableEditing ){
+        displayStatement = (
+            <EditableStatement
+                statement={statement.statement}
+                inEditMode={statement.editMode}
+                onBlur={onStatementChange}
+                idBase={statement.id}
+            />
+        );
+    } else {
+        displayStatement = (
+            <UnEditableStatement
+                statement={statement.statement}
+            />
+        );
+    }
 
     return (
         <div
@@ -17,23 +34,12 @@ const Remaining = props => {
         >
             <div>
                 <DragArrows />
-                {enableEditing === true && (
-                    <EditableStatement
-                        statement={statement.statement}
-                        inEditMode={statement.editMode}
-                        onBlur={onStatementChange}
-                    />
-                )}
-                {enableEditing !== true && (
-                    <UnEditableStatement
-                        statement={statement.statement}
-                    />
-                )}
+                {displayStatement}
             </div>
         </div>
     );
 
-};
+}
 
 Remaining.propTypes = {
     statement: PropTypes.object,

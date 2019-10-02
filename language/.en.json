@@ -141,6 +141,23 @@
           "default": "No comment"
         }
       ]
+    },
+    {
+      "label": "Accessibility",
+      "fields": [
+        {
+          "label": "Close",
+          "default": "Close"
+        },
+        {
+          "label": "Add comment",
+          "default": "Add comment"
+        },
+        {
+          "label": "Drag",
+          "default": "Drag"
+        }
+      ]
     }
   ]
 }

@@ -155,11 +155,6 @@ $h5pNumberBaseColor: gold;
   background-color: #fbfbfb;
   padding: 0.2em;
 
-  div {
-    flex: auto;
-    display: flex;
-  }
-
   textarea {
     background-color: inherit;
     resize: none;
@@ -171,12 +166,6 @@ $h5pNumberBaseColor: gold;
     overflow-y: hidden;
     font-size: inherit;
     height: auto;
-  }
-
-  .fa {
-    font-size: 20px;
-    color: black;
-    margin: 8px 0 0 13px;
   }
 }
 
@@ -239,7 +228,7 @@ $h5pNumberBaseColor: gold;
   box-shadow: 0.4em 0.4em 1em #747474;
   max-width: 85vw;
 
-  textarea {
+  div {
     min-width: 300px;
     min-height: 100px;
     box-sizing: border-box;
@@ -358,18 +347,17 @@ $h5pNumberBaseColor: gold;
   font-weight: bold;
   font-size: 1em;
 
-  i {
+  .fa {
     margin-right: 5px;
-  }
-
-  span {
-    text-decoration: underline;
   }
 }
 
 .h5p-order-priority-editable-container {
   display: flex;
   flex: auto;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3em 0.6em;
 
   div {
     display: flex;
@@ -458,4 +446,21 @@ $h5pNumberBaseColor: gold;
 
 .h5p-order-priority-no-transform {
   transform: none !important;
+}
+
+.visible-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.visible-hidden:focus {
+  clip: auto;
+  height: auto;
+  overflow: auto;
+  position: absolute;
+  width: auto;
 }

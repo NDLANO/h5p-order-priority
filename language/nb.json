@@ -141,6 +141,23 @@
           "default": "Ingen oppsummering"
         }
       ]
+    },
+    {
+      "label": "Tilgjengelighet",
+      "fields": [
+        {
+          "label": "Lukk",
+          "default": "Lukk"
+        },
+        {
+          "label": "Legg til kommentar",
+          "default": "Legg til kommentar"
+        },
+        {
+          "label": "Dra",
+          "default": "Dra"
+        }
+      ]
     }
   ]
 }

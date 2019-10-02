@@ -1,9 +1,11 @@
 import React, {Fragment} from 'react';
-import {OrderPriorityContext} from '../../context/OrderPriorityContext';
+import {OrderPriorityContext} from 'context/OrderPriorityContext';
 import {DragDropContext} from 'react-beautiful-dnd';
 import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
 import AddStatement from "../AddStatement/AddStatement";
+import Summary from "../Summary/Summary";
+import Footer from "../Footer/Footer";
 
 function StatementDataObject(initValues) {
     this.id = null;
@@ -331,17 +333,21 @@ export default class Surface extends React.Component {
 
     render() {
         return (
-            <main
-                className="h5p-order-prioritySurface"
-            >
-                <DragDropContext
+            <main>
+                <div
                     className="h5p-order-prioritySurface"
-                    onDragEnd={this.onDropEnd}
-                    onDragUpdate={this.onDropUpdate}
-                    onDragStart={this.onDragStart}
                 >
-                    {this.handleSurface()}
-                </DragDropContext>
+                    <DragDropContext
+                        className="h5p-order-prioritySurface"
+                        onDragEnd={this.onDropEnd}
+                        onDragUpdate={this.onDropUpdate}
+                        onDragStart={this.onDragStart}
+                    >
+                        {this.handleSurface()}
+                    </DragDropContext>
+                </div>
+                <Summary />
+                <Footer/>
             </main>
         );
     }

@@ -5,7 +5,7 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = (nodeEnv !== 'production');
 const config = {
     entry: {
-        'h5p-order-priority': path.join(__dirname, 'src', 'app.js')
+        'h5p-order-priority': [path.join(__dirname, 'src', 'app.js')]
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -62,6 +62,7 @@ const config = {
 
 if (isDev) {
     config.devtool = 'inline-source-map';
+    config.entry["h5p-order-priority"].push(path.join(__dirname, 'src', 'axe.js'));
 }
 
 module.exports = config;
