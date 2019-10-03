@@ -1,16 +1,9 @@
-# H5P Boilerplate
-This repository provides you with some boilerplate code in different branches
-that are intended to make creating new content types a little easier.
+# H5P Priority
+This content type encourages the user to reflect upon provided statements and put
+these in a ordered priority. They can also provide a comment for each statement 
+where they elaborate on why they made this priority.
 
-The master branch holds a very simple example, other branches contain different
-frames for different purposes. The source files may contain some TODOs for
-you in order to fill some functions with life.
-
-Please note that you'll need some familiarity with git and npm.
-
-Please also note that you'll still need some familiarity with how H5P works. If
-you have not yet had a [look at our developer guide](https://h5p.org/developers):
-Now is the right time :-)
+If configured users can also add their own statements.
 
 ## Getting started
 Clone this repository with git and check out the branch that you are interested

@@ -12,9 +12,14 @@
     "type": "git",
     "url": "git+https://github.com/to/be/provided"
   },
-  "author": "Cerpus (https://cerpus.com)",
+  "author": "NDLA (https://ndla.no)",
   "license": "MIT",
-  "contributors": [],
+  "contributors": [
+    {
+      "email": "thomas.sivertsen@cerpus.com",
+      "name": "Thomas Horn Sivertsen"
+    }
+  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.0",
