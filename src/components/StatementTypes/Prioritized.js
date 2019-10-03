@@ -5,6 +5,7 @@ import DragArrows from "./components/DragArrows";
 import classnames from 'classnames';
 import StatementComment from "./components/StatementComment";
 import EditableStatement from "./components/EditableStatement";
+import UnEditableStatement from "./components/UnEditableStatement";
 
 function Prioritized({
                          statement,

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DragArrows from "./components/DragArrows";
 import EditableStatement from "./components/EditableStatement";
+import UnEditableStatement from "./components/UnEditableStatement";
 
 function Remaining(props) {
     const {
