@@ -37,12 +37,6 @@
       ]
   },
   {
-    "name": "numberOfStatements",
-    "type": "number",
-    "optional": true,
-    "label": "Number of statements"
-  },
-  {
     "name": "resources",
     "type": "group",
     "label": "Resources",
@@ -96,6 +90,11 @@
             }
           ]
         }
+      },
+      {
+        "name": "numberOfStatements",
+        "type": "number",
+        "label": "Number of statements"
       },
       {
         "name": "allowAddingOfStatements",

@@ -171,12 +171,12 @@ export default class Surface extends React.Component {
         const {
             params: {
                 statementsList = [],
-                numberOfStatements = statementsList.length
             },
             behaviour: {
                 prepopulate = false,
                 randomizeStatements = false,
                 allowAddingOfStatements = false,
+                numberOfStatements = statementsList.length,
             }
         } = this.context;
 

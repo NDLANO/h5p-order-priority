@@ -1,6 +1,6 @@
 {
   "name": "h5p-order-priority",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Reflect on statements and put then in an ordered/prioritized list",
   "main": "index.js",
   "scripts": {
@@ -10,16 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/to/be/provided"
+    "url": "git+https://github.com/NDLANO/h5p-order-priority.git"
   },
   "author": "NDLA (https://ndla.no)",
   "license": "MIT",
-  "contributors": [
-    {
-      "email": "thomas.sivertsen@cerpus.com",
-      "name": "Thomas Horn Sivertsen"
-    }
-  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.0",
