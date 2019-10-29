@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import PriorityNumber from "./components/PriorityNumber";
+import classnames from 'classnames';
+import {OrderPriorityContext} from "context/OrderPriorityContext";
 
 const Placeholder = ({
                          displayIndex,
-                         children
+                         children,
+                         isDraggingOver = false,
                      }) => {
+    const context = useContext(OrderPriorityContext);
+
+    const {
+        translate
+    } = context;
 
     return (
         <div>
@@ -12,8 +20,10 @@ const Placeholder = ({
                 displayIndex={displayIndex}
             />
             <div
-                className="h5p-droparea"
-                aria-label={(children ? "Droparea ": "Empty droparea ") + displayIndex}
+                className={classnames("h5p-droparea", {
+                    "h5p-order-priority-active-droppable": isDraggingOver
+                })}
+                aria-label={(children ? translate("droparea", {':index': displayIndex}) : translate("emptydroparea", {":index": displayIndex}))}
             >
                 {children}
             </div>

@@ -28,7 +28,9 @@ function Comment(props) {
         <Popover
             handleClose={handleToggle}
             show={showPopover}
-            translations={context.translations}
+            classnames={context.activeBreakpoints}
+            header={context.translations.feedback}
+            close={context.translations.close}
             popoverContent={(
                 <textarea
                     ref={props.inputRef}
@@ -36,14 +38,13 @@ function Comment(props) {
                     value={comment}
                     aria-label={context.translations.typeYourReasonsForSuchAnswers}
                     onChange={event => setComment(event.currentTarget.value)}
+                    rows={3}
                 />
             )}
         >
             <button
                 onClick={handleToggle}
-                className={classnames("h5p-order-priority-action", {
-                    'h5p-order-priority-action-active': props.comment && props.comment.length > 0,
-                })}
+                className={"h5p-order-priority-action"}
                 onKeyDown={event => {
                     if (event.keyCode === 13) {
                         handleToggle();
@@ -51,7 +52,10 @@ function Comment(props) {
                 }}
             >
                 <span
-                    className={"fa fa-commenting-o"}
+                    className={classnames("h5p-ri", {
+                        "hri-comment-empty": !props.comment || props.comment.length === 0,
+                        "hri-comment-full": props.comment && props.comment.length > 0,
+                    })}
                     aria-hidden={"true"}
                 />
                 <span className="visible-hidden">{context.translations.addComment}</span>

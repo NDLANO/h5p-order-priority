@@ -20,6 +20,11 @@ function StatementComment(props) {
                 "hidden": props.show !== true
             })}
         >
+            <div>
+                <span
+                    className="h5p-ri hri-comment-full"
+                    aria-hidden={"true"}
+                />
                 <textarea
                     ref={inputRef}
                     value={props.comment || ""}
@@ -28,6 +33,7 @@ function StatementComment(props) {
                     placeholder={context.translations.typeYourReasonsForSuchAnswers}
                     aria-label={context.translations.typeYourReasonsForSuchAnswers}
                 />
+            </div>
         </div>
     )
 }

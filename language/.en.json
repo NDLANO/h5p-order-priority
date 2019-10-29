@@ -15,10 +15,6 @@
       }
     },
     {
-      "label": "Number of landingfields",
-      "description": "How many landingfields should the user reflect on?"
-    },
-    {
       "label": "Resources",
       "description": "Optional links to resources."
     },
@@ -37,6 +33,10 @@
         {
           "label": "Randomize the statements",
           "description": "Will randomize the pre-populated statements"
+        },
+        {
+          "label": "Number of landingfields",
+          "description": "How many landingfields should the user reflect on?"
         },
         {
           "label": "Allow users to add their own statements",
@@ -72,20 +72,32 @@
           "default": "Add alternative"
         },
         {
-          "label": "Label for the \"Yes\"-button",
-          "default": "Yes"
+          "label": "Label for the \"Continue\"-button in the restart dialog",
+          "default": "Continue"
         },
         {
-          "label": "Label for the \"No\"-button",
-          "default": "No"
+          "label": "Label for the \"Cancel\"-button in the restart dialog",
+          "default": "Cancel"
         },
         {
           "label": "Inform the user that data will be lost if he/she continues",
-          "default": "If you continue all your changes will be lost"
+          "default": "All the changes will be lost. Are you sure you wish to continue?",
         },
         {
-          "label": "Ask the user if he/she wants to continue",
-          "default": "Are you sure?"
+          "label": "Header in 'Comment' popover",
+          "default": "Feedback"
+        },
+        {
+          "label": "Text displayed in 'Submit'-button when creating a document",
+          "default": "Submit"
+        },
+        {
+          "label": "Text displayed after submitting",
+          "default": "Saved!"
+        },
+        {
+          "label": "Header in 'Restart' popover",
+          "default": "Confirm"
         }
       ]
     },
@@ -146,16 +158,41 @@
       "label": "Accessibility",
       "fields": [
         {
-          "label": "Close",
-          "default": "Close"
-        },
-        {
           "label": "Add comment",
           "default": "Add comment"
         },
         {
+          "label": "Close",
+          "default": "Close"
+        },
+        {
           "label": "Drag",
           "default": "Drag"
+        },
+        {
+          "label": "'Droparea' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Droparea #:index"
+        },
+        {
+          "label": "'Empty droparea' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Empty droparea #:index"
+        },
+        {
+          "label": "'Draggable item' label for screenreaders",
+          "description": "Available variables are :statement",
+          "default": "Draggable item: :statement"
+        },
+        {
+          "label": "'Dropzone' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Dropzone #:index"
+        },
+        {
+          "label": "'Dropzone with value' label for screenreaders",
+          "description": "Available variables are :index and :statement",
+          "default": "Dropzone #:index with value: :statement"
         }
       ]
     }

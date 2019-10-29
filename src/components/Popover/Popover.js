@@ -1,50 +1,51 @@
 import React from 'react';
 import TinyPopover, { ArrowContainer } from 'react-tiny-popover';
-import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const Popover = ({handleClose, show, children, popoverContent, translations}) => {
+const Popover = ({handleClose, show, children, popoverContent, classnames = [], header, close, align = "end"}) => {
+    classnames.push("h5p-order-priority-popover");
     return (
         <TinyPopover
-            containerClassName={"h5p-order-priority-popover"}
+            containerClassName={classnames.join(" ")}
             isOpen={show}
             position={['top', 'bottom']}
             windowBorderPadding={10}
             containerStyle={{
                 overflow: "unset",
             }}
-            align={"end"}
+            align={align}
             onClickOutside={handleClose}
             content={({position, targetRect, popoverRect}) => (
                 <ArrowContainer
                     position={position}
                     targetRect={targetRect}
                     popoverRect={popoverRect}
-                    arrowColor={'black'}
+                    arrowColor={'white'}
                     arrowSize={10}
                 >
                     <div
-                        className={"h5p-order-priority-popover-content"}
+                        className={"h5p-order-priority-popover-container"}
                         role={"listitem"}
                     >
-                        <div>
-                            {popoverContent}
-                        </div>
-                        <div
-                            className={classnames("h5p-order-priority-popover-close", {
-                                "close-button-top": position === "top",
-                                "close-button-bottom": position === "bottom",
-                            })}>
-                                <button
-                                    onClick={handleClose}
-                                    className={"close-button"}
-                                >
+                        <div className={"h5p-order-priority-popover-header"}>
+                            <div>
+                                {header}
+                            </div>
+                            <button
+                                onClick={handleClose}
+                                className={"close-button"}
+                            >
                                     <span
-                                        className={"fa fa-close"}
+                                        className={"h5p-ri hri-close"}
                                         aria-hidden={true}
                                     />
-                                    <span className="visible-hidden">{translations.close}</span>
-                                </button>
+                                <span className="visible-hidden">{close}</span>
+                            </button>
+                        </div>
+                        <div
+                            className={"h5p-order-priority-popover-content"}
+                        >
+                            {popoverContent}
                         </div>
                     </div>
                 </ArrowContainer>
@@ -59,7 +60,9 @@ Popover.propTypes = {
     handleClose: PropTypes.func.isRequired,
     show: PropTypes.bool,
     popoverContent: PropTypes.object,
-    translations: PropTypes.object,
+    classnames: PropTypes.array,
+    header: PropTypes.string,
+    close: PropTypes.string,
 };
 
 export default Popover;

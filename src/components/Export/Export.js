@@ -26,7 +26,7 @@ export default class Export extends Component {
         } = this.context;
 
         const {
-            resources,
+            resources = [],
             summary,
             userInput
         } = collectExportValues();
@@ -88,9 +88,9 @@ export default class Export extends Component {
         this.exportDocument = new H5P.ExportPage(
             this.exportObject.mainTitle,
             this.getExportPreview(),
-            false,
-            "",
-            "",
+            true,
+            translations.submitText,
+            translations.submitConfirmedText,
             translations.selectAll,
             translations.export,
             H5P.instances[0].getLibraryFilePath('exportTemplate.docx'),
@@ -108,10 +108,10 @@ export default class Export extends Component {
         return (
             <Fragment>
                 <button
-                    className={"h5p-order-priority-button-export pull-right"}
+                    className={"h5p-order-priority-button-export"}
                     onClick={this.handleExport}
                 >
-                    <span className={"fa fa-file-text-o"} aria-hidden={"true"}/>
+                    <span className={"h5p-ri hri-document"} aria-hidden={"true"}/>
                     {translations.createDocument}
                 </button>
                 <div className={"export-container"} ref={el => this.exportContainer = el}/>

@@ -94,6 +94,7 @@
       {
         "name": "numberOfStatements",
         "type": "number",
+        "optional": true,
         "label": "Number of statements"
       },
       {
@@ -150,28 +151,46 @@
         "default": "Add alternative"
       },
       {
-        "name": "yes",
+        "name": "continue",
         "type": "text",
-        "label": "Label for the \"Yes\"-button",
-        "default": "Yes"
+        "label": "Label for the \"Continue\"-button in the restart dialog",
+        "default": "Continue"
       },
       {
-        "name": "no",
+        "name": "cancel",
         "type": "text",
-        "label": "Label for the \"No\"-button",
-        "default": "No"
+        "label": "Label for the \"Cancel\"-button in the restart dialog",
+        "default": "Cancel"
       },
       {
         "name": "ifYouContinueAllYourChangesWillBeLost",
         "type": "text",
         "label": "Inform the user that data will be lost if he/she continues",
-        "default": "If you continue all your changes will be lost"
+        "default": "All the changes will be lost. Are you sure you wish to continue?"
       },
       {
-        "name": "areYouSure",
+        "name": "feedback",
         "type": "text",
-        "label": "Ask the user if he/she wants to continue",
-        "default": "Are you sure?"
+        "label": "Header in 'Comment' popover",
+        "default": "Feedback"
+      },
+      {
+        "name": "submitText",
+        "type": "text",
+        "label": "Text displayed in 'Submit'-button when creating a document",
+        "default": "Submit"
+      },
+      {
+        "name": "submitConfirmedText",
+        "type": "text",
+        "label": "Text displayed after submitting",
+        "default": "Saved!"
+      },
+      {
+        "name": "confirm",
+        "type": "text",
+        "label": "Header in 'Restart' popover",
+        "default": "Confirm"
       }
     ]
   },
@@ -280,6 +299,41 @@
         "type": "text",
         "label": "Used instead of 'Drag'-icon",
         "default": "Drag"
+      },
+      {
+        "name": "droparea",
+        "type": "text",
+        "label": "'Droparea' label for screenreaders",
+        "description": "Available variables are :index",
+        "default": "Droparea #:index"
+      },
+      {
+        "name": "emptydroparea",
+        "type": "text",
+        "label": "'Empty droparea' label for screenreaders",
+        "description": "Available variables are :index",
+        "default": "Empty droparea #:index"
+      },
+      {
+        "name": "draggableItem",
+        "type": "text",
+        "label": "'Draggable item' label for screenreaders",
+        "description": "Available variables are :statement",
+        "default": "Draggable item: :statement"
+      },
+      {
+        "name": "dropzone",
+        "type": "text",
+        "label": "'Dropzone' label for screenreaders",
+        "description": "Available variables are :index",
+        "default": "Dropzone #:index"
+      },
+      {
+        "name": "dropzoneWithValue",
+        "type": "text",
+        "label": "'Dropzone with value' label for screenreaders",
+        "description": "Available variables are :index and :statement",
+        "default": "Dropzone #:index with value: :statement"
       }
     ]
   }

@@ -41,6 +41,7 @@ H5P.OrderPriority = (function () {
         this.id = contentId;
         this.language = language;
         this.activityStartTime = new Date();
+        this.activeBreakpoints = [];
 
         this.translations = Object.assign({}, {
             summary: "Summary",
@@ -57,13 +58,22 @@ H5P.OrderPriority = (function () {
             selectAll: "Select all",
             export: "Export",
             add: "Add alternative",
-            yes: "Yes",
-            no: "No",
-            ifYouContinueAllYourChangesWillBeLost: "If you continue all your changes will be lost.",
+            ifYouContinueAllYourChangesWillBeLost: "All the changes will be lost. Are you sure you wish to continue?",
             areYouSure: "Are you sure?",
             close: "Close",
             addComment: "Add comment",
             drag: "Drag",
+            feedback: "Feedback",
+            submitText: "Submit",
+            submitConfirmedText: "Saved!",
+            confirm: "Confirm",
+            continue: "Continue",
+            cancel: "Cancel",
+            droparea: "Droparea :num",
+            emptydroparea: "Empty droparea :index",
+            draggableItem: "Draggable item :statement",
+            dropzone: "Dropzone :index",
+            dropzoneWithValue: "Dropzone :index with value :statement",
         }, params.l10n, params.resourceReport, params.accessibility);
 
         const createElements = () => {
@@ -73,7 +83,12 @@ H5P.OrderPriority = (function () {
 
             ReactDOM.render(
                 <OrderPriorityContext.Provider value={this}>
-                    <Main/>
+                    <Main
+                        {...params}
+                        id={contentId}
+                        language={language}
+                        collectExportValues={this.collectExportValues}
+                    />
                 </OrderPriorityContext.Provider>,
                 this.wrapper
             );
@@ -110,32 +125,42 @@ H5P.OrderPriority = (function () {
             this.resetStack.forEach(callback => callback());
         };
 
+        this.addBreakPoints = wrapper => {
+            this.activeBreakpoints = [];
+            const rect = this.getRect();
+            breakPoints.forEach(item => {
+                if (item.shouldAdd(rect.width)) {
+                    wrapper.classList.add(item.className);
+                    this.activeBreakpoints.push(item.className);
+                } else {
+                    wrapper.classList.remove(item.className);
+                }
+            });
+        };
+
         this.resize = () => {
             if (!this.wrapper) {
                 return;
             }
-            const rect = this.getRect();
-            breakPoints.forEach(item => {
-                if (item.shouldAdd(rect.width)) {
-                    this.wrapper.classList.add(item.className);
-                } else {
-                    this.wrapper.classList.remove(item.className);
-                }
-            });
+            this.addBreakPoints(this.wrapper);
         };
 
         /**
          * Help fetch the correct translations.
          *
-         * @params {...args}
+         * @params key
+         * @params vars
          * @return {string}
          */
-        this.t = function t() {
-            const args = [];
-            for (let i = 0; i < arguments.length; i++) {
-                args.push(arguments[i]);
+        this.translate = (key, vars) => {
+            let translation = this.translations[key];
+            if (vars !== undefined && vars !== null) {
+                translation = Object
+                    .keys(vars)
+                    .map(key => translation.replace(key, vars[key]))
+                    .toString();
             }
-            return H5P.t.apply(window, args);
+            return translation;
         };
 
         this.getRect = this.getRect.bind(this);

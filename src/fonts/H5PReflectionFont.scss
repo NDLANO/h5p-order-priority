@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'H5PReflectionFont';
+  font-style: normal;
+  font-weight: 400;
+  src: url('reflection_questions_v1.eot'); /* IE9 Compat Modes */
+  src: local('H5PReflectionFont'), local('H5PReflectionFont'),
+  url('reflection_questions_v1.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('reflection_questions_v1.woff') format('woff'), /* Modern Browsers */
+  url('reflection_questions_v1.ttf') format('truetype'), /* Safari, Android, iOS */
+  url('reflection_questions_v1.svg#H5PReflectionFont') format('svg'); /* Legacy iOS */
+}
+
+.h5p-reflection-icon,
+.h5p-ri
+{
+  font-family: H5PReflectionFont;
+
+  &.hri-move::before {
+    content: "\e900";
+  }
+
+  &.hri-pencil::before {
+    content: "\e90f";
+  }
+
+  &.hri-checked::before {
+    content: "\e901";
+  }
+
+  &.hri-unchecked::before {
+    content: "\e902";
+  }
+
+  &.hri-arrow-left::before {
+    content: "\e903";
+  }
+
+  &.hri-arrow-right::before {
+    content: "\e904";
+  }
+
+  &.hri-arrow-back::before {
+    content: "\e905";
+  }
+
+  &.hri-arrow-next::before {
+    content: "\e906";
+  }
+
+  &.hri-close::before {
+    content: "\e907";
+  }
+
+  &.hri-times::before {
+    content: "\e908";
+  }
+
+  &.hri-labe-empty::before {
+    content: "\e909";
+  }
+
+  &.hri-label-full::before {
+    content: "\e90a";
+  }
+
+  &.hri-comment-empty::before {
+    content: "\e90b";
+  }
+
+  &.hri-comment-full::before {
+    content: "\e90c";
+  }
+
+  &.hri-document::before {
+    content: "\e90d";
+  }
+
+  &.hri-restart::before {
+    content: "\e90e";
+  }
+}

@@ -15,10 +15,6 @@
       }
     },
     {
-      "label": "Antall landingsfelter",
-      "description": "Hvor mange landingsfelter skal brukeren ta stilling til?"
-    },
-    {
       "label": "Ressurser",
       "description": "Valgfrie lenker til ressurser."
     },
@@ -37,6 +33,10 @@
         {
           "label": "Sett inn påstandende i tilfeldig rekkefølge",
           "description": "Skal påstandene vises i tilfeldig rekkefølge?"
+        },
+        {
+          "label": "Antall landingsfelter",
+          "description": "Hvor mange landingsfelter skal brukeren ta stilling til?"
         },
         {
           "label": "La brukeren legge inn egne påstander",
@@ -72,20 +72,32 @@
           "default": "Lag alternativ"
         },
         {
-          "label": "Tekst på \"Ja\"-knappen",
+          "label": "Tekst på \"Fortsett\"-knappen i \"Start på nytt\"-dialogboksen",
           "default": "Yes"
         },
         {
-          "label": "Tekst på \"Nei\"-knappen",
+          "label": "Tekst på \"Avbryt\"-knappen i \"Start på nytt\"-dialogboksen",
           "default": "Nei"
         },
         {
           "label": "Informer brukeren om at all data vil gå tapt om vedkommende fortsetter",
-          "default": "Hvis du fortsetter vil alle data gå tapt."
+          "default": "Alle dine endringer vil bli tapt. Er du sikker på at du vil fortsette?"
         },
         {
-          "label": "Spør brukeren om vedkommende vil fortsette",
-          "default": "Er du sikker?"
+          "label": "Overskrift i 'Kommentar'-dialogboks",
+          "default": "Kommentar"
+        },
+        {
+          "label": "Tekst som vises i 'Lagre'-knappen når man oppretter et dokument",
+          "default": "Lagre"
+        },
+        {
+          "label": "Tekst som vises etter lagring er fullført",
+          "default": "Lagret!"
+        },
+        {
+          "label": "Overskrift i 'Start på nytt'-dialogboks",
+          "default": "Bekreft"
         }
       ]
     },
@@ -146,16 +158,41 @@
       "label": "Tilgjengelighet",
       "fields": [
         {
-          "label": "Lukk",
-          "default": "Lukk"
-        },
-        {
-          "label": "Legg til kommentar",
+          "label": "Brukt istedenfor 'Kommentar'-ikonet",
           "default": "Legg til kommentar"
         },
         {
-          "label": "Dra",
+          "label": "Brukt istedenfor 'Lukk' ikonet",
+          "default": "Lukk"
+        },
+        {
+          "label": "Brukt istedenfor 'Dra' ikonet",
           "default": "Dra"
+        },
+        {
+          "label": "'Slippområde' etikett for skjermleser",
+          "description": "Tilgjengelige variabler er :index",
+          "default": "Slippområde #:index"
+        },
+        {
+          "label": "'Empty droparea' etikett for skjermleser",
+          "description": "Tilgjengelige variabler er :index",
+          "default": "Tomt slippområde #:index"
+        },
+        {
+          "label": "'Flyttbar element' etikett for skjermleser",
+          "description": "Tilgjengelige variabler er :statement",
+          "default": "Flyttbar element: :statement"
+        },
+        {
+          "label": "'Droppsone' etikett for skjermleser",
+          "description": "Tilgjengelige variabler er :index",
+          "default": "Droppsone #:index"
+        },
+        {
+          "label": "'Droppsone med verdi' etikett for skjermleser",
+          "description": "Tilgjengelige variabler er :index og :statement",
+          "default": "Droppsone #:index med verdi: :statement"
         }
       ]
     }

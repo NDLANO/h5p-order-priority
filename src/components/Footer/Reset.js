@@ -30,7 +30,10 @@ function Reset() {
                 <Popover
                     handleClose={togglePopover}
                     show={showPopover}
-                    translations={translations}
+                    classnames={orderPriorityContext.activeBreakpoints}
+                    close={translations.close}
+                    header={translations.restart}
+                    align={"start"}
                     popoverContent={(
                         <div
                             role={"dialog"}
@@ -38,21 +41,20 @@ function Reset() {
                         >
                             <div>
                                 {translations.ifYouContinueAllYourChangesWillBeLost}
-                                <span>{translations.areYouSure}</span>
                             </div>
                             <div>
                                 <button
-                                    type={"button"}
                                     onClick={confirmReset}
-                                    className={"yes"}
-                                    tabIndex={0}
-                                >{translations.yes}</button>
+                                    className={"continue"}
+                                >
+                                    {translations.continue}
+                                </button>
                                 <button
-                                    type={"button"}
                                     onClick={togglePopover}
-                                    className={"no"}
-                                    tabIndex={0}
-                                >{translations.no}</button>
+                                    className={"cancel"}
+                                >
+                                    {translations.cancel}
+                                </button>
                             </div>
                         </div>
                     )}
@@ -62,7 +64,7 @@ function Reset() {
                         onClick={togglePopover}
                     >
                         <span
-                            className={"fa fa-refresh"}
+                            className={"h5p-ri hri-restart"}
                             aria-hidden={"true"}
                         />
                         {translations.restart}

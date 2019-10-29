@@ -7,7 +7,7 @@ function DragArrows() {
     return (
         <div className={"h5p-order-priority-drag-element"}>
             <span
-                className="fa fa-arrows"
+                className="h5p-ri hri-move"
                 aria-hidden={"true"}
             />
             <span className={"visible-hidden"}>{context.translations.drag}</span>

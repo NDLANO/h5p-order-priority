@@ -6,7 +6,7 @@ function PriorityNumber(props) {
         displayIndex
     } = props;
     return (
-        <div className={"h5p-order-priority-number"}>
+        <div className={"h5p-order-priority-number h5p-order-priority-number-" + displayIndex}>
             <div>{displayIndex}</div>
         </div>
     );

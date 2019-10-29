@@ -26,23 +26,23 @@ function Prioritized({
                     'h5p-order-priority-statement-extra': enableCommentDisplay
                 })}
             >
-                <div>
-                    <DragArrows/>
-                    {enableEditing === true && (
-                        <EditableStatement
-                            inEditMode={statement.editMode}
-                            statement={statement.statement}
-                            onBlur={onStatementChange}
-                            idBase={statement.id}
-                        />
-                    )}
-                    {enableEditing !== true && (
-                        <UnEditableStatement
-                            statement={statement.statement}
-                        />
-                    )}
-                </div>
-                {actions}
+                    <div className={"h5p-order-priority-statement-prioritized"}>
+                        <DragArrows/>
+                        {enableEditing === true && (
+                            <EditableStatement
+                                inEditMode={statement.editMode}
+                                statement={statement.statement}
+                                onBlur={onStatementChange}
+                                idBase={statement.id}
+                            />
+                        )}
+                        {enableEditing !== true && (
+                            <UnEditableStatement
+                                statement={statement.statement}
+                            />
+                        )}
+                    </div>
+                    {actions}
             </div>
             <StatementComment
                 comment={statement.comment}

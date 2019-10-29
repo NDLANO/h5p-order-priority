@@ -3,12 +3,14 @@ import PropTypes from 'prop-types';
 import DragArrows from "./components/DragArrows";
 import EditableStatement from "./components/EditableStatement";
 import UnEditableStatement from "./components/UnEditableStatement";
+import classnames from 'classnames';
 
 function Remaining(props) {
     const {
         statement,
         onStatementChange,
         enableEditing = false,
+        isDragging = false,
     } = props;
 
     let displayStatement;
@@ -31,9 +33,11 @@ function Remaining(props) {
 
     return (
         <div
-            className="h5p-order-priority-statement"
+            className={classnames("h5p-order-priority-statement",{
+                "h5p-order-priority-active-draggable": isDragging
+            })}
         >
-            <div>
+            <div className={"h5p-order-priority-statement-remaining"}>
                 <DragArrows />
                 {displayStatement}
             </div>

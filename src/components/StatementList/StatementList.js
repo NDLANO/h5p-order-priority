@@ -13,12 +13,13 @@ function StatementList(props) {
     const inputRef = useRef();
     const [showCommentContainer, toggleCommentContainer] = useState(false);
 
-    function handleStatementType() {
+    function handleStatementType(isDragging) {
         const {
             statement,
             draggableType,
             isSingleColumn,
             enableEditing,
+            translate,
         } = props;
 
         if (draggableType === 'remaining') {
@@ -27,6 +28,7 @@ function StatementList(props) {
                     statement={statement}
                     onStatementChange={handleOnStatementTextEdit}
                     enableEditing={enableEditing}
+                    isDragging={isDragging}
                 />
             );
         } else if (draggableType === 'prioritized' && !statement.isPlaceholder) {
@@ -59,7 +61,12 @@ function StatementList(props) {
             return (
                 <Placeholder
                     displayIndex={statement.displayIndex}
-                />
+                    translate={translate}
+                >
+                    <div
+                        className={"h5p-order-priority-empty"}
+                    />
+                </Placeholder>
             );
         }
     }
@@ -92,15 +99,22 @@ function StatementList(props) {
     }
 
     function getAriaLabel() {
-        let ariaLabel = "Draggable item " + statement.statement;
+        const {
+            translate
+        } = props;
+
+        let ariaLabel = "draggableItem";
         if (draggableType === 'prioritized') {
-            ariaLabel = 'Dropzone ' + statement.displayIndex;
+            ariaLabel = 'dropzone';
             if (statement.touched) {
-                ariaLabel += ': value ' + statement.statement;
+                ariaLabel = 'dropzoneWithValue';
             }
         }
 
-        return ariaLabel;
+        return translate(ariaLabel, {
+            ':index': statement.displayIndex,
+            ':statement': statement.statement
+        });
     }
 
     const {
@@ -115,7 +129,7 @@ function StatementList(props) {
             index={index}
             isDragDisabled={draggableType === 'prioritized' && statement.isPlaceholder}
         >
-            {provided => {
+            {(provided, snapshot) => {
                 return (
                     <div
                         className={"h5p-order-priority-draggable-container"}
@@ -123,13 +137,13 @@ function StatementList(props) {
                     >
                         <div
                             className={classnames("h5p-order-priority-draggable-element", {
-                                'h5p-order-priority-no-transform': props.disableTransform
+                                'h5p-order-priority-no-transform': props.disableTransform,
                             })}
                             ref={provided.innerRef}
                             {...provided.dragHandleProps}
                             {...provided.draggableProps}
                         >
-                            {handleStatementType()}
+                            {handleStatementType(snapshot.isDragging)}
                         </div>
                     </div>
                 )
@@ -148,6 +162,7 @@ StatementList.propTypes = {
     enableEditing: PropTypes.bool,
     enableCommentDisplay: PropTypes.bool,
     disableTransform: PropTypes.bool,
+    translate: PropTypes.func,
 };
 
 StatementList.defaultProps = {

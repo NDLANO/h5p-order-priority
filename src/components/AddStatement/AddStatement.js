@@ -14,8 +14,10 @@ function AddStatement(props) {
                 className={"h5p-order-priority-add"}
                 onClick={onClick}
             >
-                <span className={"fa fa-pencil"} aria-hidden={"true"}/>
-                <span>{translations.add}</span>
+                <span>
+                    <span className={"h5p-ri hri-pencil"} aria-hidden={"true"}/>
+                    <span>{translations.add}</span>
+                </span>
             </button>
         </div>
     );

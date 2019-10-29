@@ -21,11 +21,14 @@ function Column(props) {
                 isCombineEnabled={combine}
                 isDropDisabled={disableDrop}
             >
-                {provided => {
+                {(provided, snapshot) => {
                     return (
                         <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
+                            className={classnames("h5p-order-priority-column", {
+                                "h5p-order-priority-drag-active": snapshot.isDraggingOver && snapshot.draggingFromThisWith === null
+                            })}
                         >
                             {children}
                             <div style={{display: !combine ? "block" : "none"}}>

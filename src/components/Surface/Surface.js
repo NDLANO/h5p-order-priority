@@ -5,7 +5,6 @@ import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
 import AddStatement from "../AddStatement/AddStatement";
 import Summary from "../Summary/Summary";
-import Footer from "../Footer/Footer";
 
 function StatementDataObject(initValues) {
     this.id = null;
@@ -47,6 +46,9 @@ export default class Surface extends React.Component {
     }
 
     onDragStart(element) {
+        if (window.navigator.vibrate) {
+            window.navigator.vibrate(100);
+        }
         this.setState({isCombineEnabled: element.source.droppableId !== 'processed'});
     }
 
@@ -113,28 +115,31 @@ export default class Surface extends React.Component {
             } else {
                 droppedIndex = destination.index < prioritizedStatements.length ? destination.index : prioritizedStatements.length - 1;
             }
+
+            const droppedOnStatement = newStatements[prioritizedStatements[droppedIndex]];
             if (droppedIndex !== -1 && draggedIndex !== -1) {
                 [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
             } else if (draggedIndex === -1) {
-                prioritizedStatements.splice(droppedIndex, 0, statementId);
-                const untouched = prioritizedStatements
-                    .filter(elementId => elementId !== statementId && newStatements[elementId].touched === false)
-                    .pop();
-                if (untouched !== undefined) {
-                    prioritizedStatements.splice(prioritizedStatements.indexOf(untouched), 1);
-                } else {
-                    remainingStatements.push(prioritizedStatements.pop());
-                }
+                prioritizedStatements.splice(droppedIndex, 1, statementId);
+            }
+
+            if( droppedOnStatement.touched === true){
+                remainingStatements.push(droppedOnStatement.id);
+                droppedOnStatement.touched = false;
+                droppedOnStatement.isPlaceholder = true;
             }
 
             if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
                 remainingStatements.splice(source.index, 1);
             }
+
             draggedStatement.isPlaceholder = destination === 'processed';
             draggedStatement.touched = true;
         }
 
-        prioritizedStatements.forEach((statementId, index) => newStatements[statementId].displayIndex = index + 1);
+        prioritizedStatements.forEach((statementId, index) => {
+            newStatements[statementId].displayIndex = index + 1;
+        });
 
         this.setState({
             statements: newStatements,
@@ -290,6 +295,7 @@ export default class Surface extends React.Component {
                                 enableEditing={this.context.behaviour.allowAddingOfStatements}
                                 enableCommentDisplay={this.context.behaviour.displayCommentsBelowStatement}
                                 disableTransform={this.state.isCombineEnabled}
+                                translate={this.context.translate}
                             />
                         ))
                     }
@@ -316,6 +322,7 @@ export default class Surface extends React.Component {
                                     index={index}
                                     onStatementChange={this.handleOnStatementChange}
                                     enableEditing={this.context.behaviour.allowAddingOfStatements}
+                                    translate={this.context.translate}
                                 />
                             ))
                         }
@@ -333,7 +340,7 @@ export default class Surface extends React.Component {
 
     render() {
         return (
-            <main>
+            <div>
                 <div
                     className="h5p-order-prioritySurface"
                 >
@@ -347,8 +354,7 @@ export default class Surface extends React.Component {
                     </DragDropContext>
                 </div>
                 <Summary />
-                <Footer/>
-            </main>
+            </div>
         );
     }
 }
