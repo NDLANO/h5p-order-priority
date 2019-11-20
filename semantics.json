@@ -9,6 +9,7 @@
     "name": "description",
     "type": "text",
     "widget": "textarea",
+    "lines": 3,
     "label": "Task description",
     "importance": "low",
     "optional": true
@@ -35,6 +36,22 @@
           }
         }
       ]
+  },
+  {
+    "name": "summaryHeader",
+    "type": "text",
+    "label": "Summary",
+    "default": "Summary",
+    "importance": "medium"
+  },
+  {
+    "name": "summaryInstruction",
+    "type": "text",
+    "widget": "textarea",
+    "lines": 3,
+    "label": "Summary instruction",
+    "importance": "low",
+    "optional": true
   },
   {
     "name": "resources",

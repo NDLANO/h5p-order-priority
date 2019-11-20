@@ -15,6 +15,14 @@
       }
     },
     {
+      "label": "Basis",
+      "default": "Basis"
+    },
+    {
+      "label": "Summary instructions",
+      "description": "Write instructions to the user if you want to tell him/her what to include in the summary"
+    },
+    {
       "label": "Resources",
       "description": "Optional links to resources."
     },
@@ -51,10 +59,6 @@
     {
       "label": "Localize",
       "fields": [
-        {
-          "label": "Basis",
-          "default": "Basis"
-        },
         {
           "label": "Placeholder for the text boxes",
           "default": "Type your reasons for such answers"

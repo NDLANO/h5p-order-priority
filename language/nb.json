@@ -15,6 +15,14 @@
       }
     },
     {
+      "label": "Oppsummering",
+      "default": "Oppsummering"
+    },
+    {
+      "label": "Instruksjoner til oppsummeringen",
+      "description": "Skriv noen ord om hva du ønsker skal være med i oppsummeringen"
+    },
+    {
       "label": "Ressurser",
       "description": "Valgfrie lenker til ressurser."
     },
@@ -51,10 +59,6 @@
     {
       "label": "Localize",
       "fields": [
-        {
-          "label": "Begrunnelse",
-          "default": "Begrunnelse"
-        },
         {
           "label": "Midlertidig tekst for tekstfeltene",
           "default": "Skriv en begrunnelse for dine svar"

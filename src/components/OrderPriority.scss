@@ -366,6 +366,12 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 .h5p-order-priority-description {
   flex-grow: 5;
   margin: em(10px) 0;
+  font-weight: 600;
+}
+
+.h5p-order-priority-summary-instruction {
+  font-weight: 600;
+  margin: 0 0 0.6rem 0;
 }
 
 .h5p-order-priority-action {
