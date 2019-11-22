@@ -46,7 +46,9 @@ function Main(props) {
                     className={"h5p-order-priority-surface-info"}
                     ref={resourceContainer}
                 >
-                    <p className={'h5p-order-priority-description'}>{description}</p>
+                    {description && (
+                        <p className={'h5p-order-priority-description'}>{description}</p>
+                    )}
                 </div>
                 <Surface />
             </div>

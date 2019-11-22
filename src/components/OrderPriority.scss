@@ -131,7 +131,11 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 
 .h5p-order-priority-surface-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+
+  .h5p-resource-list-wrapper {
+    margin-left: auto;
+  }
 }
 
 .h5p-order-priority-resources-btn {
@@ -365,7 +369,7 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 
 .h5p-order-priority-description {
   flex-grow: 5;
-  margin: em(10px) 0;
+  margin: 0 0.625rem 0.625rem 0;
   font-weight: 600;
 }
 
