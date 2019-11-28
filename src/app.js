@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import Main from "components/Main";
 import {OrderPriorityContext} from 'context/OrderPriorityContext';
-import {sanitizeParams} from "./utils";
+import {sanitizeParams} from "./components/utils";
 
 // Load library
 H5P = H5P || {};

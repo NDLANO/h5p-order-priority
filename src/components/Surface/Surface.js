@@ -5,7 +5,7 @@ import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
 import AddStatement from "../AddStatement/AddStatement";
 import Summary from "../Summary/Summary";
-import {StatementDataObject} from "../../utils";
+import {StatementDataObject} from "../utils";
 
 export default class Surface extends React.Component {
 

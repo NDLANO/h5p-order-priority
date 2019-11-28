@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
-import {debounce} from "../../../utils";
+import {debounce} from "../../utils";
 
 function EditableStatement(props) {
 
