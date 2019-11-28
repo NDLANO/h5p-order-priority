@@ -1,6 +1,7 @@
 import React, {useState, useRef} from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
+import {debounce} from "../../../utils";
 
 function EditableStatement(props) {
 
@@ -28,7 +29,6 @@ function EditableStatement(props) {
 
     const handleBlur = () => {
         toggleEditMode(false);
-        props.onBlur(inputRef.current.value);
     };
 
     const id = "es_" + props.idBase;
@@ -56,6 +56,7 @@ function EditableStatement(props) {
                         })}
                         ref={inputRef}
                         onBlur={handleBlur}
+                        onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
                         aria-label={"Edit statement " + props.statement}
                         aria-hidden={!inEditMode}
                         id={inputId}

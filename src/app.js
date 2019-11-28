@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import Main from "components/Main";
 import {OrderPriorityContext} from 'context/OrderPriorityContext';
+import {sanitizeParams} from "./utils";
 
 // Load library
 H5P = H5P || {};
@@ -33,8 +34,8 @@ H5P.OrderPriority = (function () {
         } = extras;
 
         let container;
-        this.params = params;
-        this.behaviour = params.behaviour || {};
+        this.params = sanitizeParams(params);
+        this.behaviour = this.params.behaviour || {};
         this.resetStack = [];
         this.collectExportValuesStack = [];
         this.wrapper = null;
@@ -74,7 +75,7 @@ H5P.OrderPriority = (function () {
             draggableItem: "Draggable item :statement",
             dropzone: "Dropzone :index",
             dropzoneWithValue: "Dropzone :index with value :statement",
-        }, params.l10n, params.resourceReport, params.accessibility);
+        }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
         const createElements = () => {
             const wrapper = document.createElement('div');
@@ -84,7 +85,7 @@ H5P.OrderPriority = (function () {
             ReactDOM.render(
                 <OrderPriorityContext.Provider value={this}>
                     <Main
-                        {...params}
+                        {...this.params}
                         id={contentId}
                         language={language}
                         collectExportValues={this.collectExportValues}

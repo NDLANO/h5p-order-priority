@@ -5,19 +5,7 @@ import Column from '../Column/Column';
 import StatementList from "../StatementList/StatementList";
 import AddStatement from "../AddStatement/AddStatement";
 import Summary from "../Summary/Summary";
-
-function StatementDataObject(initValues) {
-    this.id = null;
-    this.comment = null;
-    this.displayIndex = null;
-    this.added = false;
-    this.statement = null;
-    this.isPlaceholder = false;
-    this.isUserAdded = false;
-    this.editMode = false;
-    this.touched = false;
-    return Object.assign(this, initValues);
-}
+import {StatementDataObject} from "../../utils";
 
 export default class Surface extends React.Component {
 
