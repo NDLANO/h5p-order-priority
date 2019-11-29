@@ -60,8 +60,8 @@
       "label": "Localize",
       "fields": [
         {
-          "label": "Midlertidig tekst for tekstfeltene",
-          "default": "Skriv en begrunnelse for dine svar"
+          "label": "Midlertidig tekst for kommentar tekstfeltene",
+          "default": "Utdyp ditt valg"
         },
         {
           "label": "Tekst på \"Ressurs\"-knappen",
@@ -102,6 +102,10 @@
         {
           "label": "Overskrift i 'Start på nytt'-dialogboks",
           "default": "Bekreft"
+        },
+        {
+          "label": "Midlertidig tekst for sammendrag tekstfeltet",
+          "default": "Gi et kort sammendrag med egne ord"
         }
       ]
     },

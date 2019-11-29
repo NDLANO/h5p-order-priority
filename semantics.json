@@ -138,12 +138,6 @@
     "common": true,
     "fields": [
       {
-        "name": "summary",
-        "type": "text",
-        "label": "Basis",
-        "default": "Basis"
-      },
-      {
         "name": "typeYourReasonsForSuchAnswers",
         "type": "text",
         "label": "Placeholder for the text boxes",
@@ -208,6 +202,12 @@
         "type": "text",
         "label": "Header in 'Restart' popover",
         "default": "Confirm"
+      },
+      {
+        "name": "giveABriefSummary",
+        "type": "text",
+        "label": "Placeholder for the summary box",
+        "default": "Give a brief summary in your own words"
       }
     ]
   },

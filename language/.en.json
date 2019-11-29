@@ -61,7 +61,7 @@
       "fields": [
         {
           "label": "Placeholder for the text boxes",
-          "default": "Type your reasons for such answers"
+          "default": "Elaborate on your decision"
         },
         {
           "label": "Label for \"Resources\"-button",
@@ -102,6 +102,10 @@
         {
           "label": "Header in 'Restart' popover",
           "default": "Confirm"
+        },
+        {
+          "label": "Placeholder for the summary box",
+          "default": "Give a brief summary in your own words"
         }
       ]
     },

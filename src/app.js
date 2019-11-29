@@ -46,7 +46,7 @@ H5P.OrderPriority = (function () {
 
         this.translations = Object.assign({}, {
             summary: "Summary",
-            typeYourReasonsForSuchAnswers: "Type your reasons for such answers",
+            typeYourReasonsForSuchAnswers: "Elaborate on your decision",
             resources: "Resources",
             save: "Save",
             restart: "Restart",
@@ -75,6 +75,7 @@ H5P.OrderPriority = (function () {
             draggableItem: "Draggable item :statement",
             dropzone: "Dropzone :index",
             dropzoneWithValue: "Dropzone :index with value :statement",
+            giveABriefSummary: "Give a brief summary in your own words",
         }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
         const createElements = () => {

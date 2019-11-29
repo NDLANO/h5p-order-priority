@@ -33,10 +33,10 @@ function Summary(props) {
             )}
             <textarea
                 id={"summary"}
-                placeholder={translate('typeYourReasonsForSuchAnswers')}
+                placeholder={translate('giveABriefSummary')}
                 value={comment}
                 onChange={event => setComment(event.target.value)}
-                aria-label={translate('typeYourReasonsForSuchAnswers')}
+                aria-label={translate('giveABriefSummary')}
             />
         </div>
     );
