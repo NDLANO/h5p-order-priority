@@ -53,6 +53,10 @@
         {
           "label": "Display the provided comments below the statement",
           "description": "If the user has provided a comment, this is shown in the statements list"
+        },
+        {
+          "label": "Show summary",
+          "description": "Do you want the user to provide a summary explaining the reasons for his/her answers"
         }
       ]
     },
@@ -85,7 +89,7 @@
         },
         {
           "label": "Inform the user that data will be lost if he/she continues",
-          "default": "All the changes will be lost. Are you sure you wish to continue?",
+          "default": "All the changes will be lost. Are you sure you wish to continue?"
         },
         {
           "label": "Header in 'Comment' popover",

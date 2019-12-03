@@ -21,6 +21,9 @@ export default class Export extends Component {
                 header,
                 description = '',
             },
+            behaviour: {
+                provideSummary = true,
+            },
             translations,
             collectExportValues,
         } = this.context;
@@ -35,8 +38,8 @@ export default class Export extends Component {
             mainTitle: header,
             description,
             hasResources: resources.length > 0,
-            hasSummaryComment: summary.length > 0,
-            summaryComment: summary,
+            summaryComment: summary || translations.labelNoSummaryComment,
+            useSummary: provideSummary,
             resources: resources,
             sortedStatementList: userInput.prioritizedStatements
                 .map(statement => userInput.statements[statement])
@@ -61,8 +64,10 @@ export default class Export extends Component {
             '<tr><th>{{headerStatement}}</th><th>{{headerComment}}</th></tr>' +
             '{{#sortedStatementList}}<tr><td>{{title}}</td><td>{{comment}}</td></tr>{{/sortedStatementList}}' +
             '</table>' +
+            '{{#useSummary}}' +
             '<h2>{{labelSummaryComment}}</h2>' +
-            '<p>{{^hasSummaryComment}}{{labelNoSummaryComment}}{{/hasSummaryComment}}{{summaryComment}}</p>' +
+            '<p>{{summaryComment}}</p>' +
+            '{{/useSummary}}' +
             '<h2>{{header}}</h2>' +
             '{{^resources}}<p>{{labelNoResources}}</p>{{/resources}}' +
             '{{#hasResources}}' +

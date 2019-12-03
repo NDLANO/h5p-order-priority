@@ -127,6 +127,13 @@
         "label": "Display the provided comments below the statement",
         "description": "If the user has provided a comment, this is shown in the statements list",
         "default": true
+      },
+      {
+        "name": "provideSummary",
+        "type": "boolean",
+        "label": "Show summary",
+        "description": "Do you want the user to provide a summary explaining the reasons for his/her answers",
+        "default": true
       }
     ]
   },
@@ -288,7 +295,7 @@
         "name": "labelNoSummaryComment",
         "type": "text",
         "label": "Label when no summary is provided",
-        "default": "No comment"
+        "default": "No summary"
       }
     ]
   },

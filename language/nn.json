@@ -53,6 +53,10 @@
         {
           "label": "Vis kommentarer under påstanden",
           "description": "Hvis brukeren har skrevet en kommentar, vis denne i listen med påstander"
+        },
+        {
+          "label": "Vis oppsummering",
+          "description": "Vil du at brukeren skal oppgi en oppsummering der vedkommende begrunner sine valg?"
         }
       ]
     },
@@ -77,11 +81,11 @@
         },
         {
           "label": "Tekst på \"Fortsett\"-knappen i \"Start på nytt\"-dialogboksen",
-          "default": "Yes"
+          "default": "Fortsett"
         },
         {
           "label": "Tekst på \"Avbryt\"-knappen i \"Start på nytt\"-dialogboksen",
-          "default": "Nei"
+          "default": "Avbryt"
         },
         {
           "label": "Informer brukeren om at all data vil gå tapt om vedkommende fortsetter",
@@ -101,7 +105,7 @@
         },
         {
           "label": "Overskrift i 'Start på nytt'-dialogboks",
-          "default": "Bekreft"
+          "default": "Bekreft nullstilling"
         },
         {
           "label": "Midlertidig tekst for sammendrag tekstfeltet",

@@ -328,12 +328,8 @@ export default class Surface extends React.Component {
 
     render() {
         const {
-            collectExportValues,
-            registerReset,
-            translate,
-            params: {
-                summaryHeader,
-                summaryInstruction
+            behaviour: {
+                provideSummary = true,
             }
         } = this.context;
 
@@ -351,13 +347,9 @@ export default class Surface extends React.Component {
                         {this.handleSurface()}
                     </DragDropContext>
                 </div>
-                <Summary
-                    reset={registerReset}
-                    exportValues={collectExportValues}
-                    translate={translate}
-                    summaryHeader={summaryHeader}
-                    summaryInstruction={summaryInstruction}
-                />
+                {provideSummary === true && (
+                    <Summary/>
+                )}
             </div>
         );
     }

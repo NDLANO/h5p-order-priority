@@ -76,6 +76,7 @@ H5P.OrderPriority = (function () {
             dropzone: "Dropzone :index",
             dropzoneWithValue: "Dropzone :index with value :statement",
             giveABriefSummary: "Give a brief summary in your own words",
+            labelNoSummaryComment: 'No summary',
         }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
         const createElements = () => {

@@ -1,21 +1,24 @@
-import React, {useState} from 'react';
-import PropTypes from 'prop-types';
+import React, {useState, useContext} from 'react';
 import classnames from 'classnames';
+import {OrderPriorityContext} from 'context/OrderPriorityContext';
 
-function Summary(props) {
+function Summary() {
 
+    const context = useContext(OrderPriorityContext);
     const [comment, setComment] = useState('');
 
     const {
-        reset,
-        exportValues,
+        registerReset,
+        collectExportValues,
         translate,
-        summaryHeader,
-        summaryInstruction,
-    } = props;
+        params: {
+            summaryHeader,
+            summaryInstruction,
+        }
+    } = context;
 
-    exportValues('summary', () => comment);
-    reset(() => setComment(''));
+    collectExportValues('summary', () => comment);
+    registerReset(() => setComment(''));
 
     return (
         <div
@@ -41,13 +44,5 @@ function Summary(props) {
         </div>
     );
 }
-
-Summary.propTypes = {
-    reset: PropTypes.func,
-    exportValues: PropTypes.func,
-    translate: PropTypes.func,
-    summaryHeader: PropTypes.string,
-    summaryInstruction: PropTypes.string,
-};
 
 export default Summary;
