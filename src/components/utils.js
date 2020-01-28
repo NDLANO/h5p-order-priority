@@ -1,3 +1,5 @@
+import {escape, decode} from 'he';
+
 export function StatementDataObject(initValues) {
     this.id = null;
     this.comment = null;
@@ -27,13 +29,11 @@ export function debounce(func, wait, immediate) {
 }
 
 export function stripHTML(html) {
-    if (html) {
-        const elm = document.createElement('span');
-        elm.innerHTML = html;
-        return elm.textContent.trim();
-    }
+    return html ? decode(html) : html;
+}
 
-    return html;
+export function escapeHTML(html) {
+    return html ? escape(html) : html;
 }
 
 export function sanitizeParams(params) {

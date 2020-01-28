@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {OrderPriorityContext} from "../../context/OrderPriorityContext";
+import {OrderPriorityContext} from "context/OrderPriorityContext";
+import {escapeHTML} from "../utils";
 
 export default class Export extends Component {
     static contextType = OrderPriorityContext;
@@ -91,13 +92,13 @@ export default class Export extends Component {
         this.context.triggerXAPIScored(0, 0, 'completed');
 
         this.exportDocument = new H5P.ExportPage(
-            this.exportObject.mainTitle,
+            escapeHTML(this.exportObject.mainTitle),
             this.getExportPreview(),
-            true,
-            translations.submitText,
-            translations.submitConfirmedText,
-            translations.selectAll,
-            translations.export,
+            H5PIntegration.reportingIsEnabled || false,
+            escapeHTML(translations.submitText),
+            escapeHTML(translations.submitConfirmedText),
+            escapeHTML(translations.selectAll),
+            escapeHTML(translations.export),
             H5P.instances[0].getLibraryFilePath('exportTemplate.docx'),
             this.exportObject
         );
