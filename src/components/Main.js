@@ -7,63 +7,63 @@ import Footer from "./Footer/Footer";
 
 function Main(props) {
 
-    const resourceContainer = useRef();
+  const resourceContainer = useRef();
 
-    const {
-        id,
-        language = 'en',
-        collectExportValues,
-        header,
-        description = '',
-        resources: resourcesList,
-    } = props;
+  const {
+    id,
+    language = 'en',
+    collectExportValues,
+    header,
+    description = '',
+    resources: resourcesList,
+  } = props;
 
-    useEffect(() => {
-        const filterResourceList = element => Object.keys(element).length !== 0 && element.constructor === Object;
-        if( resourcesList.params.resourceList && resourcesList.params.resourceList.filter(filterResourceList).length > 0){
-            const resourceList = new H5P.ResourceList(resourcesList.params, id, language);
-            resourceList.attach(resourceContainer.current);
+  useEffect(() => {
+    const filterResourceList = element => Object.keys(element).length !== 0 && element.constructor === Object;
+    if ( resourcesList.params.resourceList && resourcesList.params.resourceList.filter(filterResourceList).length > 0) {
+      const resourceList = new H5P.ResourceList(resourcesList.params, id, language);
+      resourceList.attach(resourceContainer.current);
 
-            collectExportValues('resources', () => resourcesList.params.resourceList
-                .filter(filterResourceList)
-                .map(resource => Object.assign({}, {
-                    title: "",
-                    url: "",
-                    introduction: "",
-                }, resource)) || []);
-        }
-    }, [resourcesList]);
+      collectExportValues('resources', () => resourcesList.params.resourceList
+        .filter(filterResourceList)
+        .map(resource => Object.assign({}, {
+          title: "",
+          url: "",
+          introduction: "",
+        }, resource)) || []);
+    }
+  }, [resourcesList]);
 
-    return (
-        <article>
-            <h1
-                className={"h5p-order-priority-header"}
-            >{header}</h1>
-            <div
-                className={"h5p-order-priority-surface"}
-            >
-                <div
-                    className={"h5p-order-priority-surface-info"}
-                    ref={resourceContainer}
-                >
-                    {description && (
-                        <p className={'h5p-order-priority-description'}>{description}</p>
-                    )}
-                </div>
-                <Surface />
-            </div>
-            <Footer/>
-        </article>
-    );
+  return (
+    <article>
+      <h1
+        className={"h5p-order-priority-header"}
+      >{header}</h1>
+      <div
+        className={"h5p-order-priority-surface"}
+      >
+        <div
+          className={"h5p-order-priority-surface-info"}
+          ref={resourceContainer}
+        >
+          {description && (
+            <p className={'h5p-order-priority-description'}>{description}</p>
+          )}
+        </div>
+        <Surface />
+      </div>
+      <Footer/>
+    </article>
+  );
 }
 
 Main.propTypes = {
-    id: PropTypes.number,
-    language: PropTypes.string,
-    header: PropTypes.string,
-    description: PropTypes.string,
-    collectExportValues: PropTypes.func,
-    resources: PropTypes.object,
+  id: PropTypes.number,
+  language: PropTypes.string,
+  header: PropTypes.string,
+  description: PropTypes.string,
+  collectExportValues: PropTypes.func,
+  resources: PropTypes.object,
 };
 
 export default Main;

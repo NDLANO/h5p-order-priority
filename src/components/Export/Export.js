@@ -11,51 +11,51 @@ export default class Export extends Component {
     exportObject = null;
 
     constructor(props) {
-        super(props);
+      super(props);
 
-        this.handleExport = this.handleExport.bind(this);
+      this.handleExport = this.handleExport.bind(this);
     }
 
     getExportObject() {
-        const {
-            params: {
-                header,
-                description = '',
-            },
-            behaviour: {
-                provideSummary = true,
-            },
-            translations,
-            collectExportValues,
-        } = this.context;
+      const {
+        params: {
+          header,
+          description = '',
+        },
+        behaviour: {
+          provideSummary = true,
+        },
+        translations,
+        collectExportValues,
+      } = this.context;
 
-        const {
-            resources = [],
-            summary,
-            userInput
-        } = collectExportValues();
+      const {
+        resources = [],
+        summary,
+        userInput
+      } = collectExportValues();
 
-        return Object.assign({}, translations, {
-            mainTitle: header,
-            description,
-            hasResources: resources.length > 0,
-            summaryComment: summary || translations.labelNoSummaryComment,
-            useSummary: provideSummary,
-            resources: resources,
-            sortedStatementList: userInput.prioritizedStatements
-                .map(statement => userInput.statements[statement])
-                .filter(statement => statement.touched === true)
-                .map(statement => {
-                    return {
-                        comment: statement.comment || "",
-                        title: statement.statement,
-                    }
-                })
-        });
+      return Object.assign({}, translations, {
+        mainTitle: header,
+        description,
+        hasResources: resources.length > 0,
+        summaryComment: summary || translations.labelNoSummaryComment,
+        useSummary: provideSummary,
+        resources: resources,
+        sortedStatementList: userInput.prioritizedStatements
+          .map(statement => userInput.statements[statement])
+          .filter(statement => statement.touched === true)
+          .map(statement => {
+            return {
+              comment: statement.comment || "",
+              title: statement.statement,
+            };
+          })
+      });
     }
 
     getExportPreview() {
-        const documentExportTemplate =
+      const documentExportTemplate =
             '<div class="export-preview">' +
             '<div class="page-header" role="heading" tabindex="-1">' +
             ' <h1 class="page-title">{{mainTitle}}</h1>' +
@@ -79,49 +79,49 @@ export default class Export extends Component {
             '{{/hasResources}}' +
             '</div>';
 
-        return Mustache.render(documentExportTemplate, this.exportObject);
+      return Mustache.render(documentExportTemplate, this.exportObject);
     }
 
     handleExport() {
-        const {
-            translations,
-        } = this.context;
+      const {
+        translations,
+      } = this.context;
 
-        this.exportObject = this.getExportObject();
+      this.exportObject = this.getExportObject();
 
-        this.context.triggerXAPIScored(0, 0, 'completed');
+      this.context.triggerXAPIScored(0, 0, 'completed');
 
-        this.exportDocument = new H5P.ExportPage(
-            escapeHTML(this.exportObject.mainTitle),
-            this.getExportPreview(),
-            H5PIntegration.reportingIsEnabled || false,
-            escapeHTML(translations.submitText),
-            escapeHTML(translations.submitConfirmedText),
-            escapeHTML(translations.selectAll),
-            escapeHTML(translations.export),
-            H5P.instances[0].getLibraryFilePath('exportTemplate.docx'),
-            this.exportObject
-        );
-        this.exportDocument.getElement().prependTo(this.exportContainer);
-        H5P.$window.on('resize', () => this.exportDocument.trigger('resize'));
+      this.exportDocument = new H5P.ExportPage(
+        escapeHTML(this.exportObject.mainTitle),
+        this.getExportPreview(),
+        H5PIntegration.reportingIsEnabled || false,
+        escapeHTML(translations.submitText),
+        escapeHTML(translations.submitConfirmedText),
+        escapeHTML(translations.selectAll),
+        escapeHTML(translations.export),
+        H5P.instances[0].getLibraryFilePath('exportTemplate.docx'),
+        this.exportObject
+      );
+      this.exportDocument.getElement().prependTo(this.exportContainer);
+      H5P.$window.on('resize', () => this.exportDocument.trigger('resize'));
     }
 
     render() {
-        const {
-            translations
-        } = this.context;
+      const {
+        translations
+      } = this.context;
 
-        return (
-            <Fragment>
-                <button
-                    className={"h5p-order-priority-button-export"}
-                    onClick={this.handleExport}
-                >
-                    <span className={"h5p-ri hri-document"} aria-hidden={"true"}/>
-                    {translations.createDocument}
-                </button>
-                <div className={"export-container"} ref={el => this.exportContainer = el}/>
-            </Fragment>
-        )
+      return (
+        <Fragment>
+          <button
+            className={"h5p-order-priority-button-export"}
+            onClick={this.handleExport}
+          >
+            <span className={"h5p-ri hri-document"} aria-hidden={"true"}/>
+            {translations.createDocument}
+          </button>
+          <div className={"export-container"} ref={el => this.exportContainer = el}/>
+        </Fragment>
+      );
     }
 }
