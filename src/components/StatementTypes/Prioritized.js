@@ -44,12 +44,14 @@ function Prioritized({
         </div>
         {actions}
       </div>
-      <StatementComment
-        comment={statement.comment}
-        onCommentChange={onCommentChange}
-        inputRef={inputRef}
-        show={enableCommentDisplay}
-      />
+      {enableCommentDisplay && (
+        <StatementComment
+          comment={statement.comment}
+          onCommentChange={onCommentChange}
+          ref={inputRef}
+          show={enableCommentDisplay}
+        />
+      )}
     </Placeholder>
   );
 }

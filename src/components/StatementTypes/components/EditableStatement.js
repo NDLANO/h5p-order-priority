@@ -1,9 +1,12 @@
 import React, {useState, useRef} from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
-import {debounce} from "../../utils";
+import {debounce} from "components/utils";
+import {useOrderPriority} from "context/OrderPriorityContext";
 
 function EditableStatement(props) {
+
+  const context = useOrderPriority();
 
   const [inEditMode, toggleEditMode] = useState(props.inEditMode);
 
@@ -33,44 +36,35 @@ function EditableStatement(props) {
   };
 
   const id = "es_" + props.idBase;
-  const labelId = "label_" + id;
   const inputId = "input_" + id;
   return (
     <div
-      role={"textbox"}
-      tabIndex={0}
-      onClick={handleClick}
       className={"h5p-order-priority-editable-container"}
-      onKeyUp={handleKeyUp}
-      aria-labelledby={labelId}
     >
       <div>
         <label
-          title={props.statement}
           htmlFor={inputId}
-          id={labelId}
-        >
-          <span className={"visible-hidden"}>Statement</span>
-          <input
-            className={classnames("h5p-order-priority-editable", {
-              "hidden": inEditMode === false,
-            })}
-            ref={inputRef}
-            onBlur={handleBlur}
-            onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
-            aria-label={"Edit statement " + props.statement}
-            aria-hidden={!inEditMode}
-            id={inputId}
-          />
-        </label>
-        <p
-          aria-hidden={inEditMode}
+          tabIndex={0}
+          onClick={handleClick}
+          onKeyUp={handleKeyUp}
           className={classnames("h5p-order-priority-noneditable", {
             "hidden": inEditMode === true,
           })}
+          aria-label={context.translations.editableItem + props.statement}
         >
           {props.statement}
-        </p>
+        </label>
+        <input
+          className={classnames("h5p-order-priority-editable", {
+            "hidden": inEditMode === false,
+          })}
+          ref={inputRef}
+          onKeyUp={handleKeyUp}
+          onBlur={handleBlur}
+          onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
+          id={inputId}
+          type={"textarea"}
+        />
       </div>
     </div>
   );

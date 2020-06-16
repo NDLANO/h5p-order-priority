@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import PriorityNumber from "./components/PriorityNumber";
 import classnames from 'classnames';
-import {OrderPriorityContext} from "context/OrderPriorityContext";
+import {useOrderPriority} from "context/OrderPriorityContext";
 
 const Placeholder = ({
   displayIndex,
   children,
   isDraggingOver = false,
 }) => {
-  const context = useContext(OrderPriorityContext);
+  const context = useOrderPriority();
 
   const {
     translate

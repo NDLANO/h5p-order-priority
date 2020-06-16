@@ -47,12 +47,9 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
   background-color: #1f1f1f;
   border: 2px solid #404040;
 
-  &:hover {
-    background-color: #363636;
-    color: inherit;
-  }
-
+  &:hover,
   &:focus {
+    background-color: #363636;
     color: inherit;
   }
 
@@ -81,6 +78,7 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 
   .h5p-order-priority-footer {
     flex-direction: row;
+    align-items: center;
   }
 }
 
@@ -103,6 +101,12 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 
 .h5p-order-prioritySurface {
   clear: both;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 }
 
 .h5p-order-priority-wrapper {
@@ -213,7 +217,6 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 .h5p-order-priority-statement {
   @extend .h5p-order-priority-statement-common;
   background-color: #ffffff;
-  min-height: em(60px);
   border: 2px solid #dbe2e8;
   border-radius: $borderRadius;
   font-weight: bold;
@@ -257,7 +260,9 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
 
   &.h5p-order-priority-statement-extra {
     border-bottom: 0;
-    border-radius: em(3px) em(3px) 0 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-height: unset;
 
     .h5p-order-priority-statement-prioritized {
       margin-bottom: 0;
@@ -693,4 +698,8 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
   overflow: auto;
   position: absolute;
   width: auto;
+}
+
+[hidden] {
+  display: none;
 }

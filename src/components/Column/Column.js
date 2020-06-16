@@ -10,6 +10,7 @@ function Column(props) {
     children,
     disableDrop,
     additionalClassName,
+    addStatement,
   } = props;
 
   return (
@@ -18,26 +19,27 @@ function Column(props) {
     >
       <Droppable
         droppableId={droppableId}
-        isCombineEnabled={combine}
         isDropDisabled={disableDrop}
       >
         {(provided, snapshot) => {
           return (
-            <div
+            <ul
               {...provided.droppableProps}
               ref={provided.innerRef}
               className={classnames("h5p-order-priority-column", {
                 "h5p-order-priority-drag-active": snapshot.isDraggingOver && snapshot.draggingFromThisWith === null
               })}
+              //aria-label={"Provided statements"}
             >
               {children}
-              <div style={{display: !combine ? "block" : "none"}}>
+              <li style={{display: !combine ? "block" : "none"}}>
                 {provided.placeholder}
-              </div>
-            </div>
+              </li>
+            </ul>
           );
         }}
       </Droppable>
+      {addStatement}
     </div>
   );
 }
@@ -48,6 +50,7 @@ Column.propTypes = {
   combine: PropTypes.bool,
   disableDrop: PropTypes.bool,
   additionalClassName: PropTypes.string,
+  addStatement: PropTypes.object,
 };
 
 Column.defaultProps = {
@@ -55,6 +58,7 @@ Column.defaultProps = {
   combine: false,
   statements: [],
   disableDrop: false,
+  addStatement: null,
 };
 
 export default Column;

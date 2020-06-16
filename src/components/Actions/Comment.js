@@ -1,26 +1,31 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import {OrderPriorityContext} from "context/OrderPriorityContext";
+import {useOrderPriority} from "context/OrderPriorityContext";
 import Popover from "../Popover/Popover";
 import classnames from 'classnames';
 
-function Comment(props) {
+const Comment = React.forwardRef((props, inputRef) => {
 
   const [showPopover, togglePopover] = useState(false);
   const [comment, setComment] = useState(props.comment);
+  const [previousFocusElement, setPreviousFocusElement] = useState(null);
 
-  const context = useContext(OrderPriorityContext);
+  const context = useOrderPriority();
+
+  useEffect(() => {
+    if ( showPopover ) {
+      setPreviousFocusElement(document.activeElement);
+      setComment(props.comment || "");
+      setTimeout(() => inputRef.current && inputRef.current.focus(), 0);
+    }
+    else {
+      props.onCommentChange(comment);
+    }
+  }, [showPopover]);
 
   function handleToggle() {
     if (props.onClick) {
       return props.onClick();
-    }
-    if (!showPopover) {
-      setComment(props.comment || "");
-      setTimeout(() => props.inputRef.current && props.inputRef.current.focus(), 0);
-    }
-    else {
-      props.onCommentChange(comment);
     }
     togglePopover(!showPopover);
   }
@@ -28,13 +33,14 @@ function Comment(props) {
   return (
     <Popover
       handleClose={handleToggle}
+      lastActiveElement={previousFocusElement}
       show={showPopover}
       classnames={context.activeBreakpoints}
       header={context.translations.feedback}
       close={context.translations.close}
       popoverContent={(
         <textarea
-          ref={props.inputRef}
+          ref={inputRef}
           placeholder={context.translations.typeYourReasonsForSuchAnswers}
           value={comment}
           aria-label={context.translations.typeYourReasonsForSuchAnswers}
@@ -44,13 +50,11 @@ function Comment(props) {
       )}
     >
       <button
+        aria-haspopup={props.showCommentInPopup}
+        aria-expanded={showPopover}
         onClick={handleToggle}
         className={"h5p-order-priority-action"}
-        onKeyDown={event => {
-          if (event.keyCode === 13) {
-            handleToggle();
-          }
-        }}
+        tabIndex={props.showCommentInPopup === false && props.comment.length > 0 ? "-1" : "0"}
       >
         <span
           className={classnames("h5p-ri", {
@@ -63,13 +67,15 @@ function Comment(props) {
       </button>
     </Popover>
   );
-}
+});
 
 Comment.propTypes = {
   onCommentChange: PropTypes.func,
   comment: PropTypes.string,
   onClick: PropTypes.func,
-  inputRef: PropTypes.object,
+  showCommentInPopup: PropTypes.bool,
 };
+
+Comment.displayName = "Comment";
 
 export default Comment;

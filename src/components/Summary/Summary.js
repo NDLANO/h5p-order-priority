@@ -23,14 +23,8 @@ function Summary() {
   return (
     <div
       className={classnames('h5p-order-priority-summary')}
-      aria-labelledby={"summary-header"}
     >
-      <label
-        id={"summary-header"}
-        htmlFor={'summary'}
-      >
-        <h2>{summaryHeader ? summaryHeader : translate('summary')}</h2>
-      </label>
+      <h3>{summaryHeader ? summaryHeader : translate('summary')}</h3>
       {summaryInstruction && (
         <p className={"h5p-order-priority-summary-instruction"}>{summaryInstruction}</p>
       )}

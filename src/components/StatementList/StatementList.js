@@ -41,7 +41,8 @@ function StatementList(props) {
               onCommentChange={handleOnCommentChange}
               comment={statement.comment}
               onClick={handleCommentClick()}
-              inputRef={inputRef}
+              ref={inputRef}
+              showCommentInPopup={!props.enableCommentDisplay}
             />
           </ActionsList>
         );
@@ -100,25 +101,6 @@ function StatementList(props) {
     props.onStatementChange(statement);
   }
 
-  function getAriaLabel() {
-    const {
-      translate
-    } = props;
-
-    let ariaLabel = "draggableItem";
-    if (draggableType === 'prioritized') {
-      ariaLabel = 'dropzone';
-      if (statement.touched) {
-        ariaLabel = 'dropzoneWithValue';
-      }
-    }
-
-    return translate(ariaLabel, {
-      ':index': statement.displayIndex,
-      ':statement': statement.statement
-    });
-  }
-
   const {
     index,
     statement,
@@ -133,21 +115,21 @@ function StatementList(props) {
     >
       {(provided, snapshot) => {
         return (
-          <div
+          <li
             className={"h5p-order-priority-draggable-container"}
-            aria-label={getAriaLabel()}
           >
             <div
               className={classnames("h5p-order-priority-draggable-element", {
                 'h5p-order-priority-no-transform': props.disableTransform,
               })}
+              aria-roledescription={props.translate('draggableItem')}
               ref={provided.innerRef}
               {...provided.dragHandleProps}
               {...provided.draggableProps}
             >
               {handleStatementType(snapshot.isDragging)}
             </div>
-          </div>
+          </li>
         );
       }}
     </Draggable>

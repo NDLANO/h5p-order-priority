@@ -1,11 +1,18 @@
-import React, {Fragment, useContext, useState} from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import Popover from "../Popover/Popover";
-import {OrderPriorityContext} from "../../context/OrderPriorityContext";
+import {useOrderPriority} from "context/OrderPriorityContext";
 
 function Reset() {
 
   const [showPopover, setPopover] = useState(false);
-  const orderPriorityContext = useContext(OrderPriorityContext);
+  const [previousFocusElement, setPreviousFocusElement] = useState(null);
+  const orderPriorityContext = useOrderPriority();
+
+  useEffect(() => {
+    if ( showPopover ) {
+      setPreviousFocusElement(document.activeElement);
+    }
+  }, [showPopover]);
 
   function togglePopover() {
     setPopover(!showPopover);
@@ -29,6 +36,7 @@ function Reset() {
       {enableRetry === true && (
         <Popover
           handleClose={togglePopover}
+          lastActiveElement={previousFocusElement}
           show={showPopover}
           classnames={orderPriorityContext.activeBreakpoints}
           close={translations.close}
@@ -36,12 +44,11 @@ function Reset() {
           align={"start"}
           popoverContent={(
             <div
-              role={"dialog"}
               className={"h5p-order-priority-reset-modal"}
             >
-              <div>
+              <p id={"resetinfo"} >
                 {translations.ifYouContinueAllYourChangesWillBeLost}
-              </div>
+              </p>
               <div>
                 <button
                   onClick={confirmReset}
@@ -62,6 +69,8 @@ function Reset() {
           <button
             className={"h5p-order-priority-button-restart"}
             onClick={togglePopover}
+            aria-haspopup={"true"}
+            aria-expanded={showPopover}
           >
             <span
               className={"h5p-ri hri-restart"}

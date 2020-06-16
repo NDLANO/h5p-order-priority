@@ -1,14 +1,15 @@
-import React, {useRef, useContext} from 'react';
+import React, {forwardRef} from 'react';
 import PropTypes from 'prop-types';
-import classsnames from 'classnames';
-import {OrderPriorityContext} from "../../../context/OrderPriorityContext";
+import classnames from 'classnames';
+import {useOrderPriority} from "context/OrderPriorityContext";
 
-function StatementComment(props) {
-
-  const context = useContext(OrderPriorityContext);
-  const inputRef = props.inputRef || useRef();
-
+const StatementComment = forwardRef((props, inputRef) => {
+  const context = useOrderPriority();
+  
   function handleOnChange() {
+    if ( inputRef === null) {
+      return;
+    }
     props.onCommentChange(inputRef.current.value);
     inputRef.current.style.height = "auto";
     inputRef.current.style.height = inputRef.current.scrollHeight + "px";
@@ -16,7 +17,7 @@ function StatementComment(props) {
 
   return (
     <div
-      className={classsnames("h5p-order-priority-statement-comment", {
+      className={classnames("h5p-order-priority-statement-comment", {
         "hidden": props.show !== true
       })}
     >
@@ -36,7 +37,8 @@ function StatementComment(props) {
       </div>
     </div>
   );
-}
+
+});
 
 StatementComment.propTypes = {
   comment: PropTypes.string,
@@ -48,5 +50,7 @@ StatementComment.propTypes = {
 StatementComment.defaultProps = {
   show: false,
 };
+
+StatementComment.displayName = "StatementComment";
 
 export default StatementComment;

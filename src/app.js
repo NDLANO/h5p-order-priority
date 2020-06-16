@@ -1,5 +1,3 @@
-import "core-js";
-import "regenerator-runtime/runtime";
 import React from 'react';
 import ReactDOM from "react-dom";
 import Main from "components/Main";
@@ -72,11 +70,25 @@ H5P.OrderPriority = (function () {
       cancel: "Cancel",
       droparea: "Droparea :num",
       emptydroparea: "Empty droparea :index",
-      draggableItem: "Draggable item :statement",
+      draggableItem: "Draggable item: ",
       dropzone: "Dropzone :index",
       dropzoneWithValue: "Dropzone :index with value :statement",
       giveABriefSummary: "Give a brief summary in your own words",
       labelNoSummaryComment: 'No summary',
+      sourceName: "Statments",
+      destinationName: "Prioritized",
+      dragHandleInstructions: "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n",
+      dragStartInstructions: "You have lifted an item in position #startPosition of #listLength in the #listName list.",
+      dragMoveInSameList: "You have moved the item from position #startPosition to position #endPosition of #listLength",
+      dragMoveInDifferentList: "You have moved the item from list #sourceName in position #sourcePosition of #sourceLength to list #destinationName in position #newPosition of #destinationLength",
+      dragMoveNoDropTarget: "You are currently not dragging over a droppable area",
+      dragCancelled: "Movement cancelled. The item has returned to its starting position #startPosition of #listLength",
+      dropInSameList: "You have dropped the item. It has moved from position #startPosition to #endPosition",
+      dropInDifferentList: "You have dropped the item. It has moved from position #startPosition in list #sourceName to position #endPosition in list #destinationName",
+      dropNoDestination: "The item has been dropped while not over a droppable location. The item has returned to its starting position of #startPosition",
+      listNotification: "The next area consists of #numberOfLists #list with draggable elements.\n  Some screen readers may require you to be in focus mode or to use your pass through key to interact with them.",
+      userInfoAboutFocusMode: "To interact with the next section some screen readers require you to be in focus mode",
+      editableItem: "Editable item: ",
     }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
     const createElements = () => {
@@ -86,12 +98,14 @@ H5P.OrderPriority = (function () {
 
       ReactDOM.render(
         <OrderPriorityContext.Provider value={this}>
-          <Main
-            {...this.params}
-            id={contentId}
-            language={language}
-            collectExportValues={this.collectExportValues}
-          />
+          <React.StrictMode>
+            <Main
+              {...this.params}
+              id={contentId}
+              language={language}
+              collectExportValues={this.collectExportValues}
+            />
+          </React.StrictMode>
         </OrderPriorityContext.Provider>,
         this.wrapper
       );

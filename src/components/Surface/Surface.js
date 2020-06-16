@@ -190,6 +190,7 @@ export default class Surface extends React.Component {
         const statementObject = new StatementDataObject({
           id: index,
           displayIndex: index + 1,
+          comment: "",
         });
 
         if (statement !== null) {
@@ -273,6 +274,12 @@ export default class Surface extends React.Component {
             droppableId={"processed"}
             combine={this.state.isCombineEnabled}
             additionalClassName={"h5p-order-priority-dropzone"}
+            addStatement={this.state.canAddPrioritized === true ? (
+              <AddStatement
+                onClick={this.handleOnAddNewPrioritizedItem}
+                translations={this.context.translations}
+              />
+            ) : null}
           >
             {this.state.prioritizedStatements
               .map(statementId => this.state.statements[statementId])
@@ -291,18 +298,18 @@ export default class Surface extends React.Component {
                 />
               ))
             }
-            {this.state.canAddPrioritized === true && (
-              <AddStatement
-                onClick={this.handleOnAddNewPrioritizedItem}
-                translations={this.context.translations}
-              />
-            )}
           </Column>
           {this.state.remainingStatements.length > 0 && (
             <Column
               droppableId="start"
               disableDrop={true}
               additionalClassName={"h5p-order-priority-select-list"}
+              addStatement={this.context.behaviour && this.context.behaviour.allowAddingOfStatements === true ? (
+                <AddStatement
+                  onClick={this.handleOnAddNewRemainingItem}
+                  translations={this.context.translations}
+                />
+              ) : null}
             >
               {this.state.remainingStatements
                 .map(statementId => this.state.statements[statementId])
@@ -318,12 +325,6 @@ export default class Surface extends React.Component {
                   />
                 ))
               }
-              {this.context.behaviour && this.context.behaviour.allowAddingOfStatements === true && (
-                <AddStatement
-                  onClick={this.handleOnAddNewRemainingItem}
-                  translations={this.context.translations}
-                />
-              )}
             </Column>
           )}
         </Fragment>
@@ -342,11 +343,13 @@ export default class Surface extends React.Component {
           <div
             className="h5p-order-prioritySurface"
           >
+            <p className={"visible-hidden"}>{this.context.translations.userInfoAboutFocusMode}</p>
             <DragDropContext
               className="h5p-order-prioritySurface"
               onDragEnd={this.onDropEnd}
               onDragUpdate={this.onDropUpdate}
               onDragStart={this.onDragStart}
+              dragHandleUsageInstructions={this.context.translations.dragHandleInstructions}
             >
               {this.handleSurface()}
             </DragDropContext>

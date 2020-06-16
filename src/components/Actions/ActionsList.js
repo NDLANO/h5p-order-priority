@@ -7,9 +7,7 @@ const ActionsList = (
     <div
       className={"h5p-order-priority-actionlist"}
     >
-      <div>
-        {children}
-      </div>
+      {children}
     </div>
   );
 };
