@@ -54,7 +54,7 @@ const Comment = React.forwardRef((props, inputRef) => {
         aria-expanded={showPopover}
         onClick={handleToggle}
         className={"h5p-order-priority-action"}
-        tabIndex={props.showCommentInPopup === false && props.comment.length > 0 ? "-1" : "0"}
+        tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? "-1" : "0"}
       >
         <span
           className={classnames("h5p-ri", {
