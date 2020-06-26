@@ -39,7 +39,7 @@ function Remaining(props) {
       })}
     >
       <div className={"h5p-order-priority-statement-remaining"}>
-        <DragArrows />
+        <DragArrows draggableProps={props.draggableProps} />
         {displayStatement}
       </div>
     </div>

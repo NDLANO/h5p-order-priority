@@ -1,18 +1,19 @@
-import React, {useContext} from 'react';
-import {OrderPriorityContext} from "context/OrderPriorityContext";
+import React from 'react';
+import {useOrderPriority} from "context/OrderPriorityContext";
 
-function DragArrows() {
-  const context = useContext(OrderPriorityContext);
+function DragArrows({draggableProps}) {
+  const context = useOrderPriority();
 
   return (
     <div
       className={"h5p-order-priority-drag-element"}
-      aria-hidden={"true"}
+      {...draggableProps}
+      role={"button"}
     >
       <span
         className="h5p-ri hri-move"
       />
-      <span className={"visible-hidden"}>{context.translations.drag}</span>
+      <p className={"visible-hidden"}>{context.translations.draggableItem}</p>
     </div>
   );
 }

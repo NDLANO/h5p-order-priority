@@ -16,6 +16,7 @@ function Prioritized({
   enableCommentDisplay,
   onCommentChange,
   inputRef,
+  draggableProps,
 }) {
   return (
     <Placeholder
@@ -27,7 +28,7 @@ function Prioritized({
         })}
       >
         <div className={"h5p-order-priority-statement-prioritized"}>
-          <DragArrows/>
+          <DragArrows draggableProps={draggableProps}/>
           {enableEditing === true && (
             <EditableStatement
               inEditMode={statement.editMode}

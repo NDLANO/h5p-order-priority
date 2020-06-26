@@ -6,6 +6,7 @@ import StatementList from "../StatementList/StatementList";
 import AddStatement from "../AddStatement/AddStatement";
 import Summary from "../Summary/Summary";
 import {StatementDataObject} from "../utils";
+import Messages from "./Messages";
 
 function Surface() {
   const context = useOrderPriority();
@@ -23,12 +24,6 @@ function Surface() {
         const {
           result
         } = action.payload;
-        
-        if (!result.destination || (result.source && result.source.droppableId === 'start')) {
-          return {
-            ...state
-          };
-        }
 
         const statementClone = JSON.parse(JSON.stringify(state.statements));
         const destinationIndex = result.destination.index;
@@ -59,17 +54,6 @@ function Surface() {
           draggableId
         } = action.payload;
 
-        if (!combine && !destination) {
-          return {
-            ...state
-          };
-        }
-
-        if (destination !== null && destination.droppableId === source.droppableId && destination.index === source.index) {
-          return {
-            ...state
-          };
-        }
         const prioritizedStatements = Array.from(state.prioritizedStatements);
         const remainingStatements = Array.from(state.remainingStatements);
         const newStatements = JSON.parse(JSON.stringify(state.statements));
@@ -156,7 +140,7 @@ function Surface() {
         newStatement.id = statements.length;
         newStatement.touched = true;
         newStatement.isPlaceholder = false;
-        newStatement.displayIndex = newStatement.id + 1;
+        newStatement.displayIndex = Messages.position(newStatement.id);
         statements.push(newStatement);
 
         const prioritizedStatements = Array.from(state.prioritizedStatements);
@@ -210,7 +194,8 @@ function Surface() {
     registerReset,
     behaviour: {
       provideSummary = true,
-    }
+    },
+    translate,
   } = context;
 
   registerReset(() => dispatch({type: "reset"}));
@@ -269,34 +254,109 @@ function Surface() {
     };
   }
 
-  function onDragStart(element, provider) {
-    if (window.navigator.vibrate) {
-      window.navigator.vibrate(100);
+  function getListDetails(droppableId, additionalInfo) {
+    let details = {};
+    switch (droppableId) {
+      case 'processed':
+        details = {
+          listSize: state.prioritizedStatements.length,
+          listName: context.translations.destinationName,
+        };
+        break;
+      case 'start':
+        details = {
+          listSize: state.remainingStatements.length,
+          listName: context.translations.sourceName,
+        };
+        break;
     }
+
+    return Object.assign({
+      listId: droppableId
+    }, additionalInfo, details);
+  }
+
+  const onDragStart = useCallback((element, provider) => {
+
+    const listDetails = getListDetails(element.source.droppableId, element.source);
+    provider.announce(translate("dragStartInstructions", Messages.positionLengthName(listDetails)));
 
     dispatch({
       type: 'dragStart',
       payload: element,
     });
-  }
+  }, [state, context]);
   
-  function onDragUpdate(result) {
+  const onDragUpdate = useCallback((result, provider) => {
+
+    if (result.destination && result.source) {
+      const sourceDetails = getListDetails(result.source.droppableId, result.source);
+      const destinationDetails = getListDetails(result.destination.droppableId, result.destination);
+      if ( sourceDetails.listId === destinationDetails.listId) {
+        provider.announce(translate("dragMoveInSameList", Messages.startEndLength(sourceDetails, destinationDetails)));
+      }
+      else {
+        provider.announce(translate("dragMoveInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
+      }
+    }
+
+    if (!result.destination || (result.source && result.source.droppableId === 'start')) {
+      return;
+    }
+
     dispatch({
       type: 'dragUpdate',
       payload: {
         result
       },
     });
-  }
+  }, [state, context]);
 
-  function onDragEnd(dragResult) {
+  const onDragEnd = useCallback((dragResult, provider) => {
+    let {
+      combine,
+      destination,
+      source,
+      reason,
+    } = dragResult;
+
+    if (reason === 'CANCEL') {
+      const listDetails = getListDetails(source.droppableId, source);
+      provider.announce(translate("dragCancelled", Messages.positionLengthName(listDetails)));
+      return;
+    }
+
+    if ((!combine && !destination)) {
+      provider.announce("Oh crap!");
+      return;
+    }
+
+    if (destination !== null && destination.droppableId === source.droppableId && destination.index === source.index) {
+      const sourceDetails = getListDetails(source.droppableId, source);
+      const destinationDetails = getListDetails(destination.droppableId, destination);
+      provider.announce(translate("dropInSameLocation", Messages.namesPositionName(sourceDetails, destinationDetails)));
+      return;
+    }
+
+    if (source && destination) {
+      const sourceDetails = getListDetails(source.droppableId, source);
+      const destinationDetails = getListDetails(destination.droppableId, destination);
+      if ( sourceDetails.listId === destinationDetails.listId) {
+        provider.announce(translate("dropInSameList", Messages.namesPositionName(sourceDetails, destinationDetails)));
+      }
+      else {
+        provider.announce(translate("dropInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
+      }
+
+    }
+
     dispatch({
       type: 'dragEnd',
       payload: {
         ...dragResult
       }
     });
-  }
+  }, [state, context]);
 
   function handleOnStatementChange(statement) {
     dispatch({
@@ -386,6 +446,7 @@ function Surface() {
     <div>
       <div
         className="h5p-order-prioritySurface"
+        onTouchStart={() => {}} //silly call to make it work in Apple products
       >
         <p className={"visible-hidden"}>{context.translations.userInfoAboutFocusMode}</p>
         <DragDropContext

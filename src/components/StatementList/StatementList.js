@@ -13,7 +13,7 @@ function StatementList(props) {
   const inputRef = useRef();
   const [showCommentContainer, toggleCommentContainer] = useState(false);
 
-  function handleStatementType(isDragging) {
+  function handleStatementType(isDragging, dragHandleProps) {
     const {
       statement,
       draggableType,
@@ -29,6 +29,7 @@ function StatementList(props) {
           onStatementChange={handleOnStatementTextEdit}
           enableEditing={enableEditing}
           isDragging={isDragging}
+          draggableProps={dragHandleProps}
         />
       );
     }
@@ -57,6 +58,7 @@ function StatementList(props) {
           enableCommentDisplay={showCommentContainer}
           onCommentChange={handleOnCommentChange}
           inputRef={inputRef}
+          draggableProps={dragHandleProps}
         />
       );
     }
@@ -124,10 +126,9 @@ function StatementList(props) {
               })}
               aria-roledescription={props.translate('draggableItem')}
               ref={provided.innerRef}
-              {...provided.dragHandleProps}
               {...provided.draggableProps}
             >
-              {handleStatementType(snapshot.isDragging)}
+              {handleStatementType(snapshot.isDragging, provided.dragHandleProps)}
             </div>
           </li>
         );

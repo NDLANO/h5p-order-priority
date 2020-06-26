@@ -75,17 +75,18 @@ H5P.OrderPriority = (function () {
       dropzoneWithValue: "Dropzone :index with value :statement",
       giveABriefSummary: "Give a brief summary in your own words",
       labelNoSummaryComment: 'No summary',
-      sourceName: "Statments",
+      sourceName: "Statements",
       destinationName: "Prioritized",
       dragHandleInstructions: "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n",
-      dragStartInstructions: "You have lifted an item in position #startPosition of #listLength in the #listName list.",
-      dragMoveInSameList: "You have moved the item from position #startPosition to position #endPosition of #listLength",
-      dragMoveInDifferentList: "You have moved the item from list #sourceName in position #sourcePosition of #sourceLength to list #destinationName in position #newPosition of #destinationLength",
+      dragStartInstructions: "You have lifted an item in position :startPosition of :listLength in the :listName list.",
+      dragMoveInSameList: "You have moved the item from position :startPosition to position :endPosition of :listLength",
+      dragMoveInDifferentList: "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength",
       dragMoveNoDropTarget: "You are currently not dragging over a droppable area",
-      dragCancelled: "Movement cancelled. The item has returned to its starting position #startPosition of #listLength",
-      dropInSameList: "You have dropped the item. It has moved from position #startPosition to #endPosition",
-      dropInDifferentList: "You have dropped the item. It has moved from position #startPosition in list #sourceName to position #endPosition in list #destinationName",
-      dropNoDestination: "The item has been dropped while not over a droppable location. The item has returned to its starting position of #startPosition",
+      dragCancelled: "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName",
+      dropInSameList: "You have dropped the item. It has moved from position :startPosition to :endPosition",
+      dropInDifferentList: "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName",
+      dropInSameLocation: "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName",
+      dropNoDestination: "The item has been dropped while not over a droppable location. The item has returned to its starting position of :startPosition in :listName",
       listNotification: "The next area consists of #numberOfLists #list with draggable elements.\n  Some screen readers may require you to be in focus mode or to use your pass through key to interact with them.",
       userInfoAboutFocusMode: "To interact with the next section some screen readers require you to be in focus mode",
       editableItem: "Editable item: ",
@@ -174,10 +175,11 @@ H5P.OrderPriority = (function () {
     this.translate = (key, vars) => {
       let translation = this.translations[key];
       if (vars !== undefined && vars !== null) {
-        translation = Object
+        Object
           .keys(vars)
-          .map(key => translation.replace(key, vars[key]))
-          .toString();
+          .map(index => {
+            translation = translation.replace(index, vars[index])
+          });
       }
       return translation;
     };
