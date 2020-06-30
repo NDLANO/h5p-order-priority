@@ -15,6 +15,7 @@ function Prioritized({
   enableEditing,
   enableCommentDisplay,
   onCommentChange,
+  onCommentBlur,
   inputRef,
   draggableProps,
 }) {
@@ -49,6 +50,7 @@ function Prioritized({
         <StatementComment
           comment={statement.comment}
           onCommentChange={onCommentChange}
+          onCommentBlur={onCommentBlur}
           ref={inputRef}
           show={enableCommentDisplay}
         />

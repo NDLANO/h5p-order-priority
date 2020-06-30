@@ -30,7 +30,7 @@ const StatementComment = forwardRef((props, inputRef) => {
           ref={inputRef}
           value={props.comment || ""}
           onChange={handleOnChange}
-          onBlur={handleOnChange}
+          onBlur={() => props.onCommentBlur(inputRef.current.value)}
           placeholder={context.translations.typeYourReasonsForSuchAnswers}
           aria-label={context.translations.typeYourReasonsForSuchAnswers}
         />
@@ -43,6 +43,7 @@ const StatementComment = forwardRef((props, inputRef) => {
 StatementComment.propTypes = {
   comment: PropTypes.string,
   onCommentChange: PropTypes.func,
+  onCommentBlur: PropTypes.func,
   inputRef: PropTypes.object,
   show: PropTypes.bool,
 };

@@ -56,6 +56,11 @@
       margin-bottom: 0;
       border-radius: bv.$borderRadius 0 0 0;
     }
+
+    .h5p-order-priority-comment > div {
+      margin-bottom: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
   & > div {

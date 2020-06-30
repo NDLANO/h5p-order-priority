@@ -4,7 +4,7 @@ import {Draggable} from "react-beautiful-dnd";
 import Remaining from "./components/Remaining";
 import Prioritized from "./components/Prioritized";
 import Placeholder from "./components/Placeholder";
-import Comment from "./components/Comment";
+import Comment from "./components/components/Comment";
 import classnames from "classnames";
 import 'styles/components/StatementList.scss';
 
@@ -54,6 +54,7 @@ function StatementList(props) {
           onStatementChange={handleOnStatementTextEdit}
           enableEditing={enableEditing}
           enableCommentDisplay={showCommentContainer}
+          onCommentBlur={handleOnCommentBlur}
           onCommentChange={handleOnCommentChange}
           inputRef={inputRef}
           draggableProps={dragHandleProps}
@@ -85,13 +86,16 @@ function StatementList(props) {
     };
   }
 
+  function handleOnCommentBlur(comment) {
+    if (!comment || comment.length === 0) {
+      toggleCommentContainer(false);
+    }
+  }
+
   function handleOnCommentChange(comment) {
     const statement = Object.assign({}, props.statement);
     statement.comment = comment;
     props.onStatementChange(statement);
-    if (!comment || comment.length === 0) {
-      toggleCommentContainer(false);
-    }
   }
 
   function handleOnStatementTextEdit(statementText) {
