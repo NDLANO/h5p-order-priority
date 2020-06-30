@@ -3,6 +3,12 @@ import PropTypes from 'prop-types';
 import { Droppable } from 'react-beautiful-dnd';
 import classnames from 'classnames';
 
+/**
+ * Add columns that acts as dropzones for the statements
+ * @param props
+ * @return {*}
+ * @constructor
+ */
 function Column(props) {
   const {
     droppableId,
@@ -29,7 +35,6 @@ function Column(props) {
               className={classnames("h5p-order-priority-column", {
                 "h5p-order-priority-drag-active": snapshot.isDraggingOver && snapshot.draggingFromThisWith === null
               })}
-              //aria-label={"Provided statements"}
             >
               {children}
               <li style={{display: !combine ? "block" : "none"}}>

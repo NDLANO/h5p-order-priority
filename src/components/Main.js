@@ -1,9 +1,8 @@
-import './OrderPriority.scss';
 import 'fonts/H5PReflectionFont.scss';
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import Surface from './Surface/Surface';
-import Footer from "./Footer/Footer";
+import Footer from "./Surface/components/Footer/Footer";
 
 function Main(props) {
 

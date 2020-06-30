@@ -1,0 +1,43 @@
+@use "../base/base_extendors";
+@use "../base/base_functions" as OPFunction;
+
+.h5p-droparea {
+  @extend %h5p-order-priority-statement-common;
+  border: 2px dashed #d1d1d1;
+  background-color: white;
+  min-height: OPFunction.pxToRem(60px);
+  flex-flow: column;
+  padding: OPFunction.pxToRem(4px);
+
+  &:hover {
+    div:not(.h5p-order-priority-empty),
+    .h5p-order-priority-actionlist button {
+      background-color: #edf4fd;
+    }
+    .h5p-order-priority-statement,
+    .h5p-order-priority-statement-comment {
+      border-color: #1a73d9;
+    }
+
+    .h5p-order-priority-statement-comment {
+      border-top-color: #dbe2e8;
+    }
+  }
+
+  .h5p-order-priority-drag-active &:not(.h5p-hasContent):hover,
+  .h5p-order-priority-drag-active .h5p-order-priority-active-droppable &:not(.h5p-hasContent){
+    border-color: #1a73d9;
+
+    .h5p-order-priority-empty {
+      background-color: #bbd1f0;
+      box-shadow: inset 0 0 OPFunction.pxToRem(5px) OPFunction.pxToRem(1px) rgba(39,75,143,0.28);
+    }
+  }
+
+  .h5p-order-priority-empty {
+    flex: auto;
+    background-color: #e6e6e6;
+    background-size: cover;
+    box-shadow: inset 0 0 OPFunction.pxToRem(5px) OPFunction.pxToRem(1px) rgba(0,0,0,0.1);
+  }
+}

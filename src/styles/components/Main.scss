@@ -1,0 +1,23 @@
+@use "../base/base_functions" as OPFunction;
+
+.h5p-order-priority-header {
+  background-color: #2880d0;
+  display: inline-flex;
+  width: 100%;
+  margin: 0;
+  align-items: center;
+  padding: OPFunction.pxToRem(21px);
+  color: white;
+  font-weight: normal;
+  font-size: OPFunction.pxToRem(20px);
+}
+
+.h5p-order-priority-surface-info {
+  display: flex;
+  align-items: flex-start;
+
+  .h5p-resource-list-wrapper {
+    margin-left: auto;
+    margin-bottom: 1rem;
+  }
+}

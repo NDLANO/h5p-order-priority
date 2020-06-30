@@ -1,0 +1,37 @@
+@use "../base/base_functions" as OPFunction;
+@use "../base/base_variables" as bv;
+
+.h5p-order-priority-add {
+  border: 1px solid #dbe2e8;
+  border-radius: bv.$borderRadius;
+  display: inline-block;
+  text-align: center;
+  padding: OPFunction.pxToRem(3px);
+  background-color: #ffffff;
+
+  &:hover {
+    span {
+      background-color: #ffffff;
+    }
+  }
+
+  &:active {
+    span {
+      background-color: #ebf0ff;
+    }
+  }
+
+  & > span {
+    display: flex;
+    border-radius: bv.$borderRadius;
+    background-color: rgba(219,226,232,0.25);
+    color: #363636;
+    font-weight: bold;
+    font-size: 1em;
+    padding: OPFunction.pxToRem(5px) OPFunction.pxToRem(10px);
+  }
+
+  .h5p-ri {
+    margin-right: OPFunction.pxToRem(9px);
+  }
+}

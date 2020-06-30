@@ -1,12 +1,12 @@
 import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Draggable} from "react-beautiful-dnd";
-import Remaining from "../StatementTypes/Remaining";
-import Prioritized from "../StatementTypes/Prioritized";
-import Placeholder from "../StatementTypes/Placeholder";
-import ActionsList from "../Actions/ActionsList";
-import Comment from "../Actions/Comment";
+import Remaining from "./components/Remaining";
+import Prioritized from "./components/Prioritized";
+import Placeholder from "./components/Placeholder";
+import Comment from "./components/Comment";
 import classnames from "classnames";
+import 'styles/components/StatementList.scss';
 
 function StatementList(props) {
 
@@ -37,15 +37,13 @@ function StatementList(props) {
       let actions;
       if (isSingleColumn) {
         actions = (
-          <ActionsList>
-            <Comment
-              onCommentChange={handleOnCommentChange}
-              comment={statement.comment}
-              onClick={handleCommentClick()}
-              ref={inputRef}
-              showCommentInPopup={!props.enableCommentDisplay}
-            />
-          </ActionsList>
+          <Comment
+            onCommentChange={handleOnCommentChange}
+            comment={statement.comment}
+            onClick={handleCommentClick()}
+            ref={inputRef}
+            showCommentInPopup={!props.enableCommentDisplay}
+          />
         );
       }
       return (

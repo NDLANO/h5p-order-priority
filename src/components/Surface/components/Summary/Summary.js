@@ -1,10 +1,17 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import classnames from 'classnames';
-import {OrderPriorityContext} from 'context/OrderPriorityContext';
+import {useOrderPriority} from 'context/OrderPriorityContext';
+import '../../../../styles/components/Summary.scss';
 
+/**
+ * Component for displaying the summary
+ *
+ * @return {*}
+ * @constructor
+ */
 function Summary() {
 
-  const context = useContext(OrderPriorityContext);
+  const context = useOrderPriority();
   const [comment, setComment] = useState('');
 
   const {

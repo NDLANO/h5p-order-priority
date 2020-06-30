@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * Adds a button to add new statements
+ * @param props
+ * @return {*}
+ * @constructor
+ */
 function AddStatement(props) {
   const {
     translations,

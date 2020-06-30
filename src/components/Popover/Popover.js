@@ -2,6 +2,21 @@ import React, {useEffect, useRef, useState} from 'react';
 import TinyPopover, { ArrowContainer } from 'react-tiny-popover';
 import PropTypes from "prop-types";
 
+/**
+ * Component to display a popover with trap. Used third party component Tinypopover.
+ *
+ * @param handleClose
+ * @param show
+ * @param children
+ * @param popoverContent
+ * @param classnames
+ * @param header
+ * @param close
+ * @param align
+ * @param lastActiveElement
+ * @return {*}
+ * @constructor
+ */
 const Popover = ({handleClose, show, children, popoverContent, classnames = [], header, close, align = "end", lastActiveElement}) => {
   classnames.push("h5p-order-priority-popover");
 
@@ -14,6 +29,10 @@ const Popover = ({handleClose, show, children, popoverContent, classnames = [], 
     handleClose();
   };
 
+  /**
+   * Make sure the user cannot press the tab key and exit the popover
+   * @param e
+   */
   const trapKeys = (e) => {
     if (e.keyCode === 9) {
       if (e.shiftKey) {

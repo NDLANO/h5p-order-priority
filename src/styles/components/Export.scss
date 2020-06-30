@@ -1,0 +1,63 @@
+@use "../base/base_extendors";
+
+.export-preview {
+  .page-description {
+    font-style: italic;
+  }
+
+  table {
+    width: 100%;
+    border: 1px solid rgba(0, 90, 255, 0.34);
+  }
+  table tr:nth-child(even){
+    background-color: rgba(176, 200, 236, 0.34);
+  }
+
+  th {
+    text-align: start;
+    background-color: rgba(45, 119, 193, 0.34);
+    border-collapse: collapse;
+  }
+
+  li {
+    margin-left: 0.3125rem;
+  }
+}
+
+.joubel-create-document {
+  top: 0;
+}
+
+.export-container {
+  button {
+    float: right;
+    cursor: pointer;
+    padding: 0 1rem !important;
+    height: 100%;
+    box-sizing: border-box;
+    line-height: 3.5rem;
+    color: #555;
+    font-family: Sans-Serif;
+    font-size: 1rem;
+    background: none;
+    border: 0;
+    overflow: visible;
+  }
+}
+
+.h5p-order-priority-button-export {
+  @extend %h5p-order-priority-button;
+  background-color: #1f1f1f;
+  border: 2px solid #404040;
+
+  &:hover,
+  &:focus {
+    background-color: #363636;
+    color: inherit;
+  }
+
+  &:active {
+    background-color: #000000;
+    color: inherit;
+  }
+}

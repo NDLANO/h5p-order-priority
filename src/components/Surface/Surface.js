@@ -1,10 +1,10 @@
 import React, {Fragment, useCallback, useReducer, useEffect} from 'react';
 import {useOrderPriority} from "context/OrderPriorityContext";
 import {DragDropContext} from 'react-beautiful-dnd';
-import Column from '../Column/Column';
-import StatementList from "../StatementList/StatementList";
-import AddStatement from "../AddStatement/AddStatement";
-import Summary from "../Summary/Summary";
+import Column from './components/Column/Column';
+import StatementList from "./components/StatementList/StatementList";
+import AddStatement from "./components/StatementList/components/components/AddStatement";
+import Summary from "./components/Summary/Summary";
 import {StatementDataObject} from "../utils";
 import Messages from "./Messages";
 

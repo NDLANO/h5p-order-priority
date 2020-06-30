@@ -19,7 +19,6 @@ function useOrderPriority() {
 }
 
 export {
-  OrderPriorityContext,
   OrderPriorityProvider,
   useOrderPriority,
 };

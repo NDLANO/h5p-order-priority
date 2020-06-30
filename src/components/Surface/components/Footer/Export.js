@@ -1,7 +1,13 @@
 import React, {useRef, useState} from 'react';
 import {useOrderPriority} from "context/OrderPriorityContext";
-import {escapeHTML} from "../utils";
+import {escapeHTML} from "../../../utils";
 
+/**
+ * Display the export page to let the user summary the answers given. Uses the package H5P.ExportPage
+ *
+ * @return {*}
+ * @constructor
+ */
 function Export() {
 
   const context = useOrderPriority();
@@ -13,6 +19,10 @@ function Export() {
   let exportObject;
   const [showExportPage, toggleShowExportPage] = useState(false);
 
+  /**
+   * Collect and group values displayed in the export page
+   * @return {Object}
+   */
   function getExportObject() {
     const {
       params: {
@@ -51,6 +61,10 @@ function Export() {
     });
   }
 
+  /**
+   * Preview of what will be exported
+   * @return {*}
+   */
   function getExportPreview() {
     const documentExportTemplate =
             '<div class="export-preview">' +
@@ -79,6 +93,9 @@ function Export() {
     return Mustache.render(documentExportTemplate, exportObject);
   }
 
+  /**
+   * Attach the package H5P.ExportPage to this content type
+   */
   function handleExport() {
     const {
       translate,

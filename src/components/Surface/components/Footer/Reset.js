@@ -1,7 +1,13 @@
 import React, {Fragment, useState, useEffect} from 'react';
-import Popover from "../Popover/Popover";
+import Popover from "../../../Popover/Popover";
 import {useOrderPriority} from "context/OrderPriorityContext";
 
+/**
+ * If enabled the user can reset the content type and do it again
+ *
+ * @return {*}
+ * @constructor
+ */
 function Reset() {
 
   const [showPopover, setPopover] = useState(false);
