@@ -343,7 +343,7 @@
         "type": "text",
         "label": "'Draggable item' label for screenreaders",
         "description": "Available variables are :statement",
-        "default": "Draggable item: :statement"
+        "default": "Draggable item"
       },
       {
         "name": "dropzone",
@@ -361,9 +361,88 @@
       },
       {
         "name": "dragHandleInstructions",
-        "type": "text",
+        "type": "textarea",
         "label": "Description on how to start a drag for screenreaders",
         "default": "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n"
+      },
+      {
+        "name": "dragHandleInstructions",
+        "type": "textarea",
+        "label": "Description on how to start a drag for screenreaders",
+        "default": "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n"
+      },
+      {
+        "name": "sourceName",
+        "type": "text",
+        "label": "Name of the statements column",
+        "default": "Statements"
+      },
+      {
+        "name": "destinationName",
+        "type": "text",
+        "label": "Name of the prioritized column",
+        "default": "Prioritized"
+      },
+      {
+        "name": "dragStartInstructions",
+        "type": "text",
+        "label": "Message read to the screen reader when drag starts",
+        "description": "Available variables are :startPosition, :listLength and :listName",
+        "default": "You have lifted an item in position :startPosition of :listLength in the :listName list."
+      },
+      {
+        "name": "dragMoveInSameList",
+        "type": "text",
+        "label": "Message read to the screen reader when drag is moved within the same list",
+        "description": "Available variables are :startPosition, :endPosition and :listLength",
+        "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
+      },
+      {
+        "name": "dragMoveInDifferentList",
+        "type": "text",
+        "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
+        "label": "Message read to the screen reader when drag is moved to another list",
+        "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
+      },
+      {
+        "name": "dragMoveNoDropTarget",
+        "type": "text",
+        "label": "Message read to the screen reader when drag is over an area that cannot be dropped on",
+        "default": "You are currently not dragging over a droppable area"
+      },
+      {
+        "name": "dragCancelled",
+        "type": "text",
+        "description": "Available variables are :startPosition, :listLength and :listName",
+        "label": "Message read to the screen reader when drag starts",
+        "default": "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName"
+      },
+      {
+        "name": "dropInSameList",
+        "type": "text",
+        "description": "Available variables are :startPosition and :endPosition",
+        "label": "Message read to the screen reader when drag is dropped in the same list",
+        "default": "You have dropped the item. It has moved from position :startPosition to :endPosition"
+      },
+      {
+        "name": "dropInDifferentList",
+        "type": "text",
+        "description": "Available variables are :startListName, :startPosition, :destinationListName and :destinationPosition",
+        "label": "Message read to the screen reader when drag is dropped in a different list",
+        "default": "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName"
+      },
+      {
+        "name": "dropInSameLocation",
+        "type": "text",
+        "description": "Available variables are :startPosition and :sourceName",
+        "label": "Message read to the screen reader when drag is dropped in the same location as before the drag",
+        "default": "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName"
+      },
+      {
+        "name": "userInfoAboutFocusMode",
+        "type": "text",
+        "label": "Message read to the screen reader before entering the section with the statements",
+        "default": "To interact with the next section some screen readers require you to be in focus mode"
       }
     ]
   }

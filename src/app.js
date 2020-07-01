@@ -73,8 +73,6 @@ H5P.OrderPriority = (function () {
       dropInSameList: "You have dropped the item. It has moved from position :startPosition to :endPosition",
       dropInDifferentList: "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName",
       dropInSameLocation: "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName",
-      dropNoDestination: "The item has been dropped while not over a droppable location. The item has returned to its starting position of :startPosition in :listName",
-      listNotification: "The next area consists of #numberOfLists #list with draggable elements.\n  Some screen readers may require you to be in focus mode or to use your pass through key to interact with them.",
       userInfoAboutFocusMode: "To interact with the next section some screen readers require you to be in focus mode",
       editableItem: "Editable item: ",
     }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
