@@ -11,6 +11,12 @@ import Messages from "./Messages";
 function Surface() {
   const context = useOrderPriority();
 
+  /**
+   * Handling of all update in the state for the content type
+   * @param state
+   * @param action
+   * @return {{statements: (*|string)[]}|{prioritizedStatements, remainingStatements: null[], showOneColumn, statements: StatementDataObject[], canAddPrioritized: boolean}|{prioritizedStatements: unknown[], statements: any, canAddPrioritized: (boolean|*)}|{prioritizedStatements: unknown[], remainingStatements: unknown[], showOneColumn: boolean, statements: any, canAddPrioritized: (*|boolean)}|*|{statements: any}|{isCombineEnabled: boolean}|{remainingStatements: unknown[], statements: any}}
+   */
   function stateHeadQuarter(state, action) {
     switch (action.type) {
       case 'dragStart': {
@@ -178,6 +184,10 @@ function Surface() {
     context.trigger('resize');
   }, [state.remainingStatements, state.prioritizedStatements]);
 
+  /**
+   * Callback that is called when exporting the values
+   * @return {{prioritizedStatements, statements: *[]}}
+   */
   function sendExportValues() {
     const {
       statements,
@@ -200,7 +210,12 @@ function Surface() {
 
   registerReset(() => dispatch({type: "reset"}));
   collectExportValues('userInput', sendExportValues);
-  
+
+  /**
+   * Initialize the content type
+   *
+   * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
+   */
   function init() {
     const {
       params: {
@@ -254,6 +269,12 @@ function Surface() {
     };
   }
 
+  /**
+   * Get details for lists that is provided for the screen readers
+   * @param droppableId
+   * @param additionalInfo
+   * @return {any}
+   */
   function getListDetails(droppableId, additionalInfo) {
     let details = {};
     switch (droppableId) {
@@ -276,6 +297,11 @@ function Surface() {
     }, additionalInfo, details);
   }
 
+  /**
+   * Update state and screen reader when starting the drag
+   *
+   * @type {(...args: any[]) => any}
+   */
   const onDragStart = useCallback((element, provider) => {
 
     const listDetails = getListDetails(element.source.droppableId, element.source);
@@ -286,7 +312,12 @@ function Surface() {
       payload: element,
     });
   }, [state, context]);
-  
+
+  /**
+   * UUpdate state and screen reader during the drag
+   *
+   * @type {(...args: any[]) => any}
+   */
   const onDragUpdate = useCallback((result, provider) => {
 
     if (result.destination && result.source) {
@@ -312,6 +343,10 @@ function Surface() {
     });
   }, [state, context]);
 
+  /**
+   * Update the state and screen reader after drag ends
+   * @type {(...args: any[]) => any}
+   */
   const onDragEnd = useCallback((dragResult, provider) => {
     let {
       combine,
@@ -358,6 +393,10 @@ function Surface() {
     });
   }, [state, context]);
 
+  /**
+   * Callback that stores changes when the user changes the statements
+   * @param statement
+   */
   function handleOnStatementChange(statement) {
     dispatch({
       type: 'statementChange',
@@ -365,6 +404,10 @@ function Surface() {
     });
   }
 
+  /**
+   * Create new StatementDataObject when adding custom statements
+   * @return {StatementDataObject}
+   */
   function createNewStatement() {
     return new StatementDataObject({
       added: true,
@@ -374,6 +417,10 @@ function Surface() {
     });
   }
 
+  /**
+   * Sorting the statements and put them in appropriate columns
+   * @return {*}
+   */
   function handleSurface() {
     return (
       <Fragment>

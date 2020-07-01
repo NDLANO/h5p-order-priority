@@ -99,6 +99,14 @@ H5P.OrderPriority = (function () {
       );
     };
 
+    /**
+     * All components that has information that needs to be part of the export registers a callback
+     * here that is run when the export is generated
+     *
+     * @param index
+     * @param callback
+     * @return {{}}
+     */
     this.collectExportValues = (index, callback) => {
       if (typeof index !== "undefined") {
         this.collectExportValuesStack.push({key: index, callback: callback});
@@ -110,8 +118,18 @@ H5P.OrderPriority = (function () {
       }
     };
 
+    /**
+     * All components that have elements that can be reset registers a callback that is run
+     * when the user clicks on "Reset"
+     * @param callback
+     * @return {number}
+     */
     this.registerReset = callback => this.resetStack.push(callback);
 
+    /**
+     * Attaches the component to a container
+     * @param $container
+     */
     this.attach = $container => {
       if (!this.wrapper) {
         createElements();
@@ -123,14 +141,19 @@ H5P.OrderPriority = (function () {
       container = $container[0];
     };
 
-    this.getRect = () => {
-      return this.wrapper.getBoundingClientRect();
-    };
-
+    /**
+     * Reset the content type
+     */
     this.reset = () => {
       this.resetStack.forEach(callback => callback());
     };
 
+    /**
+     * Set css classes based on ratio available to the container
+     *
+     * @param wrapper
+     * @param ratio
+     */
     this.addBreakPoints = (wrapper, ratio = getRatio(container)) => {
       if ( ratio === this.currentRatio) {
         return;
@@ -148,6 +171,9 @@ H5P.OrderPriority = (function () {
       this.currentRatio = ratio;
     };
 
+    /**
+     * Resize the component
+     */
     this.resize = () => {
       if (!this.wrapper) {
         return;
@@ -156,25 +182,24 @@ H5P.OrderPriority = (function () {
     };
 
     /**
-         * Help fetch the correct translations.
-         *
-         * @params key
-         * @params vars
-         * @return {string}
-         */
+     * Help fetch the correct translations.
+     *
+     * @params key
+     * @params vars
+     * @return {string}
+     */
     this.translate = (key, vars) => {
       let translation = this.translations[key];
       if (vars !== undefined && vars !== null) {
         Object
           .keys(vars)
           .map(index => {
-            translation = translation.replace(index, vars[index])
+            translation = translation.replace(index, vars[index]);
           });
       }
       return translation;
     };
 
-    this.getRect = this.getRect.bind(this);
     this.resize = this.resize.bind(this);
     this.on('resize', this.resize);
   }

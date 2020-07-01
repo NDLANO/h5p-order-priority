@@ -3,6 +3,15 @@ import PriorityNumber from "./components/PriorityNumber";
 import classnames from 'classnames';
 import {useOrderPriority} from "context/OrderPriorityContext";
 
+/**
+ * Serves as a placeholder in the prioritized column
+ *
+ * @param displayIndex
+ * @param children
+ * @param isDraggingOver
+ * @return {*}
+ * @constructor
+ */
 const Placeholder = ({
   displayIndex,
   children,

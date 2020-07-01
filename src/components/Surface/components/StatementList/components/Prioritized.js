@@ -7,6 +7,22 @@ import StatementComment from "./components/StatementComment";
 import EditableStatement from "./components/EditableStatement";
 import UnEditableStatement from "./components/UnEditableStatement";
 
+/**
+ * Statement that is put in a prioritized list
+ *
+ * @param statement
+ * @param actions
+ * @param displayIndex
+ * @param onStatementChange
+ * @param enableEditing
+ * @param enableCommentDisplay
+ * @param onCommentChange
+ * @param onCommentBlur
+ * @param inputRef
+ * @param draggableProps
+ * @return {*}
+ * @constructor
+ */
 function Prioritized({
   statement,
   actions,

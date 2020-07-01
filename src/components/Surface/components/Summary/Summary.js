@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import classnames from 'classnames';
 import {useOrderPriority} from 'context/OrderPriorityContext';
-import '../../../../styles/components/Summary.scss';
+import 'styles/components/Summary.scss';
 
 /**
  * Component for displaying the summary

@@ -13,6 +13,15 @@ function StatementList(props) {
   const inputRef = useRef();
   const [showCommentContainer, toggleCommentContainer] = useState(false);
 
+  /**
+   * Determine what statement type to use for a statement. The different types are:
+   *   - remainging: statements that has not been touched
+   *   - prioritiezed: statements that has been put in an order
+   *   - placeholder: containers that serve as dropzones in the ordered list
+   * @param isDragging
+   * @param dragHandleProps
+   * @return {*}
+   */
   function handleStatementType(isDragging, dragHandleProps) {
     const {
       statement,
@@ -75,6 +84,10 @@ function StatementList(props) {
     }
   }
 
+  /**
+   * Comments can be displayed in two ways.
+   * @return {(function(...[*]=))|null}
+   */
   function handleCommentClick() {
     if (props.enableCommentDisplay !== true) {
       return null;

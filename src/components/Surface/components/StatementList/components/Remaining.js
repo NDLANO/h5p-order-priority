@@ -5,6 +5,12 @@ import EditableStatement from "./components/EditableStatement";
 import UnEditableStatement from "./components/UnEditableStatement";
 import classnames from 'classnames';
 
+/**
+ * Statements that are provided but not interacted with
+ * @param props
+ * @return {*}
+ * @constructor
+ */
 function Remaining(props) {
   const {
     statement,
