@@ -342,7 +342,6 @@
         "name": "draggableItem",
         "type": "text",
         "label": "'Draggable item' label for screenreaders",
-        "description": "Available variables are :statement",
         "default": "Draggable item"
       },
       {
@@ -366,21 +365,17 @@
         "default": "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n"
       },
       {
-        "name": "dragHandleInstructions",
-        "type": "textarea",
-        "label": "Description on how to start a drag for screenreaders",
-        "default": "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n"
-      },
-      {
         "name": "sourceName",
         "type": "text",
         "label": "Name of the statements column",
+        "description": "This is the column with the statements you provide",
         "default": "Statements"
       },
       {
         "name": "destinationName",
         "type": "text",
         "label": "Name of the prioritized column",
+        "description": "This is the column where the statements are put in an order",
         "default": "Prioritized"
       },
       {
