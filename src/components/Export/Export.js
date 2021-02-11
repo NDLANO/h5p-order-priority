@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {OrderPriorityContext} from "context/OrderPriorityContext";
-import {escapeHTML} from "../utils";
+import {escapeHTML, stripHTML} from "../utils";
 
 export default class Export extends Component {
     static contextType = OrderPriorityContext;
@@ -37,7 +37,7 @@ export default class Export extends Component {
 
       return Object.assign({}, translations, {
         mainTitle: header,
-        description,
+        description: stripHTML(description),
         hasResources: resources.length > 0,
         summaryComment: summary || translations.labelNoSummaryComment,
         useSummary: provideSummary,

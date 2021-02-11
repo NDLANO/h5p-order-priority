@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import Main from "components/Main";
 import {OrderPriorityContext} from 'context/OrderPriorityContext';
-import {sanitizeParams} from "./components/utils";
+import {sanitizeParams, getRatio, breakpoints} from "./components/utils";
 
 // Load library
 H5P = H5P || {};
@@ -43,6 +43,7 @@ H5P.OrderPriority = (function () {
     this.language = language;
     this.activityStartTime = new Date();
     this.activeBreakpoints = [];
+    this.currentRatio = null;
 
     this.translations = Object.assign({}, {
       summary: "Summary",
@@ -118,7 +119,7 @@ H5P.OrderPriority = (function () {
       // Append elements to DOM
       $container[0].appendChild(this.wrapper);
       $container[0].classList.add('h5p-order-priority');
-      container = $container;
+      container = $container[0];
     };
 
     this.getRect = () => {
@@ -129,11 +130,19 @@ H5P.OrderPriority = (function () {
       this.resetStack.forEach(callback => callback());
     };
 
-    this.addBreakPoints = wrapper => {
+    /**
+     * Set css classes based on ratio available to the container
+     *
+     * @param wrapper
+     * @param ratio
+     */
+    this.addBreakPoints = (wrapper, ratio = getRatio(container)) => {
+      if ( ratio === this.currentRatio) {
+        return;
+      }
       this.activeBreakpoints = [];
-      const rect = this.getRect();
-      breakPoints.forEach(item => {
-        if (item.shouldAdd(rect.width)) {
+      breakpoints().forEach(item => {
+        if (item.shouldAdd(ratio)) {
           wrapper.classList.add(item.className);
           this.activeBreakpoints.push(item.className);
         }
@@ -141,6 +150,7 @@ H5P.OrderPriority = (function () {
           wrapper.classList.remove(item.className);
         }
       });
+      this.currentRatio = ratio;
     };
 
     this.resize = () => {

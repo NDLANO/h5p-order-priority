@@ -42,6 +42,7 @@
     "react": "^16.13.1",
     "react-beautiful-dnd": "^12.2.0",
     "react-dom": "^16.13.1",
+    "react-html-parser": "^2.0.2",
     "react-tiny-popover": "^3.4.2"
   }
 }
