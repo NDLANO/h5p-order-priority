@@ -28,12 +28,64 @@ export function debounce(func, wait, immediate) {
   };
 }
 
-export function stripHTML(html) {
+export function decodeHTML(html) {
   return html ? decode(html) : html;
 }
 
 export function escapeHTML(html) {
   return html ? escape(html) : html;
+}
+
+export function stripHTML(html) {
+  const element = document.createElement('div');
+  element.innerHTML = html;
+  return element.innerText;
+}
+
+/**
+ * CSS classnames and breakpoints for the content type
+ *
+ * @type {{largeTablet: string, large: string, mediumTablet: string}}
+ */
+const OrderPriorityClassnames = {
+  'mediumTablet': 'h5p-medium-tablet-size',
+  'largeTablet': 'h5p-large-tablet-size',
+  'large': 'h5p-large-size',
+};
+
+/**
+ * Get list of classname and conditions for when to add the classname to the content type
+ *
+ * @return {[{className: string, shouldAdd: (function(*): boolean)}, {className: string, shouldAdd: (function(*): boolean|boolean)}, {className: string, shouldAdd: (function(*): boolean)}]}
+ */
+export const breakpoints = () => {
+  return [
+    {
+      "className": OrderPriorityClassnames.mediumTablet,
+      "shouldAdd": ratio => ratio >= 22 && ratio < 40,
+    },
+    {
+      "className": OrderPriorityClassnames.largeTablet,
+      "shouldAdd": ratio => ratio >= 40 && ratio < 60,
+    },
+    {
+      "className": OrderPriorityClassnames.large,
+      "shouldAdd": ratio => ratio >= 60,
+    },
+  ];
+};
+
+/**
+ * Get the ratio of the container
+ *
+ * @return {number}
+ */
+export function getRatio(container) {
+  if ( !container) {
+    return;
+  }
+  const computedStyles = window.getComputedStyle(container);
+  return container.offsetWidth / parseFloat(computedStyles.getPropertyValue('font-size'));
 }
 
 export function sanitizeParams(params) {
@@ -43,7 +95,7 @@ export function sanitizeParams(params) {
       return sourceObject;
     }
     return Object.keys(sourceObject).reduce((aggregated, current) => {
-      aggregated[current] = stripHTML(sourceObject[current]);
+      aggregated[current] = decodeHTML(sourceObject[current]);
       return aggregated;
     }, {});
   };
@@ -61,7 +113,7 @@ export function sanitizeParams(params) {
   } = params;
 
   if (Array.isArray(statementsList)) {
-    statementsList = statementsList.map(statement => stripHTML(statement));
+    statementsList = statementsList.map(statement => decodeHTML(statement));
   }
 
   if (resources.params.resourceList && resources.params.resourceList.filter(filterResourceList).length > 0) {
@@ -75,8 +127,8 @@ export function sanitizeParams(params) {
         } = resource;
         return {
           ...resource,
-          title: stripHTML(title),
-          introduction: stripHTML(introduction),
+          title: decodeHTML(title),
+          introduction: decodeHTML(introduction),
         };
       }),
     };
@@ -86,10 +138,10 @@ export function sanitizeParams(params) {
     ...params,
     statementsList,
     resources,
-    header: stripHTML(header),
-    description: stripHTML(description),
-    summaryHeader: stripHTML(summaryHeader),
-    summaryInstruction: stripHTML(summaryInstruction),
+    header: decodeHTML(header),
+    description: decodeHTML(description),
+    summaryHeader: decodeHTML(summaryHeader),
+    summaryInstruction: decodeHTML(summaryInstruction),
     l10n: handleObject(l10n),
     resourceReport: handleObject(resourceReport),
     accessibility: handleObject(accessibility),
