@@ -1,6 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {useOrderPriority} from "context/OrderPriorityContext";
-import {escapeHTML} from "../../../utils";
+import {escapeHTML, stripHTML} from "../../../utils";
 
 /**
  * Display the export page to let the user summary the answers given. Uses the package H5P.ExportPage
@@ -44,9 +44,10 @@ function Export() {
 
     return Object.assign({}, translations, {
       mainTitle: header,
-      description,
+      description: stripHTML(description),
       hasResources: resources.length > 0,
-      summaryComment: summary || translations.labelNoSummaryComment,
+      hasSummaryComment: summary && summary.length !== 0,
+      summaryComment: summary,
       useSummary: provideSummary,
       resources: resources,
       sortedStatementList: userInput.prioritizedStatements
@@ -77,12 +78,13 @@ function Export() {
             '{{#sortedStatementList}}<tr><td>{{title}}</td><td>{{comment}}</td></tr>{{/sortedStatementList}}' +
             '</table>' +
             '{{#useSummary}}' +
+            '{{#hasSummaryComment}}' +
             '<h2>{{labelSummaryComment}}</h2>' +
             '<p>{{summaryComment}}</p>' +
+            '{{/hasSummaryComment}}' +
             '{{/useSummary}}' +
-            '<h2>{{header}}</h2>' +
-            '{{^resources}}<p>{{labelNoResources}}</p>{{/resources}}' +
             '{{#hasResources}}' +
+            '<h2>{{header}}</h2>' +
             '<table>' +
             '<tr><th>{{headerTitle}}</th><th>{{headerIntro}}</th><th>{{headerUrl}}</th></tr>' +
             '{{#resources}}<tr><td>{{title}}</td><td>{{introduction}}</td><td>{{url}}</td></tr>{{/resources}}' +

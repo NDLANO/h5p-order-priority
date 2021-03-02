@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import classnames from 'classnames';
 import {useOrderPriority} from 'context/OrderPriorityContext';
 import 'styles/components/Summary.scss';
+import ReactHtmlParser from "react-html-parser";
 
 /**
  * Component for displaying the summary
@@ -33,7 +34,7 @@ function Summary() {
     >
       <h3>{summaryHeader ? summaryHeader : translate('summary')}</h3>
       {summaryInstruction && (
-        <p className={"h5p-order-priority-summary-instruction"}>{summaryInstruction}</p>
+        <div className={"h5p-order-priority-summary-instruction"}>{ReactHtmlParser(summaryInstruction)}</div>
       )}
       <textarea
         id={"summary"}
