@@ -1,0 +1,19 @@
+
+.h5p-order-priority-editable-container {
+  display: flex;
+  flex: auto;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.3em 0.6em;
+
+  div {
+    width: 100%;
+  }
+
+  input {
+    min-height: 80%;
+    flex: auto;
+    font-size: inherit;
+    width: 100%;
+  }
+}

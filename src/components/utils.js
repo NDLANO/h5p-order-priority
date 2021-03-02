@@ -1,5 +1,22 @@
 import {escape, decode} from 'he';
 
+/**
+ * CSS classnames and breakpoints for the content type
+ *
+ * @type {{largeTablet: string, large: string, mediumTablet: string}}
+ */
+const OrderPriorityClassnames = {
+  'mediumTablet': 'h5p-medium-tablet-size',
+  'largeTablet': 'h5p-large-tablet-size',
+  'large': 'h5p-large-size',
+};
+
+/**
+ *
+ * @param initValues
+ * @return {StatementDataObject}
+ * @constructor
+ */
 export function StatementDataObject(initValues) {
   this.id = null;
   this.comment = null;
@@ -13,6 +30,14 @@ export function StatementDataObject(initValues) {
   return Object.assign(this, initValues);
 }
 
+/**
+ * Debounce function that
+ *
+ * @param func
+ * @param wait
+ * @param immediate
+ * @return {function(...[*]=)}
+ */
 export function debounce(func, wait, immediate) {
   let timeout;
   return function () {
@@ -32,6 +57,11 @@ export function decodeHTML(html) {
   return html ? decode(html) : html;
 }
 
+/**
+ * Excapes html in string
+ * @param html
+ * @return {*}
+ */
 export function escapeHTML(html) {
   return html ? escape(html) : html;
 }
@@ -41,17 +71,6 @@ export function stripHTML(html) {
   element.innerHTML = html;
   return element.innerText;
 }
-
-/**
- * CSS classnames and breakpoints for the content type
- *
- * @type {{largeTablet: string, large: string, mediumTablet: string}}
- */
-const OrderPriorityClassnames = {
-  'mediumTablet': 'h5p-medium-tablet-size',
-  'largeTablet': 'h5p-large-tablet-size',
-  'large': 'h5p-large-size',
-};
 
 /**
  * Get list of classname and conditions for when to add the classname to the content type
@@ -88,6 +107,11 @@ export function getRatio(container) {
   return container.offsetWidth / parseFloat(computedStyles.getPropertyValue('font-size'));
 }
 
+/**
+ * Function to make sure the parameters sent into the content type to be valid
+ * @param params
+ * @return {{summaryHeader: *, l10n: {}, resourceReport: {}, accessibility: {}, summaryInstruction: *, resources: *, header: *, description: *, statementsList: *}}
+ */
 export function sanitizeParams(params) {
   const filterResourceList = element => Object.keys(element).length !== 0 && element.constructor === Object;
   const handleObject = sourceObject => {

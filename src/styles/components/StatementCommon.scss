@@ -1,0 +1,106 @@
+@use "../base/base_extendors";
+@use "../base/base_variables" as bv;
+@use "../base/base_functions" as OPFunction;
+
+.h5p-order-priority-statement {
+  @extend %h5p-order-priority-statement-common;
+  background-color: #ffffff;
+  border: 2px solid #dbe2e8;
+  border-radius: bv.$borderRadius;
+  font-weight: bold;
+  padding: 0;
+
+  .h5p-order-priority-select-list &{
+    box-shadow: OPFunction.pxToRem(3px) OPFunction.pxToRem(3px) OPFunction.pxToRem(4px) 0 rgba(3, 3, 3, 0.2);
+  }
+
+  &:hover,
+  &:active,
+  &.h5p-order-priority-active-draggable {
+    border-color: #1a73d9;
+    cursor: pointer;
+    box-shadow: 0 0 OPFunction.pxToRem(3px) OPFunction.pxToRem(2px) rgba(26,115,217,0.2);
+    div:not(.h5p-order-priority-actionlist) {
+      background-color: #edf4fd;
+    }
+  }
+
+  p,
+  ul {
+    margin: 0;
+  }
+
+  .h5p-order-priority-statement-prioritized {
+    border-radius: bv.$borderRadius 0 0 bv.$borderRadius;
+    width: 100%;
+    padding: OPFunction.pxToRem(4px) 0;
+    margin: OPFunction.pxToRem(4px) 0 OPFunction.pxToRem(4px) OPFunction.pxToRem(4px);
+    background-color: #f6f8f9;
+  }
+
+  .h5p-order-priority-statement-remaining {
+    border-radius: bv.$borderRadius;
+    width: 100%;
+    padding: OPFunction.pxToRem(4px) 0;
+    margin: OPFunction.pxToRem(4px);
+    background-color: #f6f8f9;
+  }
+
+  &.h5p-order-priority-statement-extra {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    min-height: unset;
+
+    .h5p-order-priority-statement-prioritized {
+      margin-bottom: 0;
+      border-radius: bv.$borderRadius 0 0 0;
+    }
+
+    .h5p-order-priority-comment > div {
+      margin-bottom: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  & > div {
+    display: flex;
+    align-items: stretch;
+    min-height: OPFunction.pxToRem(44px);
+    flex: auto;
+  }
+
+  & .h5p-order-priority-element{
+    display: flex;
+    align-items: center;
+  }
+
+  .h5p-order-priority-comment {
+    border-left: OPFunction.pxToRem(2px) solid #dbe2e8;
+
+    & > div {
+      display: flex;
+      margin: OPFunction.pxToRem(4px) OPFunction.pxToRem(4px) OPFunction.pxToRem(4px) 0;
+      border-radius: 0 bv.$borderRadius bv.$borderRadius 0;
+      background-color: #f6f8f9;
+      position: relative;
+    }
+
+    button {
+      background-color: transparent;
+      color: #424242;
+
+      &:hover {
+        background-color: #ffffff;
+      }
+
+      &:active {
+        background-color: #dbe2e8;
+      }
+    }
+
+    .h5p-ri {
+      font-size: 150%;
+    }
+  }
+}

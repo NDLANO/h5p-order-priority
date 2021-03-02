@@ -1,0 +1,28 @@
+@use 'base_functions' as OPFunction;
+
+%h5p-order-priority {
+  font-family: "Open Sans", sans-serif;
+}
+
+%h5p-order-priority-button {
+  @extend %h5p-order-priority;
+  border: 0;
+  border-radius: 5.625rem;
+  color: white;
+  padding: 0.7rem 1rem;
+  font-weight: bold;
+}
+
+%h5p-order-priority-columns {
+  padding: OPFunction.pxToRem(6px);
+  flex: 1;
+  border: 1px solid #dbdbdb;
+  margin: OPFunction.pxToRem(10px) 0;
+}
+
+%h5p-order-priority-statement-common {
+  padding: 0.25rem;
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}

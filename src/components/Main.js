@@ -1,9 +1,8 @@
-import './OrderPriority.scss';
 import 'fonts/H5PReflectionFont.scss';
 import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import Surface from './Surface/Surface';
-import Footer from "./Footer/Footer";
+import Footer from "./Surface/components/Footer/Footer";
 import ReactHtmlParser from "react-html-parser";
 
 function Main(props) {
@@ -37,9 +36,9 @@ function Main(props) {
 
   return (
     <article>
-      <h1
+      <h2
         className={"h5p-order-priority-header"}
-      >{header}</h1>
+      >{header}</h2>
       <div
         className={"h5p-order-priority-surface"}
       >

@@ -1,0 +1,38 @@
+@use "../base/base_extendors";
+@use "../base/base_functions" as OPFunction;
+
+.h5p-order-priority-surface {
+  @extend %h5p-order-priority;
+  margin: 1.5rem;
+}
+
+.h5p-order-prioritySurface {
+  clear: both;
+
+  .h5p-large-tablet-size &,
+  .h5p-large-size &{
+      display: flex;
+      flex-flow: row;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.h5p-order-priority-dropzone {
+  @extend %h5p-order-priority-columns;
+  background-color: rgba(227, 227, 227, 0.25);
+}
+
+.h5p-order-priority-select-list {
+  @extend %h5p-order-priority-columns;
+  border: 0;
+
+  .h5p-large-tablet-size &,
+  .h5p-large-size & {
+    margin-left: OPFunction.pxToRem(12px);
+  }
+}

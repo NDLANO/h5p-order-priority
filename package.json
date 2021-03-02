@@ -26,10 +26,12 @@
     "eslint": "^6.8.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.20.0",
-    "node-sass": "^4.14.1",
+    "eslint-plugin-react-hooks": "^4.0.4",
     "prop-types": "^15.7.2",
     "react-axe": "^3.4.1",
+    "react-tiny-popover": "^5.1.0",
     "resolve-url-loader": "^3.1.1",
+    "sass": "^1.26.9",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
@@ -37,12 +39,14 @@
     "webpack-cli": "^3.3.11"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
+    "@babel/runtime": "^7.10.2",
     "classnames": "^2.2.6",
     "he": "^1.2.0",
     "react": "^16.13.1",
-    "react-beautiful-dnd": "^12.2.0",
+    "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.13.1",
     "react-html-parser": "^2.0.2",
-    "react-tiny-popover": "^3.4.2"
+    "react-tiny-popover": "^5.1.0"
   }
 }
