@@ -8,23 +8,31 @@
     },
     {
       "label": "Statements",
-      "entity": "statement",
-      "field": {
-        "label": "Statement",
-        "description": "The statement that the user needs to process"
-      }
+      "fields": [
+        {
+          "label": "Statements",
+          "entity": "statement",
+          "field": {
+            "label": "Statement"
+          }
+        }
+      ]
     },
     {
-      "label": "Basis",
-      "default": "Basis"
+      "label": "Summary",
+      "default": "Summary"
     },
     {
-      "label": "Summary instructions",
-      "description": "Write instructions to the user if you want to tell him/her what to include in the summary"
+      "label": "Summary instruction"
     },
     {
       "label": "Resources",
-      "description": "Optional links to resources."
+      "fields": [
+        {
+          "label": "Resources",
+          "description": "Optional links to resources."
+        }
+      ]
     },
     {
       "label": "Behavioural settings",
@@ -43,8 +51,7 @@
           "description": "Will randomize the pre-populated statements"
         },
         {
-          "label": "Number of landingfields",
-          "description": "How many landingfields should the user reflect on?"
+          "label": "Number of statements"
         },
         {
           "label": "Allow users to add their own statements",
@@ -65,10 +72,10 @@
       "fields": [
         {
           "label": "Placeholder for the text boxes",
-          "default": "Elaborate on your decision"
+          "default": "Type your reasons for such answers"
         },
         {
-          "label": "Label for \"Resources\"-button",
+          "label": "Label for the \"Resources\"-button",
           "default": "Resources"
         },
         {
@@ -157,12 +164,12 @@
           "default": "No resources"
         },
         {
-          "label": "Header for \"Summary comment\"",
+          "label": "Header for summary comment",
           "default": "Summary comment"
         },
         {
           "label": "Label when no summary is provided",
-          "default": "No comment"
+          "default": "No summary"
         }
       ]
     },
@@ -170,15 +177,15 @@
       "label": "Accessibility",
       "fields": [
         {
-          "label": "Add comment",
+          "label": "Used instead of 'Comment'-icon",
           "default": "Add comment"
         },
         {
-          "label": "Close",
+          "label": "Used instead of 'Close'-icon",
           "default": "Close"
         },
         {
-          "label": "Drag",
+          "label": "Used instead of 'Drag'-icon",
           "default": "Drag"
         },
         {
@@ -206,7 +213,8 @@
           "default": "Dropzone #:index with value: :statement"
         },
         {
-          "label": "Description on how to start a drag for screenreaders"
+          "label": "Description on how to start a drag for screenreaders",
+          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
         },
         {
           "label": "Name of the statements column",
