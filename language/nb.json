@@ -8,23 +8,31 @@
     },
     {
       "label": "Påstander",
-      "entity": "påstand",
-      "field": {
-        "label": "Påstand",
-        "description": "Påstand som brukeren skal ta stilling til"
-      }
+      "fields": [
+        {
+          "label": "Påstander",
+          "entity": "påstand",
+          "field": {
+            "label": "Påstand"
+          }
+        }
+      ]
     },
     {
       "label": "Oppsummering",
       "default": "Oppsummering"
     },
     {
-      "label": "Instruksjoner til oppsummeringen",
-      "description": "Skriv noen ord om hva du ønsker skal være med i oppsummeringen"
+      "label": "Instruksjoner til oppsummeringen"
     },
     {
       "label": "Ressurser",
-      "description": "Valgfrie lenker til ressurser."
+      "fields": [
+        {
+          "label": "Ressurser",
+          "description": "Valgfrie lenker til ressurser."
+        }
+      ]
     },
     {
       "label": "Innstillinger",
@@ -43,8 +51,7 @@
           "description": "Skal påstandene vises i tilfeldig rekkefølge?"
         },
         {
-          "label": "Antall landingsfelter",
-          "description": "Hvor mange påstander skal det tas stilling til?"
+          "label": "Antall landingsfelter"
         },
         {
           "label": "La brukeren legge inn egne påstander",
@@ -206,7 +213,8 @@
           "default": "Droppsone #:index med verdi: :statement"
         },
         {
-          "label": "Description on how to start a drag for screenreaders"
+          "label": "Description on how to start a drag for screenreaders",
+          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
         },
         {
           "label": "Name of the statements column",
