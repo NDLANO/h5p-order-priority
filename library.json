@@ -20,6 +20,11 @@
       "path": "dist/h5p-order-priority.js"
     }
   ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-order-priority.css"
+    }
+  ],
   "preloadedDependencies": [
     {
       "machineName": "H5P.ResourceList",

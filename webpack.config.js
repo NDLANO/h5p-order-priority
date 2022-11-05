@@ -1,9 +1,10 @@
 const path = require('path');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = (nodeEnv !== 'production');
 const config = {
+  mode: nodeEnv,
   entry: {
     'h5p-order-priority': [path.join(__dirname, 'src', 'app.js')]
   },
@@ -11,6 +12,11 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    })
+  ],
   resolve: {
     modules: [
       path.resolve('./src'),
@@ -28,16 +34,27 @@ const config = {
         },
       },
       {
-        test: /\.(s*)css$/,
+        test: /\.(s[ac]ss|css)$/,
         include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'resolve-url-loader', 'sass-loader']
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: ''
+            }
+          },
+          { loader: "css-loader" },
+          {
+            loader: "sass-loader"
+          }
+        ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,
         include: [
           path.resolve(__dirname, 'src'),
         ],
-        loader: 'url-loader?limit=100000'
+        type: 'asset/resource'
       }
     ]
   },
