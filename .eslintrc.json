@@ -7,7 +7,8 @@
   },
   "env": {
     "es6": true,
-    "browser": true
+    "browser": true,
+    "node": true
   },
   "extends": [
     "eslint:recommended",
@@ -15,10 +16,15 @@
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "ecmaVersion": 9,
-    "sourceType": "module"
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module",
+    "ecmaVersion": 2020
   },
   "settings": {
     "react": {
@@ -82,6 +88,8 @@
       2,
       "event"
     ],
-    "react/prop-types": 0
+    "react/prop-types": 0,
+    "react/jsx-uses-vars": [2],
+    "react/jsx-uses-react": [2]
   }
 }

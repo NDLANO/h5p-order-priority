@@ -3,7 +3,7 @@
   "description": "Reflect upon statements and put them in an order based on your thoughts and values",
   "majorVersion": 0,
   "minorVersion": 10,
-  "patchVersion": 2,
+  "patchVersion": 3,
   "hasIcon": 1,
   "runnable": 1,
   "author": "NDLA",
@@ -18,6 +18,11 @@
     },
     {
       "path": "dist/h5p-order-priority.js"
+    }
+  ],
+  "preloadedCss": [
+    {
+      "path": "dist/h5p-order-priority.css"
     }
   ],
   "preloadedDependencies": [
