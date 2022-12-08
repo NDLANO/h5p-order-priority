@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import React from 'React';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import {useOrderPriority} from "context/OrderPriorityContext";
@@ -8,7 +8,7 @@ import {useOrderPriority} from "context/OrderPriorityContext";
  *
  * @type {React.ComponentType<React.ClassAttributes<unknown>>}
  */
-const StatementComment = forwardRef((props, inputRef) => {
+const StatementComment = React.forwardRef((props, inputRef) => {
   const context = useOrderPriority();
   
   function handleOnChange() {

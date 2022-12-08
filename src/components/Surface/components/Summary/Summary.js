@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classnames from 'classnames';
 import {useOrderPriority} from 'context/OrderPriorityContext';
 import 'styles/components/Summary.scss';
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 
 /**
  * Component for displaying the summary

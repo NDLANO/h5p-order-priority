@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'React';
 import PropTypes from 'prop-types';
 import {useOrderPriority} from "context/OrderPriorityContext";
 import Popover from "components/Popover/Popover";
