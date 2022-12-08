@@ -5,19 +5,20 @@ import PropTypes from "prop-types";
 /**
  * Component to display a popover with trap. Used third party component Tinypopover.
  *
- * @param handleClose
- * @param show
- * @param children
- * @param popoverContent
- * @param classnames
- * @param header
- * @param close
- * @param align
- * @param lastActiveElement
+ * @param props
+ * @param props.handleClose
+ * @param props.show
+ * @param props.children
+ * @param props.popoverContent
+ * @param props.classnames
+ * @param props.header
+ * @param props.close
+ * @param props.align
+ * @param props.lastActiveElement
  * @return {*}
  * @constructor
  */
-const Popover = ({handleClose, show, children, popoverContent, classnames = [], header, close, align = "end", lastActiveElement}) => {
+const Popover = ({handleClose, show, children, popoverContent, classnames = [], header, close, align = "end", lastActiveElement, openerRect}) => {
   classnames.push("h5p-order-priority-popover");
 
   const [firstTabElement, setFirstTabElements] = useState(null);
@@ -76,27 +77,27 @@ const Popover = ({handleClose, show, children, popoverContent, classnames = [], 
 
   return (
     <TinyPopover
-      containerClassName={classnames.join(" ")}
+      containerClassName={classnames.join(' ')}
       isOpen={show}
-      position={['top', 'bottom']}
-      windowBorderPadding={10}
+      positions={['top', 'bottom']}
+      padding={10}
       containerStyle={{
-        overflow: "unset",
+        overflow: 'unset',
       }}
       align={align}
       onClickOutside={onClose}
-      content={({position, targetRect, popoverRect}) => (
+      content={({position, popoverRect}) => (
         <div
           ref={modalRef}
         >
           <ArrowContainer
             position={position}
-            targetRect={targetRect}
             popoverRect={popoverRect}
             arrowColor={'white'}
             arrowSize={10}
+            childRect={openerRect}
           >
-            <div
+            <button
               onKeyDown={trapKeys}
               tabIndex={"-1"}
               role={"dialog"}
@@ -123,7 +124,7 @@ const Popover = ({handleClose, show, children, popoverContent, classnames = [], 
               >
                 {popoverContent}
               </div>
-            </div>
+            </button>
           </ArrowContainer>
         </div>
 
