@@ -1,0 +1,275 @@
+{
+  "semantics": [
+    {
+      "label": "Encabezado"
+    },
+    {
+      "label": "Descripción del trabajo"
+    },
+    {
+      "label": "Declaraciones",
+      "fields": [
+        {
+          "label": "Declaraciones",
+          "entity": "declaración",
+          "field": {
+            "label": "Declaración"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Resumen",
+      "default": "Resumen"
+    },
+    {
+      "label": "Instrucción del resumen"
+    },
+    {
+      "label": "Recursos",
+      "fields": [
+        {
+          "label": "Recursos",
+          "description": "Enlaces opcionales a recursos."
+        }
+      ]
+    },
+    {
+      "label": "Configuración del comportamiento",
+      "description": "Estas opciones le permitirán controlar el comportamiento.",
+      "fields": [
+        {
+          "label": "¿Habilitar reintentar?",
+          "description": "Marque esto si quiere que el usuario pueda reintentar"
+        },
+        {
+          "label": "Rellenar previamente las declaraciones",
+          "description": "El usuario comienza con las oraciones ya ordenadas"
+        },
+        {
+          "label": "Ordenar las declaraciones aleatoriamente",
+          "description": "Ordenará aleatoriamente las declaraciones proporcionadas previamente"
+        },
+        {
+          "label": "Número de declaraciones"
+        },
+        {
+          "label": "Permitir que los usuarios añadan sus propias declaraciones",
+          "description": "Permite que el usuario añada sus propias declaraciones"
+        },
+        {
+          "label": "Mostrar los comentarios proporcionados debajo de la declaración",
+          "description": "Si el usuario ha proporcionado un comentario, se muestra en la lista de declaraciones"
+        },
+        {
+          "label": "Mostrar resumen",
+          "description": "¿Quiere que el usuario proporcione un resumen que explique las razones para sus respuestas?"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Texto por defecto para las cajas de texto",
+          "default": "Escribe tus razones para tales respuestas"
+        },
+        {
+          "label": "Etiqueta para botón \"Recursos\"",
+          "default": "Recursos"
+        },
+        {
+          "label": "Etiqueta para el botón \"Reiniciar\"",
+          "default": "Reiniciar"
+        },
+        {
+          "label": "Etiqueta para el botón \"Añadir alternativa\"",
+          "default": "Añadir alternativa"
+        },
+        {
+          "label": "Etiqueta para el botón \"Continuar\" en el diálogo de reinicio",
+          "default": "Continuar"
+        },
+        {
+          "label": "Etiqueta para el botón \"Cancelar\" en el diálogo de reinicio",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Informar al usuario de que se perderán sus datos si continúa",
+          "default": "Se perderán todos los cambios. ¿Seguro que quieres continuar?"
+        },
+        {
+          "label": "Encabezado en la ventana emergente 'Comentario'",
+          "default": "Retroalimentación"
+        },
+        {
+          "label": "Texto mostrado en botón 'Enviar' cuando se crea un documento",
+          "default": "Enviar"
+        },
+        {
+          "label": "Texto que se muestra después de enviar",
+          "default": "¡Guardado!"
+        },
+        {
+          "label": "Encabezado en la ventana emergente 'Reiniciar'",
+          "default": "Confirmar"
+        },
+        {
+          "label": "Texto por defecto para la caja de resumen",
+          "default": "Haz un breve resumen con tus propias palabras"
+        }
+      ],
+      "label": "Adaptación local"
+    },
+    {
+      "fields": [
+        {
+          "label": "Etiqueta para el botón \"Crear documento\"",
+          "default": "Crear documento"
+        },
+        {
+          "label": "Etiqueta para el botón \"Exportar\"",
+          "default": "Exportar"
+        },
+        {
+          "label": "Etiqueta para el botón \"Seleccionar todo\"",
+          "default": "Seleccionar todo"
+        },
+        {
+          "default": "Declaraciones",
+          "label": "Encabezado de declaración en tabla de declaraciones"
+        },
+        {
+          "label": "Encabezado de comentario en la tabla de declaraciones",
+          "default": "Comentarios"
+        },
+        {
+          "label": "Encabezado encima de la tabla \"Recursos\"",
+          "default": "Recursos"
+        },
+        {
+          "label": "Encabezado de título en tabla de recursos",
+          "default": "Título"
+        },
+        {
+          "label": "Encabezado de Introducción en tabla de recursos",
+          "default": "Introducción"
+        },
+        {
+          "label": "Encabezado de URL en tabla de recursos",
+          "default": "URL"
+        },
+        {
+          "label": "Etiqueta cuando no se encontraron recursos",
+          "default": "No hay recursos"
+        },
+        {
+          "label": "Encabezado para comentario de resumen",
+          "default": "Comentario del Resumen"
+        },
+        {
+          "label": "Etiqueta cuando no se ha proporcionado ningún resumen",
+          "default": "No hay resumen"
+        }
+      ],
+      "label": "Informe de recursos"
+    },
+    {
+      "fields": [
+        {
+          "label": "Se utiliza en lugar del icono \"Comentario\"",
+          "default": "Añadir comentario"
+        },
+        {
+          "label": "Usado en lugar del icono 'Cerrar'",
+          "default": "Cerrar"
+        },
+        {
+          "label": "Usado en lugar del icono \"Arrastrar\"",
+          "default": "Arrastrar"
+        },
+        {
+          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
+          "description": "Las variables disponibles son :index",
+          "default": "Área de colocación #:index"
+        },
+        {
+          "label": "Etiqueta de 'Área de colocación vacía' para lectores de pantalla",
+          "description": "Las variables disponibles son :index",
+          "default": "Área de colocación vacía #:index"
+        },
+        {
+          "default": "Elemento arrastrable",
+          "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla"
+        },
+        {
+          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
+          "description": "Las variables disponibles son :index",
+          "default": "Área de colocación #:index"
+        },
+        {
+          "label": "Etiqueta de 'Área de colocación con valor' para lectores de pantalla",
+          "description": "Las variables disponibles son :index y :statement",
+          "default": "Área de colocación #:index con valor: :statement"
+        },
+        {
+          "label": "Descripción de como iniciar un arrastre para lectores de pantalla",
+          "default": "Presione la barra espaciadora para iniciar un arrastre.\nAl arrastrar, puede usar las teclas de flecha para mover el elemento y ESC para cancelar.\nAlgunos lectores de pantalla pueden requerir que esté en modo de foco o que use su tecla de acceso directo\n"
+        },
+        {
+          "label": "Nombre de la columna de declaraciones",
+          "description": "Esta es la columna con las declaraciones que proporcionas",
+          "default": "Declaraciones"
+        },
+        {
+          "default": "Priorizadas",
+          "label": "Nombre de la columna priorizada",
+          "description": "Esta es la columna donde se ordenan las declaraciones"
+        },
+        {
+          "label": "Mensaje leído al lector de pantalla cuando se inicia el arrastre",
+          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
+          "default": "Has levantado un elemento en la posición :startPosition de :listLength en la lista :listName."
+        },
+        {
+          "label": "Mensaje leído en el lector de pantalla cuando se mueve el elemento arrastrado dentro de la misma lista",
+          "description": "Las variables disponibles son :startPosition, :endPosition y :listLength",
+          "default": "Has movido el elemento de la posición :startPosition a la posición :endPosition de :listLength"
+        },
+        {
+          "description": "Las variables disponibles son :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition y :destinationListLength",
+          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se mueve a otra lista",
+          "default": "Has movido el elemento de la lista :startListName en la posición :startPosition de :startListLength a la lista :destinationListName en la posición :destinationPosition de :destinationListLength"
+        },
+        {
+          "label": "Mensaje leído en el lector de pantalla cuando se arrastra sobre un área en la que no se puede colocar",
+          "default": "En este momento no estás arrastrando sobre una área de colocación"
+        },
+        {
+          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
+          "label": "Mensaje leído en el lector de pantalla cuando comienza el arrastre",
+          "default": "Movimiento cancelado. El elemento ha vuelto a su posición inicial: posición de inicio de: longitud de lista en: nombre de lista"
+        },
+        {
+          "description": "Las variables disponibles son :startPosition y :endPosition",
+          "label": "Mensaje leído en el lector de pantalla cuando se suelta el arrastre en la misma lista",
+          "default": "Has soltado el elemento. Se ha movido de la posición :startPosition a :endPosition"
+        },
+        {
+          "description": "Las variables disponibles son :startListName, :startPosition, :destinationListName y :destinationPosition",
+          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en una lista diferente",
+          "default": "Has dejado caer el elemento. Se ha movido de la posición :startPosition en la lista :startListName a la posición :destinationPosition en la lista :destinationListName"
+        },
+        {
+          "description": "Las variables disponibles son :startPosition y :sourceName",
+          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en la misma ubicación que antes del arrastre",
+          "default": "Has soltado el elemento en la misma posición en la que lo levantaste. La posición es :startPosition en :sourceName"
+        },
+        {
+          "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",
+          "default": "Para interactuar con la siguiente sección, algunos lectores de pantalla requieren que esté en modo de foco"
+        }
+      ],
+      "label": "Accesibilidad"
+    }
+  ]
+}
