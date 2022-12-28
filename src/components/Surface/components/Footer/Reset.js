@@ -1,6 +1,6 @@
-import React, {Fragment, useState, useEffect} from 'react';
+import React, { Fragment, useState, useRef, useMemo, useEffect } from "react";
 import Popover from "../../../Popover/Popover";
-import {useOrderPriority} from "context/OrderPriorityContext";
+import { useOrderPriority } from "context/OrderPriorityContext";
 
 /**
  * If enabled the user can reset the content type and do it again
@@ -9,18 +9,21 @@ import {useOrderPriority} from "context/OrderPriorityContext";
  * @constructor
  */
 function Reset() {
-
   const [showPopover, setPopover] = useState(false);
   const [previousFocusElement, setPreviousFocusElement] = useState(null);
   const orderPriorityContext = useOrderPriority();
+  const resetButtonRef = useRef(null);
 
   useEffect(() => {
-    if ( showPopover ) {
+    if (showPopover) {
       setPreviousFocusElement(document.activeElement);
     }
   }, [showPopover]);
 
-  function togglePopover() {
+  function togglePopover(event) {
+    if (!resetButtonRef.current) {
+      resetButtonRef.current = event?.target;
+    }
     setPopover(!showPopover);
   }
 
@@ -29,10 +32,13 @@ function Reset() {
     togglePopover();
   }
 
+  const openerRect = useMemo(
+    () => resetButtonRef.current?.getBoundingClientRect(),
+    [resetButtonRef.current]
+  );
+
   const {
-    behaviour: {
-      enableRetry = false
-    },
+    behaviour: { enableRetry = false },
     reset,
     translations,
   } = orderPriorityContext;
@@ -48,23 +54,28 @@ function Reset() {
           close={translations.close}
           header={translations.restart}
           align={"start"}
+          openerRect={openerRect}
           popoverContent={(
             <div
+              role={"dialog"}
+              aria-labelledby={"resetTitle"}
               className={"h5p-order-priority-reset-modal"}
             >
-              <p id={"resetinfo"} >
+              <p id={"resetTitle"}>
                 {translations.ifYouContinueAllYourChangesWillBeLost}
               </p>
               <div>
                 <button
                   onClick={confirmReset}
                   className={"continue"}
+                  type={"button"}
                 >
                   {translations.continue}
                 </button>
                 <button
                   onClick={togglePopover}
                   className={"cancel"}
+                  type={"button"}
                 >
                   {translations.cancel}
                 </button>
@@ -78,10 +89,7 @@ function Reset() {
             aria-haspopup={"true"}
             aria-expanded={showPopover}
           >
-            <span
-              className={"h5p-ri hri-restart"}
-              aria-hidden={"true"}
-            />
+            <span className={"h5p-ri hri-restart"} aria-hidden={"true"} />
             {translations.restart}
           </button>
         </Popover>

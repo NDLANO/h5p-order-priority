@@ -111,24 +111,22 @@ const Popover = forwardRef(
               arrowSize={10}
               childRect={openerRect}
             >
-              <button
-                onKeyDown={trapKeys}
-                tabIndex={"-1"}
-                role={"dialog"}
-                className={"h5p-order-priority-popover-container"}
-                aria-modal={"true"}
-              >
+              <div className={"h5p-order-priority-popover-container"}>
                 <div className={"h5p-order-priority-popover-header"}>
                   <div>{header}</div>
-                  <button onClick={onClose} className={"close-button"}>
+                  <button
+                    onClick={handleClose}
+                    aria-label={close}
+                    type={"button"}
+                    className={"close-button"}
+                  >
                     <span className={"h5p-ri hri-close"} aria-hidden={true} />
-                    <span className="visible-hidden">{close}</span>
                   </button>
                 </div>
                 <div className={"h5p-order-priority-popover-content"}>
                   {popoverContent}
                 </div>
-              </button>
+              </div>
             </ArrowContainer>
           </div>
         )}
