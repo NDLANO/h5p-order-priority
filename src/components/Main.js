@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import Surface from './Surface/Surface';
 import Footer from "./Surface/components/Footer/Footer";
-import ReactHtmlParser from "react-html-parser";
+import ReactHtmlParser from "html-react-parser";
 
 function Main(props) {
 
