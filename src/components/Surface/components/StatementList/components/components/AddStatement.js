@@ -21,7 +21,7 @@ function AddStatement(props) {
         onClick={onClick}
       >
         <span>
-          <span className={"h5p-ri hri-pencil"} aria-hidden={"true"}/>
+          <span className={"h5p-ri hri-pencil"} />
           <span>{translations.add}</span>
         </span>
       </button>

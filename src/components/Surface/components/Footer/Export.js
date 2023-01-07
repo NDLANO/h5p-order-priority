@@ -136,7 +136,6 @@ function Export() {
       >
         <span
           className={"h5p-ri hri-document"}
-          aria-hidden={true}
         />
         {translate('createDocument')}
       </button>

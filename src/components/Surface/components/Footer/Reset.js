@@ -89,7 +89,7 @@ function Reset() {
             aria-haspopup={"true"}
             aria-expanded={showPopover}
           >
-            <span className={"h5p-ri hri-restart"} aria-hidden={"true"} />
+            <span className={"h5p-ri hri-restart"} />
             {translations.restart}
           </button>
         </Popover>
