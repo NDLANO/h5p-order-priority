@@ -10,7 +10,7 @@ import {useOrderPriority} from "context/OrderPriorityContext";
  */
 const StatementComment = React.forwardRef((props, inputRef) => {
   const context = useOrderPriority();
-  
+
   function handleOnChange() {
     if ( inputRef === null) {
       return;
@@ -29,7 +29,6 @@ const StatementComment = React.forwardRef((props, inputRef) => {
       <div>
         <span
           className="h5p-ri hri-comment-full"
-          aria-hidden={"true"}
         />
         <textarea
           ref={inputRef}
