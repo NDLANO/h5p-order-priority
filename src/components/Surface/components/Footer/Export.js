@@ -70,7 +70,7 @@ function Export() {
     const documentExportTemplate =
             '<div class="export-preview">' +
             '<div class="page-header" role="heading" tabindex="-1">' +
-            ' <h1 class="page-title">{{mainTitle}}</h1>' +
+            ' <div class="page-title h1">{{mainTitle}}</div>' +
             '</div>' +
             '<div class="page-description">{{description}}</div>' +
             '<table>' +
@@ -79,12 +79,12 @@ function Export() {
             '</table>' +
             '{{#useSummary}}' +
             '{{#hasSummaryComment}}' +
-            '<h2>{{labelSummaryComment}}</h2>' +
+            '<div class="h2">{{labelSummaryComment}}</div>' +
             '<p>{{summaryComment}}</p>' +
             '{{/hasSummaryComment}}' +
             '{{/useSummary}}' +
             '{{#hasResources}}' +
-            '<h2>{{header}}</h2>' +
+            '<div class="h2">{{header}}</div>' +
             '<table>' +
             '<tr><th>{{headerTitle}}</th><th>{{headerIntro}}</th><th>{{headerUrl}}</th></tr>' +
             '{{#resources}}<tr><td>{{title}}</td><td>{{introduction}}</td><td>{{url}}</td></tr>{{/resources}}' +

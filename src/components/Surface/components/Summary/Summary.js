@@ -32,7 +32,7 @@ function Summary() {
     <div
       className={classnames('h5p-order-priority-summary')}
     >
-      <h3>{summaryHeader ? summaryHeader : translate('summary')}</h3>
+      <div className={"summary-header"}>{summaryHeader ? summaryHeader : translate('summary')}</div>
       {summaryInstruction && (
         <div className={"h5p-order-priority-summary-instruction"}>{ReactHtmlParser(summaryInstruction)}</div>
       )}

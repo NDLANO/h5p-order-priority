@@ -36,9 +36,9 @@ function Main(props) {
 
   return (
     <article>
-      <h2
+      <div
         className={"h5p-order-priority-header"}
-      >{header}</h2>
+      >{header}</div>
       <div
         className={"h5p-order-priority-surface"}
       >
