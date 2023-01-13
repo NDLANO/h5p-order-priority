@@ -32,7 +32,6 @@ const Placeholder = ({
         className={classnames("h5p-droparea", {
           "h5p-order-priority-active-droppable": isDraggingOver
         })}
-        aria-label={translate((children ? "droparea" : "emptydroparea"), {':index': displayIndex})}
       >
         {children}
       </div>
