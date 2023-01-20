@@ -1,0 +1,275 @@
+{
+  "semantics": [
+    {
+      "label": "Cabeceira"
+    },
+    {
+      "label": "Descrición da tarefa"
+    },
+    {
+      "label": "Declaracións",
+      "fields": [
+        {
+          "label": "Declaracións",
+          "entity": "declaración",
+          "field": {
+            "label": "Declaración"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Resumo",
+      "default": "Resumo"
+    },
+    {
+      "label": "Instrucións do resumo"
+    },
+    {
+      "label": "Recursos",
+      "fields": [
+        {
+          "label": "Recursos",
+          "description": "Enlaces opcionais a recursos."
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "description": "Marca isto se queres que o usuario poida tentar de novo",
+          "label": "Activar tentar de novo?"
+        },
+        {
+          "label": "Pre-encher os enunciados",
+          "description": "O usuario comeza coas declaracións xa ordeadas"
+        },
+        {
+          "label": "Cambiar as declaracións ao chou",
+          "description": "Moverá ao chou as declaracións fornecidas previamente"
+        },
+        {
+          "label": "Número de declaracións"
+        },
+        {
+          "label": "Permitir aos usuarios engadir as súas propias declaracións",
+          "description": "Permite ao usuario engadir as súas propias declaracións"
+        },
+        {
+          "label": "Amosar os comentarios fornecidos debaixo da declaración",
+          "description": "Se o usuario forneceu un comentario, amosarase na lista de declaracións"
+        },
+        {
+          "description": "Queres que o usuario forneza un resumo explicando as razóns para as súas respostas?",
+          "label": "Amosar resumo"
+        }
+      ],
+      "label": "Configuración do comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento."
+    },
+    {
+      "label": "Adaptación local",
+      "fields": [
+        {
+          "label": "Texto por defecto para as caixas de texto",
+          "default": "Escribe as túas razóns para tales respostas"
+        },
+        {
+          "default": "Recursos",
+          "label": "Etiqueta para o botón «Recursos»"
+        },
+        {
+          "label": "Etiqueta para o botón \"Reiniciar\"",
+          "default": "Reiniciar"
+        },
+        {
+          "label": "Etiqueta para o botón \"Engadir alternativa\"",
+          "default": "Engadir alternativa"
+        },
+        {
+          "label": "Etiqueta para o botón \"Continuar\" no diálogo de reinicio",
+          "default": "Continuar"
+        },
+        {
+          "label": "Etiqueta para o botón \"Cancelar\" no diálogo de reinicio",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Informar ao usuario de que os datos perderanse se continúa",
+          "default": "Perderanse todos os cambios. Estás seguro de que queres continuar?"
+        },
+        {
+          "label": "Cabeceira na pantalla emerxente \"Comentario\"",
+          "default": "Retroalimentación"
+        },
+        {
+          "default": "Enviar",
+          "label": "Texto amosado no botón \"Enviar\" ao crear un documento"
+        },
+        {
+          "default": "Gardado!",
+          "label": "Texto amosado despois de enviar"
+        },
+        {
+          "label": "Cabeceira na pantalla emerxente \"Reiniciar\"",
+          "default": "Confirmar"
+        },
+        {
+          "label": "Texto por defecto para a caixa do resumo",
+          "default": "Fornece un breve resumo nas túas propias palabras"
+        }
+      ]
+    },
+    {
+      "label": "Informe de recursos",
+      "fields": [
+        {
+          "label": "Etiqueta para o botón \"Crear documento\"",
+          "default": "Crear documento"
+        },
+        {
+          "label": "Etiqueta para o botón \"Exportar\"",
+          "default": "Exportar"
+        },
+        {
+          "label": "Etiqueta para o botón \"Seleccionar todo\"",
+          "default": "Seleccionar todo"
+        },
+        {
+          "label": "Cabeceira das declaracións na táboa de declaracións",
+          "default": "Declaracións"
+        },
+        {
+          "label": "Cabeceira dos comentarios na táboa de declaracións",
+          "default": "Comentario"
+        },
+        {
+          "label": "Cabeceira da táboa \"Recurso\"",
+          "default": "Recursos"
+        },
+        {
+          "label": "Título da cabeceira da táboa de recursos",
+          "default": "Título"
+        },
+        {
+          "label": "Encabezado de introdución na táboa de recursos",
+          "default": "Introdución"
+        },
+        {
+          "label": "Encabezado de Url na táboa de recursos",
+          "default": "URL"
+        },
+        {
+          "label": "Etiqueta cando non se atopan recursos",
+          "default": "Non hai recursos"
+        },
+        {
+          "label": "Cabeceira para \"Comentario de resumo\"",
+          "default": "Comentario do resumo"
+        },
+        {
+          "label": "Etiqueta cando non se forneceu ningún resumo",
+          "default": "Sen resumo"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Empregado no canto da icona «Comentario»",
+          "default": "Engadir comentario"
+        },
+        {
+          "label": "Empregado no canto da icona «Pechar»",
+          "default": "Pechar"
+        },
+        {
+          "label": "Empregado no canto da icona «Arrastrar»",
+          "default": "Arrastrar"
+        },
+        {
+          "label": "Etiqueta para 'Zona de solta' para lectores de pantalla",
+          "description": "As variables dispoñibles son :index",
+          "default": "Área de solta #:index"
+        },
+        {
+          "label": "Etiqueta para 'Zona de solta baleira' para lectores de pantalla",
+          "description": "As variables dispoñibles son :index",
+          "default": "Área de solta baleira #:index"
+        },
+        {
+          "label": "Etiqueta para 'Elemento arrastrable' para lectores de pantalla",
+          "default": "Elemento arrastrable"
+        },
+        {
+          "description": "As variables dispoñibles son :index",
+          "label": "Etiqueta para 'Zona de solta' para lectores de pantalla",
+          "default": "Área de solta #:index"
+        },
+        {
+          "label": "Etiqueta para 'Zona de solta con valor' para lectores de pantalla",
+          "description": "As variables dispoñibles son :index e :statement",
+          "default": "Área de solta #:index con valor: :statement"
+        },
+        {
+          "label": "Descrición de como iniciar un arrastre para lectores de pantalla",
+          "default": "Preme a barra de espazo para iniciar un arrastre. Ao arrastrar, podes usar as teclas de frecha para mover o elemento e ESC para cancelar. \nÉ posible que algúns lectores de pantalla requiran que esteas no modo de enfoque ou que uses a túa tecla de paso\n"
+        },
+        {
+          "label": "Nome da columna de declaracións",
+          "description": "Esta é a columna coas declaracións que proporcionas",
+          "default": "Declaracións"
+        },
+        {
+          "label": "Nome da columna priorizada",
+          "description": "Esta é a columna onde se colocan as declaracións nunha orde",
+          "default": "Priorizado"
+        },
+        {
+          "description": "As variables dispoñibles son :startPosition, :listLength e :listName",
+          "default": "Levaches un elemento na posición :startPosition de :listLength na lista :listName.",
+          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre"
+        },
+        {
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se move dentro da mesma lista",
+          "description": "As variables dispoñibles son :startPosition, :endPosition e :listLength",
+          "default": "Moviches o elemento da posición :startPosition á posición :endPosition de :listLength"
+        },
+        {
+          "description": "As variables dispoñibles son :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition e :destinationListLength",
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se move a outra lista",
+          "default": "Moviches o elemento da lista :startListName na posición :startPosition de :startListLength á lista :destinationListName na posición :destinationPosition de :destinationListLength"
+        },
+        {
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre está sobre unha área na que non se pode soltar",
+          "default": "Actualmente non estás arrastrando sobre unha área na que se poida soltar"
+        },
+        {
+          "description": "As variables dispoñibles son :startPosition, :listLength e :listName",
+          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre",
+          "default": "Movemento cancelado. O elemento volveu á súa posición inicial :startPosition de :listLength en :listName"
+        },
+        {
+          "description": "As variables dispoñibles son :startPosition e :endPosition",
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta na mesma lista",
+          "default": "Soltaches o elemento. Moveuse da posición :startPosition a :endPosition"
+        },
+        {
+          "description": "As variables dispoñibles son :startListName, :startPosition, :destinationListName e :destinationPosition",
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta nunha lista diferente",
+          "default": "Soltaches o elemento. Moveuse da posición :startPosition na lista :startListName á posición :destinationPosition na lista :destinationListName"
+        },
+        {
+          "description": "As variables dispoñibles son :startPosition e :sourceName",
+          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta no mesmo lugar que antes de arrastrar",
+          "default": "Soltaches o elemento na mesma posición na que o levantaches. A posición é :startPosition en :sourceName"
+        },
+        {
+          "label": "Mensaxe lida ao lector de pantalla antes de entrar na sección coas declaracións",
+          "default": "Para interactuar coa seguinte sección, algúns lectores de pantalla requiren que esteas no modo de foco"
+        }
+      ],
+      "label": "Accesibilidade"
+    }
+  ]
+}

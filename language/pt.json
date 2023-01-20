@@ -1,0 +1,275 @@
+{
+  "semantics": [
+    {
+      "label": "Cabeçalho"
+    },
+    {
+      "label": "Descrição da tarefa"
+    },
+    {
+      "label": "Afirmações",
+      "fields": [
+        {
+          "label": "Statements",
+          "entity": "statement",
+          "field": {
+            "label": "Statement"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Base",
+      "default": "Base"
+    },
+    {
+      "label": "Instruções resumidas"
+    },
+    {
+      "label": "Recursos",
+      "fields": [
+        {
+          "label": "Resources",
+          "description": "Optional links to resources."
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Estas opções permitirão controlar o comportamento.",
+      "fields": [
+        {
+          "label": "Activar Tentar Novamente?",
+          "description": "Assinale aqui se quiser que o utilizador tente novamente"
+        },
+        {
+          "label": "Pré-preencher as afirmações",
+          "description": "O utilizador começa com as instruções já ordenadas"
+        },
+        {
+          "label": "Seleciona aleatoriamente as afirmações",
+          "description": "Irá selecionar aleatoriamente as declarações pré-preenchidas"
+        },
+        {
+          "label": "Número de campo de aterragem"
+        },
+        {
+          "label": "Permitir que os utilizadores adicionem suas próprias afirmações",
+          "description": "Permite que o utilizador adicione suas próprias afirmações"
+        },
+        {
+          "label": "Exiba os comentários fornecidos abaixo da afirmação",
+          "description": "Se o utilizador deu um comentário, o mesmo aparece na lista de afirmações"
+        },
+        {
+          "label": "Mostrar Resumo",
+          "description": "Deseja que o utilizador faça um resumo explicando os motivos para suas respostas"
+        }
+      ]
+    },
+    {
+      "label": "Localizar",
+      "fields": [
+        {
+          "label": "Marcador de posição para as caixas de texto",
+          "default": "Argumente a sua decisão"
+        },
+        {
+          "label": "Notificação do botão `Recursos`",
+          "default": "Recursos"
+        },
+        {
+          "label": "Notificação do botão Reiniciar",
+          "default": "Reiniciar"
+        },
+        {
+          "label": "Notificação do botão \"Adicionar alternativa\"",
+          "default": "Adicionar alternativa"
+        },
+        {
+          "label": "Notificação para o botão \"Continuar\" na caixa de diálogo de reinicialização",
+          "default": "Continuar"
+        },
+        {
+          "label": "Notificação para o botão \"Cancelar\" na caixa de diálogo de reinicialização",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Informe o utilizador que os dados serão eliminados se continuar",
+          "default": "Todas as alterações serão perdidas. Tem certeza que deseja continuar?"
+        },
+        {
+          "label": "Cabeçalho da janela popover 'Comentário",
+          "default": "Feedback"
+        },
+        {
+          "label": "Texto exibido no botão 'Enviar' ao criar um documento",
+          "default": "Enviar"
+        },
+        {
+          "label": "Texto exibido após o envio",
+          "default": "Gravado!"
+        },
+        {
+          "label": "Cabeçalho no popover 'Reiniciar",
+          "default": "Confirmar"
+        },
+        {
+          "label": "Marcador de posição para a caixa de resumo",
+          "default": "Faça um breve resumo em palavras suas"
+        }
+      ]
+    },
+    {
+      "label": "Relatório de recursos",
+      "fields": [
+        {
+          "label": "Notificação do botão \"Criar Documento\"",
+          "default": "Criar documento"
+        },
+        {
+          "label": "Notificação do botão Exportar",
+          "default": "Exportar"
+        },
+        {
+          "label": "Notificação do botão Selecionar tudo",
+          "default": "Selecionar tudo"
+        },
+        {
+          "label": "Cabeçalho da afirmação na tabela de afirmações",
+          "default": "Afirmações"
+        },
+        {
+          "label": "Cabeçalho do comentário na tabela de afirmações",
+          "default": "Comentário"
+        },
+        {
+          "label": "Cabeçalho acima da tabela Recurso",
+          "default": "Recursos"
+        },
+        {
+          "label": "Cabeçalho do título na tabela de recursos",
+          "default": "Título"
+        },
+        {
+          "label": "Cabeçalho de introdução na tabela de recursos",
+          "default": "Introdução"
+        },
+        {
+          "label": "Cabeçalho de URL na tabela de recursos",
+          "default": "Url"
+        },
+        {
+          "label": "Notificação quando nenhum recurso for encontrado",
+          "default": "Sem recursos"
+        },
+        {
+          "label": "Cabeçalho para \"Comentário de resumo\"",
+          "default": "Comentário de resumo"
+        },
+        {
+          "label": "Notificação quando nenhum resumo é fornecido",
+          "default": "Sem comentários"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Adicionar comentário",
+          "default": "Adicionar comentário"
+        },
+        {
+          "label": "Fechar",
+          "default": "Fechar"
+        },
+        {
+          "label": "Arrastar",
+          "default": "Arrastar"
+        },
+        {
+          "label": "Notificação 'item de soltura' para os leitores de ecrã",
+          "description": "As variáveis disponíveis são :index",
+          "default": "Área de soltura #:index"
+        },
+        {
+          "label": "Notificação 'item de soltura vazia' para os leitores de ecrã",
+          "description": "As variáveis disponíveis são :index",
+          "default": "Área de soltura vazia #:index"
+        },
+        {
+          "default": "Artigo arrastável",
+          "label": "Notificação 'artigo arrastável' para os leitores de ecrã"
+        },
+        {
+          "label": "Notificação 'Ponto de Aterragem' para os leitores de ecrã",
+          "description": "As variáveis disponíveis são :index",
+          "default": "Ponto de aterragem #:index"
+        },
+        {
+          "label": "Notificação 'Ponto de aterragem com valor' para os leitores de ecrã",
+          "description": "As variáveis disponíveis são :index e :statement",
+          "default": "Ponto de aterragem #:index com valor: :statement"
+        },
+        {
+          "label": "Descrição sobre como iniciar um movimento de arrastar para os leitores de ecrã",
+          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
+        },
+        {
+          "label": "Nome da coluna de afirmações",
+          "description": "Esta é a coluna com as afirmações que fornece",
+          "default": "Afirmações"
+        },
+        {
+          "label": "Nome da coluna priorizada",
+          "description": "Esta é a coluna onde as afirmações são colocadas em ordem",
+          "default": "Priorizado"
+        },
+        {
+          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
+          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
+          "default": "Tirou um artigo na posição :startPosition de :listLength na lista :listName."
+        },
+        {
+          "label": "Mensagem lida para o leitor de ecrã quando ao arrastar permanece dentro da mesma lista",
+          "description": "As variáveis disponíveis são :startPosition, :endPosition e :listLength",
+          "default": "Moveu o artigo da posição :startPosition para a posição :endPosition de :listLength"
+        },
+        {
+          "description": "As variáveis disponíveis são :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition e :destinationListLength",
+          "label": "Mensagem lida para o leitor de ecrã quando ao arrastar permanece dentro da mesma lista",
+          "default": "Moveu o artigo da lista :startListName na posição :startPosition de :startListLength para a lista :destinationListName na posição :destinationPosition de :destinationListLength"
+        },
+        {
+          "label": "Mensagem lida para o leitor de ecrã ao arrastar sobre uma área que não pode ser solta",
+          "default": "De momento, não está arrastar sobre uma área arrastável e soltável"
+        },
+        {
+          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
+          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
+          "default": "Movimento cancelado. O artigo retornou à sua posição inicial :startPosition de :listLength em :listName"
+        },
+        {
+          "description": "As variáveis disponíveis são :startPosition e :endPosition",
+          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto na mesma lista",
+          "default": "Soltou o artigo. O item foi movido da posição :startPosition para :endPosition"
+        },
+        {
+          "description": "As variáveis disponíveis são :startListName, :startPosition, :destinationListName e :destinationPosition",
+          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto numa lista diferente",
+          "default": "Soltou o artigo. O item foi movido da posição :startPosition na lista :startListName para a posição :destinationPosition na lista :destinationListName"
+        },
+        {
+          "description": "As variáveis disponíveis são :startPosition e :sourceName",
+          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto no mesmo local antes do arrasto",
+          "default": "Soltou o artigo na mesma posição em que pegou. A posição é :startPosition em :sourceName"
+        },
+        {
+          "label": "Mensagem lida para o leitor de ecrã antes de entrar na secção com as afirmações",
+          "default": "Para interagir com a próxima secção, alguns leitores de ecrã exigem que esteja no modo de foco"
+        }
+      ],
+      "label": "Acessibilidade"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "semantics": [
+    {
+      "label": "Header"
+    },
+    {
+      "label": "Task description"
+    },
+    {
+      "label": "Statements",
+      "fields": [
+        {
+          "label": "Statements",
+          "entity": "statement",
+          "field": {
+            "label": "Statement"
+          }
+        }
+      ]
+    },
+    {
+      "label": "Summary",
+      "default": "Summary"
+    },
+    {
+      "label": "Summary instruction"
+    },
+    {
+      "label": "Resources",
+      "fields": [
+        {
+          "label": "Resources",
+          "description": "Optional links to resources."
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you control the behaviour.",
+      "fields": [
+        {
+          "label": "Enable retry?",
+          "description": "Tick off this if you want the user to be able to retry"
+        },
+        {
+          "label": "Pre-populate the statements",
+          "description": "The user starts off with the statements already ordered"
+        },
+        {
+          "label": "Randomize the statements",
+          "description": "Will randomize the pre-populated statements"
+        },
+        {
+          "label": "Number of statements"
+        },
+        {
+          "label": "Allow users to add their own statements",
+          "description": "Lets the user add their own statements"
+        },
+        {
+          "label": "Display the provided comments below the statement",
+          "description": "If the user has provided a comment, this is shown in the statements list"
+        },
+        {
+          "label": "Show summary",
+          "description": "Do you want the user to provide a summary explaining the reasons for his/her answers"
+        }
+      ]
+    },
+    {
+      "fields": [
+        {
+          "label": "Placeholder for the text boxes",
+          "default": "Type your reasons for such answers"
+        },
+        {
+          "label": "Label for the \"Resources\"-button",
+          "default": "Resources"
+        },
+        {
+          "label": "Label for the \"Restart\"-button",
+          "default": "Restart"
+        },
+        {
+          "label": "Label for the \"Add alternative\"-button",
+          "default": "Add alternative"
+        },
+        {
+          "label": "Label for the \"Continue\"-button in the restart dialog",
+          "default": "Continue"
+        },
+        {
+          "label": "Label for the \"Cancel\"-button in the restart dialog",
+          "default": "Cancel"
+        },
+        {
+          "label": "Inform the user that data will be lost if he/she continues",
+          "default": "All the changes will be lost. Are you sure you wish to continue?"
+        },
+        {
+          "label": "Header in 'Comment' popover",
+          "default": "Feedback"
+        },
+        {
+          "label": "Text displayed in 'Submit'-button when creating a document",
+          "default": "Submit"
+        },
+        {
+          "label": "Text displayed after submitting",
+          "default": "Saved!"
+        },
+        {
+          "label": "Header in 'Restart' popover",
+          "default": "Confirm"
+        },
+        {
+          "label": "Placeholder for the summary box",
+          "default": "Give a brief summary in your own words"
+        }
+      ],
+      "label": "Localize"
+    },
+    {
+      "fields": [
+        {
+          "label": "Label for \"Create document\"-button",
+          "default": "Create document"
+        },
+        {
+          "label": "Label on \"Export\" button",
+          "default": "Export"
+        },
+        {
+          "label": "Label on \"Select all\" button",
+          "default": "Select all"
+        },
+        {
+          "label": "Statement header in statement table",
+          "default": "Statements"
+        },
+        {
+          "label": "Comment header in statement table",
+          "default": "Comment"
+        },
+        {
+          "label": "Header above the \"Resource\" table",
+          "default": "Resources"
+        },
+        {
+          "label": "Title header in resource table",
+          "default": "Title"
+        },
+        {
+          "label": "Intro header in resource table",
+          "default": "Intro"
+        },
+        {
+          "label": "Url header in resource table",
+          "default": "Url"
+        },
+        {
+          "label": "Label when no resources are found",
+          "default": "No resources"
+        },
+        {
+          "label": "Header for summary comment",
+          "default": "Summary comment"
+        },
+        {
+          "label": "Label when no summary is provided",
+          "default": "No summary"
+        }
+      ],
+      "label": "Resource report"
+    },
+    {
+      "label": "Accessibility",
+      "fields": [
+        {
+          "label": "Used instead of 'Comment'-icon",
+          "default": "Add comment"
+        },
+        {
+          "label": "Used instead of 'Close'-icon",
+          "default": "Close"
+        },
+        {
+          "label": "Used instead of 'Drag'-icon",
+          "default": "Drag"
+        },
+        {
+          "label": "'Droparea' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Droparea #:index"
+        },
+        {
+          "label": "'Empty droparea' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Empty droparea #:index"
+        },
+        {
+          "label": "'Draggable item' label for screenreaders",
+          "default": "Draggable item"
+        },
+        {
+          "label": "'Dropzone' label for screenreaders",
+          "description": "Available variables are :index",
+          "default": "Dropzone #:index"
+        },
+        {
+          "label": "'Dropzone with value' label for screenreaders",
+          "description": "Available variables are :index and :statement",
+          "default": "Dropzone #:index with value: :statement"
+        },
+        {
+          "label": "Description on how to start a drag for screenreaders",
+          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
+        },
+        {
+          "label": "Name of the statements column",
+          "description": "This is the column with the statements you provide",
+          "default": "Statements"
+        },
+        {
+          "label": "Name of the prioritized column",
+          "description": "This is the column where the statements are put in an order",
+          "default": "Prioritized"
+        },
+        {
+          "label": "Message read to the screen reader when drag starts",
+          "description": "Available variables are :startPosition, :listLength and :listName",
+          "default": "You have lifted an item in position :startPosition of :listLength in the :listName list."
+        },
+        {
+          "label": "Message read to the screen reader when drag is moved within the same list",
+          "description": "Available variables are :startPosition, :endPosition and :listLength",
+          "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
+        },
+        {
+          "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
+          "label": "Message read to the screen reader when drag is moved to another list",
+          "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
+        },
+        {
+          "label": "Message read to the screen reader when drag is over an area that cannot be dropped on",
+          "default": "You are currently not dragging over a droppable area"
+        },
+        {
+          "description": "Available variables are :startPosition, :listLength and :listName",
+          "label": "Message read to the screen reader when drag starts",
+          "default": "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName"
+        },
+        {
+          "description": "Available variables are :startPosition and :endPosition",
+          "label": "Message read to the screen reader when drag is dropped in the same list",
+          "default": "You have dropped the item. It has moved from position :startPosition to :endPosition"
+        },
+        {
+          "description": "Available variables are :startListName, :startPosition, :destinationListName and :destinationPosition",
+          "label": "Message read to the screen reader when drag is dropped in a different list",
+          "default": "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName"
+        },
+        {
+          "description": "Available variables are :startPosition and :sourceName",
+          "label": "Message read to the screen reader when drag is dropped in the same location as before the drag",
+          "default": "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName"
+        },
+        {
+          "label": "Message read to the screen reader before entering the section with the statements",
+          "default": "To interact with the next section some screen readers require you to be in focus mode"
+        }
+      ]
+    }
+  ]
+}
