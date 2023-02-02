@@ -107,6 +107,15 @@ export function getRatio(container) {
   return container.offsetWidth / parseFloat(computedStyles.getPropertyValue('font-size'));
 }
 
+
+/**
+ * @param {CategoryDataObject | ArgumentDataObject} element
+ * @returns {string}
+ */
+export function getDnDId(element) {
+  return [element.prefix, element.id].join('-');
+}
+
 /**
  * Function to make sure the parameters sent into the content type to be valid
  * @param params

@@ -1,12 +1,14 @@
+// @ts-check
 import React, {useRef, useState} from 'react';
 import PropTypes from 'prop-types';
-import {Draggable} from "react-beautiful-dnd";
 import Remaining from "./components/Remaining";
 import Prioritized from "./components/Prioritized";
 import Placeholder from "./components/Placeholder";
 import Comment from "./components/components/Comment";
 import classnames from "classnames";
+import { CSS } from '@dnd-kit/utilities';
 import 'styles/components/StatementList.scss';
+import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 
 function StatementList(props) {
 
@@ -19,10 +21,11 @@ function StatementList(props) {
    *   - prioritiezed: statements that has been put in an order
    *   - placeholder: containers that serve as dropzones in the ordered list
    * @param isDragging
-   * @param dragHandleProps
+   * @param attributes
+   * @param listeners
    * @return {*}
    */
-  function handleStatementType(isDragging, dragHandleProps) {
+  function handleStatementType(isDragging, attributes, listeners) {
     const {
       statement,
       draggableType,
@@ -38,7 +41,8 @@ function StatementList(props) {
           onStatementChange={handleOnStatementTextEdit}
           enableEditing={enableEditing}
           isDragging={isDragging}
-          draggableProps={dragHandleProps}
+          attributes={attributes}
+          listeners={listeners}
         />
       );
     }
@@ -66,7 +70,6 @@ function StatementList(props) {
           onCommentBlur={handleOnCommentBlur}
           onCommentChange={handleOnCommentChange}
           inputRef={inputRef}
-          draggableProps={dragHandleProps}
         />
       );
     }
@@ -122,15 +125,42 @@ function StatementList(props) {
     index,
     statement,
     draggableType,
+    id,
   } = props;
 
+  const animateLayoutChanges = (args) =>
+    defaultAnimateLayoutChanges({ ...args, wasDragging: true });
+
+  const { setNodeRef, transform, transition, attributes, listeners, isDragging } =
+  useSortable({
+    id: id,
+    data: { index },
+    animateLayoutChanges,
+    transition: null
+  });
+
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    transition,
+    opacity: isDragging ? 0 : 1,
+    cursor: 'grab'
+  };
+
   return (
-    <Draggable
-      draggableId={draggableType + "-" + statement.id}
-      index={index}
-      isDragDisabled={draggableType === 'prioritized' && statement.isPlaceholder}
+    <div
+      // draggableId={draggableType + "-" + statement.id}
+      // index={index}
+      // isDragDisabled={draggableType === 'prioritized' && statement.isPlaceholder}
+    
+      ref={setNodeRef}
+      style={style}
+      className={classnames('h5p-dnd-draggable', {
+        'h5p-dnd-draggable--dragging': isDragging
+      })}
+      // {...attributes}
+      // {...listeners}
     >
-      {(provided, snapshot) => {
+      {/* {(provided, snapshot) => {
         return (
           <li
             className={"h5p-order-priority-draggable-container"}
@@ -147,8 +177,20 @@ function StatementList(props) {
             </div>
           </li>
         );
-      }}
-    </Draggable>
+      }} */}
+      <li
+        className={"h5p-order-priority-draggable-container"}
+      >
+        <div
+          className={classnames("h5p-order-priority-draggable-element", {
+            'h5p-order-priority-no-transform': props.disableTransform,
+          })}
+          aria-roledescription={props.translate('draggableItem')}
+        >
+          {handleStatementType(isDragging, attributes, listeners)}
+        </div>
+      </li>
+    </div>
   );
 
 }
@@ -156,6 +198,7 @@ function StatementList(props) {
 StatementList.propTypes = {
   statement: PropTypes.object,
   index: PropTypes.number.isRequired,
+  id: PropTypes.string,
   draggableType: PropTypes.string.isRequired,
   isSingleColumn: PropTypes.bool,
   onStatementChange: PropTypes.func,

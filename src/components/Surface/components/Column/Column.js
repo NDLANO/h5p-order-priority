@@ -1,7 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Droppable } from 'react-beautiful-dnd';
-import classnames from 'classnames';
+// @ts-nocheck
+import React from "react";
+import PropTypes from "prop-types";
+import classnames from "classnames";
+import Droppable from "../StatementList/components/components/Droppable";
+import { SortableContext } from "@dnd-kit/sortable";
 
 /**
  * Add columns that acts as dropzones for the statements
@@ -19,31 +21,21 @@ function Column(props) {
     addStatement,
   } = props;
 
+  // console.log("disableDrop " + disableDrop)
   return (
-    <div
-      className={classnames(additionalClassName)}
-    >
-      <Droppable
-        droppableId={droppableId}
-        isDropDisabled={disableDrop}
+    <div className={additionalClassName}>
+      <SortableContext 
+        // items={connectedArguments.map((argumentId) => `argument-${argumentId}`)}
+        items={[]}
       >
-        {(provided, snapshot) => {
-          return (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className={classnames("h5p-order-priority-column", {
-                "h5p-order-priority-drag-active": snapshot.isDraggingOver && snapshot.draggingFromThisWith === null
-              })}
-            >
-              {children}
-              <li style={{display: !combine ? "block" : "none"}}>
-                {provided.placeholder}
-              </li>
-            </ul>
-          );
-        }}
-      </Droppable>
+        <Droppable id={droppableId} disabled={true}>
+          {/* <ul className={classnames("h5p-order-priority-column")}> */}
+            {children}
+            {/* <li style={{ display: !combine ? "block" : "none" }}>
+            </li> */}
+          {/* </ul> */}
+        </Droppable>
+      </SortableContext>
       {addStatement}
     </div>
   );

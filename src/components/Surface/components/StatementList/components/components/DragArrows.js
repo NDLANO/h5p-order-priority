@@ -7,7 +7,8 @@ function DragArrows({draggableProps}) {
   return (
     <div
       className={"h5p-order-priority-drag-element"}
-      {...draggableProps}
+      // draggableProps har dra funksjon
+      // {...draggableProps}
       role={"button"}
     >
       <span

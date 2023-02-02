@@ -1,12 +1,12 @@
 import React, {Fragment, useCallback, useReducer, useEffect} from 'react';
 import {useOrderPriority} from "context/OrderPriorityContext";
-import {DragDropContext} from 'react-beautiful-dnd';
 import Column from './components/Column/Column';
 import StatementList from "./components/StatementList/StatementList";
 import AddStatement from "./components/StatementList/components/components/AddStatement";
 import Summary from "./components/Summary/Summary";
 import {StatementDataObject} from "../utils";
 import Messages from "./Messages";
+import { DndContext, DragOverlay } from '@dnd-kit/core';
 
 function Surface() {
   const context = useOrderPriority();
@@ -53,67 +53,107 @@ function Surface() {
         };
       }
       case 'dragEnd': {
+        // let {
+        //   combine,
+        //   destination,
+        //   source,
+        //   draggableId
+        // } = action.payload;
+
         let {
-          combine,
-          destination,
-          source,
-          draggableId
+          activatorEvent, // pointerdown {html target}
+          active, // id: remaining-0, data {....}
+          collisions, // [{id: prioritized-0, data {...}}, {id: processed, data {...}}, {id: remaining-0, data {...}}, {id: start, data {...}}]
+          delta, // some coordination stuff
+          over // {id: prioritized-0, data {...}}
         } = action.payload;
 
         const prioritizedStatements = Array.from(state.prioritizedStatements);
         const remainingStatements = Array.from(state.remainingStatements);
         const newStatements = JSON.parse(JSON.stringify(state.statements));
+        const [activeString, activeId] = active.id.toString().split('-') ?? [];
+        const [overString, overId] = over.id.toString().split('-') ?? [];
+        const index = remainingStatements.indexOf(parseInt(activeId));
+        const draggedElement = newStatements[activeId];
+        const droppedElement = newStatements[parseInt(overId)];
 
-        if (source && destination && source.droppableId === destination.droppableId) {
-          draggableId = parseInt(draggableId.replace(/\w+-/, ""), 10);
-          prioritizedStatements.splice(source.index, 1);
-          prioritizedStatements.splice(destination.index, 0, draggableId);
+        if (draggingOverFromRemainingToPrioritized(active, over)) {
+          if (isDraggedElementFromRemaining(draggedElement) && isDroppingOnAlreadyPrioritizedStatement(droppedElement)) {
+            draggedElement.isPlaceholder = false;
+            draggedElement.touched = true;
+            droppedElement.isPlaceholder = true;
+            droppedElement.touched = false;
+            remainingStatements[index] = droppedElement.id;
+            swapIndexPositionbetweenElements(activeId, overId, prioritizedStatements);
+          }
+          else if (isDraggedElementFromRemaining(draggedElement)) {
+            remainingStatements.splice(index, 1);
+            swapIndexPositionbetweenElements(activeId, overId, prioritizedStatements);
+            draggedElement.isPlaceholder = false;
+            draggedElement.touched = true;
+          }
         }
-        else {
-          const statementId = remainingStatements[source.index];
-          const draggedStatement = newStatements[statementId];
-          const draggedIndex = prioritizedStatements.indexOf(statementId);
-          let droppedIndex = null;
-          if (combine !== null) {
-            droppedIndex = prioritizedStatements.indexOf(parseInt(combine.draggableId.replace("prioritized-", ""), 10));
-          }
-          else {
-            droppedIndex = destination.index < prioritizedStatements.length ? destination.index : prioritizedStatements.length - 1;
-          }
 
-          const droppedOnStatement = newStatements[prioritizedStatements[droppedIndex]];
-          if (droppedIndex !== -1 && draggedIndex !== -1) {
-            [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
-          }
-          else if (draggedIndex === -1) {
-            prioritizedStatements.splice(droppedIndex, 1, statementId);
-          }
+        // if (source && destination && source.droppableId === destination.droppableId) {
+        //   draggableId = parseInt(draggableId.replace(/\w+-/, ""), 10);
+        //   prioritizedStatements.splice(source.index, 1);
+        //   prioritizedStatements.splice(destination.index, 0, draggableId);
+        // }
+        // else {
+        //   const statementId = remainingStatements[source.index];
+        //   const draggedStatement = newStatements[statementId];
+        //   const draggedIndex = prioritizedStatements.indexOf(statementId);
+        //   let droppedIndex = null;
+        //   if (combine !== null) {
+        //     droppedIndex = prioritizedStatements.indexOf(parseInt(combine.draggableId.replace("prioritized-", ""), 10));
+        //   }
+        //   else {
+        //     droppedIndex = destination.index < prioritizedStatements.length ? destination.index : prioritizedStatements.length - 1;M;
+        //   }
 
-          if ( droppedOnStatement.touched === true) {
-            remainingStatements.push(droppedOnStatement.id);
-            droppedOnStatement.touched = false;
-            droppedOnStatement.isPlaceholder = true;
-          }
+        //   const droppedOnStatement = newStatements[prioritizedStatements[droppedIndex]];
+        //   if (droppedIndex !== -1 && draggedIndex !== -1) {
+        //     [prioritizedStatements[droppedIndex], prioritizedStatements[draggedIndex]] = [prioritizedStatements[draggedIndex], prioritizedStatements[droppedIndex]];
+        //   }
+        //   else if (draggedIndex === -1) {
+        //     prioritizedStatements.splice(droppedIndex, 1, statementId);
+        //   }
 
-          if (remainingStatements.length > 0 && source.droppableId !== 'processed') {
-            remainingStatements.splice(source.index, 1);
-          }
+        //   if ( droppedOnStatement.touched === true) {
+        //     remainingStatements.push(droppedOnStatement.id);
+        //     droppedOnStatement.touched = false;
+        //     droppedOnStatement.isPlaceholder = true;
+        //   }
 
-          draggedStatement.isPlaceholder = destination === 'processed';
-          draggedStatement.touched = true;
-        }
+        //   if (remainingStatements.length > 0 && source.droppableId !== 'processed') { //     remainingStatements.splice(source.index, 1);
+        //   }
+
+        //   draggedStatement.isPlaceholder = destination === 'processed';
+        //   draggedStatement.touched = true;
+        // }
 
         prioritizedStatements.forEach((statementId, index) => {
           newStatements[statementId].displayIndex = index + 1;
         });
 
+        // console.log(
+        //   {
+        //   ...state,
+        //   statements: newStatements, // Statements
+        //   prioritizedStatements: prioritizedStatements, // [0,1]
+        //   remainingStatements: remainingStatements, // [0,1]
+        //   showOneColumn: remainingStatements.length === 0, // boolean
+        //   canAddPrioritized: remainingStatements.length === 0 && context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statement => !newStatements[statement.id].touched).length > 0, // boolean
+        //   }
+        // )
+
         return {
           ...state,
-          statements: newStatements,
-          prioritizedStatements: prioritizedStatements,
-          remainingStatements: remainingStatements,
-          showOneColumn: remainingStatements.length === 0,
-          canAddPrioritized: remainingStatements.length === 0 && context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statementId => !newStatements[statementId].touched).length > 0,
+          statements: newStatements, // Statements
+          prioritizedStatements: prioritizedStatements, // [0,1]
+          remainingStatements: remainingStatements, // [0,1]
+          showOneColumn: remainingStatements.length === 0, // boolean
+          canAddPrioritized: remainingStatements.length === 0 && context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statement => !newStatements[statement.id].touched).length > 0, // boolean
         };
       }
       case 'statementChange': {
@@ -177,6 +217,35 @@ function Surface() {
     }
   }
 
+  function isDroppingOnAlreadyPrioritizedStatement(draggedElement) {
+    return draggedElement.isPlaceholder === false;
+  }
+
+  function draggingOverFromRemainingToPrioritized(active, over) {
+    if (active === undefined || over === undefined) {
+      return false;
+    }
+    const [activeString] = active.id.toString().split('-') ?? [];
+    const [overString] = over.id.toString().split('-') ?? [];
+
+    return activeString === "remaining" && overString === "prioritized";
+  }
+
+  function isDraggedElementFromRemaining(dragged) {
+    if (dragged === undefined) {
+      return false;
+    }
+
+    return dragged.isPlaceholder === true;
+  }
+
+  function swapIndexPositionbetweenElements(activeId, overId, prioritizedStatements) {
+    const droppedIndex = prioritizedStatements.indexOf(parseInt(overId));
+    const tempIndex = prioritizedStatements.indexOf(parseInt(activeId));
+    [prioritizedStatements[tempIndex], prioritizedStatements[droppedIndex]] = [prioritizedStatements[droppedIndex], prioritizedStatements[tempIndex]];
+    prioritizedStatements[droppedIndex] = parseInt(activeId);
+  }
+
   const memoizedReducer = useCallback(stateHeadQuarter, []);
   const [state, dispatch] = useReducer(memoizedReducer, init());
 
@@ -217,6 +286,7 @@ function Surface() {
    * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
    */
   function init() {
+    
     const {
       params: {
         statementsList = [],
@@ -259,11 +329,12 @@ function Surface() {
     });
 
     const remainingStatements = prepopulate === true ? statements.slice(numberOfStatements) : statements.filter(statement => statement.added === false);
+    const prioritizedStatements = statements.filter(statement => statement.displayIndex <= numberOfStatements || statement.touched);
 
     return {
       statements: statements,
       remainingStatements: remainingStatements.map(statement => statement.id),
-      prioritizedStatements: statements.filter(statement => statement.displayIndex <= numberOfStatements || statement.touched).map(statement => statement.id),
+      prioritizedStatements: prioritizedStatements.map(statement => statement.id),
       showOneColumn: prepopulate,
       canAddPrioritized: allowAddingOfStatements && remainingStatements.length === 0,
     };
@@ -302,16 +373,21 @@ function Surface() {
    *
    * @type {(...args: any[]) => any}
    */
-  const onDragStart = useCallback((element, provider) => {
+  // const onDragStart = useCallback((element, provider) => {
 
-    const listDetails = getListDetails(element.source.droppableId, element.source);
-    provider.announce(translate("dragStartInstructions", Messages.positionLengthName(listDetails)));
+  //   const listDetails = getListDetails(element.source.droppableId, element.source);
+  //   provider.announce(translate("dragStartInstructions", Messages.positionLengthName(listDetails)));
 
-    dispatch({
-      type: 'dragStart',
-      payload: element,
-    });
-  }, [state, context]);
+  //   dispatch({
+  //     type: 'dragStart',
+  //     payload: element,
+  //   });
+  // }, [state, context]);
+
+  const [active, setActive] = React.useState(null);
+  const handleDragStart = ({ acitve }) => {
+    setActive(acitve);
+  };
 
   /**
    * UUpdate state and screen reader during the drag
@@ -347,43 +423,52 @@ function Surface() {
    * Update the state and screen reader after drag ends
    * @type {(...args: any[]) => any}
    */
-  const onDragEnd = useCallback((dragResult, provider) => {
-    let {
-      combine,
-      destination,
-      source,
-      reason,
-    } = dragResult;
+  function handleDragEnd(dragResult) {
+    let {active, over} = dragResult;
 
-    if (reason === 'CANCEL') {
-      const listDetails = getListDetails(source.droppableId, source);
-      provider.announce(translate("dragCancelled", Messages.positionLengthName(listDetails)));
+    if (active?.id == null || over?.id == null) {
       return;
     }
 
-    if ((!combine && !destination)) {
-      provider.announce("Oh crap!");
-      return;
-    }
+    const [activeString, acitveIndex] = active.id.toString().split('-') ?? [];
+    const [overString, overIndex] = over.id.toString().split('-') ?? [];
 
-    if (destination !== null && destination.droppableId === source.droppableId && destination.index === source.index) {
-      const sourceDetails = getListDetails(source.droppableId, source);
-      const destinationDetails = getListDetails(destination.droppableId, destination);
-      provider.announce(translate("dropInSameLocation", Messages.namesPositionName(sourceDetails, destinationDetails)));
-      return;
-    }
+    const statementId = parseInt(acitveIndex, 10);
+    const prioritizedId = overIndex && parseInt(overIndex, 10);
 
-    if (source && destination) {
-      const sourceDetails = getListDetails(source.droppableId, source);
-      const destinationDetails = getListDetails(destination.droppableId, destination);
-      if ( sourceDetails.listId === destinationDetails.listId) {
-        provider.announce(translate("dropInSameList", Messages.namesPositionName(sourceDetails, destinationDetails)));
-      }
-      else {
-        provider.announce(translate("dropInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
-      }
+    const prioritizedStatement = state.prioritizedStatements;
+    const remainingStatements = state.remainingStatements;
 
-    }
+    // console.log("prioritzedStatement: ");
+    // console.log(prioritizedStatement);
+    // console.log("remainingStatements: ");
+    // console.log(remainingStatements);
+
+    // Hvis en drar kortet fra remaining til prioritized
+    // if (activeString === "remaining" && overString === "prioritized" && prioritizedStatement.includes(prioritizedStatement.find(statementId => statementId === prioritizedId))) {
+    // }
+
+    // if (source && destination) {
+    //   const sourceDetails = getListDetails(source.droppableId, source);
+    //   const destinationDetails = getListDetails(destination.droppableId, destination);
+    //   if ( sourceDetails.listId === destinationDetails.listId) {
+    //     provider.announce(translate("dropInSameList", Messages.namesPositionName(sourceDetails, destinationDetails)));
+    //   }
+    //   else {
+    //     provider.announce(translate("dropInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
+    //   }
+
+    // Neste oppgave: Sjekke dette her på master og kartelegge hvilken av disse her er hva og hvordan dispatch skal trigges.
+
+    // if (destination !== null && destination.droppableId === source.droppableId && destination.index === source.index) {
+    //   const sourceDetails = getListDetails(source.droppableId, source);
+    //   const destinationDetails = getListDetails(destination.droppableId, destination);
+    //   provider.announce(translate("dropInSameLocation", Messages.namesPositionName(sourceDetails, destinationDetails)));
+    //   return;
+    // }
+
+
+    // }
 
     dispatch({
       type: 'dragEnd',
@@ -391,7 +476,57 @@ function Surface() {
         ...dragResult
       }
     });
-  }, [state, context]);
+  };
+
+
+
+
+
+  // const onDragEnd = useCallback((dragResult, provider) => {
+  //   let {
+  //     combine,
+  //     destination,
+  //     source,
+  //     reason,
+  //   } = dragResult;
+
+  //   if (reason === 'CANCEL') {
+  //     const listDetails = getListDetails(source.droppableId, source);
+  //     provider.announce(translate("dragCancelled", Messages.positionLengthName(listDetails)));
+  //     return;
+  //   }
+
+  //   if ((!combine && !destination)) {
+  //     provider.announce("Oh crap!");
+  //     return;
+  //   }
+
+  //   if (destination !== null && destination.droppableId === source.droppableId && destination.index === source.index) {
+  //     const sourceDetails = getListDetails(source.droppableId, source);
+  //     const destinationDetails = getListDetails(destination.droppableId, destination);
+  //     provider.announce(translate("dropInSameLocation", Messages.namesPositionName(sourceDetails, destinationDetails)));
+  //     return;
+  //   }
+
+  //   if (source && destination) {
+  //     const sourceDetails = getListDetails(source.droppableId, source);
+  //     const destinationDetails = getListDetails(destination.droppableId, destination);
+  //     if ( sourceDetails.listId === destinationDetails.listId) {
+  //       provider.announce(translate("dropInSameList", Messages.namesPositionName(sourceDetails, destinationDetails)));
+  //     }
+  //     else {
+  //       provider.announce(translate("dropInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
+  //     }
+
+  //   }
+
+  //   dispatch({
+  //     type: 'dragEnd',
+  //     payload: {
+  //       ...dragResult
+  //     }
+  //   });
+  // }, [state, context]);
 
   /**
    * Callback that stores changes when the user changes the statements
@@ -424,67 +559,77 @@ function Surface() {
   function handleSurface() {
     return (
       <Fragment>
-        <Column
-          droppableId={"processed"}
-          combine={state.isCombineEnabled}
-          additionalClassName={"h5p-order-priority-dropzone"}
-          addStatement={state.canAddPrioritized === true ? (
-            <AddStatement
-              onClick={() => dispatch({
-                type: "addNewPrioritizedStatement"
-              })}
-              translations={context.translations}
-            />
-          ) : null}
+        <DndContext
+          className="h5p-order-prioritySurface"
+          onDragEnd={handleDragEnd}
+          // onDragUpdate={onDragUpdate}
+          onDragStart={handleDragStart}
+          dragHandleUsageInstructions={context.translations.dragHandleInstructions}
         >
-          {state.prioritizedStatements
-            .map(statementId => state.statements[statementId])
-            .map((statement, index) => (
-              <StatementList
-                key={"prioritized-" + statement.id}
-                draggableType="prioritized"
-                statement={statement}
-                index={index}
-                isSingleColumn={true}
-                onStatementChange={handleOnStatementChange}
-                enableEditing={context.behaviour.allowAddingOfStatements}
-                enableCommentDisplay={context.behaviour.displayCommentsBelowStatement}
-                disableTransform={state.isCombineEnabled}
-                translate={context.translate}
-              />
-            ))
-          }
-        </Column>
-        {state.remainingStatements.length > 0 && (
           <Column
-            droppableId="start"
-            disableDrop={true}
-            additionalClassName={"h5p-order-priority-select-list"}
-            addStatement={context.behaviour && context.behaviour.allowAddingOfStatements === true ? (
+            droppableId={"processed"}
+            combine={state.isCombineEnabled}
+            additionalClassName={"h5p-order-priority-dropzone"}
+            addStatement={state.canAddPrioritized === true ? (
               <AddStatement
                 onClick={() => dispatch({
-                  type: "addNewRemainingStatement"
+                  type: "addNewPrioritizedStatement"
                 })}
                 translations={context.translations}
               />
             ) : null}
           >
-            {state.remainingStatements
+            {state.prioritizedStatements
               .map(statementId => state.statements[statementId])
               .map((statement, index) => (
                 <StatementList
-                  key={"remaining-" + statement.id}
-                  draggableType="remaining"
+                  key={"prioritized-" + statement.id}
+                  id={"prioritized-" + statement.id}
+                  draggableType="prioritized"
                   statement={statement}
                   index={index}
+                  isSingleColumn={true}
                   onStatementChange={handleOnStatementChange}
                   enableEditing={context.behaviour.allowAddingOfStatements}
+                  enableCommentDisplay={context.behaviour.displayCommentsBelowStatement}
+                  disableTransform={state.isCombineEnabled}
                   translate={context.translate}
                 />
               ))
             }
           </Column>
-        )}
+          {state.remainingStatements.length > 0 && (
+            <Column
+              droppableId="start"
+              disableDrop={true}
+              additionalClassName={"h5p-order-priority-select-list"}
+              addStatement={context.behaviour && context.behaviour.allowAddingOfStatements === true ? (
+                <AddStatement
+                  onClick={() => dispatch({
+                    type: "addNewRemainingStatement"
+                  })}
+                  translations={context.translations}
+                />
+              ) : null}
+            >
+              {state.remainingStatements
+                .map(statementId => state.statements[statementId])
+                .map((statement, index) => (
+                  <StatementList
+                    key={"remaining-" + statement.id}
+                    id={"remaining-" + statement.id}
+                    draggableType="remaining"
+                    statement={statement}
+                    index={index}
+                    onStatementChange={handleOnStatementChange}
+                    enableEditing={context.behaviour.allowAddingOfStatements}
+                    translate={context.translate}
+                  />
+                ))
+              }
+            </Column>
+          )}
+        </DndContext>
       </Fragment>
     );
   }
@@ -496,15 +641,12 @@ function Surface() {
         onTouchStart={() => {}} //silly call to make it work in Apple products
       >
         <p className={"visible-hidden"}>{context.translations.userInfoAboutFocusMode}</p>
-        <DragDropContext
-          className="h5p-order-prioritySurface"
-          onDragEnd={onDragEnd}
-          onDragUpdate={onDragUpdate}
-          onDragStart={onDragStart}
-          dragHandleUsageInstructions={context.translations.dragHandleInstructions}
-        >
-          {handleSurface()}
-        </DragDropContext>
+        {handleSurface()}
+        {/* <DragOverlay>
+            {active ? (
+              <p>Hei på deg!</p>
+            ) : null}
+          </DragOverlay> */}
       </div>
       {provideSummary === true && (
         <Summary/>
