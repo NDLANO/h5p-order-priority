@@ -70,6 +70,9 @@ function StatementList(props) {
           onCommentBlur={handleOnCommentBlur}
           onCommentChange={handleOnCommentChange}
           inputRef={inputRef}
+          isDragging={isDragging}
+          attributes={attributes}
+          listeners={listeners}
         />
       );
     }
