@@ -137,9 +137,8 @@ function StatementList(props) {
   const { setNodeRef, transform, transition, attributes, listeners, isDragging } =
   useSortable({
     id: id,
-    data: { index },
+    data: { statement },
     animateLayoutChanges,
-    transition: null
   });
 
   const style = {
@@ -151,36 +150,14 @@ function StatementList(props) {
 
   return (
     <div
-      // draggableId={draggableType + "-" + statement.id}
-      // index={index}
-      // isDragDisabled={draggableType === 'prioritized' && statement.isPlaceholder}
-    
       ref={setNodeRef}
       style={style}
       className={classnames('h5p-dnd-draggable', {
         'h5p-dnd-draggable--dragging': isDragging
       })}
-      // {...attributes}
-      // {...listeners}
+      {...attributes}
+      {...listeners}
     >
-      {/* {(provided, snapshot) => {
-        return (
-          <li
-            className={"h5p-order-priority-draggable-container"}
-          >
-            <div
-              className={classnames("h5p-order-priority-draggable-element", {
-                'h5p-order-priority-no-transform': props.disableTransform,
-              })}
-              aria-roledescription={props.translate('draggableItem')}
-              ref={provided.innerRef}
-              {...provided.draggableProps}
-            >
-              {handleStatementType(snapshot.isDragging, provided.dragHandleProps)}
-            </div>
-          </li>
-        );
-      }} */}
       <li
         className={"h5p-order-priority-draggable-container"}
       >

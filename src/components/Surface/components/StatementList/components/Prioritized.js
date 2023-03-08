@@ -34,9 +34,6 @@ function Prioritized({
   onCommentBlur,
   inputRef,
   draggableProps,
-  attributes,
-  listeners,
-  isDragging,
 }) {
   return (
     <Placeholder
@@ -48,8 +45,6 @@ function Prioritized({
         })}
       >
         <div className={"h5p-order-priority-statement-prioritized"}
-          {...attributes}
-          {...listeners}
         >
           <DragArrows draggableProps={draggableProps}/>
           {enableEditing === true && (
@@ -90,8 +85,6 @@ Prioritized.propTypes = {
   enableCommentDisplay: PropTypes.bool,
   onCommentChange: PropTypes.func,
   inputRef: PropTypes.object,
-  attributes: PropTypes.object,
-  listeners: PropTypes.object,
 };
 
 

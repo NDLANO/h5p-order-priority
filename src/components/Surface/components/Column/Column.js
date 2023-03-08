@@ -19,14 +19,14 @@ function Column(props) {
     disableDrop,
     additionalClassName,
     addStatement,
+    statements
   } = props;
 
-  // console.log("disableDrop " + disableDrop)
   return (
     <div className={additionalClassName}>
       <SortableContext 
         // items={connectedArguments.map((argumentId) => `argument-${argumentId}`)}
-        items={[]}
+        // items={[statements.map((id) => ``)]}
       >
         <Droppable id={droppableId} disabled={true}>
           {/* <ul className={classnames("h5p-order-priority-column")}> */}

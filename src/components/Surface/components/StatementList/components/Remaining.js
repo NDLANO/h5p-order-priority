@@ -16,9 +16,7 @@ function Remaining(props) {
     statement,
     onStatementChange,
     enableEditing = false,
-    isDragging = false,
-    attributes,
-    listeners
+    isDragging
   } = props;
 
   let displayStatement;
@@ -40,14 +38,11 @@ function Remaining(props) {
     );
   }
 
-
   return (
     <div
       className={classnames("h5p-order-priority-statement", {
         "h5p-order-priority-active-draggable": isDragging
       })}
-      {...attributes}
-      {...listeners}
     >
       <div className={"h5p-order-priority-statement-remaining"}>
         <DragArrows draggableProps={props.draggableProps} />
@@ -62,8 +57,6 @@ Remaining.propTypes = {
   statement: PropTypes.object,
   onStatementChange: PropTypes.func,
   enableEditing: PropTypes.bool,
-  attributes: PropTypes.object,
-  listeners: PropTypes.object,
 };
 
 export default Remaining;
