@@ -19,21 +19,16 @@ function Column(props) {
     disableDrop,
     additionalClassName,
     addStatement,
-    statements
+    prioritizedStatements
   } = props;
 
   return (
     <div className={additionalClassName}>
       <SortableContext 
-        // items={connectedArguments.map((argumentId) => `argument-${argumentId}`)}
-        // items={[statements.map((id) => ``)]}
+        items={prioritizedStatements.map((statementId) => `prioritized-${statementId}`)}
       >
         <Droppable id={droppableId} disabled={true}>
-          {/* <ul className={classnames("h5p-order-priority-column")}> */}
-            {children}
-            {/* <li style={{ display: !combine ? "block" : "none" }}>
-            </li> */}
-          {/* </ul> */}
+          {children}
         </Droppable>
       </SortableContext>
       {addStatement}
@@ -42,7 +37,7 @@ function Column(props) {
 }
 
 Column.propTypes = {
-  statements: PropTypes.array,
+  prioritizedStatements: PropTypes.array,
   droppableId: PropTypes.string.isRequired,
   combine: PropTypes.bool,
   disableDrop: PropTypes.bool,
@@ -53,7 +48,7 @@ Column.propTypes = {
 Column.defaultProps = {
   droppableId: null,
   combine: false,
-  statements: [],
+  prioritizedStatements: [],
   disableDrop: false,
   addStatement: null,
 };

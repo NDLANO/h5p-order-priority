@@ -28,21 +28,23 @@ function Surface() {
       }
       case 'dragUpdate': {
         const {
-          result
+          active,
+          over
         } = action.payload;
 
         const statementClone = JSON.parse(JSON.stringify(state.statements));
-        const destinationIndex = result.destination.index;
+        const destinationIndex = over.id.toString().split('-')[1] ?? [];
         const prioritizedStatements = Array.from(state.prioritizedStatements);
-
-        const dragged = statementClone[prioritizedStatements[result.source.index]];
+        const activeIndex = active.id.toString().split('-')[1] ?? [];
+        const dragged = statementClone[prioritizedStatements[parseInt(activeIndex)]];
+        // const d = statementClone[prioritizedStatements[result.source.index]];
         const previousDraggedIndex = dragged.displayIndex;
         dragged.displayIndex = destinationIndex + 1;
         const draggedIndexDifference = dragged.displayIndex - previousDraggedIndex;
         prioritizedStatements
           .map(statementId => statementClone[statementId])
           .map((statementClone, index) => {
-            if (statementClone.displayIndex === destinationIndex + 1 && index !== result.source.index) {
+            if (statementClone.displayIndex === destinationIndex + 1 && index !== activeIndex) {
               statementClone.displayIndex -= draggedIndexDifference;
             }
           });
@@ -54,10 +56,10 @@ function Surface() {
       }
       case 'dragEnd': {
         let {
-          activatorEvent, // pointerdown {html target}
+          // activatorEvent, // pointerdown {html target}
           active, // id: remaining-0, data {....}
-          collisions, // [{id: prioritized-0, data {...}}, {id: processed, data {...}}, {id: remaining-0, data {...}}, {id: start, data {...}}]
-          delta, // some coordination stuff
+          // collisions, // [{id: prioritized-0, data {...}}, {id: processed, data {...}}, {id: remaining-0, data {...}}, {id: start, data {...}}]
+          // delta, // some coordination stuff
           over // {id: prioritized-0, data {...}}
         } = action.payload;
 
@@ -322,30 +324,45 @@ function Surface() {
    *
    * @type {(...args: any[]) => any}
    */
-  const onDragUpdate = useCallback((result, provider) => {
+  function onDragUpdate(dragResult) {
+    let {active, over} = dragResult;
 
-    if (result.destination && result.source) {
-      const sourceDetails = getListDetails(result.source.droppableId, result.source);
-      const destinationDetails = getListDetails(result.destination.droppableId, result.destination);
-      if ( sourceDetails.listId === destinationDetails.listId) {
-        provider.announce(translate("dragMoveInSameList", Messages.startEndLength(sourceDetails, destinationDetails)));
-      }
-      else {
-        provider.announce(translate("dragMoveInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
-      }
-    }
-
-    if (!result.destination || (result.source && result.source.droppableId === 'start')) {
+    if (active?.id == null || over?.id == null) {
       return;
     }
 
     dispatch({
       type: 'dragUpdate',
       payload: {
-        result
-      },
+        ...dragResult
+      }
     });
-  }, [state, context]);
+  } 
+
+  // const onDragUpdate = useCallback((result, provider) => {
+
+  //   if (result.destination && result.source) {
+  //     const sourceDetails = getListDetails(result.source.droppableId, result.source);
+  //     const destinationDetails = getListDetails(result.destination.droppableId, result.destination);
+  //     if ( sourceDetails.listId === destinationDetails.listId) {
+  //       provider.announce(translate("dragMoveInSameList", Messages.startEndLength(sourceDetails, destinationDetails)));
+  //     }
+  //     else {
+  //       provider.announce(translate("dragMoveInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
+  //     }
+  //   }
+
+  //   if (!result.destination || (result.source && result.source.droppableId === 'start')) {
+  //     return;
+  //   }
+
+  //   dispatch({
+  //     type: 'dragUpdate',
+  //     payload: {
+  //       result
+  //     },
+  //   });
+  // }, [state, context]);
 
   /**
    * Update the state and screen reader after drag ends
@@ -402,14 +419,14 @@ function Surface() {
         <DndContext
           className="h5p-order-prioritySurface"
           onDragEnd={handleDragEnd}
-          // onDragUpdate={onDragUpdate}
+          onDragOver={onDragUpdate}
           onDragStart={handleDragStart}
         >
           <Column
             droppableId={"processed"}
             combine={state.isCombineEnabled}
             additionalClassName={"h5p-order-priority-dropzone"}
-            statements={state.prioritizedStatements}
+            prioritizedStatements={state.prioritizedStatements}
             addStatement={state.canAddPrioritized === true ? (
               <AddStatement
                 onClick={() => dispatch({
@@ -445,10 +462,10 @@ function Surface() {
           </Column>
           {state.remainingStatements.length > 0 && (
             <Column
-              droppableId="start"
+              droppableId="remaining"
               disableDrop={true}
               additionalClassName={"h5p-order-priority-select-list"}
-              statements={state.remainingStatements.map(id => state.statements[id])}
+              prioritizedStatements={state.remainingStatements.map(id => state.statements[id])}
               addStatement={context.behaviour && context.behaviour.allowAddingOfStatements === true ? (
                 <AddStatement
                   onClick={() => dispatch({
