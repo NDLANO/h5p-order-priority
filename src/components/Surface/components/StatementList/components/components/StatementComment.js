@@ -18,6 +18,7 @@ const StatementComment = React.forwardRef((props, inputRef) => {
     props.onCommentChange(inputRef.current.value);
     inputRef.current.style.height = "auto";
     inputRef.current.style.height = inputRef.current.scrollHeight + "px";
+    context.trigger('resize');
   }
 
   return (
