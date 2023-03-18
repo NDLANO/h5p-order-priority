@@ -34,70 +34,27 @@ function Surface() {
           over
         } = action.payload;
         
-        
         const statementClone = JSON.parse(JSON.stringify(state.statements));
         const prioritizedStatements = Array.from(state.prioritizedStatements);
-        const activeId = parseInt(active.id.toString().split("-")[1] ?? []);
-        const dragged = statementClone.find((statement) => statement.id === activeId);
-        const destinationId = parseInt(over.id.toString().split('-')[1] ?? []);
-        const testId = statementClone.find((statement) => statement.displayIndex === destinationId + 1).id;
-        // const dragged = active.data.current.statement;
+        const dragged = active.data.current.statement;
+        const dropped = over.data.current.statement;
         const previousDraggedIndex = parseInt(dragged.displayIndex);
-        const originalDisplayIndex = prioritizedStatements.indexOf(activeId) + 1;
-        const destinationIndex = statementClone.find((statement) => statement.id === testId);
 
         if (previousDraggedIndex > -1) {
-
-          console.log(prioritizedStatements);
-          // console.log(`destinationIndex: ${JSON.stringify(destinationIndex)} `);
-          // console.log(destinationId);
-          // console.log(" ");
-          dragged.displayIndex = destinationIndex.displayIndex;
-          // statementClone[dragged]
-          // console.log(`dragged displayIndex: ${dragged.displayIndex} `);
-          // console.log(`Previous dragged displayIndex: ${previousDraggedIndex} `);
-          const draggedIndexDifference = parseInt(dragged.displayIndex) - previousDraggedIndex;
-          const originalSwapDisplayIndex = prioritizedStatements.indexOf(activeId) - draggedIndexDifference;
-          if (draggedIndexDifference === 0) {
-            dragged.displayIndex = originalDisplayIndex;
+          statementClone.find((statement) => statement.id == dragged.id).displayIndex = dropped.displayIndex;
+          statementClone.find((statement) => statement.id == dropped.id).displayIndex = previousDraggedIndex;
+          if (dragged.displayIndex !== dropped.displayIndex) {
+            const droppedIndex = dropped.displayIndex - 1;
+            const draggedIndex = dragged.displayIndex - 1;
+            const tempIndex = prioritizedStatements[droppedIndex]; // 1
+            prioritizedStatements[droppedIndex] = prioritizedStatements[draggedIndex]; // 0
+            prioritizedStatements[draggedIndex] = tempIndex; // 1
           }
-
-          // console.log(`statementClone: ${JSON.stringify(statementClone)} `);
-          prioritizedStatements
-            .map(statementId => statementClone[statementId])
-            .map((statementClone, index) => {
-              if (statementClone.displayIndex === destinationIndex.displayIndex && index !== activeId) {
-                  // statementClone.displayIndex -= draggedIndexDifference;
-                  statementClone.displayIndex = previousDraggedIndex;
-                // console.log(`activeId ${activeId}`);
-                // console.log(`index: ${index} `);
-                // console.log(`previousDisplayIndex: ${previousDraggedIndex}`);
-                // console.log(`destinationIndex: ${JSON.stringify(destinationIndex)}`);
-                // console.log(`statementClone: ${JSON.stringify(statementClone)}`);
-                // if (draggedIndexDifference !== 0 ) {
-                // }
-                // else {
-                //   console.log("else! jajajaja");
-                //   console.log(originalSwapDisplayIndex);
-                //   // statementClone.displayIndex = originalSwapDisplayIndex;
-                // }
-              }
-            });
-
-                console.log(statementClone);
-                console.log(`---------------------------------------`);
-        // console.log("previousDraggedIndex + 1");
-        // console.log(typeof(previousDraggedIndex + 1));
-        // console.log("draggedIndexDifference");
-        // console.log(typeof(draggedIndexDifference));
         }
 
-        
-
-        // console.log(statementClone);
         return {
           ...state,
-          // prioritizedStatements: prioritizedStatements,
+          prioritizedStatements: prioritizedStatements,
           statements: statementClone
         };
       }
@@ -260,7 +217,7 @@ function Surface() {
 
   useEffect(() => {
     context.trigger('resize');
-  }, [state.remainingStatements, state.prioritizedStatements]);
+  }, [state.remainingStatements]);
 
   /**
    * Callback that is called when exporting the values
