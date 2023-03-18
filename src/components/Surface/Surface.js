@@ -103,8 +103,6 @@ function Surface() {
           newStatements[statementId].displayIndex = index + 1;
         });
 
-        console.log(newStatements);
-
         return {
           ...state,
           statements: newStatements, // Statements
