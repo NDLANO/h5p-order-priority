@@ -363,31 +363,6 @@ function Surface() {
     });
   } 
 
-  // const onDragUpdate = useCallback((result, provider) => {
-
-  //   if (result.destination && result.source) {
-  //     const sourceDetails = getListDetails(result.source.droppableId, result.source);
-  //     const destinationDetails = getListDetails(result.destination.droppableId, result.destination);
-  //     if ( sourceDetails.listId === destinationDetails.listId) {
-  //       provider.announce(translate("dragMoveInSameList", Messages.startEndLength(sourceDetails, destinationDetails)));
-  //     }
-  //     else {
-  //       provider.announce(translate("dragMoveInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails)));
-  //     }
-  //   }
-
-  //   if (!result.destination || (result.source && result.source.droppableId === 'start')) {
-  //     return;
-  //   }
-
-  //   dispatch({
-  //     type: 'dragUpdate',
-  //     payload: {
-  //       result
-  //     },
-  //   });
-  // }, [state, context]);
-
   /**
    * Update the state and screen reader after drag ends
    * @type {(...args: any[]) => any}
