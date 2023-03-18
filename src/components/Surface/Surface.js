@@ -6,7 +6,7 @@ import AddStatement from "./components/StatementList/components/components/AddSt
 import Summary from "./components/Summary/Summary";
 import {StatementDataObject} from "../utils";
 import Messages from "./Messages";
-import { DndContext, DragOverlay } from '@dnd-kit/core';
+import { DndContext, DragOverlay, useSensor, PointerSensor} from '@dnd-kit/core';
 
 function Surface() {
   const context = useOrderPriority();
@@ -408,6 +408,12 @@ function Surface() {
   
   const statementLists = {};
 
+  const pointerSensor = useSensor(PointerSensor, {
+    activationConstraint: {
+      delay: 125,
+    },
+  });
+
   /**
    * Sorting the statements and put them in appropriate columns
    * @return {*}
@@ -420,6 +426,7 @@ function Surface() {
           onDragEnd={handleDragEnd}
           onDragOver={onDragUpdate}
           onDragStart={handleDragStart}
+          sensors={[pointerSensor]}
         >
           <Column
             droppableId={"processed"}
