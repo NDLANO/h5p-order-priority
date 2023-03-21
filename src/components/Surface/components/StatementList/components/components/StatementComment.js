@@ -16,15 +16,14 @@ const StatementComment = React.forwardRef((props, inputRef) => {
       return;
     }
     props.onCommentChange(inputRef.current.value);
+
+    const oldHeight = inputRef.current.style.height;
     inputRef.current.style.height = "auto";
     inputRef.current.style.height = inputRef.current.scrollHeight + "px";
 
-    const needsResize = (previousScrollHeight !== inputRef.current.style.height);
-    if (needsResize) {
-      previousScrollHeight = inputRef.current.style.height;
-
-      // Trigger iframe resize
-      context.trigger('resize');
+    // Only resize iframe if height of input field changed in between renders
+    if (oldHeight && oldHeight !== inputRef.current.style.height) {
+      context.trigger("resize");
     }
   }
 
