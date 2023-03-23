@@ -60,11 +60,8 @@ function Surface() {
       }
       case 'dragEnd': {
         let {
-          // activatorEvent, // pointerdown {html target}
-          active, // id: remaining-0, data {....}
-          // collisions, // [{id: prioritized-0, data {...}}, {id: processed, data {...}}, {id: remaining-0, data {...}}, {id: start, data {...}}]
-          // delta, // some coordination stuff
-          over // {id: prioritized-0, data {...}}
+          active,
+          over
         } = action.payload;
 
         const prioritizedStatements = Array.from(state.prioritizedStatements);
@@ -105,11 +102,11 @@ function Surface() {
 
         return {
           ...state,
-          statements: newStatements, // Statements
-          prioritizedStatements: prioritizedStatements, // [0,1]
-          remainingStatements: remainingStatements, // [0,1]
-          showOneColumn: remainingStatements.length === 0, // boolean
-          canAddPrioritized: remainingStatements.length === 0 && context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statement => !newStatements[statement.id].touched).length > 0, // boolean
+          statements: newStatements,
+          prioritizedStatements: prioritizedStatements,
+          remainingStatements: remainingStatements,
+          showOneColumn: remainingStatements.length === 0,
+          canAddPrioritized: remainingStatements.length === 0 && context.behaviour.allowAddingOfStatements && prioritizedStatements.filter(statement => !newStatements[statement.id].touched).length > 0,
         };
       }
 
@@ -126,6 +123,7 @@ function Surface() {
       case 'addNewRemainingStatement': {
         const newStatement = createNewStatement();
         newStatement.id = state.statements.length;
+        newStatement.isPlaceholder = true;
         const remainingStatements = Array.from(state.remainingStatements);
         remainingStatements.push(newStatement.id);
         const statements = JSON.parse(JSON.stringify(state.statements));

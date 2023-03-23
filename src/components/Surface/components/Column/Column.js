@@ -1,7 +1,5 @@
-// @ts-nocheck
 import React from "react";
 import PropTypes from "prop-types";
-import classnames from "classnames";
 import Droppable from "../StatementList/components/components/Droppable";
 import { SortableContext } from "@dnd-kit/sortable";
 
@@ -14,9 +12,7 @@ import { SortableContext } from "@dnd-kit/sortable";
 function Column(props) {
   const {
     droppableId,
-    combine,
     children,
-    disableDrop,
     additionalClassName,
     addStatement,
     prioritizedStatements
