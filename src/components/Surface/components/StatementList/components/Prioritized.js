@@ -44,7 +44,8 @@ function Prioritized({
           'h5p-order-priority-statement-extra': enableCommentDisplay
         })}
       >
-        <div className={"h5p-order-priority-statement-prioritized"}>
+        <div className={"h5p-order-priority-statement-prioritized"}
+        >
           <DragArrows draggableProps={draggableProps}/>
           {enableEditing === true && (
             <EditableStatement

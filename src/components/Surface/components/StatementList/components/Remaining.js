@@ -16,7 +16,7 @@ function Remaining(props) {
     statement,
     onStatementChange,
     enableEditing = false,
-    isDragging = false,
+    isDragging
   } = props;
 
   let displayStatement;

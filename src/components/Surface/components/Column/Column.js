@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Droppable } from 'react-beautiful-dnd';
-import classnames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import Droppable from "../StatementList/components/components/Droppable";
+import { SortableContext } from "@dnd-kit/sortable";
 
 /**
  * Add columns that acts as dropzones for the statements
@@ -12,45 +12,29 @@ import classnames from 'classnames';
 function Column(props) {
   const {
     droppableId,
-    combine,
     children,
-    disableDrop,
     additionalClassName,
     addStatement,
+    prioritizedStatements
   } = props;
 
   return (
-    <div
-      className={classnames(additionalClassName)}
-    >
-      <Droppable
-        droppableId={droppableId}
-        isDropDisabled={disableDrop}
+    <div className={additionalClassName}>
+      <SortableContext
+        id={droppableId}
+        items={prioritizedStatements.map((statement) => `prioritized-${statement.id ?? statement}`)}
       >
-        {(provided, snapshot) => {
-          return (
-            <ul
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              className={classnames("h5p-order-priority-column", {
-                "h5p-order-priority-drag-active": snapshot.isDraggingOver && snapshot.draggingFromThisWith === null
-              })}
-            >
-              {children}
-              <li style={{display: !combine ? "block" : "none"}}>
-                {provided.placeholder}
-              </li>
-            </ul>
-          );
-        }}
-      </Droppable>
+        <Droppable id={droppableId} disabled={true}>
+          {children}
+        </Droppable>
+      </SortableContext>
       {addStatement}
     </div>
   );
 }
 
 Column.propTypes = {
-  statements: PropTypes.array,
+  prioritizedStatements: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   droppableId: PropTypes.string.isRequired,
   combine: PropTypes.bool,
   disableDrop: PropTypes.bool,
@@ -61,7 +45,7 @@ Column.propTypes = {
 Column.defaultProps = {
   droppableId: null,
   combine: false,
-  statements: [],
+  prioritizedStatements: [],
   disableDrop: false,
   addStatement: null,
 };

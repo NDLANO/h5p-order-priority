@@ -1,13 +1,12 @@
 import React from 'react';
 import {useOrderPriority} from "context/OrderPriorityContext";
 
-function DragArrows({draggableProps}) {
+function DragArrows() {
   const context = useOrderPriority();
 
   return (
     <div
       className={"h5p-order-priority-drag-element"}
-      {...draggableProps}
       role={"button"}
     >
       <span
