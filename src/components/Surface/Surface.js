@@ -40,6 +40,10 @@ function Surface() {
         const dropped = over.data.current.statement;
         const previousDraggedIndex = parseInt(dragged.displayIndex);
 
+        if (!dropped) {
+          return state;
+        }
+
         if (previousDraggedIndex > -1) {
           statementClone.find((statement) => statement.id == dragged.id).displayIndex = dropped.displayIndex;
           statementClone.find((statement) => statement.id == dropped.id).displayIndex = previousDraggedIndex;
