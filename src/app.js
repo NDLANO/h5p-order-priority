@@ -1,6 +1,6 @@
 import 'styles/_index.scss';
 import React from 'react';
-import ReactDOM from "react-dom";
+import {createRoot} from "react-dom/client";
 import Main from "components/Main";
 import {OrderPriorityProvider} from 'context/OrderPriorityContext';
 import {breakpoints, getRatio, sanitizeParams} from "./components/utils";
@@ -82,7 +82,7 @@ H5P.OrderPriority = (function () {
       wrapper.classList.add('h5p-order-priority-wrapper');
       this.wrapper = wrapper;
 
-      ReactDOM.render(
+      createRoot(this.wrapper).render(
         <OrderPriorityProvider value={this}>
           <React.StrictMode>
             <Main
@@ -92,8 +92,7 @@ H5P.OrderPriority = (function () {
               collectExportValues={this.collectExportValues}
             />
           </React.StrictMode>
-        </OrderPriorityProvider>,
-        this.wrapper
+        </OrderPriorityProvider>
       );
     };
 
