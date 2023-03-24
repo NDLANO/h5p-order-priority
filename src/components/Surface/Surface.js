@@ -217,6 +217,9 @@ function Surface() {
 
   useEffect(() => {
     context.trigger('resize');
+
+    // We don't want to trigger resize when `context` changes
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.remainingStatements]);
 
   /**
@@ -309,19 +312,23 @@ function Surface() {
   /**
    * Get details for lists that is provided for the screen readers
    * @param droppableId
-   * @param additionalInfo
+   * @param droppable
    * @return {any}
    */
-  function getListDetails(droppableId, additionalInfo) {
+  function getListDetails(droppable, startPosition, destinationPosition) {
+    const droppableId = droppable.id;
+    const [droppableType] = droppableId.split('-');
+
     let details = {};
-    switch (droppableId) {
-      case 'processed':
+    
+    switch (droppableType) {
+      case 'prioritized':
         details = {
           listSize: state.prioritizedStatements.length,
           listName: context.translations.destinationName,
         };
         break;
-      case 'start':
+      case 'remaining':
         details = {
           listSize: state.remainingStatements.length,
           listName: context.translations.sourceName,
@@ -330,8 +337,10 @@ function Surface() {
     }
 
     return Object.assign({
-      listId: droppableId
-    }, additionalInfo, details);
+      listId: droppableId,
+      startPosition,
+      destinationPosition,
+    }, droppable, details);
   }
 
   const [active, setActive] = React.useState(null);
@@ -340,20 +349,20 @@ function Surface() {
   };
 
   /**
-   * UUpdate state and screen reader during the drag
+   * Update state and screen reader during the drag
    *
    * @type {(...args: any[]) => any}
    */
   function onDragUpdate(dragResult) {
     let {active, over} = dragResult;
 
-    if (active?.id == null || over?.id == null) {
+    if (active?.id == null || over?.id == null) {
       return;
     }
 
     const droppedListId = over.id.toString().split('-')[0] ?? [];
     const draggedListId = active.id.toString().split('-')[0] ?? [];
-    if (!over || (over && droppedListId === "remaining" || draggedListId === "remaining")) {
+    if (!over || (over && droppedListId === "remaining" || draggedListId === "remaining")) {
       return;
     }
 
@@ -429,6 +438,48 @@ function Surface() {
           onDragOver={onDragUpdate}
           onDragStart={handleDragStart}
           sensors={[pointerSensor]}
+          accessibility={{
+            announcements: {
+              onDragStart({active}) {
+                return `Picked up draggable item ${active.id}.`;
+              },
+              onDragOver: ({active, over}) => {
+                if (!active || !over) {
+                  return;
+                }
+                
+                const activeId = active.data.current.statement?.id;
+
+                const startPosition = state.statements.find(statement => statement.id === activeId)?.displayIndex;
+                const destinationPosition = over?.data?.current?.statement?.displayIndex;
+                
+                const sourceDetails = getListDetails(active, startPosition, destinationPosition);
+                const destinationDetails = getListDetails(over, startPosition, destinationPosition);
+
+                let announcement = "";
+
+                const movedInSameList = sourceDetails.listId === destinationDetails.listId;
+                if (movedInSameList) {
+                  announcement = translate("dragMoveInSameList", Messages.startEndLength(sourceDetails, destinationDetails));
+                }
+                else {
+                  announcement = translate("dragMoveInDifferentList", Messages.namesPositionsLengths(sourceDetails, destinationDetails));
+                }
+
+                return announcement;
+              },
+              onDragEnd({active, over}) {
+                if (over) {
+                  return `Draggable item ${active.id} was dropped over droppable area ${over.id}`;
+                }
+            
+                return `Draggable item ${active.id} was dropped.`;
+              },
+              onDragCancel({active}) {
+                return `Dragging was cancelled. Draggable item ${active.id} was dropped.`;
+              },
+            }
+          }}
         >
           <Column
             droppableId={"processed"}
@@ -473,7 +524,7 @@ function Surface() {
               droppableId="remaining"
               disableDrop={true}
               additionalClassName={"h5p-order-priority-select-list"}
-              prioritizedStatements={state.remainingStatements.map(id => state.statements[id])}
+              prioritizedStatements={state.remainingStatements}
               addStatement={context.behaviour && context.behaviour.allowAddingOfStatements === true ? (
                 <AddStatement
                   onClick={() => dispatch({

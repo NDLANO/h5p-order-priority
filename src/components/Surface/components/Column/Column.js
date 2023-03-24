@@ -20,8 +20,9 @@ function Column(props) {
 
   return (
     <div className={additionalClassName}>
-      <SortableContext 
-        items={prioritizedStatements.map((statementId) => `prioritized-${statementId}`)}
+      <SortableContext
+        id={droppableId}
+        items={prioritizedStatements.map((statement) => `prioritized-${statement.id ?? statement}`)}
       >
         <Droppable id={droppableId} disabled={true}>
           {children}
@@ -33,7 +34,7 @@ function Column(props) {
 }
 
 Column.propTypes = {
-  prioritizedStatements: PropTypes.array,
+  prioritizedStatements: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
   droppableId: PropTypes.string.isRequired,
   combine: PropTypes.bool,
   disableDrop: PropTypes.bool,

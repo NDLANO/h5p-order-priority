@@ -2,30 +2,30 @@
 const position = index => index + 1;
 
 const positionLengthName = listDetails => ({
-  ":startPosition": position(listDetails.index),
+  ":startPosition": listDetails.startPosition,
   ":listLength": listDetails.listSize,
   ":listName": listDetails.listName,
 });
 
 const startEndLength = (sourceDetails, destinationDetails) => ({
-  ":startPosition": position(sourceDetails.index),
-  ":endPosition": position(destinationDetails.index),
+  ":startPosition": sourceDetails.startPosition,
+  ":endPosition": destinationDetails.destinationPosition,
   ":listLength": sourceDetails.listSize,
 });
 
 const namesPositionName = (sourceDetails, destinationDetails) => ({
   ":sourceName": sourceDetails.listName,
-  ":startPosition": position(sourceDetails.index),
-  ":endPosition": position(destinationDetails.index),
+  ":startPosition": sourceDetails.startPosition,
+  ":endPosition": destinationDetails.destinationPosition,
   ":destinationName": destinationDetails.listName,
 });
 
 const namesPositionsLengths = (sourceDetails, destinationDetails) => ({
   ":startListName": sourceDetails.listName,
-  ":startPosition": position(sourceDetails.index),
+  ":startPosition": sourceDetails.startPosition,
   ":startListLength": sourceDetails.listSize,
   ":destinationListName": destinationDetails.listName,
-  ":destinationPosition": position(destinationDetails.index),
+  ":destinationPosition": destinationDetails.destinationPosition,
   ":destinationListLength": destinationDetails.listSize,
 });
 
