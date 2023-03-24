@@ -20,14 +20,6 @@ function Surface() {
   
   function stateHeadQuarter(state, action) {
     switch (action.type) {
-      case 'dragStart': {
-  
-        const {source} = action.payload;
-        return {
-          ...state,
-          isCombineEnabled: source.droppableId !== 'processed'
-        };
-      }
       case 'dragUpdate': {
         const {
           active,
