@@ -81,7 +81,7 @@ function StatementList(props) {
         />
       );
     }
-    else if (draggableType === 'prioritized' && !statement.isPlaceholder) {
+    else if (draggableType === 'prioritized' && statement.isPlaceholder == false) {
       let actions;
       if (isSingleColumn) {
         actions = (
