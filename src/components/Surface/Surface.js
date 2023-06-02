@@ -237,7 +237,7 @@ function Surface() {
             remainingStatements.length === 0 &&
             context.behaviour.allowAddingOfStatements &&
             prioritizedStatements.filter(
-              (statement) => !newStatements[statement.id].touched
+              (statement) => !newStatements[statement.id]?.touched
             ).length > 0,
         };
       }
@@ -730,7 +730,7 @@ function Surface() {
                   />
                 );
                 statementLists[statementId] = statementElement;
-                if (statement.comment.length > 0 ) {
+                if (statement.comment && statement.comment.length > 0 ) {
                   statementLists[statementId] = createPrioritizedStatementWithComment(statement);
                 }
                 return statementElement;
