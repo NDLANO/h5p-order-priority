@@ -12,11 +12,13 @@ import {
   DragOverlay,
   useSensor,
   PointerSensor,
-  rectIntersection,
+  KeyboardSensor
 } from "@dnd-kit/core";
 import Comment from "./components/StatementList/components/components/Comment";
 import Prioritized from "./components/StatementList/components/Prioritized";
 import classnames from "classnames";
+import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+
 
 function Surface() {
   const context = useOrderPriority();
@@ -612,6 +614,10 @@ function Surface() {
       tolerance: 5,
     },
   });
+  
+  const keyboardSensor = useSensor(KeyboardSensor, {
+    coordinateGetter: sortableKeyboardCoordinates,
+  });
 
   /**
    * Sorting the statements and put them in appropriate columns
@@ -625,7 +631,7 @@ function Surface() {
           onDragEnd={handleDragEnd}
           onDragOver={onDragUpdate}
           onDragStart={handleDragStart}
-          sensors={[pointerSensor]}
+          sensors={[pointerSensor, keyboardSensor]}
           accessibility={{
             announcements: {
               onDragStart({ active }) {
