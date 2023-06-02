@@ -23,6 +23,7 @@ function Column(props) {
       <SortableContext
         id={droppableId}
         items={prioritizedStatements.map((statement) => `prioritized-${statement.id ?? statement}`)}
+        strategy={() => null}
       >
         <Droppable id={droppableId} disabled={true}>
           {children}
