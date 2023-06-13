@@ -155,12 +155,8 @@ function Surface() {
         }
 
         if (previousDraggedIndex > -1) {
-          statementClone.find(
-            (statement) => statement.id == dragged.id
-          ).displayIndex = dropped.displayIndex;
-          statementClone.find(
-            (statement) => statement.id == dropped.id
-          ).displayIndex = previousDraggedIndex;
+          statementClone.find((statement) => statement.id == dragged.id).displayIndex = dropped.displayIndex;
+          statementClone.find((statement) => statement.id == dropped.id).displayIndex = previousDraggedIndex;
           if (dragged.displayIndex !== dropped.displayIndex) {
             const droppedIndex = dropped.displayIndex - 1;
             const draggedIndex = dragged.displayIndex - 1;
@@ -193,8 +189,10 @@ function Surface() {
           const draggedIndex = prioritizedStatements.indexOf(
             parseInt(activeId)
           );
-          prioritizedStatements.splice(draggedIndex, 1);
-          prioritizedStatements.splice(droppedIndex, 0, parseInt(activeId));
+          if (droppedIndex === draggedIndex) {
+            prioritizedStatements.splice(draggedIndex, 1);
+            prioritizedStatements.splice(droppedIndex, 0, parseInt(activeId));
+          }
         }
         if (draggingOverFromRemainingToPrioritized(active, over)) {
           const draggedIndex = remainingStatements.indexOf(parseInt(activeId));
