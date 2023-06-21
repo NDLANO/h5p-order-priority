@@ -1,273 +1,273 @@
 {
   "semantics": [
     {
-      "label": "Header"
+      "label": "Goiburua"
     },
     {
-      "label": "Task description"
+      "label": "Zereginaren deskribapena"
     },
     {
-      "label": "Statements",
+      "label": "Adierazpenak",
       "fields": [
         {
-          "label": "Statements",
-          "entity": "statement",
+          "label": "Adierazpenak",
+          "entity": "adierazpena",
           "field": {
-            "label": "Statement"
+            "label": "Adierazpena"
           }
         }
       ]
     },
     {
-      "label": "Summary",
-      "default": "Summary"
+      "label": "Laburpena",
+      "default": "Laburpena"
     },
     {
-      "label": "Summary instruction"
+      "label": "Laburpen jarraibidea"
     },
     {
-      "label": "Resources",
+      "label": "Baliabideak",
       "fields": [
         {
-          "label": "Resources",
-          "description": "Optional links to resources."
+          "label": "Baliabideak",
+          "description": "Baliabideetarako aukerako estekak."
         }
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you control the behaviour.",
+      "label": "Jokabide ezarpenak",
+      "description": "Aukera hauek jokabidea kontrolatzeko aukera emango dizute.",
       "fields": [
         {
-          "label": "Enable retry?",
-          "description": "Tick off this if you want the user to be able to retry"
+          "label": "Berriro saiatzea gaitu?",
+          "description": "Markatu hau erabiltzaileak berriro saiatu ahal izatea nahi baduzu"
         },
         {
-          "label": "Pre-populate the statements",
-          "description": "The user starts off with the statements already ordered"
+          "label": "Aurrez bete adierazpenak",
+          "description": "Erabiltzailea adierazpenak dagoeneko ordenatuta daudela hasten da"
         },
         {
-          "label": "Randomize the statements",
-          "description": "Will randomize the pre-populated statements"
+          "label": "Ausaz ordenatu adierazpenak",
+          "description": "Aurrez betetako adierazpenak ausaz ordenatuko ditu"
         },
         {
-          "label": "Number of statements"
+          "label": "Adierazpen kopurua"
         },
         {
-          "label": "Allow users to add their own statements",
-          "description": "Lets the user add their own statements"
+          "label": "Baimendu erabiltzaileei beren adierazpenak gehitzeko",
+          "description": "Erabiltzaileari bere adierazpenak gehitzeko aukera ematen dio"
         },
         {
-          "label": "Display the provided comments below the statement",
-          "description": "If the user has provided a comment, this is shown in the statements list"
+          "label": "Erakutsi emandako iruzkinak adierazpenaren azpian",
+          "description": "Erabiltzaileak iruzkin bat eman badu, adierazpenen zerrendan agertzen da"
         },
         {
-          "label": "Show summary",
-          "description": "Do you want the user to provide a summary explaining the reasons for his/her answers"
+          "label": "Erakutsi laburpena",
+          "description": "Erabiltzaileak bere erantzunen arrazoiak azalduz laburpen bat ematea nahi al duzu"
         }
       ]
     },
     {
       "fields": [
         {
-          "label": "Placeholder for the text boxes",
-          "default": "Type your reasons for such answers"
+          "label": "Testu-koadroetarako behin behineko testua",
+          "default": "Idatzi zure erantzunen arrazoiak"
         },
         {
-          "label": "Label for the \"Resources\"-button",
-          "default": "Resources"
+          "label": "\"Baliabideak\" botoiaren etiketa",
+          "default": "Baliabideak"
         },
         {
-          "label": "Label for the \"Restart\"-button",
-          "default": "Restart"
+          "label": "\"Berrabiarazi\" botoiaren etiketa",
+          "default": "Berrabiarazi"
         },
         {
-          "label": "Label for the \"Add alternative\"-button",
-          "default": "Add alternative"
+          "label": "\"Gehitu alternatiba\" botoiaren etiketa",
+          "default": "Gehitu alternatiba"
         },
         {
-          "label": "Label for the \"Continue\"-button in the restart dialog",
-          "default": "Continue"
+          "label": "Berrabiarazi elkarrizketa-koadroko \"Jarraitu\" botoiaren etiketa",
+          "default": "Jarraitu"
         },
         {
-          "label": "Label for the \"Cancel\"-button in the restart dialog",
-          "default": "Cancel"
+          "label": "Berrabiarazi elkarrizketa-koadroko \"Utzi\" botoiari etiketa",
+          "default": "Utzi"
         },
         {
-          "label": "Inform the user that data will be lost if he/she continues",
-          "default": "All the changes will be lost. Are you sure you wish to continue?"
+          "label": "Jakinarazi erabiltzaileari datuak galduko direla aurrera jarraitzen badu",
+          "default": "Aldaketa guztiak galduko dira. Ziur jarraitu nahi duzula?"
         },
         {
-          "label": "Header in 'Comment' popover",
-          "default": "Feedback"
+          "label": "Goiburua \"Iruzkin\" leihoan",
+          "default": "Iritzia"
         },
         {
-          "label": "Text displayed in 'Submit'-button when creating a document",
-          "default": "Submit"
+          "label": "Dokumentu bat sortzean 'Bidali' botoian bistaratzen den testua",
+          "default": "Bidali"
         },
         {
-          "label": "Text displayed after submitting",
-          "default": "Saved!"
+          "label": "Bidali ondoren bistaratuko den testua",
+          "default": "Gordeta!"
         },
         {
-          "label": "Header in 'Restart' popover",
-          "default": "Confirm"
+          "label": "\"Berrabiarazi\" leihoaren goiburua",
+          "default": "Berretsi"
         },
         {
-          "label": "Placeholder for the summary box",
-          "default": "Give a brief summary in your own words"
+          "label": "Laburpen-koadroaren behin behineko testua",
+          "default": "Eman laburpen txiki bat zure hitzekin"
         }
       ],
-      "label": "Localize"
+      "label": "Lokalizatu"
     },
     {
       "fields": [
         {
-          "label": "Label for \"Create document\"-button",
-          "default": "Create document"
+          "label": "\"Sortu dokumentua\" botoiaren etiketa",
+          "default": "Sortu dokumentua"
         },
         {
-          "label": "Label on \"Export\" button",
-          "default": "Export"
+          "label": "\"Esportatu\" botoiaren etiketa",
+          "default": "Esportatu"
         },
         {
-          "label": "Label on \"Select all\" button",
-          "default": "Select all"
+          "label": "\"Hautatu guztiak\" botoiaren etiketa",
+          "default": "Hautatu guztiak"
         },
         {
-          "label": "Statement header in statement table",
-          "default": "Statements"
+          "label": "Adierazpenen goiburua adierazpen-taulan",
+          "default": "Adierazpenak"
         },
         {
-          "label": "Comment header in statement table",
-          "default": "Comment"
+          "label": "Iruzkinen goiburua adierazpen-taulan",
+          "default": "Iruzkinak"
         },
         {
-          "label": "Header above the \"Resource\" table",
-          "default": "Resources"
+          "label": "\"Baliabide\" taularen gaineko goiburua",
+          "default": "Baliabideak"
         },
         {
-          "label": "Title header in resource table",
-          "default": "Title"
+          "label": "Izenburuaren goiburua baliabideen taulan",
+          "default": "Izenburua"
         },
         {
-          "label": "Intro header in resource table",
-          "default": "Intro"
+          "label": "Baliabideen taulako sarrerako goiburua",
+          "default": "Sarrera"
         },
         {
-          "label": "Url header in resource table",
-          "default": "Url"
+          "label": "Baliabideen taulako URL goiburua",
+          "default": "URL"
         },
         {
-          "label": "Label when no resources are found",
-          "default": "No resources"
+          "label": "Baliabiderik aurkitzen ez deneko etiketa",
+          "default": "Baliabiderik ez"
         },
         {
-          "label": "Header for summary comment",
-          "default": "Summary comment"
+          "label": "Laburpenaren iruzkinaren goiburua",
+          "default": "Laburpenaren iruzkina"
         },
         {
-          "label": "Label when no summary is provided",
-          "default": "No summary"
+          "label": "Etiketa laburpenik ematen ez denean",
+          "default": "Laburpenik ez"
         }
       ],
-      "label": "Resource report"
+      "label": "Baliabideen txostena"
     },
     {
-      "label": "Accessibility",
+      "label": "Irisgarritasuna",
       "fields": [
         {
-          "label": "Used instead of 'Comment'-icon",
-          "default": "Add comment"
+          "label": "\"Iruzkin\" ikonoaren ordez erabiltzen da",
+          "default": "Gehitu iruzkina"
         },
         {
-          "label": "Used instead of 'Close'-icon",
-          "default": "Close"
+          "label": "\"Itxi\" ikonoaren ordez erabiltzen da",
+          "default": "Itxi"
         },
         {
-          "label": "Used instead of 'Drag'-icon",
-          "default": "Drag"
+          "label": "\"Arrastatu\" ikonoaren ordez erabiltzen da",
+          "default": "Arrastatu"
         },
         {
-          "label": "'Droparea' label for screenreaders",
-          "description": "Available variables are :index",
-          "default": "Droparea #:index"
+          "label": "'Jaregiteko area' etiketa pantaila-irakurleentzako",
+          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
+          "default": "Jaregiteko area #:index"
         },
         {
-          "label": "'Empty droparea' label for screenreaders",
-          "description": "Available variables are :index",
-          "default": "Empty droparea #:index"
+          "label": "'Jaregiteko area hutsik' etiketa pantaila-irakurleentzako",
+          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
+          "default": "Jaregiteko area hutsik #:index"
         },
         {
-          "label": "'Draggable item' label for screenreaders",
-          "default": "Draggable item"
+          "label": "'Elementu arrastagarria' etiketa pantaila-irakurleentzako",
+          "default": "Elementu arrastagarria"
         },
         {
-          "label": "'Dropzone' label for screenreaders",
-          "description": "Available variables are :index",
-          "default": "Dropzone #:index"
+          "label": "'Arrastatzeko area' etiketa pantaila-irakurleentzako",
+          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
+          "default": "Arrastatzeko area #:index"
         },
         {
-          "label": "'Dropzone with value' label for screenreaders",
-          "description": "Available variables are :index and :statement",
-          "default": "Dropzone #:index with value: :statement"
+          "label": "'Balioa duen arrastatzeko area' etiketa pantaila-irakurleentzako",
+          "description": "Eskuragarri dauden aldagaiak :index eta :statement dira",
+          "default": "Arrastatzeko areak #:index duen balioa: :statement"
         },
         {
-          "label": "Description on how to start a drag for screenreaders",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
+          "label": "Pantaila-irakurleentzako arrastatzea nola abiarazteko deskribapena",
+          "default": "Sakatu zuriune-barra arrastatzen hasteko.\nArrastatzean gezi-teklak erabil ditzakezu elementua mugitzeko eta ESC tekla uzteko.\nPantaila-irakurle batzuek fokatze moduan egotea edo bere laster-tekla erabiltzea eska dezakete\n"
         },
         {
-          "label": "Name of the statements column",
-          "description": "This is the column with the statements you provide",
-          "default": "Statements"
+          "label": "Adierazpenen zutabearen izena",
+          "description": "Zuk ematen dituzun adierazpenak dituen zutabea da",
+          "default": "Adierazpenak"
         },
         {
-          "label": "Name of the prioritized column",
-          "description": "This is the column where the statements are put in an order",
-          "default": "Prioritized"
+          "label": "Lehenetsitako zutabearen izena",
+          "description": "Hau da adierazpenak ordena batean jartzen diren zutabea",
+          "default": "Lehenetsiak"
         },
         {
-          "label": "Message read to the screen reader when drag starts",
-          "description": "Available variables are :startPosition, :listLength and :listName",
-          "default": "You have lifted an item in position :startPosition of :listLength in the :listName list."
+          "label": "Arrastatzea hasten denean pantaila-irakurlean irakurritako mezua",
+          "description": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName",
+          "default": "Elementu bat altxatu duzu :listName zerrendako :listLength-ren :startPosition posizioan."
         },
         {
-          "label": "Message read to the screen reader when drag is moved within the same list",
-          "description": "Available variables are :startPosition, :endPosition and :listLength",
-          "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
+          "label": "Pantaila-irakurleari irakurritako mezua arrastaketzea zerrenda berean mugitzen denean",
+          "description": "Eskuragarri dauden aldagaiak :startPosition, :endPosition eta :listLength dira",
+          "default": "Elementua :startPosition posiziotik :listLength-ren :endPosition posiziora eraman duzu"
         },
         {
-          "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
-          "label": "Message read to the screen reader when drag is moved to another list",
-          "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
+          "description": "Aldagai erabilgarri hauek dira :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition eta :destinationListLength",
+          "label": "Arrastatzea beste zerrenda batera mugitzen denean irakurritako mezua pantaila-irakurgailuan",
+          "default": "Eraman duzu :startListName zerrendako :startListLength-ko :startPosition posizioan dagoen elementua :destinationListName zerrendaren :destinationListLength-ko :destinationPosition posiziora"
         },
         {
-          "label": "Message read to the screen reader when drag is over an area that cannot be dropped on",
-          "default": "You are currently not dragging over a droppable area"
+          "label": "Pantaila-irakurleari irakurtzen zaion mezua arrastatzea jaregin ezin den eremu baten gainean dagoenean",
+          "default": "Une honetan ez zara arrastatzen ari jaregin daitekeen eremu batean"
         },
         {
-          "description": "Available variables are :startPosition, :listLength and :listName",
-          "label": "Message read to the screen reader when drag starts",
-          "default": "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName"
+          "description": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName dira",
+          "label": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName dira",
+          "default": "Mugimendua bertan behera utzi da. Elementua :listName :listLength-ko :startPosition hasierako posiziora itzuli da"
         },
         {
-          "description": "Available variables are :startPosition and :endPosition",
-          "label": "Message read to the screen reader when drag is dropped in the same list",
-          "default": "You have dropped the item. It has moved from position :startPosition to :endPosition"
+          "description": "Eskuragarri dauden aldagaiak :startPosition eta :endPosition dira",
+          "label": "Pantaila-irakurleari irakurritako mezua arrastatutakoa zerrenda berean jaregiten denean",
+          "default": "Elementua jaregin duzu. :startPosition posiziotik :endPosition-era eraman da"
         },
         {
-          "description": "Available variables are :startListName, :startPosition, :destinationListName and :destinationPosition",
-          "label": "Message read to the screen reader when drag is dropped in a different list",
-          "default": "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName"
+          "description": "Aldagai erabilgarri hauek dira :startListName, :startPosition, :destinationListName eta :destinationPosition",
+          "label": "Pantaila-irakurleari irakurritako mezua arrastatutakoa beste zerrenda batean jaregiten denean",
+          "default": "Elementua jaregin duzu. :startListName zerrendako :startPosition posiziotik :destinationListName zerrendako :destinationPosition posiziora mugitu da"
         },
         {
-          "description": "Available variables are :startPosition and :sourceName",
-          "label": "Message read to the screen reader when drag is dropped in the same location as before the drag",
-          "default": "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName"
+          "description": "Eskuragarri dauden aldagaiak :startPosition eta :sourceName dira",
+          "label": "Pantaila-irakurleari irakurritako mezua arrastatu aurretik zegoen toki berean jaregiten denean",
+          "default": "Elementua altxatu duzun posizio berean jaregin duzu. :sourceName-ko :startPosition posizioa da"
         },
         {
-          "label": "Message read to the screen reader before entering the section with the statements",
-          "default": "To interact with the next section some screen readers require you to be in focus mode"
+          "label": "Pantaila-irakurleari irakurritako mezua adierazpenak dituen atalean sartu aurretik",
+          "default": "Hurrengo atalarekin elkar eragiteko, pantaila-irakurle batzuek foku moduan egotea eskatzen dute"
         }
       ]
     }
