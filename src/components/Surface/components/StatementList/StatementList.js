@@ -12,6 +12,7 @@ import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 function StatementList(props) {
 
   const inputRef = useRef();
+  const draggableRef = useRef();
   const [showCommentContainer, toggleCommentContainer] = useState(false);
 
   /**
@@ -119,6 +120,7 @@ function StatementList(props) {
   function handleOnStatementTextEdit(statementText) {
     const statement = Object.assign({}, props.statement);
     statement.statement = statementText;
+    draggableRef.current.setAttribute('aria-label', statementText);
     statement.editMode = false;
     props.onStatementChange(statement);
   }
@@ -161,10 +163,12 @@ function StatementList(props) {
         className={'h5p-order-priority-draggable-container'}
       >
         <div
+          ref={draggableRef}
           className={classnames('h5p-order-priority-draggable-element', {
             'h5p-order-priority-no-transform': props.disableTransform,
           })}
           aria-roledescription={props.translate('draggableItem')}
+          aria-label={props.statement.statement}
         >
           {handleStatementType(isDragging, attributes, listeners)}
         </div>

@@ -49,9 +49,8 @@ function Prioritized({
           <DragArrows draggableProps={draggableProps}/>
           {enableEditing === true && (
             <EditableStatement
-              inEditMode={statement.editMode}
               statement={statement.statement}
-              onBlur={onStatementChange}
+              onChanged={onStatementChange}
               idBase={statement.id}
             />
           )}

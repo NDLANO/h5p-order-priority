@@ -24,8 +24,7 @@ function Remaining(props) {
     displayStatement = (
       <EditableStatement
         statement={statement.statement}
-        inEditMode={statement.editMode}
-        onBlur={onStatementChange}
+        onChanged={onStatementChange}
         idBase={statement.id}
       />
     );
