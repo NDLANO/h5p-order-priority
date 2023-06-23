@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack --mode=production",
     "watch": "webpack --mode=development --watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint './src/**/*.js'",
+    "lint:fix": "eslint './src/**/*.js' --fix"
   },
   "repository": {
     "type": "git",
@@ -27,6 +27,7 @@
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
     "eslint": "^8.36.0",
+    "eslint-config-ndla-h5p": "github:ndlano/eslint-config-ndla-h5p",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",

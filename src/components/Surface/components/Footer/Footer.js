@@ -9,7 +9,7 @@ import Reset from './Reset';
  */
 function Footer() {
   return (
-    <section className={"h5p-order-priority-footer"}>
+    <section className={'h5p-order-priority-footer'}>
       <Reset/>
       <Export/>
     </section>

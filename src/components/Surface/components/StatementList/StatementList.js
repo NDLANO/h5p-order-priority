@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Remaining from "./components/Remaining";
-import Prioritized from "./components/Prioritized";
-import Placeholder from "./components/Placeholder";
-import Comment from "./components/components/Comment";
-import classnames from "classnames";
+import Remaining from './components/Remaining';
+import Prioritized from './components/Prioritized';
+import Placeholder from './components/Placeholder';
+import Comment from './components/components/Comment';
+import classnames from 'classnames';
 import { CSS } from '@dnd-kit/utilities';
 import 'styles/components/StatementList.scss';
 import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
@@ -12,7 +12,43 @@ import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 function StatementList(props) {
 
   const inputRef = useRef();
+  const draggableRef = useRef();
   const [showCommentContainer, toggleCommentContainer] = useState(false);
+
+  /**
+   * Comments can be displayed in two ways.
+   * @return {(function(...[*]=))|null}
+   */
+  function handleCommentClick() {
+    if (props.enableCommentDisplay !== true) {
+      return null;
+    }
+
+    return () => {
+      toggleCommentContainer(true);
+      setTimeout(() => inputRef.current.focus(), 0);
+    };
+  }
+
+  function handleOnCommentBlur(comment) {
+    if (!comment || comment.length === 0) {
+      toggleCommentContainer(false);
+    }
+  }
+
+  function handleOnCommentChange(comment) {
+    const statement = Object.assign({}, props.statement);
+    statement.comment = comment;
+    props.onStatementChange(statement);
+  }
+
+  function handleOnStatementTextEdit(statementText) {
+    const statement = Object.assign({}, props.statement);
+    statement.statement = statementText;
+    draggableRef.current.setAttribute('aria-label', statementText);
+    statement.editMode = false;
+    props.onStatementChange(statement);
+  }
 
   /**
    * Determine what statement type to use for a statement. The different types are:
@@ -82,51 +118,15 @@ function StatementList(props) {
           translate={translate}
         >
           <div
-            className={"h5p-order-priority-empty"}
+            className={'h5p-order-priority-empty'}
           />
         </Placeholder>
       );
     }
   }
 
-  /**
-   * Comments can be displayed in two ways.
-   * @return {(function(...[*]=))|null}
-   */
-  function handleCommentClick() {
-    if (props.enableCommentDisplay !== true) {
-      return null;
-    }
-
-    return () => {
-      toggleCommentContainer(true);
-      setTimeout(() => inputRef.current.focus(), 0);
-    };
-  }
-
-  function handleOnCommentBlur(comment) {
-    if (!comment || comment.length === 0) {
-      toggleCommentContainer(false);
-    }
-  }
-
-  function handleOnCommentChange(comment) {
-    const statement = Object.assign({}, props.statement);
-    statement.comment = comment;
-    props.onStatementChange(statement);
-  }
-
-  function handleOnStatementTextEdit(statementText) {
-    const statement = Object.assign({}, props.statement);
-    statement.statement = statementText;
-    statement.editMode = false;
-    props.onStatementChange(statement);
-  }
-
   const {
-    index,
     statement,
-    draggableType,
     id,
   } = props;
 
@@ -158,13 +158,15 @@ function StatementList(props) {
       {...listeners}
     >
       <li
-        className={"h5p-order-priority-draggable-container"}
+        className={'h5p-order-priority-draggable-container'}
       >
         <div
-          className={classnames("h5p-order-priority-draggable-element", {
+          ref={draggableRef}
+          className={classnames('h5p-order-priority-draggable-element', {
             'h5p-order-priority-no-transform': props.disableTransform,
           })}
           aria-roledescription={props.translate('draggableItem')}
+          aria-label={props.statement.statement}
         >
           {handleStatementType(isDragging, attributes, listeners)}
         </div>
