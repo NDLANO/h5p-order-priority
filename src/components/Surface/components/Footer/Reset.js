@@ -14,6 +14,12 @@ function Reset() {
   const orderPriorityContext = useOrderPriority();
   const resetButtonRef = useRef(null);
 
+  const {
+    behaviour: { enableRetry = false },
+    reset,
+    translations,
+  } = orderPriorityContext;
+
   useEffect(() => {
     if (showPopover) {
       setPreviousFocusElement(document.activeElement);
@@ -36,12 +42,6 @@ function Reset() {
     () => resetButtonRef.current?.getBoundingClientRect(),
     [resetButtonRef.current]
   );
-
-  const {
-    behaviour: { enableRetry = false },
-    reset,
-    translations,
-  } = orderPriorityContext;
 
   return (
     <Fragment>

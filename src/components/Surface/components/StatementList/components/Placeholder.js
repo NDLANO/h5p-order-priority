@@ -1,7 +1,6 @@
 import React from 'react';
 import PriorityNumber from './components/PriorityNumber';
 import classnames from 'classnames';
-import { useOrderPriority } from 'context/OrderPriorityContext';
 
 /**
  * Serves as a placeholder in the prioritized column
@@ -17,12 +16,6 @@ const Placeholder = ({
   children,
   isDraggingOver = false,
 }) => {
-  const context = useOrderPriority();
-
-  const {
-    translate
-  } = context;
-
   return (
     <div>
       <PriorityNumber

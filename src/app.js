@@ -6,7 +6,6 @@ import { OrderPriorityProvider } from 'context/OrderPriorityContext';
 import { breakpoints, getRatio, sanitizeParams } from './components/utils';
 
 // Load library
-H5P = H5P || {};
 H5P.OrderPriority = (function () {
 
   function Wrapper(params, contentId, extras = {}) {
