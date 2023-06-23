@@ -1,8 +1,8 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 
 const OrderPriorityContext = React.createContext();
 
-function OrderPriorityProvider({children, value}) {
+function OrderPriorityProvider({ children, value }) {
   return (
     <OrderPriorityContext.Provider value={value}>
       {children}

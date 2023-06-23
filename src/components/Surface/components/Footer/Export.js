@@ -1,6 +1,6 @@
-import React, {useRef, useState} from 'react';
-import {useOrderPriority} from "context/OrderPriorityContext";
-import {escapeHTML, stripHTML} from "../../../utils";
+import React, { useRef, useState } from 'react';
+import { useOrderPriority } from 'context/OrderPriorityContext';
+import { escapeHTML, stripHTML } from '../../../utils';
 
 /**
  * Display the export page to let the user summary the answers given. Uses the package H5P.ExportPage
@@ -51,11 +51,11 @@ function Export() {
       useSummary: provideSummary,
       resources: resources,
       sortedStatementList: userInput.prioritizedStatements
-        .map(statement => userInput.statements[statement])
-        .filter(statement => statement.touched === true)
-        .map(statement => {
+        .map((statement) => userInput.statements[statement])
+        .filter((statement) => statement.touched === true)
+        .map((statement) => {
           return {
-            comment: statement.comment || "",
+            comment: statement.comment || '',
             title: statement.statement,
           };
         })
@@ -128,19 +128,19 @@ function Export() {
   return (
     <>
       <button
-        className={"h5p-order-priority-button-export"}
+        className={'h5p-order-priority-button-export'}
         onClick={handleExport}
-        type={"button"}
-        aria-haspopup={"true"}
+        type={'button'}
+        aria-haspopup={'true'}
         aria-expanded={showExportPage}
       >
         <span
-          className={"h5p-ri hri-document"}
+          className={'h5p-ri hri-document'}
         />
         {translate('createDocument')}
       </button>
       <div
-        className={"export-container"}
+        className={'export-container'}
         ref={exportContainer}
       />
     </>

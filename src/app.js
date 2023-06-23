@@ -1,9 +1,9 @@
 import 'styles/_index.scss';
 import React from 'react';
-import {createRoot} from "react-dom/client";
-import Main from "components/Main";
-import {OrderPriorityProvider} from 'context/OrderPriorityContext';
-import {breakpoints, getRatio, sanitizeParams} from "./components/utils";
+import { createRoot } from 'react-dom/client';
+import Main from 'components/Main';
+import { OrderPriorityProvider } from 'context/OrderPriorityContext';
+import { breakpoints, getRatio, sanitizeParams } from './components/utils';
 
 // Load library
 H5P = H5P || {};
@@ -30,51 +30,51 @@ H5P.OrderPriority = (function () {
     this.currentRatio = null;
 
     this.translations = Object.assign({}, {
-      summary: "Summary",
-      typeYourReasonsForSuchAnswers: "Elaborate on your decision",
-      resources: "Resources",
-      save: "Save",
-      restart: "Restart",
-      createDocument: "Create document",
-      labelSummaryComment: "Summary comment",
-      labelComment: "Comment",
-      labelStatement: "Statement",
-      labelNoComment: "No comment",
-      labelResources: "Resources",
-      selectAll: "Select all",
-      export: "Export",
-      add: "Add alternative",
-      ifYouContinueAllYourChangesWillBeLost: "All the changes will be lost. Are you sure you wish to continue?",
-      areYouSure: "Are you sure?",
-      close: "Close",
-      addComment: "Add comment",
-      drag: "Drag",
-      feedback: "Feedback",
-      submitText: "Submit",
-      submitConfirmedText: "Saved!",
-      confirm: "Confirm",
-      continue: "Continue",
-      cancel: "Cancel",
-      droparea: "Droparea :num",
-      emptydroparea: "Empty droparea :index",
-      draggableItem: "Draggable item: ",
-      dropzone: "Dropzone :index",
-      dropzoneWithValue: "Dropzone :index with value :statement",
-      giveABriefSummary: "Give a brief summary in your own words",
+      summary: 'Summary',
+      typeYourReasonsForSuchAnswers: 'Elaborate on your decision',
+      resources: 'Resources',
+      save: 'Save',
+      restart: 'Restart',
+      createDocument: 'Create document',
+      labelSummaryComment: 'Summary comment',
+      labelComment: 'Comment',
+      labelStatement: 'Statement',
+      labelNoComment: 'No comment',
+      labelResources: 'Resources',
+      selectAll: 'Select all',
+      export: 'Export',
+      add: 'Add alternative',
+      ifYouContinueAllYourChangesWillBeLost: 'All the changes will be lost. Are you sure you wish to continue?',
+      areYouSure: 'Are you sure?',
+      close: 'Close',
+      addComment: 'Add comment',
+      drag: 'Drag',
+      feedback: 'Feedback',
+      submitText: 'Submit',
+      submitConfirmedText: 'Saved!',
+      confirm: 'Confirm',
+      continue: 'Continue',
+      cancel: 'Cancel',
+      droparea: 'Droparea :num',
+      emptydroparea: 'Empty droparea :index',
+      draggableItem: 'Draggable item: ',
+      dropzone: 'Dropzone :index',
+      dropzoneWithValue: 'Dropzone :index with value :statement',
+      giveABriefSummary: 'Give a brief summary in your own words',
       labelNoSummaryComment: 'No summary',
-      sourceName: "Statements",
-      destinationName: "Prioritized",
-      dragHandleInstructions: "Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n",
-      dragStartInstructions: "You have lifted an item in position :startPosition of :listLength in the :listName list.",
-      dragMoveInSameList: "You have moved the item from position :startPosition to position :endPosition of :listLength",
-      dragMoveInDifferentList: "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength",
-      dragMoveNoDropTarget: "You are currently not dragging over a droppable area",
-      dragCancelled: "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName",
-      dropInSameList: "You have dropped the item. It has moved from position :startPosition to :endPosition",
-      dropInDifferentList: "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName",
-      dropInSameLocation: "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName",
-      userInfoAboutFocusMode: "To interact with the next section some screen readers require you to be in focus mode",
-      editableItem: "Editable item: ",
+      sourceName: 'Statements',
+      destinationName: 'Prioritized',
+      dragHandleInstructions: 'Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n',
+      dragStartInstructions: 'You have lifted an item in position :startPosition of :listLength in the :listName list.',
+      dragMoveInSameList: 'You have moved the item from position :startPosition to position :endPosition of :listLength',
+      dragMoveInDifferentList: 'You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength',
+      dragMoveNoDropTarget: 'You are currently not dragging over a droppable area',
+      dragCancelled: 'Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName',
+      dropInSameList: 'You have dropped the item. It has moved from position :startPosition to :endPosition',
+      dropInDifferentList: 'You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName',
+      dropInSameLocation: 'You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName',
+      userInfoAboutFocusMode: 'To interact with the next section some screen readers require you to be in focus mode',
+      editableItem: 'Editable item: ',
     }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
     const createElements = () => {
@@ -105,12 +105,12 @@ H5P.OrderPriority = (function () {
      * @return {{}}
      */
     this.collectExportValues = (index, callback) => {
-      if (typeof index !== "undefined") {
-        this.collectExportValuesStack.push({key: index, callback: callback});
+      if (typeof index !== 'undefined') {
+        this.collectExportValuesStack.push({ key: index, callback: callback });
       }
       else {
         const exportValues = {};
-        this.collectExportValuesStack.forEach(({key, callback}) => exportValues[key] = callback());
+        this.collectExportValuesStack.forEach(({ key, callback }) => exportValues[key] = callback());
         return exportValues;
       }
     };
@@ -121,13 +121,13 @@ H5P.OrderPriority = (function () {
      * @param callback
      * @return {number}
      */
-    this.registerReset = callback => this.resetStack.push(callback);
+    this.registerReset = (callback) => this.resetStack.push(callback);
 
     /**
      * Attaches the component to a container
      * @param $container
      */
-    this.attach = $container => {
+    this.attach = ($container) => {
       if (!this.wrapper) {
         createElements();
       }
@@ -142,7 +142,7 @@ H5P.OrderPriority = (function () {
      * Reset the content type
      */
     this.reset = () => {
-      this.resetStack.forEach(callback => callback());
+      this.resetStack.forEach((callback) => callback());
     };
 
     /**
@@ -156,7 +156,7 @@ H5P.OrderPriority = (function () {
         return;
       }
       this.activeBreakpoints = [];
-      breakpoints().forEach(item => {
+      breakpoints().forEach((item) => {
         if (item.shouldAdd(ratio)) {
           wrapper.classList.add(item.className);
           this.activeBreakpoints.push(item.className);
@@ -190,7 +190,7 @@ H5P.OrderPriority = (function () {
       if (vars !== undefined && vars !== null) {
         Object
           .keys(vars)
-          .map(index => {
+          .map((index) => {
             translation = translation.replace(index, vars[index]);
           });
       }

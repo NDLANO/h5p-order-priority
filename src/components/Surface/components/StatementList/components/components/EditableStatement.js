@@ -1,8 +1,8 @@
-import React, {useState, useRef} from 'react';
+import React, { useState, useRef } from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
-import {debounce} from "components/utils";
-import {useOrderPriority} from "context/OrderPriorityContext";
+import { debounce } from 'components/utils';
+import { useOrderPriority } from 'context/OrderPriorityContext';
 
 function EditableStatement(props) {
 
@@ -20,7 +20,7 @@ function EditableStatement(props) {
     }
   };
 
-  const handleKeyUp = event => {
+  const handleKeyUp = (event) => {
     if (event.keyCode === 13) {
       if ( inEditMode ) {
         handleBlur();
@@ -35,11 +35,11 @@ function EditableStatement(props) {
     toggleEditMode(false);
   };
 
-  const id = "es_" + props.idBase;
-  const inputId = "input_" + id;
+  const id = 'es_' + props.idBase;
+  const inputId = 'input_' + id;
   return (
     <div
-      className={"h5p-order-priority-editable-container"}
+      className={'h5p-order-priority-editable-container'}
     >
       <div>
         <label
@@ -47,23 +47,23 @@ function EditableStatement(props) {
           tabIndex={0}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
-          className={classnames("h5p-order-priority-noneditable", {
-            "hidden": inEditMode === true,
+          className={classnames('h5p-order-priority-noneditable', {
+            'hidden': inEditMode === true,
           })}
           aria-label={context.translations.editableItem + props.statement}
         >
           {props.statement}
         </label>
         <input
-          className={classnames("h5p-order-priority-editable", {
-            "hidden": inEditMode === false,
+          className={classnames('h5p-order-priority-editable', {
+            'hidden': inEditMode === false,
           })}
           ref={inputRef}
           onKeyUp={handleKeyUp}
           onBlur={handleBlur}
           onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
           id={inputId}
-          type={"textarea"}
+          type={'textarea'}
         />
       </div>
     </div>

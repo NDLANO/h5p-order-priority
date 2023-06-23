@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import {useOrderPriority} from "context/OrderPriorityContext";
+import { useOrderPriority } from 'context/OrderPriorityContext';
 
 /**
  * Comment displayed "inline", not in a popover
@@ -18,19 +18,19 @@ const StatementComment = React.forwardRef((props, inputRef) => {
     props.onCommentChange(inputRef.current.value);
 
     const oldHeight = inputRef.current.style.height;
-    inputRef.current.style.height = "auto";
-    inputRef.current.style.height = inputRef.current.scrollHeight + "px";
+    inputRef.current.style.height = 'auto';
+    inputRef.current.style.height = inputRef.current.scrollHeight + 'px';
 
     // Only resize iframe if height of input field changed in between renders
     if (oldHeight && oldHeight !== inputRef.current.style.height) {
-      context.trigger("resize");
+      context.trigger('resize');
     }
   }
 
   return (
     <div
-      className={classnames("h5p-order-priority-statement-comment", {
-        "hidden": props.show !== true
+      className={classnames('h5p-order-priority-statement-comment', {
+        'hidden': props.show !== true
       })}
     >
       <div>
@@ -39,7 +39,7 @@ const StatementComment = React.forwardRef((props, inputRef) => {
         />
         <textarea
           ref={inputRef}
-          value={props.comment || ""}
+          value={props.comment || ''}
           onChange={handleOnChange}
           onBlur={() => props.onCommentBlur(inputRef.current.value)}
           placeholder={context.translations.typeYourReasonsForSuchAnswers}
@@ -63,6 +63,6 @@ StatementComment.defaultProps = {
   show: false,
 };
 
-StatementComment.displayName = "StatementComment";
+StatementComment.displayName = 'StatementComment';
 
 export default StatementComment;

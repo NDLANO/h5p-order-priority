@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
-import {useOrderPriority} from 'context/OrderPriorityContext';
+import { useOrderPriority } from 'context/OrderPriorityContext';
 import 'styles/components/Summary.scss';
-import ReactHtmlParser from "html-react-parser";
+import ReactHtmlParser from 'html-react-parser';
 
 /**
  * Component for displaying the summary
@@ -32,15 +32,15 @@ function Summary() {
     <div
       className={classnames('h5p-order-priority-summary')}
     >
-      <div className={"summary-header"}>{summaryHeader ? summaryHeader : translate('summary')}</div>
+      <div className={'summary-header'}>{summaryHeader ? summaryHeader : translate('summary')}</div>
       {summaryInstruction && (
-        <div className={"h5p-order-priority-summary-instruction"}>{ReactHtmlParser(summaryInstruction)}</div>
+        <div className={'h5p-order-priority-summary-instruction'}>{ReactHtmlParser(summaryInstruction)}</div>
       )}
       <textarea
-        id={"summary"}
+        id={'summary'}
         placeholder={translate('giveABriefSummary')}
         value={comment}
-        onChange={event => setComment(event.target.value)}
+        onChange={(event) => setComment(event.target.value)}
         aria-label={translate('giveABriefSummary')}
       />
     </div>

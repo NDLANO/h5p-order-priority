@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {useOrderPriority} from "context/OrderPriorityContext";
-import Popover from "components/Popover/Popover";
+import { useOrderPriority } from 'context/OrderPriorityContext';
+import Popover from 'components/Popover/Popover';
 import classnames from 'classnames';
 
 const Comment = React.forwardRef((props, inputRef) => {
@@ -15,7 +15,7 @@ const Comment = React.forwardRef((props, inputRef) => {
   useEffect(() => {
     if ( showPopover ) {
       setPreviousFocusElement(document.activeElement);
-      setComment(props.comment || "");
+      setComment(props.comment || '');
       setTimeout(() => inputRef.current && inputRef.current.focus(), 0);
     }
     else {
@@ -31,7 +31,7 @@ const Comment = React.forwardRef((props, inputRef) => {
   }
 
   return (
-    <div className={"h5p-order-priority-comment"}>
+    <div className={'h5p-order-priority-comment'}>
       <Popover
         handleClose={handleToggle}
         lastActiveElement={previousFocusElement}
@@ -45,7 +45,7 @@ const Comment = React.forwardRef((props, inputRef) => {
             placeholder={context.translations.typeYourReasonsForSuchAnswers}
             value={comment}
             aria-label={context.translations.typeYourReasonsForSuchAnswers}
-            onChange={event => setComment(event.currentTarget.value)}
+            onChange={(event) => setComment(event.currentTarget.value)}
             rows={3}
           />
         )}
@@ -54,13 +54,13 @@ const Comment = React.forwardRef((props, inputRef) => {
           aria-haspopup={props.showCommentInPopup}
           aria-expanded={showPopover}
           onClick={handleToggle}
-          className={"h5p-order-priority-action"}
-          tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? "-1" : "0"}
+          className={'h5p-order-priority-action'}
+          tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? '-1' : '0'}
         >
           <span
-            className={classnames("h5p-ri", {
-              "hri-comment-empty": !props.comment || props.comment.length === 0,
-              "hri-comment-full": props.comment && props.comment.length > 0,
+            className={classnames('h5p-ri', {
+              'hri-comment-empty': !props.comment || props.comment.length === 0,
+              'hri-comment-full': props.comment && props.comment.length > 0,
             })}
           />
           <span className="visible-hidden">{context.translations.addComment}</span>
@@ -77,6 +77,6 @@ Comment.propTypes = {
   showCommentInPopup: PropTypes.bool,
 };
 
-Comment.displayName = "Comment";
+Comment.displayName = 'Comment';
 
 export default Comment;

@@ -1,6 +1,6 @@
-import React, { forwardRef, useEffect, useRef, useState } from "react";
-import { ArrowContainer, Popover as TinyPopover } from "react-tiny-popover";
-import PropTypes from "prop-types";
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { ArrowContainer, Popover as TinyPopover } from 'react-tiny-popover';
+import PropTypes from 'prop-types';
 
 /**
  * Component to display a popover with trap. Used third party component Tinypopover.
@@ -28,13 +28,13 @@ const Popover = forwardRef(
       classnames = [],
       header,
       close,
-      align = "end",
+      align = 'end',
       lastActiveElement,
       openerRect,
     },
     ref
   ) => {
-    classnames.push("h5p-order-priority-popover");
+    classnames.push('h5p-order-priority-popover');
 
     const [firstTabElement, setFirstTabElements] = useState(null);
     const [lastTabElement, setLastTabElements] = useState(null);
@@ -57,7 +57,8 @@ const Popover = forwardRef(
             e.preventDefault();
             lastTabElement.focus();
           }
-        } else {
+        }
+        else {
           if (document.activeElement === lastTabElement) {
             e.preventDefault();
             firstTabElement.focus();
@@ -78,7 +79,8 @@ const Popover = forwardRef(
           setFirstTabElements(focusableElements[0]);
           setLastTabElements(focusableElements[focusableElements.length - 1]);
         }, 0);
-      } else {
+      }
+      else {
         if (lastActiveElement) {
           lastActiveElement.focus();
         }
@@ -93,12 +95,12 @@ const Popover = forwardRef(
 
     return (
       <TinyPopover
-        containerClassName={classnames.join(" ")}
+        containerClassName={classnames.join(' ')}
         isOpen={show}
-        positions={["top", "bottom"]}
+        positions={['top', 'bottom']}
         padding={10}
         containerStyle={{
-          overflow: "unset",
+          overflow: 'unset',
         }}
         align={align}
         onClickOutside={onClose}
@@ -107,23 +109,23 @@ const Popover = forwardRef(
             <ArrowContainer
               position={position}
               popoverRect={popoverRect}
-              arrowColor={"white"}
+              arrowColor={'white'}
               arrowSize={10}
               childRect={openerRect}
             >
-              <div className={"h5p-order-priority-popover-container"}>
-                <div className={"h5p-order-priority-popover-header"}>
+              <div className={'h5p-order-priority-popover-container'}>
+                <div className={'h5p-order-priority-popover-header'}>
                   <div>{header}</div>
                   <button
                     onClick={handleClose}
                     aria-label={close}
-                    type={"button"}
-                    className={"close-button"}
+                    type={'button'}
+                    className={'close-button'}
                   >
-                    <span className={"h5p-ri hri-close"} />
+                    <span className={'h5p-ri hri-close'} />
                   </button>
                 </div>
-                <div className={"h5p-order-priority-popover-content"}>
+                <div className={'h5p-order-priority-popover-content'}>
                   {popoverContent}
                 </div>
               </div>
@@ -147,5 +149,5 @@ Popover.propTypes = {
   lastActiveElement: PropTypes.object,
 };
 
-Popover.displayName = "Popover";
+Popover.displayName = 'Popover';
 export default Popover;

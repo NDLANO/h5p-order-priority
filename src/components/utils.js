@@ -1,4 +1,4 @@
-import {escape, decode} from 'he';
+import { escape, decode } from 'he';
 
 /**
  * CSS classnames and breakpoints for the content type
@@ -80,16 +80,16 @@ export function stripHTML(html) {
 export const breakpoints = () => {
   return [
     {
-      "className": OrderPriorityClassnames.mediumTablet,
-      "shouldAdd": ratio => ratio >= 22 && ratio < 40,
+      'className': OrderPriorityClassnames.mediumTablet,
+      'shouldAdd': (ratio) => ratio >= 22 && ratio < 40,
     },
     {
-      "className": OrderPriorityClassnames.largeTablet,
-      "shouldAdd": ratio => ratio >= 40 && ratio < 60,
+      'className': OrderPriorityClassnames.largeTablet,
+      'shouldAdd': (ratio) => ratio >= 40 && ratio < 60,
     },
     {
-      "className": OrderPriorityClassnames.large,
-      "shouldAdd": ratio => ratio >= 60,
+      'className': OrderPriorityClassnames.large,
+      'shouldAdd': (ratio) => ratio >= 60,
     },
   ];
 };
@@ -122,8 +122,8 @@ export function getDnDId(element) {
  * @return {{summaryHeader: *, l10n: {}, resourceReport: {}, accessibility: {}, summaryInstruction: *, resources: *, header: *, description: *, statementsList: *}}
  */
 export function sanitizeParams(params) {
-  const filterResourceList = element => Object.keys(element).length !== 0 && element.constructor === Object;
-  const handleObject = sourceObject => {
+  const filterResourceList = (element) => Object.keys(element).length !== 0 && element.constructor === Object;
+  const handleObject = (sourceObject) => {
     if (sourceObject === undefined || sourceObject === null || !filterResourceList(sourceObject)) {
       return sourceObject;
     }
@@ -146,14 +146,14 @@ export function sanitizeParams(params) {
   } = params;
 
   if (Array.isArray(statementsList)) {
-    statementsList = statementsList.map(statement => decodeHTML(statement));
+    statementsList = statementsList.map((statement) => decodeHTML(statement));
   }
 
   if (resources.params.resourceList && resources.params.resourceList.filter(filterResourceList).length > 0) {
     resources.params = {
       ...resources.params,
       l10n: handleObject(resources.params.l10n),
-      resourceList: resources.params.resourceList.filter(filterResourceList).map(resource => {
+      resourceList: resources.params.resourceList.filter(filterResourceList).map((resource) => {
         const {
           title,
           introduction,

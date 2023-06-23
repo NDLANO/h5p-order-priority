@@ -1,6 +1,6 @@
-import React, { Fragment, useState, useRef, useMemo, useEffect } from "react";
-import Popover from "../../../Popover/Popover";
-import { useOrderPriority } from "context/OrderPriorityContext";
+import React, { Fragment, useState, useRef, useMemo, useEffect } from 'react';
+import Popover from '../../../Popover/Popover';
+import { useOrderPriority } from 'context/OrderPriorityContext';
 
 /**
  * If enabled the user can reset the content type and do it again
@@ -53,29 +53,29 @@ function Reset() {
           classnames={orderPriorityContext.activeBreakpoints}
           close={translations.close}
           header={translations.restart}
-          align={"start"}
+          align={'start'}
           openerRect={openerRect}
           popoverContent={(
             <div
-              role={"dialog"}
-              aria-labelledby={"resetTitle"}
-              className={"h5p-order-priority-reset-modal"}
+              role={'dialog'}
+              aria-labelledby={'resetTitle'}
+              className={'h5p-order-priority-reset-modal'}
             >
-              <p id={"resetTitle"}>
+              <p id={'resetTitle'}>
                 {translations.ifYouContinueAllYourChangesWillBeLost}
               </p>
               <div>
                 <button
                   onClick={confirmReset}
-                  className={"continue"}
-                  type={"button"}
+                  className={'continue'}
+                  type={'button'}
                 >
                   {translations.continue}
                 </button>
                 <button
                   onClick={togglePopover}
-                  className={"cancel"}
-                  type={"button"}
+                  className={'cancel'}
+                  type={'button'}
                 >
                   {translations.cancel}
                 </button>
@@ -84,12 +84,12 @@ function Reset() {
           )}
         >
           <button
-            className={"h5p-order-priority-button-restart"}
+            className={'h5p-order-priority-button-restart'}
             onClick={togglePopover}
-            aria-haspopup={"true"}
+            aria-haspopup={'true'}
             aria-expanded={showPopover}
           >
-            <span className={"h5p-ri hri-restart"} />
+            <span className={'h5p-ri hri-restart'} />
             {translations.restart}
           </button>
         </Popover>

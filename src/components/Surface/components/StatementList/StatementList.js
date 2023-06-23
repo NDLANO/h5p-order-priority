@@ -1,10 +1,10 @@
-import React, {useRef, useState} from 'react';
+import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import Remaining from "./components/Remaining";
-import Prioritized from "./components/Prioritized";
-import Placeholder from "./components/Placeholder";
-import Comment from "./components/components/Comment";
-import classnames from "classnames";
+import Remaining from './components/Remaining';
+import Prioritized from './components/Prioritized';
+import Placeholder from './components/Placeholder';
+import Comment from './components/components/Comment';
+import classnames from 'classnames';
 import { CSS } from '@dnd-kit/utilities';
 import 'styles/components/StatementList.scss';
 import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
@@ -82,7 +82,7 @@ function StatementList(props) {
           translate={translate}
         >
           <div
-            className={"h5p-order-priority-empty"}
+            className={'h5p-order-priority-empty'}
           />
         </Placeholder>
       );
@@ -158,10 +158,10 @@ function StatementList(props) {
       {...listeners}
     >
       <li
-        className={"h5p-order-priority-draggable-container"}
+        className={'h5p-order-priority-draggable-container'}
       >
         <div
-          className={classnames("h5p-order-priority-draggable-element", {
+          className={classnames('h5p-order-priority-draggable-element', {
             'h5p-order-priority-no-transform': props.disableTransform,
           })}
           aria-roledescription={props.translate('draggableItem')}

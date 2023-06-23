@@ -1,7 +1,7 @@
 import React from 'react';
-import PriorityNumber from "./components/PriorityNumber";
+import PriorityNumber from './components/PriorityNumber';
 import classnames from 'classnames';
-import {useOrderPriority} from "context/OrderPriorityContext";
+import { useOrderPriority } from 'context/OrderPriorityContext';
 
 /**
  * Serves as a placeholder in the prioritized column
@@ -29,8 +29,8 @@ const Placeholder = ({
         displayIndex={displayIndex}
       />
       <div
-        className={classnames("h5p-droparea", {
-          "h5p-order-priority-active-droppable": isDraggingOver
+        className={classnames('h5p-droparea', {
+          'h5p-order-priority-active-droppable': isDraggingOver
         })}
       >
         {children}

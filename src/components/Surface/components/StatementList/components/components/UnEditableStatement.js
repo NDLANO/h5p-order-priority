@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function UnEditableStatement(props) {
   return (
-    <p className={"h5p-order-priority-element"}>
+    <p className={'h5p-order-priority-element'}>
       {props.statement}
     </p>
   );

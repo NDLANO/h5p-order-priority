@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DragArrows from "./components/DragArrows";
-import EditableStatement from "./components/EditableStatement";
-import UnEditableStatement from "./components/UnEditableStatement";
+import DragArrows from './components/DragArrows';
+import EditableStatement from './components/EditableStatement';
+import UnEditableStatement from './components/UnEditableStatement';
 import classnames from 'classnames';
 
 /**
@@ -40,11 +40,11 @@ function Remaining(props) {
 
   return (
     <div
-      className={classnames("h5p-order-priority-statement", {
-        "h5p-order-priority-active-draggable": isDragging
+      className={classnames('h5p-order-priority-statement', {
+        'h5p-order-priority-active-draggable': isDragging
       })}
     >
-      <div className={"h5p-order-priority-statement-remaining"}>
+      <div className={'h5p-order-priority-statement-remaining'}>
         <DragArrows draggableProps={props.draggableProps} />
         {displayStatement}
       </div>

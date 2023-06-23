@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Placeholder from "./Placeholder";
-import DragArrows from "./components/DragArrows";
+import Placeholder from './Placeholder';
+import DragArrows from './components/DragArrows';
 import classnames from 'classnames';
-import StatementComment from "./components/StatementComment";
-import EditableStatement from "./components/EditableStatement";
-import UnEditableStatement from "./components/UnEditableStatement";
+import StatementComment from './components/StatementComment';
+import EditableStatement from './components/EditableStatement';
+import UnEditableStatement from './components/UnEditableStatement';
 
 /**
  * Statement that is put in a prioritized list
@@ -40,11 +40,11 @@ function Prioritized({
       displayIndex={displayIndex}
     >
       <div
-        className={classnames("h5p-order-priority-statement", {
+        className={classnames('h5p-order-priority-statement', {
           'h5p-order-priority-statement-extra': enableCommentDisplay
         })}
       >
-        <div className={"h5p-order-priority-statement-prioritized"}
+        <div className={'h5p-order-priority-statement-prioritized'}
         >
           <DragArrows draggableProps={draggableProps}/>
           {enableEditing === true && (
