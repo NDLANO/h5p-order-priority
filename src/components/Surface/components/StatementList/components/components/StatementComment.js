@@ -27,6 +27,13 @@ const StatementComment = React.forwardRef((props, inputRef) => {
     }
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === ' ') {
+      event.stopPropagation();
+    }
+  };
+
+
   return (
     <div
       className={classnames('h5p-order-priority-statement-comment', {
@@ -44,6 +51,7 @@ const StatementComment = React.forwardRef((props, inputRef) => {
           onBlur={() => props.onCommentBlur(inputRef.current.value)}
           placeholder={context.translations.typeYourReasonsForSuchAnswers}
           aria-label={context.translations.typeYourReasonsForSuchAnswers}
+          onKeyDown={handleKeyDown}
         />
       </div>
     </div>

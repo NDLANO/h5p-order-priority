@@ -16,23 +16,49 @@ function EditableStatement(props) {
     }
   };
 
-  const id = 'es_' + props.idBase;
-  const inputId = 'input_' + id;
+  const handleBlur = () => {
+    toggleEditMode(false);
+  };
+
+  const handleKeyDown = (event) => {
+    console.log(event);
+    if (event.key === ' ') {
+      event.stopPropagation();
+    }
+  };
+
+  const id = "es_" + props.idBase;
+  const inputId = "input_" + id;
   return (
     <div
       className={'h5p-order-priority-editable-container'}
     >
-      <input
-        className={classnames('h5p-order-priority-editable')}
-        ref={inputRef}
-        onKeyUp={handleKeyUp}
-        onBlur={() => {
-          props.onChanged(inputRef.current.value);
-        }}
-        onChange={debounce(() => props.onChanged(inputRef.current.value), 200)}
-        id={inputId}
-        type={'textarea'}
-      />
+      <div>
+        <label
+          htmlFor={inputId}
+          tabIndex={0}
+          onClick={handleClick}
+          onKeyUp={handleKeyUp}
+          className={classnames("h5p-order-priority-noneditable", {
+            "hidden": inEditMode === true,
+          })}
+          aria-label={context.translations.editableItem + props.statement}
+        >
+          {props.statement}
+        </label>
+        <input
+          className={classnames("h5p-order-priority-editable", {
+            "hidden": inEditMode === false,
+          })}
+          ref={inputRef}
+          onKeyUp={handleKeyUp}
+          onBlur={handleBlur}
+          onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
+          id={inputId}
+          type={"textarea"}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
     </div>
   );
 }
