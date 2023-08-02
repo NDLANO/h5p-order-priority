@@ -28,7 +28,7 @@ const StatementComment = React.forwardRef((props, inputRef) => {
   }
 
   const handleKeyDown = (event) => {
-    if (event.key === ' ') {
+    if (event.key === ' ' || event.key === 'Enter') {
       event.stopPropagation();
     }
   };

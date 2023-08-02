@@ -21,8 +21,7 @@ function EditableStatement(props) {
   };
 
   const handleKeyDown = (event) => {
-    console.log(event);
-    if (event.key === ' ') {
+    if (event.key === ' ' || event.key === 'Enter') {
       event.stopPropagation();
     }
   };
