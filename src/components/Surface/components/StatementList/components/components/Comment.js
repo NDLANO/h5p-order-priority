@@ -30,6 +30,13 @@ const Comment = React.forwardRef((props, inputRef) => {
     togglePopover(!showPopover);
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.stopPropagation();
+    }
+  };
+
+
   return (
     <div className={'h5p-order-priority-comment'}>
       <Popover
@@ -45,7 +52,8 @@ const Comment = React.forwardRef((props, inputRef) => {
             placeholder={context.translations.typeYourReasonsForSuchAnswers}
             value={comment}
             aria-label={context.translations.typeYourReasonsForSuchAnswers}
-            onChange={(event) => setComment(event.currentTarget.value)}
+            onChange={event => setComment(event.currentTarget.value)}
+            onKeyDown={handleKeyDown}
             rows={3}
           />
         )}
@@ -54,8 +62,9 @@ const Comment = React.forwardRef((props, inputRef) => {
           aria-haspopup={props.showCommentInPopup}
           aria-expanded={showPopover}
           onClick={handleToggle}
-          className={'h5p-order-priority-action'}
-          tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? '-1' : '0'}
+          className={"h5p-order-priority-action"}
+          tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? "-1" : "0"}
+          onKeyDown={handleKeyDown}
         >
           <span
             className={classnames('h5p-ri', {

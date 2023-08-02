@@ -41,6 +41,7 @@ function EditableStatement(props) {
           className={classnames("h5p-order-priority-noneditable", {
             "hidden": inEditMode === true,
           })}
+          onKeyDown={handleKeyDown}
           aria-label={context.translations.editableItem + props.statement}
         >
           {props.statement}
