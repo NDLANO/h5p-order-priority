@@ -34,7 +34,10 @@ function Prioritized({
   onCommentBlur,
   inputRef,
   draggableProps,
+  attributes,
+  listeners
 }) {
+
   return (
     <Placeholder
       displayIndex={displayIndex}
@@ -43,6 +46,8 @@ function Prioritized({
         className={classnames('h5p-order-priority-statement', {
           'h5p-order-priority-statement-extra': enableCommentDisplay
         })}
+        {...attributes}
+        {...listeners}
       >
         <div className={'h5p-order-priority-statement-prioritized'}
         >
@@ -84,6 +89,8 @@ Prioritized.propTypes = {
   enableCommentDisplay: PropTypes.bool,
   onCommentChange: PropTypes.func,
   inputRef: PropTypes.object,
+  attributes: PropTypes.object,
+  listeners: PropTypes.object
 };
 
 
