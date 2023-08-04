@@ -154,8 +154,8 @@ function Surface() {
         }
 
         if (previousDraggedIndex > -1) {
-          statementClone.find((statement) => statement.id == dragged.id).displayIndex = dropped.displayIndex;
-          statementClone.find((statement) => statement.id == dropped.id).displayIndex = previousDraggedIndex;
+          statementClone.find((statement) => statement.id === dragged.id).displayIndex = dropped.displayIndex;
+          statementClone.find((statement) => statement.id === dropped.id).displayIndex = previousDraggedIndex;
           if (dragged.displayIndex !== dropped.displayIndex) {
             const droppedIndex = dropped.displayIndex - 1;
             const draggedIndex = dragged.displayIndex - 1;
@@ -307,48 +307,6 @@ function Surface() {
     }
   }
 
-  function isDroppingOnAlreadyPrioritizedStatement(draggedElement) {
-    return draggedElement.isPlaceholder === false;
-  }
-
-  function draggingOverFromRemainingToPrioritized(active, over) {
-    if (active === undefined || over === undefined) {
-      return false;
-    }
-    const [activeString] = active.id.toString().split('-') ?? [];
-    const [overString] = over.id.toString().split('-') ?? [];
-
-    return activeString === 'remaining' && overString === 'prioritized';
-  }
-
-  function isDraggedElementFromRemaining(dragged) {
-    if (dragged === undefined) {
-      return false;
-    }
-
-    return dragged.isPlaceholder === true;
-  }
-
-  function isArrangingPrioritizedStatements(active, over) {
-    const [activeString] = active.id.toString().split('-') ?? [];
-    const [overString] = over.id.toString().split('-') ?? [];
-
-    return activeString === 'prioritized' && overString === 'prioritized';
-  }
-
-  function swapIndexPositionbetweenElements(
-    activeId,
-    overId,
-    prioritizedStatements
-  ) {
-    const droppedIndex = prioritizedStatements.indexOf(parseInt(overId));
-    const tempIndex = prioritizedStatements.indexOf(parseInt(activeId));
-    [prioritizedStatements[tempIndex], prioritizedStatements[droppedIndex]] = [
-      prioritizedStatements[droppedIndex],
-      prioritizedStatements[tempIndex],
-    ];
-    prioritizedStatements[droppedIndex] = parseInt(activeId);
-  }
 
   const memoizedReducer = useCallback(stateHeadQuarter, []);
   const [state, dispatch] = useReducer(memoizedReducer, init());
@@ -381,77 +339,6 @@ function Surface() {
 
   registerReset(() => dispatch({ type: 'reset' }));
   collectExportValues('userInput', sendExportValues);
-
-  /**
-  registerReset(() => dispatch({ type: "reset" }));
-  collectExportValues("userInput", sendExportValues);
-
-  /**
-   * Initialize the content type
-   *
-   * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
-   */
-  function init() {
-    const {
-      params: { statementsList = [] },
-      behaviour: {
-        prepopulate = false,
-        randomizeStatements = false,
-        allowAddingOfStatements = false,
-        numberOfStatements = statementsList.length,
-      },
-    } = context;
-
-    if (numberOfStatements > statementsList.length) {
-      new Array(numberOfStatements - statementsList.length)
-        .fill(null)
-        .forEach((element) => statementsList.push(element));
-    }
-
-    if (randomizeStatements === true) {
-      statementsList.sort(() => 0.5 - Math.random());
-    }
-
-    const statements = statementsList.map((statement, index) => {
-      const statementObject = new StatementDataObject({
-        id: index,
-        displayIndex: index + 1,
-        comment: '',
-      });
-
-      if (statement !== null) {
-        statementObject.statement = statement;
-        statementObject.isPlaceholder = !prepopulate;
-        statementObject.touched =
-          prepopulate && statementObject.displayIndex <= numberOfStatements;
-      }
-      else {
-        statementObject.isPlaceholder = true;
-        statementObject.added = true;
-      }
-      return statementObject;
-    });
-
-    const remainingStatements =
-      prepopulate === true
-        ? statements.slice(numberOfStatements)
-        : statements.filter((statement) => statement.added === false);
-    const prioritizedStatements = statements.filter(
-      (statement) =>
-        statement.displayIndex <= numberOfStatements || statement.touched
-    );
-
-    return {
-      statements: statements,
-      remainingStatements: remainingStatements.map((statement) => statement.id),
-      prioritizedStatements: prioritizedStatements.map(
-        (statement) => statement.id
-      ),
-      showOneColumn: prepopulate,
-      canAddPrioritized:
-        allowAddingOfStatements && remainingStatements.length === 0,
-    };
-  }
 
   /**
    * Get details for lists that is provided for the screen readers
@@ -553,19 +440,6 @@ function Surface() {
     dispatch({
       type: 'statementChange',
       payload: { statement },
-    });
-  }
-
-  /**
-   * Create new StatementDataObject when adding custom statements
-   * @return {StatementDataObject}
-   */
-  function createNewStatement() {
-    return new StatementDataObject({
-      added: true,
-      isUserAdded: true,
-      editMode: true,
-      statement: '',
     });
   }
 

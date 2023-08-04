@@ -16,10 +16,6 @@ function EditableStatement(props) {
     }
   };
 
-  const handleBlur = () => {
-    toggleEditMode(false);
-  };
-
   const handleKeyDown = (event) => {
     if (event.key === ' ' || event.key === 'Enter') {
       event.stopPropagation();
@@ -32,33 +28,18 @@ function EditableStatement(props) {
     <div
       className={'h5p-order-priority-editable-container'}
     >
-      <div>
-        <label
-          htmlFor={inputId}
-          tabIndex={0}
-          onClick={handleClick}
-          onKeyUp={handleKeyUp}
-          className={classnames('h5p-order-priority-noneditable', {
-            'hidden': inEditMode === true,
-          })}
-          onKeyDown={handleKeyDown}
-          aria-label={context.translations.editableItem + props.statement}
-        >
-          {props.statement}
-        </label>
-        <input
-          className={classnames('h5p-order-priority-editable', {
-            'hidden': inEditMode === false,
-          })}
-          ref={inputRef}
-          onKeyUp={handleKeyUp}
-          onBlur={handleBlur}
-          onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
-          id={inputId}
-          type={'textarea'}
-          onKeyDown={handleKeyDown}
-        />
-      </div>
+      <input
+        className={classnames('h5p-order-priority-editable')}
+        ref={inputRef}
+        onKeyUp={handleKeyUp}
+        onKeyDown={handleKeyDown}
+        onBlur={() => {
+          props.onChanged(inputRef.current.value);
+        }}
+        onChange={debounce(() => props.onChanged(inputRef.current.value), 200)}
+        id={inputId}
+        type={'textarea'}
+      />
     </div>
   );
 }

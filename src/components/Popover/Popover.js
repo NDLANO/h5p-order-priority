@@ -45,30 +45,6 @@ const Popover = forwardRef(
       handleClose();
     };
 
-    /**
-     * Make sure the user cannot press the tab key and exit the popover
-     * @param e
-     */
-    const trapKeys = (e) => {
-      if (e.keyCode === 9) {
-        if (e.shiftKey) {
-          if (document.activeElement === firstTabElement) {
-            e.preventDefault();
-            lastTabElement.focus();
-          }
-        }
-        else {
-          if (document.activeElement === lastTabElement) {
-            e.preventDefault();
-            firstTabElement.focus();
-          }
-        }
-      }
-      if (e.keyCode === 27) {
-        onClose();
-      }
-    };
-
     useEffect(() => {
       if (show) {
         setTimeout(() => {
