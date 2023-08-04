@@ -26,8 +26,8 @@ function EditableStatement(props) {
     }
   };
 
-  const id = "es_" + props.idBase;
-  const inputId = "input_" + id;
+  const id = 'es_' + props.idBase;
+  const inputId = 'input_' + id;
   return (
     <div
       className={'h5p-order-priority-editable-container'}
@@ -38,8 +38,8 @@ function EditableStatement(props) {
           tabIndex={0}
           onClick={handleClick}
           onKeyUp={handleKeyUp}
-          className={classnames("h5p-order-priority-noneditable", {
-            "hidden": inEditMode === true,
+          className={classnames('h5p-order-priority-noneditable', {
+            'hidden': inEditMode === true,
           })}
           onKeyDown={handleKeyDown}
           aria-label={context.translations.editableItem + props.statement}
@@ -47,15 +47,15 @@ function EditableStatement(props) {
           {props.statement}
         </label>
         <input
-          className={classnames("h5p-order-priority-editable", {
-            "hidden": inEditMode === false,
+          className={classnames('h5p-order-priority-editable', {
+            'hidden': inEditMode === false,
           })}
           ref={inputRef}
           onKeyUp={handleKeyUp}
           onBlur={handleBlur}
           onChange={debounce(() => props.onBlur(inputRef.current.value), 200)}
           id={inputId}
-          type={"textarea"}
+          type={'textarea'}
           onKeyDown={handleKeyDown}
         />
       </div>
