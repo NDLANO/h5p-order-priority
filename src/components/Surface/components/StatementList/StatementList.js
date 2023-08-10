@@ -81,7 +81,7 @@ function StatementList(props) {
         />
       );
     }
-    else if (draggableType === 'prioritized' && !statement.isPlaceholder) {
+    else if (draggableType === 'prioritized' && statement.isPlaceholder === false) {
       let actions;
       if (isSingleColumn) {
         actions = (
@@ -154,8 +154,6 @@ function StatementList(props) {
       className={classnames('h5p-dnd-draggable', {
         'h5p-dnd-draggable--dragging': isDragging
       })}
-      {...attributes}
-      {...listeners}
     >
       <li
         className={'h5p-order-priority-draggable-container'}

@@ -16,6 +16,12 @@ function EditableStatement(props) {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === ' ' || event.key === 'Enter') {
+      event.stopPropagation();
+    }
+  };
+
   const id = 'es_' + props.idBase;
   const inputId = 'input_' + id;
   return (
@@ -26,6 +32,7 @@ function EditableStatement(props) {
         className={classnames('h5p-order-priority-editable')}
         ref={inputRef}
         onKeyUp={handleKeyUp}
+        onKeyDown={handleKeyDown}
         onBlur={() => {
           props.onChanged(inputRef.current.value);
         }}
