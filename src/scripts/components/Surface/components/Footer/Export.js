@@ -114,7 +114,7 @@ const Export = () => {
       escapeHTML(translate('submitConfirmedText')),
       escapeHTML(translate('selectAll')),
       escapeHTML(translate('export')),
-      H5P.instances[0].getLibraryFilePath('exportTemplate.docx'),
+      context.getLibraryFilePath('exportTemplate.docx'),
       exportObject
     );
     exportDocument.getElement().prependTo(exportContainer.current);
