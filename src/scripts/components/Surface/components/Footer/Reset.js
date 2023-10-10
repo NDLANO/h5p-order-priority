@@ -16,7 +16,7 @@ const Reset = () => {
 
   const {
     behaviour: { enableRetry = false },
-    reset,
+    resetTask,
     translations,
   } = orderPriorityContext;
 
@@ -34,13 +34,13 @@ const Reset = () => {
   };
 
   const confirmReset = () => {
-    reset();
+    resetTask();
     togglePopover();
   };
 
   const openerRect = useMemo(
-    () => resetButtonRef.current?.getBoundingClientRect(),
-    [resetButtonRef.current]
+    () => resetButtonRef.current?.getBoundingClientRect() ?? {},
+    []
   );
 
   return (
