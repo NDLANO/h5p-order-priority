@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useOrderPriority } from 'context/OrderPriorityContext';
-import Popover from 'components/Popover/Popover';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import Popover from '@components/Popover/Popover.js';
 
 const Comment = React.forwardRef((props, inputRef) => {
 

@@ -1,11 +1,5 @@
-import { useOrderPriority } from 'context/OrderPriorityContext';
-import { StatementDataObject } from '../utils';
+import classnames from 'classnames';
 import React, { Fragment, useCallback, useReducer, useEffect } from 'react';
-import Column from './components/Column/Column';
-import StatementList from './components/StatementList/StatementList';
-import AddStatement from './components/StatementList/components/components/AddStatement';
-import Summary from './components/Summary/Summary';
-import Messages from './Messages';
 import {
   DndContext,
   DragOverlay,
@@ -13,21 +7,26 @@ import {
   PointerSensor,
   KeyboardSensor
 } from '@dnd-kit/core';
-import Comment from './components/StatementList/components/components/Comment';
-import Prioritized from './components/StatementList/components/Prioritized';
-import classnames from 'classnames';
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable';
 
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import { StatementDataObject } from '@services/utils.js';
+import Column from './components/Column/Column.js';
+import StatementList from './components/StatementList/StatementList.js';
+import AddStatement from './components/StatementList/components/components/AddStatement.js';
+import Summary from './components/Summary/Summary.js';
+import Messages from './Messages.js';
+import Comment from './components/StatementList/components/components/Comment.js';
+import Prioritized from './components/StatementList/components/Prioritized.js';
 
-function Surface() {
+const Surface = () => {
   const context = useOrderPriority();
 
-
-  function isDroppingOnAlreadyPrioritizedStatement(draggedElement) {
+  const isDroppingOnAlreadyPrioritizedStatement = (draggedElement) => {
     return draggedElement.isPlaceholder === false;
-  }
+  };
 
-  function draggingOverFromRemainingToPrioritized(active, over) {
+  const draggingOverFromRemainingToPrioritized = (active, over) => {
     if (active === undefined || over === undefined) {
       return false;
     }
@@ -35,36 +34,36 @@ function Surface() {
     const [overString] = over.id.toString().split('-') ?? [];
 
     return activeString === 'remaining' && overString === 'prioritized';
-  }
+  };
 
-  function isDraggedElementFromRemaining(dragged) {
+  const isDraggedElementFromRemaining = (dragged) => {
     if (dragged === undefined) {
       return false;
     }
 
     return dragged.isPlaceholder === true;
-  }
+  };
 
-  function isArrangingPrioritizedStatements(active, over) {
+  const isArrangingPrioritizedStatements = (active, over) => {
     const [activeString] = active.id.toString().split('-') ?? [];
     const [overString] = over.id.toString().split('-') ?? [];
 
     return activeString === 'prioritized' && overString === 'prioritized';
-  }
+  };
 
-  function swapIndexPositionbetweenElements(activeId, overId, prioritizedStatements) {
+  const swapIndexPositionbetweenElements = (activeId, overId, prioritizedStatements) => {
     const droppedIndex = prioritizedStatements.indexOf(parseInt(overId));
     const tempIndex = prioritizedStatements.indexOf(parseInt(activeId));
     [prioritizedStatements[tempIndex], prioritizedStatements[droppedIndex]] = [prioritizedStatements[droppedIndex], prioritizedStatements[tempIndex]];
     prioritizedStatements[droppedIndex] = parseInt(activeId);
-  }
+  };
 
   /**
    * Initialize the content type
    *
    * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
    */
-  function init() {
+  const init = () => {
     const {
       params: {
         statementsList = [],
@@ -116,20 +115,20 @@ function Surface() {
       showOneColumn: prepopulate,
       canAddPrioritized: allowAddingOfStatements && remainingStatements.length === 0,
     };
-  }
+  };
 
   /**
    * Create new StatementDataObject when adding custom statements
    * @return {StatementDataObject}
    */
-  function createNewStatement() {
+  const createNewStatement = () => {
     return new StatementDataObject({
       added: true,
       isUserAdded: true,
       editMode: true,
       statement: '',
     });
-  }
+  };
 
   /**
    * Handling of all update in the state for the content type
@@ -138,7 +137,7 @@ function Surface() {
    * @return {{statements: (*|string)[]}|{prioritizedStatements, remainingStatements: null[], showOneColumn, statements: StatementDataObject[], canAddPrioritized: boolean}|{prioritizedStatements: unknown[], statements: any, canAddPrioritized: (boolean|*)}|{prioritizedStatements: unknown[], remainingStatements: unknown[], showOneColumn: boolean, statements: any, canAddPrioritized: (*|boolean)}|*|{statements: any}|{isCombineEnabled: boolean}|{remainingStatements: unknown[], statements: any}}
    */
 
-  function stateHeadQuarter(state, action) {
+  const stateHeadQuarter = (state, action) => {
     switch (action.type) {
       case 'dragUpdate': {
         const { active, over } = action.payload;
@@ -305,8 +304,7 @@ function Surface() {
       default:
         return state;
     }
-  }
-
+  };
 
   const memoizedReducer = useCallback(stateHeadQuarter, []);
   const [state, dispatch] = useReducer(memoizedReducer, init());
@@ -322,13 +320,13 @@ function Surface() {
    * Callback that is called when exporting the values
    * @return {{prioritizedStatements, statements: *[]}}
    */
-  function sendExportValues() {
+  const sendExportValues = () => {
     const { statements, prioritizedStatements } = state;
     return {
       statements,
       prioritizedStatements,
     };
-  }
+  };
 
   const {
     collectExportValues,
@@ -337,7 +335,9 @@ function Surface() {
     translate,
   } = context;
 
-  registerReset(() => dispatch({ type: 'reset' }));
+  registerReset(() => {
+    dispatch({ type: 'reset' });
+  });
   collectExportValues('userInput', sendExportValues);
 
   /**
@@ -346,7 +346,7 @@ function Surface() {
    * @param droppable
    * @return {any}
    */
-  function getListDetails(droppable, startPosition, destinationPosition) {
+  const getListDetails = (droppable, startPosition, destinationPosition) => {
     const droppableId = droppable.id;
     const [droppableType] = droppableId.split('-');
 
@@ -376,7 +376,7 @@ function Surface() {
       droppable,
       details
     );
-  }
+  };
 
   const [active, setActive] = React.useState(null);
   const handleDragStart = ({ active }) => {
@@ -388,7 +388,7 @@ function Surface() {
    *
    * @type {(...args: any[]) => any}
    */
-  function onDragUpdate(dragResult) {
+  const onDragUpdate = (dragResult) => {
     let { active, over } = dragResult;
 
     if (active?.id == null || over?.id == null) {
@@ -411,13 +411,13 @@ function Surface() {
         ...dragResult,
       },
     });
-  }
+  };
 
   /**
    * Update the state and screen reader after drag ends
    * @type {(...args: any[]) => any}
    */
-  function handleDragEnd(dragResult) {
+  const handleDragEnd = (dragResult) => {
     let { active, over } = dragResult;
 
     if (active?.id == null || over?.id == null) {
@@ -430,20 +430,20 @@ function Surface() {
         ...dragResult,
       },
     });
-  }
+  };
 
   /**
    * Callback that stores changes when the user changes the statements
    * @param statement
    */
-  function handleOnStatementChange(statement) {
+  const handleOnStatementChange = (statement) => {
     dispatch({
       type: 'statementChange',
       payload: { statement },
     });
-  }
+  };
 
-  function createPrioritizedStatementWithComment(statement) {
+  const createPrioritizedStatementWithComment = (statement) => {
     const actions = (
       <Comment
         onCommentChange={()=>{}}
@@ -475,7 +475,7 @@ function Surface() {
         />
       </div>
     );
-  }
+  };
 
   const statementLists = {};
 
@@ -485,7 +485,7 @@ function Surface() {
       tolerance: 5,
     },
   });
-  
+
   const keyboardSensor = useSensor(KeyboardSensor, {
     coordinateGetter: sortableKeyboardCoordinates,
   });
@@ -494,7 +494,7 @@ function Surface() {
    * Sorting the statements and put them in appropriate columns
    * @return {*}
    */
-  function handleSurface() {
+  const handleSurface = () => {
     return (
       <Fragment>
         <DndContext
@@ -659,7 +659,7 @@ function Surface() {
         </DndContext>
       </Fragment>
     );
-  }
+  };
 
   return (
     <div>
@@ -675,6 +675,6 @@ function Surface() {
       {provideSummary === true && <Summary />}
     </div>
   );
-}
+};
 
 export default Surface;

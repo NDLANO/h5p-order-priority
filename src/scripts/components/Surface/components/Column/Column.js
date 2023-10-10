@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Droppable from '../StatementList/components/components/Droppable';
 import { SortableContext } from '@dnd-kit/sortable';
+import PropTypes from 'prop-types';
+import Droppable from '../StatementList/components/components/Droppable.js';
 
 /**
  * Add columns that acts as dropzones for the statements

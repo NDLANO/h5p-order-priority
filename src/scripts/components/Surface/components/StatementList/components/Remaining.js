@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import DragArrows from './components/DragArrows';
-import EditableStatement from './components/EditableStatement';
-import UnEditableStatement from './components/UnEditableStatement';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import DragArrows from './components/DragArrows.js';
+import EditableStatement from './components/EditableStatement.js';
+import UnEditableStatement from './components/UnEditableStatement.js';
 
 /**
  * Statements that are provided but not interacted with

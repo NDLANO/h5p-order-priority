@@ -1,6 +1,6 @@
 import React from 'react';
-import Export from './Export';
-import Reset from './Reset';
+import Export from './Export.js';
+import Reset from './Reset.js';
 
 /**
  * Container for the export and reset logic

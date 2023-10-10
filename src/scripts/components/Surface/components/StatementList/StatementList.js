@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import Remaining from './components/Remaining';
-import Prioritized from './components/Prioritized';
-import Placeholder from './components/Placeholder';
-import Comment from './components/components/Comment';
 import classnames from 'classnames';
 import { CSS } from '@dnd-kit/utilities';
-import 'styles/components/StatementList.scss';
 import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
+import PropTypes from 'prop-types';
+import Remaining from './components/Remaining.js';
+import Prioritized from './components/Prioritized.js';
+import Placeholder from './components/Placeholder.js';
+import Comment from './components/components/Comment.js';
+import '@styles/components/StatementList.scss';
 
 function StatementList(props) {
 

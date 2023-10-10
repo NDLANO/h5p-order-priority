@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Placeholder from './Placeholder';
-import DragArrows from './components/DragArrows';
 import classnames from 'classnames';
-import StatementComment from './components/StatementComment';
-import EditableStatement from './components/EditableStatement';
-import UnEditableStatement from './components/UnEditableStatement';
+import Placeholder from './Placeholder.js';
+import DragArrows from './components/DragArrows.js';
+import StatementComment from './components/StatementComment.js';
+import EditableStatement from './components/EditableStatement.js';
+import UnEditableStatement from './components/UnEditableStatement.js';
 
 /**
  * Statement that is put in a prioritized list

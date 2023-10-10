@@ -1,6 +1,6 @@
 import React from 'react';
-import PriorityNumber from './components/PriorityNumber';
 import classnames from 'classnames';
+import PriorityNumber from './components/PriorityNumber.js';
 
 /**
  * Serves as a placeholder in the prioritized column

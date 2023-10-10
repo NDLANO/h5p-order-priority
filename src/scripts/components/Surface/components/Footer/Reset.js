@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useRef, useMemo, useEffect } from 'react';
-import Popover from '../../../Popover/Popover';
-import { useOrderPriority } from 'context/OrderPriorityContext';
+import Popover from '@components/Popover/Popover.js';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
 
 /**
  * If enabled the user can reset the content type and do it again

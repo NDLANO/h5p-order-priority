@@ -8,4 +8,8 @@
   margin-right: OPFunction.pxToRem(13px);
   padding: 0 OPFunction.pxToRem(10px);
   color: #535c69;
+
+  &:hover {
+    cursor: grab;
+  }
 }

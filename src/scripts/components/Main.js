@@ -1,9 +1,9 @@
-import 'fonts/H5PReflectionFont.scss';
 import React, { useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import Surface from './Surface/Surface';
-import Footer from './Surface/components/Footer/Footer';
 import ReactHtmlParser from 'html-react-parser';
+import PropTypes from 'prop-types';
+import Surface from '@components/Surface/Surface.js';
+import Footer from '@components/Surface/components/Footer/Footer.js';
+import '@assets/fonts/H5PReflectionFont.scss';
 
 function Main(props) {
 

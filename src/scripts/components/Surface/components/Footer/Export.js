@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { useOrderPriority } from 'context/OrderPriorityContext';
-import { escapeHTML, stripHTML } from '../../../utils';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import { escapeHTML, stripHTML } from '@services/utils.js';
 
 /**
  * Display the export page to let the user summary the answers given. Uses the package H5P.ExportPage

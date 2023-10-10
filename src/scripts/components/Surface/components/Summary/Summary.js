@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { useOrderPriority } from 'context/OrderPriorityContext';
-import 'styles/components/Summary.scss';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import '@styles/components/Summary.scss';
 import ReactHtmlParser from 'html-react-parser';
 
 /**

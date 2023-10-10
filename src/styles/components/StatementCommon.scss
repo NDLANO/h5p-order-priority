@@ -18,7 +18,6 @@
   &:active,
   &.h5p-order-priority-active-draggable {
     border-color: #1a73d9;
-    cursor: pointer;
     box-shadow: 0 0 OPFunction.pxToRem(3px) OPFunction.pxToRem(2px) rgba(26,115,217,0.2);
     div:not(.h5p-order-priority-actionlist) {
       background-color: #edf4fd;

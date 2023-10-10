@@ -2,7 +2,6 @@ import { escape, decode } from 'he';
 
 /**
  * CSS classnames and breakpoints for the content type
- *
  * @type {{largeTablet: string, large: string, mediumTablet: string}}
  */
 const OrderPriorityClassnames = {

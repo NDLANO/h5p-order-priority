@@ -1,71 +1,49 @@
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+import { dirname, resolve as _resolve, join } from 'path';
+import { fileURLToPath } from 'url';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+// terser-webpack-plugin is provided by webpack automatically
+// eslint-disable-next-line import/no-extraneous-dependencies
+import TerserPlugin from 'terser-webpack-plugin';
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isDev = (nodeEnv !== 'production');
-const config = {
-  mode: nodeEnv,
-  entry: {
-    'h5p-order-priority': [path.join(__dirname, 'src', 'app.js')]
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js'
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    })
-  ],
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const mode = process.argv.includes('--mode=production') ?
+  'production' :
+  'development';
+const libraryName = process.env.npm_package_name;
+
+export default {
+  mode: mode,
   resolve: {
-    modules: [
-      path.resolve('./src'),
-      path.resolve('./node_modules')
-    ]
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        include: path.resolve(__dirname, 'src'),
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
-      },
-      {
-        test: /\.(s[ac]ss|css)$/,
-        include: path.resolve(__dirname, 'src'),
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: ''
-            }
-          },
-          { loader: "css-loader" },
-          {
-            loader: "sass-loader"
-          }
-        ]
-      },
-      {
-        test: /\.(png|woff|woff2|eot|ttf|svg|gif)$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-        ],
-        type: 'asset/resource'
-      }
-    ]
+    alias: {
+      '@assets': _resolve(__dirname, 'src/assets'),
+      '@components': _resolve(__dirname, 'src/scripts/components'),
+      '@context': _resolve(__dirname, 'src/scripts/context'),
+      '@scripts': _resolve(__dirname, 'src/scripts'),
+      '@services': _resolve(__dirname, 'src/scripts/services'),
+      '@styles': _resolve(__dirname, 'src/styles')
+    }
   },
   optimization: {
+    minimize: mode === 'production',
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          }
+        }
+      })
+    ],
     splitChunks: {
       name: 'vendor',
       chunks: 'all',
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
-          priority: -10
+          priority: -10,
+          name: 'vendor',
         },
         default: {
           minChunks: 2,
@@ -74,14 +52,59 @@ const config = {
         }
       }
     }
-  }
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: `${libraryName}.css`
+    })
+  ],
+  entry: {
+    'h5p-order-priority': './src/entries/dist.js'
+  },
+  output: {
+    filename: '[name].js',
+    path: _resolve(__dirname, 'dist'),
+    clean: true
+  },
+  target: ['browserslist'],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+      {
+        test: /\.(s[ac]ss|css)$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: ''
+            }
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+      },
+      {
+        test: /\.svg|\.jpg|\.png$/,
+        include: join(__dirname, 'src/images'),
+        type: 'asset/resource'
+      },
+      {
+        test: /\.woff$/,
+        include: join(__dirname, 'src/fonts'),
+        type: 'asset/resource'
+      }
+    ]
+  },
+  stats: {
+    colors: true
+  },
+  ...(mode !== 'production' && { devtool: 'eval-cheap-module-source-map' })
 };
-
-if (isDev) {
-  config.devtool = 'inline-source-map';
-  // this fails when used in iframes. Uncomment next line and change embedType to 'div'
-  // when developing to get accessibility feedback in the browser
-  //config.entry["h5p-order-priority"].push(path.join(__dirname, 'src', 'axe.js'));
-}
-
-module.exports = config;
