@@ -40,10 +40,23 @@ export default {
       name: 'vendor',
       chunks: 'all',
       cacheGroups: {
-        vendors: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
+          reuseExistingChunk: true,
           name: 'vendor',
+        },
+        dndKit: {
+          test: /[\\/]node_modules[\\/]@dnd-kit/,
+          priority: -5,
+          reuseExistingChunk: true,
+          name: 'dndkit',
+        },
+        react: {
+          test: /[\\/]node_modules[\\/]react./,
+          priority: -5,
+          reuseExistingChunk: true,
+          name: 'react',
         },
         default: {
           minChunks: 2,

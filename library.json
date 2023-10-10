@@ -17,6 +17,12 @@
       "path": "dist/vendor.js"
     },
     {
+      "path": "dist/dndkit.js"
+    },
+    {
+      "path": "dist/react.js"
+    },
+    {
       "path": "dist/h5p-order-priority.js"
     }
   ],
