@@ -27,11 +27,17 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "jsdoc": {
+      "preferredTypes": {
+        "Function": "function"
+      }
     }
   },
   "plugins": [
     "react",
-    "jsx-a11y"
+    "jsx-a11y",
+    "jsdoc"
   ],
   "rules": {
     "valid-jsdoc": "off",
