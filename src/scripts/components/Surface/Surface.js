@@ -63,7 +63,7 @@ const Surface = () => {
    *
    * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
    */
-  const init = () => {
+  const init = useCallback(() => {
     const {
       params: {
         statementsList = [],
@@ -115,7 +115,7 @@ const Surface = () => {
       showOneColumn: prepopulate,
       canAddPrioritized: allowAddingOfStatements && remainingStatements.length === 0,
     };
-  };
+  }, [context]);
 
   /**
    * Create new StatementDataObject when adding custom statements
