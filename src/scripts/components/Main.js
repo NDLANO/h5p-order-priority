@@ -18,20 +18,29 @@ const Main = (props) => {
   } = props;
 
   useEffect(() => {
-    const filterResourceList = (element) => Object.keys(element).length !== 0 && element.constructor === Object;
-    if ( resourcesList.params.resourceList && resourcesList.params.resourceList.filter(filterResourceList).length > 0) {
-      const resourceList = new H5P.ResourceList(resourcesList.params, id, language);
-      resourceList.attach(resourceContainer.current);
-
-      collectExportValues('resources', () => resourcesList.params.resourceList
-        .filter(filterResourceList)
-        .map((resource) => Object.assign({}, {
-          title: '',
-          url: '',
-          introduction: '',
-        }, resource)) || []);
+    if (!resourcesList.params.resourceList.length) {
+      return; // Nothing to do
     }
-  }, [resourcesList]);
+
+    if (resourceContainer.current.querySelector('.h5p-resource-list-wrapper')) {
+      return; // Guard for React.StrictMode in development to not attach twice
+    }
+
+    const resourceList = new H5P.ResourceList(
+      resourcesList.params, id, language
+    );
+    resourceList.attach(resourceContainer.current);
+
+    // Set defaults to resource attributes
+    const defaultParams = { title: '', url: '', introduction: '' };
+    const callback = () => {
+      return resourcesList.params.resourceList.map((resource) => {
+        return ({ ...defaultParams, ...resource });
+      });
+    };
+
+    collectExportValues('resources', callback);
+  });
 
   return (
     <article>
@@ -46,7 +55,9 @@ const Main = (props) => {
           ref={resourceContainer}
         >
           {description && (
-            <div className={'h5p-order-priority-description'}>{ReactHtmlParser(description)}</div>
+            <div className={'h5p-order-priority-description'}>
+              {ReactHtmlParser(description)}
+            </div>
           )}
         </div>
         <Surface />
@@ -54,7 +65,7 @@ const Main = (props) => {
       <Footer/>
     </article>
   );
-}
+};
 
 Main.propTypes = {
   id: PropTypes.number,

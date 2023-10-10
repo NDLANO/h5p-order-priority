@@ -6,6 +6,12 @@ import { breakpoints, getRatio, sanitizeParams } from '@services/utils.js';
 import '@styles/_index.scss';
 
 export default class OrderPriority extends H5P.EventDispatcher {
+  /**
+   * @class
+   * @param {object} params Parameters passed by the editor.
+   * @param {number} contentId Content's id.
+   * @param {object} [extras] Saved state, metadata, etc.
+   */
   constructor(params, contentId, extras = {}) {
     super('h5p-order-priority');
 
@@ -146,9 +152,10 @@ export default class OrderPriority extends H5P.EventDispatcher {
   }
 
   /**
-   * Reset the content type
+   * Reset content.
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-5}
    */
-  reset() {
+  resetTask() {
     this.resetStack.forEach((callback) => {
       callback();
     });

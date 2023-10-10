@@ -126,11 +126,18 @@ export const getDnDId = (element) => {
  * @return {{summaryHeader: *, l10n: {}, resourceReport: {}, accessibility: {}, summaryInstruction: *, resources: *, header: *, description: *, statementsList: *}}
  */
 export const sanitizeParams = (params) => {
-  const filterResourceList = (element) => Object.keys(element).length !== 0 && element.constructor === Object;
+  const filterResourceList = (element) => {
+    return Object.keys(element).length && typeof element === 'object';
+  };
   const handleObject = (sourceObject) => {
-    if (sourceObject === undefined || sourceObject === null || !filterResourceList(sourceObject)) {
+    if (
+      sourceObject === undefined ||
+      sourceObject === null ||
+      !filterResourceList(sourceObject)
+    ) {
       return sourceObject;
     }
+
     return Object.keys(sourceObject).reduce((aggregated, current) => {
       aggregated[current] = decodeHTML(sourceObject[current]);
       return aggregated;
@@ -153,21 +160,11 @@ export const sanitizeParams = (params) => {
     statementsList = statementsList.map((statement) => decodeHTML(statement));
   }
 
-  if (resources.params.resourceList && resources.params.resourceList.filter(filterResourceList).length > 0) {
+  if (resources.params?.resourceList?.length) {
     resources.params = {
       ...resources.params,
       l10n: handleObject(resources.params.l10n),
-      resourceList: resources.params.resourceList.filter(filterResourceList).map((resource) => {
-        const {
-          title,
-          introduction,
-        } = resource;
-        return {
-          ...resource,
-          title: decodeHTML(title),
-          introduction: decodeHTML(introduction),
-        };
-      }),
+      resourceList: resources.params.resourceList
     };
   }
 

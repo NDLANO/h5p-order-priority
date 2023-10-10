@@ -171,8 +171,7 @@ const StatementList = (props) => {
       </li>
     </div>
   );
-
-}
+};
 
 StatementList.propTypes = {
   statement: PropTypes.object,

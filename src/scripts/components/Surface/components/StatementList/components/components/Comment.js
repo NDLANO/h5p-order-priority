@@ -36,7 +36,6 @@ const Comment = React.forwardRef((props, inputRef) => {
     }
   };
 
-
   return (
     <div className={'h5p-order-priority-comment'}>
       <Popover
