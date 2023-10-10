@@ -306,7 +306,7 @@ const Surface = () => {
     }
   };
 
-  const memoizedReducer = useCallback(stateHeadQuarter, []);
+  const memoizedReducer = useCallback(stateHeadQuarter, [context, init]);
   const [state, dispatch] = useReducer(memoizedReducer, init());
 
   useEffect(() => {

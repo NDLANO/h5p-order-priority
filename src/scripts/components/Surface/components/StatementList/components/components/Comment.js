@@ -21,7 +21,7 @@ const Comment = React.forwardRef((props, inputRef) => {
     else {
       props.onCommentChange(comment);
     }
-  }, [showPopover]);
+  }, [showPopover, props, comment, inputRef]);
 
   const handleToggle = () => {
     if (props.onClick) {
