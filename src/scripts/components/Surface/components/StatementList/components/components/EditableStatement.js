@@ -3,7 +3,7 @@ import PropsTypes from 'prop-types';
 import classnames from 'classnames';
 import { debounce } from '@services/utils.js';
 
-function EditableStatement(props) {
+const EditableStatement = (props) => {
   const inputRef = useRef();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function EditableStatement(props) {
       />
     </div>
   );
-}
+};
 
 EditableStatement.propTypes = {
   statement: PropsTypes.string,

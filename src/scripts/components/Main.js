@@ -5,8 +5,7 @@ import Surface from '@components/Surface/Surface.js';
 import Footer from '@components/Surface/components/Footer/Footer.js';
 import '@assets/fonts/H5PReflectionFont.scss';
 
-function Main(props) {
-
+const Main = (props) => {
   const resourceContainer = useRef();
 
   const {

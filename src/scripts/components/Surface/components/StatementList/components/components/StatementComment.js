@@ -11,7 +11,7 @@ import { useOrderPriority } from '@context/OrderPriorityContext.js';
 const StatementComment = React.forwardRef((props, inputRef) => {
   const context = useOrderPriority();
 
-  function handleOnChange() {
+  const handleOnChange = () => {
     if ( inputRef === null) {
       return;
     }
@@ -25,7 +25,7 @@ const StatementComment = React.forwardRef((props, inputRef) => {
     if (oldHeight && oldHeight !== inputRef.current.style.height) {
       context.trigger('resize');
     }
-  }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === ' ' || event.key === 'Enter') {

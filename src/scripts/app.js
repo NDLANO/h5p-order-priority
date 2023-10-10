@@ -142,7 +142,6 @@ export default class OrderPriority extends H5P.EventDispatcher {
     // Append elements to DOM
     this.container.append(this.wrapper);
     this.container.classList.add('h5p-order-priority');
-
   }
 
   /**

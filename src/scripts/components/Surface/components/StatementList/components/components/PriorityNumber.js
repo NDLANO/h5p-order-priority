@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @return {*}
  * @constructor
  */
-function PriorityNumber(props) {
+const PriorityNumber = (props) => {
   const {
     displayIndex
   } = props;
@@ -18,7 +18,7 @@ function PriorityNumber(props) {
       <div>{displayIndex}</div>
     </div>
   );
-}
+};
 
 PriorityNumber.propTypes = {
   displayIndex: PropTypes.number,

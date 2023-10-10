@@ -1,7 +1,7 @@
 import React from 'react';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
 
-function DragArrows() {
+const DragArrows = () => {
   const context = useOrderPriority();
 
   return (
@@ -15,6 +15,6 @@ function DragArrows() {
       <p className={'visible-hidden'}>{context.translations.draggableItem}</p>
     </div>
   );
-}
+};
 
 export default DragArrows;

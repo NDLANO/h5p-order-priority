@@ -9,7 +9,7 @@ import Placeholder from './components/Placeholder.js';
 import Comment from './components/components/Comment.js';
 import '@styles/components/StatementList.scss';
 
-function StatementList(props) {
+const StatementList = (props) => {
 
   const inputRef = useRef();
   const draggableRef = useRef();
@@ -19,7 +19,7 @@ function StatementList(props) {
    * Comments can be displayed in two ways.
    * @return {(function(...[*]=))|null}
    */
-  function handleCommentClick() {
+  const handleCommentClick = () => {
     if (props.enableCommentDisplay !== true) {
       return null;
     }
@@ -28,27 +28,27 @@ function StatementList(props) {
       toggleCommentContainer(true);
       setTimeout(() => inputRef.current.focus(), 0);
     };
-  }
+  };
 
-  function handleOnCommentBlur(comment) {
+  const handleOnCommentBlur = (comment) => {
     if (!comment || comment.length === 0) {
       toggleCommentContainer(false);
     }
-  }
+  };
 
-  function handleOnCommentChange(comment) {
+  const handleOnCommentChange = (comment) => {
     const statement = Object.assign({}, props.statement);
     statement.comment = comment;
     props.onStatementChange(statement);
-  }
+  };
 
-  function handleOnStatementTextEdit(statementText) {
+  const handleOnStatementTextEdit = (statementText) => {
     const statement = Object.assign({}, props.statement);
     statement.statement = statementText;
     draggableRef.current.setAttribute('aria-label', statementText);
     statement.editMode = false;
     props.onStatementChange(statement);
-  }
+  };
 
   /**
    * Determine what statement type to use for a statement. The different types are:
@@ -60,7 +60,7 @@ function StatementList(props) {
    * @param listeners
    * @return {*}
    */
-  function handleStatementType(isDragging, attributes, listeners) {
+  const handleStatementType = (isDragging, attributes, listeners) => {
     const {
       statement,
       draggableType,
@@ -123,7 +123,7 @@ function StatementList(props) {
         </Placeholder>
       );
     }
-  }
+  };
 
   const {
     statement,

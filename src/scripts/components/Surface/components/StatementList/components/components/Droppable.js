@@ -14,7 +14,7 @@ import React from 'react';
  *
  * @return {React.ReactElement}
  */
-export default function Droppable({ id, children, isDropDisabled }) {
+const Droppable = ({ id, children, isDropDisabled }) => {
   const { setNodeRef, isOver } = useDroppable({
     id,
     data: { droppableId: id },
@@ -30,4 +30,6 @@ export default function Droppable({ id, children, isDropDisabled }) {
       {children}
     </div>
   );
-}
+};
+
+export default Droppable;

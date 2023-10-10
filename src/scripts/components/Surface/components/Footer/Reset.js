@@ -8,7 +8,7 @@ import { useOrderPriority } from '@context/OrderPriorityContext.js';
  * @return {*}
  * @constructor
  */
-function Reset() {
+const Reset = () => {
   const [showPopover, setPopover] = useState(false);
   const [previousFocusElement, setPreviousFocusElement] = useState(null);
   const orderPriorityContext = useOrderPriority();
@@ -26,17 +26,17 @@ function Reset() {
     }
   }, [showPopover]);
 
-  function togglePopover(event) {
+  const togglePopover = (event) => {
     if (!resetButtonRef.current) {
       resetButtonRef.current = event?.target;
     }
     setPopover(!showPopover);
-  }
+  };
 
-  function confirmReset() {
+  const confirmReset = () => {
     reset();
     togglePopover();
-  }
+  };
 
   const openerRect = useMemo(
     () => resetButtonRef.current?.getBoundingClientRect(),
@@ -96,6 +96,6 @@ function Reset() {
       )}
     </Fragment>
   );
-}
+};
 
 export default Reset;

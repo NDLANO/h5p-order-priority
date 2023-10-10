@@ -23,7 +23,7 @@ import UnEditableStatement from './components/UnEditableStatement.js';
  * @return {*}
  * @constructor
  */
-function Prioritized({
+const Prioritized = ({
   statement,
   actions,
   displayIndex,
@@ -36,7 +36,7 @@ function Prioritized({
   draggableProps,
   attributes,
   listeners
-}) {
+}) => {
 
   return (
     <Placeholder
@@ -78,7 +78,7 @@ function Prioritized({
       )}
     </Placeholder>
   );
-}
+};
 
 Prioritized.propTypes = {
   statement: PropTypes.object,

@@ -8,8 +8,7 @@ import { escapeHTML, stripHTML } from '@services/utils.js';
  * @return {*}
  * @constructor
  */
-function Export() {
-
+const Export = () => {
   const context = useOrderPriority();
   const {
     translate
@@ -23,7 +22,7 @@ function Export() {
    * Collect and group values displayed in the export page
    * @return {Object}
    */
-  function getExportObject() {
+  const getExportObject = () => {
     const {
       params: {
         header,
@@ -60,13 +59,13 @@ function Export() {
           };
         })
     });
-  }
+  };
 
   /**
    * Preview of what will be exported
    * @return {*}
    */
-  function getExportPreview() {
+  const getExportPreview = () => {
     const documentExportTemplate =
             '<div class="export-preview">' +
             '<div class="page-header" role="heading" tabindex="-1">' +
@@ -93,12 +92,12 @@ function Export() {
             '</div>';
 
     return Mustache.render(documentExportTemplate, exportObject);
-  }
+  };
 
   /**
    * Attach the package H5P.ExportPage to this content type
    */
-  function handleExport() {
+  const handleExport = () => {
     const {
       translate,
     } = context;
@@ -123,7 +122,7 @@ function Export() {
 
     toggleShowExportPage(true);
     H5P.$window.on('resize', () => exportDocument.trigger('resize'));
-  }
+  };
 
   return (
     <>
@@ -145,6 +144,6 @@ function Export() {
       />
     </>
   );
-}
+};
 
 export default Export;

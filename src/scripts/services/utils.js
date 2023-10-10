@@ -16,17 +16,19 @@ const OrderPriorityClassnames = {
  * @return {StatementDataObject}
  * @constructor
  */
-export function StatementDataObject(initValues) {
-  this.id = null;
-  this.comment = null;
-  this.displayIndex = null;
-  this.added = false;
-  this.statement = null;
-  this.isPlaceholder = false;
-  this.isUserAdded = false;
-  this.editMode = false;
-  this.touched = false;
-  return Object.assign(this, initValues);
+export class StatementDataObject {
+  constructor(initValues) {
+    this.id = null;
+    this.comment = null;
+    this.displayIndex = null;
+    this.added = false;
+    this.statement = null;
+    this.isPlaceholder = false;
+    this.isUserAdded = false;
+    this.editMode = false;
+    this.touched = false;
+    return Object.assign(this, initValues);
+  }
 }
 
 /**
@@ -37,43 +39,48 @@ export function StatementDataObject(initValues) {
  * @param immediate
  * @return {function(...[*]=)}
  */
-export function debounce(func, wait, immediate) {
+export const debounce = (func, wait, immediate) => {
   let timeout;
-  return function () {
-    const context = this, args = arguments;
-    const later = function () {
+  return ((...theArgs) => {
+    const context = this, args = theArgs;
+
+    const later = () => {
       timeout = null;
-      if (!immediate) func.apply(context, args);
+      if (!immediate) {
+        func.apply(context, args);
+      }
     };
+
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
     timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
-}
+    if (callNow) {
+      func.apply(context, args);
+    }
+  });
+};
 
-export function decodeHTML(html) {
+export const decodeHTML = (html) => {
   return html ? decode(html) : html;
-}
+};
 
 /**
  * Excapes html in string
  * @param html
  * @return {*}
  */
-export function escapeHTML(html) {
+export const escapeHTML = (html) => {
   return html ? escape(html) : html;
-}
+};
 
-export function stripHTML(html) {
+export const stripHTML = (html) => {
   const element = document.createElement('div');
   element.innerHTML = html;
   return element.innerText;
-}
+};
 
 /**
  * Get list of classname and conditions for when to add the classname to the content type
- *
  * @return {[{className: string, shouldAdd: (function(*): boolean)}, {className: string, shouldAdd: (function(*): boolean|boolean)}, {className: string, shouldAdd: (function(*): boolean)}]}
  */
 export const breakpoints = () => {
@@ -95,32 +102,30 @@ export const breakpoints = () => {
 
 /**
  * Get the ratio of the container
- *
  * @return {number}
  */
-export function getRatio(container) {
+export const getRatio = (container) => {
   if ( !container) {
     return;
   }
   const computedStyles = window.getComputedStyle(container);
   return container.offsetWidth / parseFloat(computedStyles.getPropertyValue('font-size'));
-}
-
+};
 
 /**
  * @param {CategoryDataObject | ArgumentDataObject} element
  * @returns {string}
  */
-export function getDnDId(element) {
+export const getDnDId = (element) => {
   return [element.prefix, element.id].join('-');
-}
+};
 
 /**
  * Function to make sure the parameters sent into the content type to be valid
  * @param params
  * @return {{summaryHeader: *, l10n: {}, resourceReport: {}, accessibility: {}, summaryInstruction: *, resources: *, header: *, description: *, statementsList: *}}
  */
-export function sanitizeParams(params) {
+export const sanitizeParams = (params) => {
   const filterResourceList = (element) => Object.keys(element).length !== 0 && element.constructor === Object;
   const handleObject = (sourceObject) => {
     if (sourceObject === undefined || sourceObject === null || !filterResourceList(sourceObject)) {
@@ -178,4 +183,4 @@ export function sanitizeParams(params) {
     resourceReport: handleObject(resourceReport),
     accessibility: handleObject(accessibility),
   };
-}
+};

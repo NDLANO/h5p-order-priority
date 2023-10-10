@@ -23,12 +23,12 @@ const Comment = React.forwardRef((props, inputRef) => {
     }
   }, [showPopover]);
 
-  function handleToggle() {
+  const handleToggle = () => {
     if (props.onClick) {
       return props.onClick();
     }
     togglePopover(!showPopover);
-  }
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === ' ' || event.key === 'Enter') {

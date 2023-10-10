@@ -9,7 +9,7 @@ import Droppable from '../StatementList/components/components/Droppable.js';
  * @return {*}
  * @constructor
  */
-function Column(props) {
+const Column = (props) => {
   const {
     droppableId,
     children,
@@ -32,7 +32,7 @@ function Column(props) {
       {addStatement}
     </div>
   );
-}
+};
 
 Column.propTypes = {
   prioritizedStatements: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),

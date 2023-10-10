@@ -10,7 +10,7 @@ import ReactHtmlParser from 'html-react-parser';
  * @return {*}
  * @constructor
  */
-function Summary() {
+const Summary = () => {
 
   const context = useOrderPriority();
   const [comment, setComment] = useState('');
@@ -45,6 +45,6 @@ function Summary() {
       />
     </div>
   );
-}
+};
 
 export default Summary;

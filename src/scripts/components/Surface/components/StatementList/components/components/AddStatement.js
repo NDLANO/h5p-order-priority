@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
  * @return {*}
  * @constructor
  */
-function AddStatement(props) {
+const AddStatement = (props) => {
   const {
     translations,
     onClick
@@ -27,7 +27,7 @@ function AddStatement(props) {
       </button>
     </div>
   );
-}
+};
 
 AddStatement.propTypes = {
   translations: PropTypes.object,

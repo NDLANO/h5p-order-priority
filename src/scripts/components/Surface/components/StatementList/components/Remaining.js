@@ -11,7 +11,7 @@ import UnEditableStatement from './components/UnEditableStatement.js';
  * @return {*}
  * @constructor
  */
-function Remaining(props) {
+const Remaining = (props) => {
   const {
     statement,
     onStatementChange,
@@ -53,8 +53,7 @@ function Remaining(props) {
       </div>
     </div>
   );
-
-}
+};
 
 Remaining.propTypes = {
   statement: PropTypes.object,

@@ -7,13 +7,13 @@ import Reset from './Reset.js';
  * @return {*}
  * @constructor
  */
-function Footer() {
+const Footer = () => {
   return (
     <section className={'h5p-order-priority-footer'}>
       <Reset/>
       <Export/>
     </section>
   );
-}
+};
 
 export default Footer;
