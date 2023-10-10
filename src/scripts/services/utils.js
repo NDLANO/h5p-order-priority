@@ -11,10 +11,10 @@ const OrderPriorityClassnames = {
 };
 
 /**
- *
- * @param initValues
- * @return {StatementDataObject}
- * @constructor
+ * Statement Data Object.
+ * @class
+ * @param {object} initValues Initial values.
+ * @returns {StatementDataObject} Sanitized values.
  */
 export class StatementDataObject {
   constructor(initValues) {
@@ -32,14 +32,13 @@ export class StatementDataObject {
 }
 
 /**
- * Debounce function that
- *
- * @param func
- * @param wait
- * @param immediate
- * @return {function(...[*]=)}
+ * Debounce function that...
+ * @param {function} func Function to debounce.
+ * @param {number} delayMS Delay in ms.
+ * @param {boolean} immediate If true, call immediately.
+ * @returns {function} Debounced funcion.
  */
-export const debounce = (func, wait, immediate) => {
+export const debounce = (func, delayMS, immediate) => {
   let timeout;
   return ((...theArgs) => {
     const context = this, args = theArgs;
@@ -53,26 +52,36 @@ export const debounce = (func, wait, immediate) => {
 
     const callNow = immediate && !timeout;
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(later, delayMS);
     if (callNow) {
       func.apply(context, args);
     }
   });
 };
 
+/**
+ * Decode HTML.
+ * @param {string} html HTML text.
+ * @returns {string} Text decoded from HTML.
+ */
 export const decodeHTML = (html) => {
   return html ? decode(html) : html;
 };
 
 /**
- * Excapes html in string
- * @param html
- * @return {*}
+ * Escape HTML
+ * @param {string} html HTML text.
+ * @returns {string} Text with escaped HTML.
  */
 export const escapeHTML = (html) => {
   return html ? escape(html) : html;
 };
 
+/**
+ * Strip HTML from text.
+ * @param {string} html HTML text.
+ * @returns {string} Text without HTML tags.
+ */
 export const stripHTML = (html) => {
   const element = document.createElement('div');
   element.innerHTML = html;
@@ -81,7 +90,7 @@ export const stripHTML = (html) => {
 
 /**
  * Get list of classname and conditions for when to add the classname to the content type
- * @return {[{className: string, shouldAdd: (function(*): boolean)}, {className: string, shouldAdd: (function(*): boolean|boolean)}, {className: string, shouldAdd: (function(*): boolean)}]}
+ * @returns {object[]} Classnames and function to determine whether to be set.
  */
 export const breakpoints = () => {
   return [
@@ -101,34 +110,40 @@ export const breakpoints = () => {
 };
 
 /**
- * Get the ratio of the container
- * @return {number}
+ * Get ratio of container.
+ * @param {HTMLElement} container Container element.
+ * @returns {number|undefined} Container's ratio.
  */
 export const getRatio = (container) => {
-  if ( !container) {
+  if (!container) {
     return;
   }
+
   const computedStyles = window.getComputedStyle(container);
-  return container.offsetWidth / parseFloat(computedStyles.getPropertyValue('font-size'));
+
+  return container.offsetWidth /
+    parseFloat(computedStyles.getPropertyValue('font-size'));
 };
 
 /**
- * @param {CategoryDataObject | ArgumentDataObject} element
- * @returns {string}
+ * Get DnD id.
+ * @param {object} element Element.
+ * @returns {string} DnD id.
  */
 export const getDnDId = (element) => {
   return [element.prefix, element.id].join('-');
 };
 
 /**
- * Function to make sure the parameters sent into the content type to be valid
- * @param params
- * @return {{summaryHeader: *, l10n: {}, resourceReport: {}, accessibility: {}, summaryInstruction: *, resources: *, header: *, description: *, statementsList: *}}
+ * Sanitize author parameters.
+ * @param {object} params Parameters.
+ * @returns {object} Sanitized parameters.
  */
 export const sanitizeParams = (params) => {
   const filterResourceList = (element) => {
     return Object.keys(element).length && typeof element === 'object';
   };
+
   const handleObject = (sourceObject) => {
     if (
       sourceObject === undefined ||

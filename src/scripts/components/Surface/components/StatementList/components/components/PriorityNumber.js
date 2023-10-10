@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * Container with the number indicating what priority a statement has
- * @param props
- * @return {*}
- * @constructor
+ * Container with number indicating what priority a statement has.
+ * @param {object} props React props.
+ * @returns {object} JSX element.
  */
 const PriorityNumber = (props) => {
   const {
     displayIndex
   } = props;
+
   return (
     <div
       className={'h5p-order-priority-number h5p-order-priority-number-' + displayIndex}

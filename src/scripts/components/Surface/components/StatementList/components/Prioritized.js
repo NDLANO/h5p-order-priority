@@ -9,19 +9,20 @@ import UnEditableStatement from './components/UnEditableStatement.js';
 
 /**
  * Statement that is put in a prioritized list
- *
- * @param statement
- * @param actions
- * @param displayIndex
- * @param onStatementChange
- * @param enableEditing
- * @param enableCommentDisplay
- * @param onCommentChange
- * @param onCommentBlur
- * @param inputRef
- * @param draggableProps
- * @return {*}
- * @constructor
+ * @param {object} params React props.
+ * @param {object} params.statement Statement data.
+ * @param {object} params.actions React children.
+ * @param {number} params.displayIndex Index of statement.
+ * @param {function} params.onStatementChange Callback when statement changed.
+ * @param {boolean} params.enableEditing True, if user is editing statement.
+ * @param {boolean} params.enableCommentDisplay True, if user can comment.
+ * @param {function} params.onCommentChange Callback when comment was changed.
+ * @param {function} params.onCommentBlur Callback when comment lost focus.
+ * @param {object} params.inputRef React input field reference.
+ * @param {object} params.draggableProps Props for draggable.
+ * @param {object} params.attributes DIV attributes.
+ * @param {object} params.listeners DIV listeners.
+ * @returns {object} JSX element.
  */
 const Prioritized = ({
   statement,
@@ -88,10 +89,11 @@ Prioritized.propTypes = {
   enableEditing: PropTypes.bool,
   enableCommentDisplay: PropTypes.bool,
   onCommentChange: PropTypes.func,
+  onCommentBlur: PropTypes.func,
+  draggableProps: PropTypes.object,
   inputRef: PropTypes.object,
   attributes: PropTypes.object,
   listeners: PropTypes.object
 };
-
 
 export default Prioritized;

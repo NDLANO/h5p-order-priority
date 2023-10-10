@@ -7,9 +7,8 @@ import UnEditableStatement from './components/UnEditableStatement.js';
 
 /**
  * Statements that are provided but not interacted with
- * @param props
- * @return {*}
- * @constructor
+ * @param {object} props React props.
+ * @returns {object} JSX element.
  */
 const Remaining = (props) => {
   const {

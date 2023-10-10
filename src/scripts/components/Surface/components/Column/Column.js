@@ -5,9 +5,8 @@ import Droppable from '../StatementList/components/components/Droppable.js';
 
 /**
  * Add columns that acts as dropzones for the statements
- * @param props
- * @return {*}
- * @constructor
+ * @param {object} props React props.
+ * @returns {object} JSX element.
  */
 const Column = (props) => {
   const {

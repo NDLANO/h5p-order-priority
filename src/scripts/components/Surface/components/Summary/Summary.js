@@ -5,10 +5,8 @@ import '@styles/components/Summary.scss';
 import ReactHtmlParser from 'html-react-parser';
 
 /**
- * Component for displaying the summary
- *
- * @return {*}
- * @constructor
+ * Component for displaying summary.
+ * @returns {object} JSX element.
  */
 const Summary = () => {
 
@@ -32,9 +30,13 @@ const Summary = () => {
     <div
       className={classnames('h5p-order-priority-summary')}
     >
-      <div className={'summary-header'}>{summaryHeader ? summaryHeader : translate('summary')}</div>
+      <div className={'summary-header'}>
+        {summaryHeader ? summaryHeader : translate('summary')}
+      </div>
       {summaryInstruction && (
-        <div className={'h5p-order-priority-summary-instruction'}>{ReactHtmlParser(summaryInstruction)}</div>
+        <div className={'h5p-order-priority-summary-instruction'}>
+          {ReactHtmlParser(summaryInstruction)}
+        </div>
       )}
       <textarea
         id={'summary'}

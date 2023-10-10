@@ -2,17 +2,12 @@ import { useDroppable } from '@dnd-kit/core';
 import React from 'react';
 
 /**
- * @typedef {{
- *   id: string;
- *   children: React.ReactElement
- *   isDropDisabled: boolean;
- * }} Props
- */
-
-/**
- * @param {Props} props
- *
- * @return {React.ReactElement}
+ * Droppable element.
+ * @param {object} props React props.
+ * @param {string} props.id Id of droppable.
+ * @param {object} props.children React children.
+ * @param {boolean} props.isDropDisabled If true, dropping is not possible.
+ * @returns {object} JSX element.
  */
 const Droppable = ({ id, children, isDropDisabled }) => {
   const { setNodeRef, isOver } = useDroppable({

@@ -30,6 +30,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
     this.activeBreakpoints = [];
     this.currentRatio = null;
 
+    // Ensure those functions can be used by React context
     this.registerReset = this.registerReset.bind(this);
     this.collectExportValues = this.collectExportValues.bind(this);
     this.translate = this.translate.bind(this);
@@ -88,10 +89,12 @@ export default class OrderPriority extends H5P.EventDispatcher {
     });
   }
 
+  /**
+   * Create DOM elements.
+   */
   createElements() {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('h5p-order-priority-wrapper');
-    this.wrapper = wrapper;
+    this.wrapper = document.createElement('div');
+    this.wrapper.classList.add('h5p-order-priority-wrapper');
 
     createRoot(this.wrapper).render(
       <OrderPriorityProvider value={this}>
@@ -108,28 +111,31 @@ export default class OrderPriority extends H5P.EventDispatcher {
   }
 
   /**
-   * All components that has information that needs to be part of the export registers a callback
-   * here that is run when the export is generated
-   * @param index
-   * @param callback
-   * @return {{}}
+   * Collect export callbacks from components.
+   * All components that have information that needs to be part of the export
+   * registers a callback here that is run when the export is generated
+   * @param {string} id Id of callback.
+   * @param {function} callback Callback for export.
+   * @returns {object|undefined} Export values.
    */
-  collectExportValues(index, callback) {
-    if (typeof index !== 'undefined') {
-      this.collectExportValuesStack.push({ key: index, callback: callback });
+  collectExportValues(id, callback) {
+    if (typeof id !== 'undefined') {
+      this.collectExportValuesStack.push({ key: id, callback: callback });
     }
     else {
       const exportValues = {};
-      this.collectExportValuesStack.forEach(({ key, callback }) => exportValues[key] = callback());
+      this.collectExportValuesStack.forEach(({ key, callback }) => {
+        exportValues[key] = callback();
+      });
       return exportValues;
     }
   }
 
   /**
-   * All components that have elements that can be reset registers a callback that is run
-   * when the user clicks on "Reset"
-   * @param callback
-   * @return {number}
+   * Register reset callback.
+   * All components that have elements that can be reset register a callback
+   * that is run when the user clicks on "Reset"
+   * @param {function} callback Callback for reset.
    */
   registerReset(callback) {
     this.resetStack.push(callback);
@@ -137,7 +143,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
 
   /**
    * Attaches the component to a container
-   * @param $container
+   * @param {H5P.jQuery} $container Container to attach content DOM to.
    */
   attach($container) {
     if (!this.wrapper) {
@@ -162,10 +168,10 @@ export default class OrderPriority extends H5P.EventDispatcher {
   }
 
   /**
-   * Set css classes based on ratio available to the container
-   *
-   * @param wrapper
-   * @param ratio
+   * Set css classes based on ratio available to the container.
+   * Can be replaced by container queries once adoption by browsers is better.
+   * @param {HTMLElement} wrapper Wrapper.
+   * @param {number} ratio Container ratio.
    */
   addBreakPoints(wrapper, ratio = getRatio(this.container)) {
     if ( ratio === this.currentRatio) {
@@ -183,11 +189,12 @@ export default class OrderPriority extends H5P.EventDispatcher {
         wrapper.classList.remove(item.className);
       }
     });
+
     this.currentRatio = ratio;
   }
 
   /**
-   * Resize the component
+   * Resize the component.
    */
   resize() {
     if (!this.wrapper) {
@@ -198,10 +205,10 @@ export default class OrderPriority extends H5P.EventDispatcher {
   }
 
   /**
-   * Help fetch the correct translations.
-   * @params key
-   * @params vars
-   * @return {string}
+   * Translate user interface strings.
+   * @param {string} key Key.
+   * @param {object} vars Variables in translation template.
+   * @returns {string} Translation.
    */
   translate(key, vars) {
     let translation = this.translations[key];

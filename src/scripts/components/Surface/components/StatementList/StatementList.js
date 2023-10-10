@@ -16,18 +16,15 @@ const StatementList = (props) => {
   const [showCommentContainer, toggleCommentContainer] = useState(false);
 
   /**
-   * Comments can be displayed in two ways.
-   * @return {(function(...[*]=))|null}
+   * Handle click on comment.
    */
   const handleCommentClick = () => {
     if (props.enableCommentDisplay !== true) {
-      return null;
+      return;
     }
 
-    return () => {
-      toggleCommentContainer(true);
-      setTimeout(() => inputRef.current.focus(), 0);
-    };
+    toggleCommentContainer(true);
+    setTimeout(() => inputRef.current.focus(), 0);
   };
 
   const handleOnCommentBlur = (comment) => {
@@ -51,14 +48,15 @@ const StatementList = (props) => {
   };
 
   /**
-   * Determine what statement type to use for a statement. The different types are:
-   *   - remainging: statements that has not been touched
-   *   - prioritiezed: statements that has been put in an order
-   *   - placeholder: containers that serve as dropzones in the ordered list
-   * @param isDragging
-   * @param attributes
-   * @param listeners
-   * @return {*}
+   * Determine what statement type to use for statement.
+   * The different types are:
+   * - remainging: statements that has not been touched
+   * - prioritiezed: statements that has been put in an order
+   * - placeholder: containers that serve as dropzones in the ordered list
+   * @param {boolean} isDragging True, if user is dragging element.
+   * @param {object} attributes DIV attributes.
+   * @param {object} listeners DIV listeners.
+   * @returns {object|undefined} JSX element.
    */
   const handleStatementType = (isDragging, attributes, listeners) => {
     const {
@@ -81,14 +79,19 @@ const StatementList = (props) => {
         />
       );
     }
-    else if (draggableType === 'prioritized' && statement.isPlaceholder === false) {
+    else if (
+      draggableType === 'prioritized' &&
+      statement.isPlaceholder === false
+    ) {
       let actions;
       if (isSingleColumn) {
         actions = (
           <Comment
             onCommentChange={handleOnCommentChange}
             comment={statement.comment}
-            onClick={handleCommentClick()}
+            onClick={() => {
+              handleCommentClick();
+            }}
             ref={inputRef}
             showCommentInPopup={!props.enableCommentDisplay}
           />
@@ -133,7 +136,9 @@ const StatementList = (props) => {
   const animateLayoutChanges = (args) =>
     defaultAnimateLayoutChanges({ ...args, wasDragging: true });
 
-  const { setNodeRef, transform, transition, attributes, listeners, isDragging } =
+  const {
+    setNodeRef, transform, transition, attributes, listeners, isDragging
+  } =
   useSortable({
     id: id,
     data: { statement },

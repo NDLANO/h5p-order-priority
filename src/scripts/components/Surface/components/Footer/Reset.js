@@ -3,10 +3,8 @@ import Popover from '@components/Popover/Popover.js';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
 
 /**
- * If enabled the user can reset the content type and do it again
- *
- * @return {*}
- * @constructor
+ * Reset dialog.
+ * @returns {object} JSX element.
  */
 const Reset = () => {
   const [showPopover, setPopover] = useState(false);

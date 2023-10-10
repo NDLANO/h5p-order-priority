@@ -4,9 +4,8 @@ import classnames from 'classnames';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
 
 /**
- * Comment displayed "inline", not in a popover
- *
- * @type {React.ComponentType<React.ClassAttributes<unknown>>}
+ * Comment displayed "inline", not in a popover.
+ * @returns {object} JSX element.
  */
 const StatementComment = React.forwardRef((props, inputRef) => {
   const context = useOrderPriority();

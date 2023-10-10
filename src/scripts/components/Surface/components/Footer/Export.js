@@ -3,10 +3,9 @@ import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import { escapeHTML, stripHTML } from '@services/utils.js';
 
 /**
- * Display the export page to let the user summary the answers given. Uses the package H5P.ExportPage
- *
- * @return {*}
- * @constructor
+ * Display export page to let user summarize the answers given.
+ * Uses the package H5P.ExportPage.
+ * @returns {object} JSX Element.
  */
 const Export = () => {
   const context = useOrderPriority();
@@ -19,8 +18,8 @@ const Export = () => {
   const [showExportPage, toggleShowExportPage] = useState(false);
 
   /**
-   * Collect and group values displayed in the export page
-   * @return {Object}
+   * Collect and group values displayed in export page.
+   * @returns {object} Values displayed in export page.
    */
   const getExportObject = () => {
     const {
@@ -62,8 +61,8 @@ const Export = () => {
   };
 
   /**
-   * Preview of what will be exported
-   * @return {*}
+   * Create preview of what will be exported.
+   * @returns {object} Mustache render output.
    */
   const getExportPreview = () => {
     const documentExportTemplate =
@@ -95,7 +94,7 @@ const Export = () => {
   };
 
   /**
-   * Attach the package H5P.ExportPage to this content type
+   * Attach package H5P.ExportPage to this content type.
    */
   const handleExport = () => {
     const {

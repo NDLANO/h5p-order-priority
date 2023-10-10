@@ -19,6 +19,10 @@ import Messages from './Messages.js';
 import Comment from './components/StatementList/components/components/Comment.js';
 import Prioritized from './components/StatementList/components/Prioritized.js';
 
+/**
+ * Surface component.
+ * @returns {object} JSX element.
+ */
 const Surface = () => {
   const context = useOrderPriority();
 
@@ -60,8 +64,7 @@ const Surface = () => {
 
   /**
    * Initialize the content type
-   *
-   * @return {{prioritizedStatements: null[], remainingStatements: null[], showOneColumn: boolean, statements: StatementDataObject[], canAddPrioritized: (boolean|boolean)}}
+   * @returns {object} Configuration.
    */
   const init = useCallback(() => {
     const {
@@ -96,7 +99,10 @@ const Surface = () => {
       if (statement !== null) {
         statementObject.statement = statement;
         statementObject.isPlaceholder = !prepopulate;
-        statementObject.touched = prepopulate && statementObject.displayIndex <= numberOfStatements;
+        statementObject.touched = (
+          prepopulate &&
+          statementObject.displayIndex <= numberOfStatements
+        );
       }
       else {
         statementObject.isPlaceholder = true;
@@ -105,21 +111,28 @@ const Surface = () => {
       return statementObject;
     });
 
-    const remainingStatements = prepopulate === true ? statements.slice(numberOfStatements) : statements.filter((statement) => statement.added === false);
-    const prioritizedStatements = statements.filter((statement) => statement.displayIndex <= numberOfStatements || statement.touched);
+    const remainingStatements = prepopulate === true ?
+      statements.slice(numberOfStatements) :
+      statements.filter((statement) => statement.added === false);
+
+    const prioritizedStatements = statements.filter((statement) => {
+      return statement.displayIndex <= numberOfStatements || statement.touched;
+    });
 
     return {
       statements: statements,
-      remainingStatements: remainingStatements.map((statement) => statement.id),
-      prioritizedStatements: prioritizedStatements.map((statement) => statement.id),
+      remainingStatements: remainingStatements
+        .map((statement) => statement.id),
+      prioritizedStatements: prioritizedStatements
+        .map((statement) => statement.id),
       showOneColumn: prepopulate,
-      canAddPrioritized: allowAddingOfStatements && remainingStatements.length === 0,
+      canAddPrioritized: allowAddingOfStatements && !remainingStatements.length
     };
   }, [context]);
 
   /**
-   * Create new StatementDataObject when adding custom statements
-   * @return {StatementDataObject}
+   * Create new StatementDataObject when adding custom statements.
+   * @returns {StatementDataObject} Statement data object.
    */
   const createNewStatement = () => {
     return new StatementDataObject({
@@ -131,12 +144,11 @@ const Surface = () => {
   };
 
   /**
-   * Handling of all update in the state for the content type
-   * @param state
-   * @param action
-   * @return {{statements: (*|string)[]}|{prioritizedStatements, remainingStatements: null[], showOneColumn, statements: StatementDataObject[], canAddPrioritized: boolean}|{prioritizedStatements: unknown[], statements: any, canAddPrioritized: (boolean|*)}|{prioritizedStatements: unknown[], remainingStatements: unknown[], showOneColumn: boolean, statements: any, canAddPrioritized: (*|boolean)}|*|{statements: any}|{isCombineEnabled: boolean}|{remainingStatements: unknown[], statements: any}}
+   * Handle all updates in state for content type.
+   * @param {object} state State.
+   * @param {object} action Action.
+   * @returns {object} New state.
    */
-
   const stateHeadQuarter = (state, action) => {
     switch (action.type) {
       case 'dragUpdate': {
@@ -153,8 +165,14 @@ const Surface = () => {
         }
 
         if (previousDraggedIndex > -1) {
-          statementClone.find((statement) => statement.id === dragged.id).displayIndex = dropped.displayIndex;
-          statementClone.find((statement) => statement.id === dropped.id).displayIndex = previousDraggedIndex;
+          statementClone
+            .find((statement) => statement.id === dragged.id)
+            .displayIndex = dropped.displayIndex;
+
+          statementClone
+            .find((statement) => statement.id === dropped.id)
+            .displayIndex = previousDraggedIndex;
+
           if (dragged.displayIndex !== dropped.displayIndex) {
             const droppedIndex = dropped.displayIndex - 1;
             const draggedIndex = dragged.displayIndex - 1;
@@ -171,6 +189,7 @@ const Surface = () => {
           statements: statementClone,
         };
       }
+
       case 'dragEnd': {
         let { active, over } = action.payload;
 
@@ -265,6 +284,7 @@ const Surface = () => {
           remainingStatements,
         };
       }
+
       case 'addNewPrioritizedStatement': {
         const statements = JSON.parse(JSON.stringify(state.statements));
         const newStatement = createNewStatement();
@@ -298,9 +318,11 @@ const Surface = () => {
             context.behaviour.allowAddingOfStatements,
         };
       }
+
       case 'reset': {
         return init();
       }
+
       default:
         return state;
     }
@@ -311,20 +333,16 @@ const Surface = () => {
 
   useEffect(() => {
     context.trigger('resize');
-
-    // We don't want to trigger resize when `context` changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.remainingStatements]);
+  }, [state.remainingStatements, context]);
 
   /**
-   * Callback that is called when exporting the values
-   * @return {{prioritizedStatements, statements: *[]}}
+   * Export values. Callback to be passed to context.
+   * @returns {object} Statements.
    */
   const sendExportValues = () => {
-    const { statements, prioritizedStatements } = state;
     return {
-      statements,
-      prioritizedStatements,
+      statements: state.statements,
+      prioritizedStatements: state.prioritizedStatements
     };
   };
 
@@ -341,10 +359,11 @@ const Surface = () => {
   collectExportValues('userInput', sendExportValues);
 
   /**
-   * Get details for lists that is provided for the screen readers
-   * @param droppableId
-   * @param droppable
-   * @return {any}
+   * Get details for list that is provided for screen readers.
+   * @param {HTMLElement} droppable Droppable.
+   * @param {number} startPosition Start position.
+   * @param {number} destinationPosition Destination position.
+   * @returns {object} Details.
    */
   const getListDetails = (droppable, startPosition, destinationPosition) => {
     const droppableId = droppable.id;
@@ -370,8 +389,8 @@ const Surface = () => {
     return Object.assign(
       {
         listId: droppableId,
-        startPosition,
-        destinationPosition,
+        startPosition: startPosition,
+        destinationPosition: destinationPosition
       },
       droppable,
       details
@@ -384,9 +403,8 @@ const Surface = () => {
   };
 
   /**
-   * Update state and screen reader during the drag
-   *
-   * @type {(...args: any[]) => any}
+   * Update state and screen reader while dragging.
+   * @param {object} dragResult Drag result.
    */
   const onDragUpdate = (dragResult) => {
     let { active, over } = dragResult;
@@ -414,8 +432,8 @@ const Surface = () => {
   };
 
   /**
-   * Update the state and screen reader after drag ends
-   * @type {(...args: any[]) => any}
+   * Update state and screen reader after dragging ends.
+   * @param {object} dragResult Drag result.
    */
   const handleDragEnd = (dragResult) => {
     let { active, over } = dragResult;
@@ -433,8 +451,8 @@ const Surface = () => {
   };
 
   /**
-   * Callback that stores changes when the user changes the statements
-   * @param statement
+   * Store changes when the user changes the statements.
+   * @param {object} statement Statement data.
    */
   const handleOnStatementChange = (statement) => {
     dispatch({
@@ -446,13 +464,14 @@ const Surface = () => {
   const createPrioritizedStatementWithComment = (statement) => {
     const actions = (
       <Comment
-        onCommentChange={()=>{}}
+        onCommentChange={() => {}}
         comment={statement.comment}
         onClick={null}
         ref={null}
         showCommentInPopup={true}
       />
     );
+
     return (
       <div
         className={classnames('h5p-order-priority-draggable-element', {
@@ -491,8 +510,8 @@ const Surface = () => {
   });
 
   /**
-   * Sorting the statements and put them in appropriate columns
-   * @return {*}
+   * Sort statements and put them in appropriate columns.
+   * @returns {object} JSX element.
    */
   const handleSurface = () => {
     return (

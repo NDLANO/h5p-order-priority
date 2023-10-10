@@ -4,19 +4,17 @@ import PropTypes from 'prop-types';
 
 /**
  * Component to display a popover with trap. Used third party component Tinypopover.
- *
- * @param props
- * @param props.handleClose
- * @param props.show
- * @param props.children
- * @param props.popoverContent
- * @param props.classnames
- * @param props.header
- * @param props.close
- * @param props.align
- * @param props.lastActiveElement
- * @return {*}
- * @constructor
+ * @param props {object} React properties.
+ * @param props.handleClose {function} Callback when user closes popover.
+ * @param props.show {boolean} If true, popover is shown.
+ * @param props.children {object} React children.
+ * @param props.popoverContent {object} Popover content.
+ * @param props.classnames {string[]} Additional classnames.
+ * @param props.header {string} Header of popover.
+ * @param props.close {string} Close button label.
+ * @param props.align {string} Alignment.
+ * @param props.lastActiveElement {HTMLElement} Element to return focus to on closing.
+ * @returns {object} JSX element.
  */
 const Popover = forwardRef(
   (
@@ -116,10 +114,12 @@ const Popover = forwardRef(
 Popover.propTypes = {
   handleClose: PropTypes.func.isRequired,
   show: PropTypes.bool,
+  children: PropTypes.object,
   popoverContent: PropTypes.object,
   classnames: PropTypes.array,
   header: PropTypes.string,
   close: PropTypes.string,
+  align: PropTypes.string,
   lastActiveElement: PropTypes.object,
 };
 

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 
 /**
  * Adds a button to add new statements
- * @param props
- * @return {*}
- * @constructor
+ * @param {object} props React props.
+ * @returns {object} JSX element.
  */
 const AddStatement = (props) => {
   const {

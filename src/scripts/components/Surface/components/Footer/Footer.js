@@ -3,9 +3,8 @@ import Export from './Export.js';
 import Reset from './Reset.js';
 
 /**
- * Container for the export and reset logic
- * @return {*}
- * @constructor
+ * Functional container for export and reset logic.
+ * @returns {object} JSX element.
  */
 const Footer = () => {
   return (

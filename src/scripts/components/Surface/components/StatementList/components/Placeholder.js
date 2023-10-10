@@ -3,13 +3,12 @@ import classnames from 'classnames';
 import PriorityNumber from './components/PriorityNumber.js';
 
 /**
- * Serves as a placeholder in the prioritized column
- *
- * @param displayIndex
- * @param children
- * @param isDraggingOver
- * @return {*}
- * @constructor
+ * Placeholder in the prioritized column.
+ * @param {object} params Parameters.
+ * @param {number} params.displayIndex Display index.
+ * @param {object} params.children React children.
+ * @param {boolean} params.isDraggingOver If true, draggable is over placeholder.
+ * @returns {object} JSX element.
  */
 const Placeholder = ({
   displayIndex,
