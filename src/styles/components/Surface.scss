@@ -6,8 +6,14 @@
   margin: 1.5rem;
 }
 
-.h5p-order-prioritySurface {
+.h5p-order-prioritySurface { // TODO: Fix camel case, take care of DOM!
   clear: both;
+
+  .h5p-order-priority-dropzone-wrapper{
+    &.isOver {
+      background-color: #e0e7f0;
+    }
+  }
 
   .h5p-large-tablet-size &,
   .h5p-large-size &{

@@ -16,10 +16,11 @@ const Droppable = ({ id, children, isDropDisabled }) => {
     disabled: isDropDisabled,
   });
 
+  // TODO: Shouldn't isOver react to the parent container?
+
   return (
     <div
-      className="h5p-category-task-droppable"
-      style={isOver ? { backgroundColor: '#E0E7F0' } : undefined}
+      className={`h5p-order-priority-dropzone-wrapper${isOver ? ' isOver' : ''}`}
       ref={setNodeRef}
     >
       {children}
