@@ -21,7 +21,10 @@ const Comment = React.forwardRef((props, inputRef) => {
     else {
       props.onCommentChange(comment);
     }
-  }, [showPopover, props, comment, inputRef]);
+  // Adding props will lead to infinite render loops. This useEffect will
+  // be removed anyway when popover is replaced
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showPopover, comment, inputRef]);
 
   const handleToggle = () => {
     if (props.onClick) {
