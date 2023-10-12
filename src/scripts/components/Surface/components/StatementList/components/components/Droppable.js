@@ -20,7 +20,7 @@ const Droppable = ({ id, children, isDropDisabled }) => {
 
   return (
     <div
-      className={`h5p-order-priority-dropzone-wrapper${isOver ? ' isOver' : ''}`}
+      className={`h5p-order-priority-dropzone-wrapper${isOver ? ' hover' : ''}`}
       ref={setNodeRef}
     >
       {children}

@@ -10,8 +10,17 @@
   clear: both;
 
   .h5p-order-priority-dropzone-wrapper{
-    &.isOver {
+    &.hover {
       background-color: #e0e7f0;
+    }
+
+    .h5p-dnd-draggable {
+      cursor: 'grab';
+      opacity: 1;
+
+      &.h5p-dnd-draggable--dragging {
+        opacity: 0;
+      }
     }
   }
 

@@ -145,11 +145,10 @@ const StatementList = (props) => {
     animateLayoutChanges,
   });
 
+  // TODO: transform seems to always be `null`!?
   const style = {
     transform: CSS.Translate.toString(transform),
-    transition,
-    opacity: isDragging ? 0 : 1,
-    cursor: 'grab'
+    transition
   };
 
   return (
