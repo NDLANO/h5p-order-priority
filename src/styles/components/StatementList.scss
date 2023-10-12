@@ -9,8 +9,8 @@
 .h5p-order-priority-draggable-element > div {
   flex-grow: 1;
   display: flex;
-}
 
-.h5p-order-priority-no-transform {
-  transform: none !important;
+  &.h5p-order-priority-no-transform {
+    transform: none;
+  }
 }

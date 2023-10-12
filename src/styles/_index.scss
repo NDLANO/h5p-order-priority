@@ -40,10 +40,6 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
   font-weight: normal;
 }
 
-.hidden {
-  display: none !important;
-}
-
 .visible-hidden {
   clip: rect(OPFunction.pxToRem(1px), OPFunction.pxToRem(1px), OPFunction.pxToRem(1px), 1px);
   height: OPFunction.pxToRem(1px);

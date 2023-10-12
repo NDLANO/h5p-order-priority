@@ -32,7 +32,6 @@ const StatementComment = React.forwardRef((props, inputRef) => {
     }
   };
 
-
   return (
     <div
       className={classnames('h5p-order-priority-statement-comment', {
