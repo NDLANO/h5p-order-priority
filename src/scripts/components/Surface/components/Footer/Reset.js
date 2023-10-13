@@ -63,17 +63,17 @@ const Reset = () => {
               <p id={'resetTitle'}>
                 {translations.ifYouContinueAllYourChangesWillBeLost}
               </p>
-              <div>
+              <div className="h5p-order-priority-reset-modal-buttons">
                 <button
                   onClick={confirmReset}
-                  className={'continue'}
+                  className={'popover-button continue'}
                   type={'button'}
                 >
                   {translations.continue}
                 </button>
                 <button
                   onClick={togglePopover}
-                  className={'cancel'}
+                  className={'popover-button cancel'}
                   type={'button'}
                 >
                   {translations.cancel}
@@ -83,7 +83,7 @@ const Reset = () => {
           )}
         >
           <button
-            className={'h5p-order-priority-button-restart'}
+            className={'h5p-order-priority-footer-button h5p-order-priority-button-restart'}
             onClick={togglePopover}
             aria-haspopup={'true'}
             aria-expanded={showPopover}

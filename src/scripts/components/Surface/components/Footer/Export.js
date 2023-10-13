@@ -72,9 +72,9 @@ const Export = () => {
             ' <div class="page-title h1">{{mainTitle}}</div>' +
             '</div>' +
             '<div class="page-description">{{description}}</div>' +
-            '<table>' +
-            '<tr><th>{{headerStatement}}</th><th>{{headerComment}}</th></tr>' +
-            '{{#sortedStatementList}}<tr><td>{{title}}</td><td>{{comment}}</td></tr>{{/sortedStatementList}}' +
+            '<table class="export-preview-table">' +
+            '<tr class="export-preview-table-row"><th class="export-preview-table-head">{{headerStatement}}</th><th class="export-preview-table-head">{{headerComment}}</th></tr>' +
+            '{{#sortedStatementList}}<tr class="export-preview-table-row><td>{{title}}</td><td>{{comment}}</td></tr>{{/sortedStatementList}}' +
             '</table>' +
             '{{#useSummary}}' +
             '{{#hasSummaryComment}}' +
@@ -84,9 +84,9 @@ const Export = () => {
             '{{/useSummary}}' +
             '{{#hasResources}}' +
             '<div class="h2">{{header}}</div>' +
-            '<table>' +
-            '<tr><th>{{headerTitle}}</th><th>{{headerIntro}}</th><th>{{headerUrl}}</th></tr>' +
-            '{{#resources}}<tr><td>{{title}}</td><td>{{introduction}}</td><td>{{url}}</td></tr>{{/resources}}' +
+            '<table class="export-preview-table">' +
+            '<tr class="export-preview-table-row"><th class="export-preview-table-head">{{headerTitle}}</th><th class="export-preview-table-head">{{headerIntro}}</th><th class="export-preview-table-head">{{headerUrl}}</th></tr>' +
+            '{{#resources}}<tr class="export-preview-table-row"><td>{{title}}</td><td>{{introduction}}</td><td>{{url}}</td></tr>{{/resources}}' +
             '</table>' +
             '{{/hasResources}}' +
             '</div>';
@@ -127,7 +127,7 @@ const Export = () => {
   return (
     <>
       <button
-        className={'h5p-order-priority-button-export'}
+        className={'h5p-order-priority-footer-button h5p-order-priority-button-export'}
         onClick={handleExport}
         type={'button'}
         aria-haspopup={'true'}

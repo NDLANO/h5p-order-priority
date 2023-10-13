@@ -1,20 +1,14 @@
-@use "@styles/base/base_functions" as OPFunction;
+@use "@styles/base/base_extendors";
 
 .h5p-order-priority-footer {
   background-color: #507AA4;
   color: white;
-  padding: OPFunction.pxToRem(20px);
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
 
-  & > button {
-    background-color: transparent;
-    margin: OPFunction.pxToRem(5px);
-    font-weight: bold;
-  }
-
   .h5p-ri {
-    margin-right: OPFunction.pxToRem(7px);
+    margin-right: 0.5rem;
   }
 
   .h5p-medium-tablet-size &,

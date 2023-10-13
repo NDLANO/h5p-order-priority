@@ -16,7 +16,11 @@ const PriorityNumber = (props) => {
     <div
       className={'h5p-order-priority-number h5p-order-priority-number-' + displayIndex}
     >
-      <div>{displayIndex}</div>
+      <div
+        className='h5p-order-priority-number-circle'
+      >
+        {displayIndex}
+      </div>
     </div>
   );
 };

@@ -1,11 +1,10 @@
 @use "@styles/base/base_extendors";
 @use "@styles/base/base_variables" as bv;
-@use "@styles/base/base_functions" as OPFunction;
 
 .h5p-order-priority-statement-comment {
   @extend %h5p-order-priority-statement-common;
   border: 2px solid #dbe2e8;
-  border-radius: 0 0 OPFunction.pxToRem(3px) OPFunction.pxToRem(3px);
+  border-radius: 0 0 0.25rem 0.25rem;
   background-color: #ffffff;
   padding: 0;
   margin: 0;
@@ -15,7 +14,7 @@
   }
 
   div {
-    margin: 0 OPFunction.pxToRem(4px) OPFunction.pxToRem(4px) OPFunction.pxToRem(4px);
+    margin: 0 0.25rem 0.25rem 0.25rem;
     background-color: #f6f8f9;
     flex: auto;
     border-radius: 0 0 bv.$borderRadius bv.$borderRadius;
@@ -42,7 +41,7 @@
 
   .h5p-ri {
     font-size: 150%;
-    padding: 0 OPFunction.pxToRem(7px);
+    padding: 0 0.5rem;
   }
 }
 

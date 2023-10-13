@@ -1,5 +1,4 @@
 @use "@styles/base/base_extendors";
-@use "@styles/base/base_functions" as OPFunction;
 
 .h5p-order-priority-surface {
   @extend %h5p-order-priority;
@@ -29,12 +28,6 @@
       display: flex;
       flex-flow: row;
   }
-
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
 }
 
 .h5p-order-priority-dropzone {
@@ -48,6 +41,6 @@
 
   .h5p-large-tablet-size &,
   .h5p-large-size & {
-    margin-left: OPFunction.pxToRem(12px);
+    margin-left: 0.75rem;
   }
 }

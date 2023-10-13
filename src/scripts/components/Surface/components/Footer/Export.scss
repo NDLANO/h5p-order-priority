@@ -25,22 +25,18 @@
     font-style: italic;
   }
 
-  table {
+  .export-preview-table {
     width: 100%;
     border: 1px solid rgba(0, 90, 255, 0.34);
   }
-  table tr:nth-child(even){
+  .export-preview-table-row:nth-child(even) {
     background-color: rgba(176, 200, 236, 0.34);
   }
 
-  th {
+  .export-preview-table-head {
     text-align: start;
     background-color: rgba(45, 119, 193, 0.34);
     border-collapse: collapse;
-  }
-
-  li {
-    margin-left: 0.3125rem;
   }
 }
 
@@ -49,7 +45,10 @@
 }
 
 .export-container {
-  button {
+  .joubel-export-page-close,
+  .joubel-exportable-copy-button,
+  .joubel-exportable-export-button,
+  .joubel-exportable-submit-button {
     float: right;
     cursor: pointer;
     padding: 0 1rem;
@@ -69,6 +68,8 @@
   @extend %h5p-order-priority-button;
   background-color: #507AA4;
   border: 2px solid #CCCCCC;
+
+  margin: 0.3125rem;
 
   &:hover,
   &:focus {

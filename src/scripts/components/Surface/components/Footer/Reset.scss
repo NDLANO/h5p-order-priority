@@ -1,4 +1,3 @@
-@use "@styles/base/base_functions" as OPFunction;
 @use "@styles/base/base_extendors";
 
 .h5p-order-priority-reset-modal {
@@ -8,36 +7,37 @@
   display: inline-flex;
   flex-flow: column;
 
-  div{
+  .h5p-order-priority-reset-modal-buttons {
     padding: 0.8rem;
-  }
 
-  button {
-    font-weight: 600;
-    font-size: inherit;
-  }
+    .popover-button {
+      cursor: pointer;
+      font-weight: 600;
+      font-size: inherit;
 
-  & .continue {
-    @extend %h5p-order-priority-button;
-    color: #fff;
-    background-color: #1f1f1f;
-    margin-right: OPFunction.pxToRem(16);
+      &.continue {
+        @extend %h5p-order-priority-button;
+        color: #fff;
+        background-color: #1f1f1f;
+        margin-right: 1rem;
 
-    &:hover,
-    &:focus,
-    &:active {
-      color: #fff;
+        &:hover,
+        &:focus,
+        &:active {
+          color: #fff;
+        }
+
+        &:focus {
+          background-color: #000000;
+        }
+      }
+
+      &.cancel {
+        border: 0;
+        background-color: transparent;
+        color: #2071e3;
+      }
     }
-
-    &:focus {
-      background-color: #000000;
-    }
-  }
-
-  .cancel {
-    border: 0;
-    background-color: transparent;
-    color: #2071e3;
   }
 }
 

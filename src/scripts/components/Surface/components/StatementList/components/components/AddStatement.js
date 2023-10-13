@@ -14,18 +14,16 @@ const AddStatement = (props) => {
   } = props;
 
   return (
-    <div>
-      <button
-        type={'button'}
-        className={'h5p-order-priority-add'}
-        onClick={onClick}
-      >
-        <span>
-          <span className={'h5p-ri hri-pencil'} />
-          <span>{translations.add}</span>
-        </span>
-      </button>
-    </div>
+    <button
+      type={'button'}
+      className={'h5p-order-priority-add'}
+      onClick={onClick}
+    >
+      <span className='h5p-order-priority-add-wrapper'>
+        <span className={'h5p-ri hri-pencil'} />
+        <span>{translations.add}</span>
+      </span>
+    </button>
   );
 };
 

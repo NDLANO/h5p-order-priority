@@ -51,6 +51,7 @@ const Comment = React.forwardRef((props, inputRef) => {
         close={context.translations.close}
         popoverContent={(
           <textarea
+            className='h5p-order-priority-comment-textarea'
             ref={inputRef}
             placeholder={context.translations.typeYourReasonsForSuchAnswers}
             value={comment}

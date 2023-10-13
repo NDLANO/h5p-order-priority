@@ -1,17 +1,15 @@
 @use "@styles/base/base_extendors";
-@use "@styles/base/base_variables" as bv;
-@use "@styles/base/base_functions" as OPFunction;
 
 .h5p-order-priority-popover-container {
-  border-radius: OPFunction.pxToRem(4px);
+  border-radius: 0.25rem;
   background-color: #ffffff;
   background-size: cover;
-  box-shadow: OPFunction.pxToRem(5px) OPFunction.pxToRem(10px) OPFunction.pxToRem(22px) rgba(0,0,0,0.4);
+  box-shadow: 0.3125rem 0.625rem 1.25rem rgba(0,0,0,0.4);
   max-width: 95vw;
 
   .h5p-order-priority-popover-header {
-    padding: OPFunction.pxToRem(14px);
-    border-bottom: OPFunction.pxToRem(1px) solid #dbe2e8;
+    padding: 1rem;
+    border-bottom: 0.0625 solid #dbe2e8;
     display: flex;
     align-items: center;
     font-weight: bold;
@@ -22,19 +20,12 @@
   }
 
   .close-button {
+    @extend %h5p-order-priority-button;
     background: white;
     color: black;
     margin-left: auto;
     padding: 0;
     font-size: 180%;
-  }
-
-  textarea {
-    font-family: inherit;
-    width: 100%;
-    margin: OPFunction.pxToRem(14px);
-    border-radius: OPFunction.pxToRem(4px);
-    padding: OPFunction.pxToRem(5px);
   }
 }
 
@@ -48,10 +39,10 @@
   &.h5p-large-tablet-size,
   &.h5p-large-size{
     width: 100%;
-    max-width: OPFunction.pxToRem(500px);
+    max-width: 31.25rem;
   }
 
-  button {
+  .popover-button {
     @extend %h5p-order-priority-button;
   }
 }

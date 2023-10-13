@@ -1,15 +1,13 @@
-@use "@styles/base/base_functions" as OPFunction;
-
 .h5p-order-priority-header {
   background-color: #507AA4;
   display: inline-flex;
   width: 100%;
   margin: 0;
   align-items: center;
-  padding: OPFunction.pxToRem(21px);
+  padding: 1.3125rem;
   color: white;
   font-weight: normal;
-  font-size: OPFunction.pxToRem(20px);
+  font-size: 1.25rem;
 }
 
 .h5p-order-priority-surface-info {
