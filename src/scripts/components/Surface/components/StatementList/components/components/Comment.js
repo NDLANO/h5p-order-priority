@@ -29,6 +29,7 @@ const Comment = React.forwardRef((props, inputRef) => {
 
   const handleToggle = () => {
     if (props.onClick) {
+      context.trigger('resize');
       return props.onClick();
     }
     togglePopover(!showPopover);
