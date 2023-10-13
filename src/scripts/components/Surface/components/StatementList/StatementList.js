@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { CSS } from '@dnd-kit/utilities';
 import { defaultAnimateLayoutChanges, useSortable } from '@dnd-kit/sortable';
 import PropTypes from 'prop-types';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import Remaining from './components/Remaining.js';
 import Prioritized from './components/Prioritized.js';
 import Placeholder from './components/Placeholder.js';
@@ -16,6 +17,8 @@ const StatementList = (props) => {
   const draggableRef = useRef();
   const [showCommentContainer, toggleCommentContainer] = useState(false);
 
+  const context = useOrderPriority();
+
   /**
    * Handle click on comment.
    */
@@ -25,6 +28,7 @@ const StatementList = (props) => {
     }
 
     toggleCommentContainer(true);
+    context.trigger('resize');
     setTimeout(() => inputRef.current.focus(), 0);
   };
 
