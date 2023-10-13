@@ -4,22 +4,6 @@
 @use "base/base_extendors";
 @use "base/base_functions" as OPFunction;
 
-@forward "components/Main";
-@forward "components/Surface";
-@forward "components/Export";
-@forward "components/Reset";
-@forward "components/Placeholder";
-@forward "components/Footer";
-@forward "components/Summary";
-@forward "components/StatementList";
-@forward "components/StatementCommon";
-@forward "components/Comment";
-@forward "components/DragArrow";
-@forward "components/Popover";
-@forward "components/PriorityNumber";
-@forward "components/AddStatement";
-@forward "components/EditableStatement";
-
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
   display:block;
 }

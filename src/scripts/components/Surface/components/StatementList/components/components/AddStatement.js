@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './AddStatement.scss';
 
 /**
  * Adds a button to add new statements

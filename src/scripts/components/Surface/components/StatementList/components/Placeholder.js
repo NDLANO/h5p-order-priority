@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import PriorityNumber from './components/PriorityNumber.js';
+import './Placeholder.scss';
 
 /**
  * Placeholder in the prioritized column.

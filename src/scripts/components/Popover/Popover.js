@@ -1,6 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { ArrowContainer, Popover as TinyPopover } from 'react-tiny-popover';
 import PropTypes from 'prop-types';
+import './Popover.scss';
 
 /**
  * Component to display a popover with trap. Used third party component Tinypopover.

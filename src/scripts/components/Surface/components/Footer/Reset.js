@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef, useMemo, useEffect } from 'react';
 import Popover from '@components/Popover/Popover.js';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import './Reset.scss';
 
 /**
  * Reset dialog.

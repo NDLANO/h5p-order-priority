@@ -18,6 +18,7 @@ import Summary from './components/Summary/Summary.js';
 import Messages from './Messages.js';
 import Comment from './components/StatementList/components/components/Comment.js';
 import Prioritized from './components/StatementList/components/Prioritized.js';
+import './Surface.scss';
 
 /**
  * Surface component.

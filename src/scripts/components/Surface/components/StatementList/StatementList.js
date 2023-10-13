@@ -7,7 +7,8 @@ import Remaining from './components/Remaining.js';
 import Prioritized from './components/Prioritized.js';
 import Placeholder from './components/Placeholder.js';
 import Comment from './components/components/Comment.js';
-import '@styles/components/StatementList.scss';
+import './StatementCommon.scss';
+import './StatementList.scss';
 
 const StatementList = (props) => {
 

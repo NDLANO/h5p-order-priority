@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import Popover from '@components/Popover/Popover.js';
+import './Comment.scss';
 
 const Comment = React.forwardRef((props, inputRef) => {
 

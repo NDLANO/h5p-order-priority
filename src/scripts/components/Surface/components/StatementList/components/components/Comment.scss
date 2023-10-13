@@ -1,6 +1,6 @@
-@use "../base/base_extendors";
-@use "../base/base_variables" as bv;
-@use "../base/base_functions" as OPFunction;
+@use "@styles/base/base_extendors";
+@use "@styles/base/base_variables" as bv;
+@use "@styles/base/base_functions" as OPFunction;
 
 .h5p-order-priority-statement-comment {
   @extend %h5p-order-priority-statement-common;

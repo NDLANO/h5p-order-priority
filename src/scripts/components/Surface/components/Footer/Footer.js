@@ -1,6 +1,7 @@
 import React from 'react';
 import Export from './Export.js';
 import Reset from './Reset.js';
+import './Footer.scss';
 
 /**
  * Functional container for export and reset logic.

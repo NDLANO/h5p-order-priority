@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Surface from '@components/Surface/Surface.js';
 import Footer from '@components/Surface/components/Footer/Footer.js';
 import '@assets/fonts/H5PReflectionFont.scss';
+import './Main.scss';
 
 const Main = (props) => {
   const resourceContainer = useRef();

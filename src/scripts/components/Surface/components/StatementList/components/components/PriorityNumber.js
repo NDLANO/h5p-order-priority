@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './PriorityNumber.scss';
 
 /**
  * Container with number indicating what priority a statement has.

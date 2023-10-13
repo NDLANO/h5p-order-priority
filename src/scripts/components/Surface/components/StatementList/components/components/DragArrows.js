@@ -1,5 +1,6 @@
 import React from 'react';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
+import './DragArrow.scss';
 
 const DragArrows = () => {
   const context = useOrderPriority();

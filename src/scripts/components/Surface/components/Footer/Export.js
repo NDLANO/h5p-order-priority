@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import { escapeHTML, stripHTML } from '@services/utils.js';
+import './Export.scss';
 
 /**
  * Display export page to let user summarize the answers given.

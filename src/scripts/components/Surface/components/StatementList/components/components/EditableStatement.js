@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
 import { debounce } from '@services/utils.js';
+import './EditableStatement.scss';
 
 const EditableStatement = (props) => {
   const inputRef = useRef();
