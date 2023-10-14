@@ -68,6 +68,7 @@
       ]
     },
     {
+      "label": "Adaptación local",
       "fields": [
         {
           "label": "Texto por defecto para las cajas de texto",
@@ -117,10 +118,10 @@
           "label": "Texto por defecto para la caja de resumen",
           "default": "Haz un breve resumen con tus propias palabras"
         }
-      ],
-      "label": "Adaptación local"
+      ]
     },
     {
+      "label": "Informe de recursos",
       "fields": [
         {
           "label": "Etiqueta para el botón \"Crear documento\"",
@@ -135,8 +136,16 @@
           "default": "Seleccionar todo"
         },
         {
-          "default": "Declaraciones",
-          "label": "Encabezado de declaración en tabla de declaraciones"
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
+          "label": "Encabezado de declaración en tabla de declaraciones",
+          "default": "Declaraciones"
         },
         {
           "label": "Encabezado de comentario en la tabla de declaraciones",
@@ -159,10 +168,6 @@
           "default": "URL"
         },
         {
-          "label": "Etiqueta cuando no se encontraron recursos",
-          "default": "No hay recursos"
-        },
-        {
           "label": "Encabezado para comentario de resumen",
           "default": "Comentario del Resumen"
         },
@@ -170,10 +175,10 @@
           "label": "Etiqueta cuando no se ha proporcionado ningún resumen",
           "default": "No hay resumen"
         }
-      ],
-      "label": "Informe de recursos"
+      ]
     },
     {
+      "label": "Accesibilidad",
       "fields": [
         {
           "label": "Se utiliza en lugar del icono \"Comentario\"",
@@ -198,8 +203,8 @@
           "default": "Área de colocación vacía #:index"
         },
         {
-          "default": "Elemento arrastrable",
-          "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla"
+          "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla",
+          "default": "Elemento arrastrable"
         },
         {
           "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
@@ -221,9 +226,9 @@
           "default": "Declaraciones"
         },
         {
-          "default": "Priorizadas",
           "label": "Nombre de la columna priorizada",
-          "description": "Esta es la columna donde se ordenan las declaraciones"
+          "description": "Esta es la columna donde se ordenan las declaraciones",
+          "default": "Priorizadas"
         },
         {
           "label": "Mensaje leído al lector de pantalla cuando se inicia el arrastre",
@@ -268,8 +273,7 @@
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",
           "default": "Para interactuar con la siguiente sección, algunos lectores de pantalla requieren que esté en modo de foco"
         }
-      ],
-      "label": "Accesibilidad"
+      ]
     }
   ]
 }

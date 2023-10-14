@@ -89,6 +89,15 @@ export const stripHTML = (html) => {
 };
 
 /**
+ * Purify HTML: Decode and remove.
+ * @param {string} html HTML text.
+ * @returns {string} Text without HTML tags.
+ */
+export const purifyHTML = (html) => {
+  return stripHTML(decodeHTML(html));
+};
+
+/**
  * Get list of classname and conditions for when to add the classname to the content type
  * @returns {object[]} Classnames and function to determine whether to be set.
  */
@@ -174,6 +183,9 @@ export const sanitizeParams = (params) => {
   if (Array.isArray(statementsList)) {
     statementsList = statementsList.map((statement) => decodeHTML(statement));
   }
+
+  resources.params.resourceList = (resources.params?.resourceList ?? [])
+    .filter((resourceItem) => Object.keys(resourceItem).length > 0);
 
   if (resources.params?.resourceList?.length) {
     resources.params = {

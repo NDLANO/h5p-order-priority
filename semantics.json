@@ -28,21 +28,21 @@
     "importance": "high",
     "expanded": true,
     "fields": [
-        {
-          "name": "statementsList",
-          "type": "list",
-          "label": "Statements",
-          "importance": "high",
-          "entity": "statement",
-          "optional": true,
-          "min": 1,
-          "field": {
-            "name": "text",
-            "type": "text",
-            "label": "Statement"
-          }
+      {
+        "name": "statementsList",
+        "type": "list",
+        "label": "Statements",
+        "importance": "high",
+        "entity": "statement",
+        "optional": true,
+        "min": 1,
+        "field": {
+          "name": "text",
+          "type": "text",
+          "label": "Statement"
         }
-      ]
+      }
+    ]
   },
   {
     "name": "summaryHeader",
@@ -258,6 +258,18 @@
         "default": "Select all"
       },
       {
+        "name": "headerSummary",
+        "type": "text",
+        "label": "Summary header",
+        "default": "Summary"
+      },
+      {
+        "name": "headerTaskDescription",
+        "type": "text",
+        "label": "Task description",
+        "default": "Task description"
+      },
+      {
         "name": "headerStatement",
         "type": "text",
         "label": "Statement header in statement table",
@@ -290,14 +302,8 @@
       {
         "name": "headerUrl",
         "type": "text",
-        "label": "Url header in resource table",
-        "default": "Url"
-      },
-      {
-        "name": "labelNoResources",
-        "type": "text",
-        "label": "Label when no resources are found",
-        "default": "No resources"
+        "label": "URL header in resource table",
+        "default": "URL"
       },
       {
         "name": "labelSummaryComment",

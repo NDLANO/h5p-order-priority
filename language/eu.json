@@ -68,6 +68,7 @@
       ]
     },
     {
+      "label": "Lokalizatu",
       "fields": [
         {
           "label": "Testu-koadroetarako behin behineko testua",
@@ -117,10 +118,10 @@
           "label": "Laburpen-koadroaren behin behineko testua",
           "default": "Eman laburpen txiki bat zure hitzekin"
         }
-      ],
-      "label": "Lokalizatu"
+      ]
     },
     {
+      "label": "Baliabideen txostena",
       "fields": [
         {
           "label": "\"Sortu dokumentua\" botoiaren etiketa",
@@ -133,6 +134,14 @@
         {
           "label": "\"Hautatu guztiak\" botoiaren etiketa",
           "default": "Hautatu guztiak"
+        },
+        {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
         },
         {
           "label": "Adierazpenen goiburua adierazpen-taulan",
@@ -159,10 +168,6 @@
           "default": "URL"
         },
         {
-          "label": "Baliabiderik aurkitzen ez deneko etiketa",
-          "default": "Baliabiderik ez"
-        },
-        {
           "label": "Laburpenaren iruzkinaren goiburua",
           "default": "Laburpenaren iruzkina"
         },
@@ -170,8 +175,7 @@
           "label": "Etiketa laburpenik ematen ez denean",
           "default": "Laburpenik ez"
         }
-      ],
-      "label": "Baliabideen txostena"
+      ]
     },
     {
       "label": "Irisgarritasuna",

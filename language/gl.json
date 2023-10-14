@@ -35,10 +35,12 @@
       ]
     },
     {
+      "label": "Configuración do comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento.",
       "fields": [
         {
-          "description": "Marca isto se queres que o usuario poida tentar de novo",
-          "label": "Activar tentar de novo?"
+          "label": "Activar tentar de novo?",
+          "description": "Marca isto se queres que o usuario poida tentar de novo"
         },
         {
           "label": "Pre-encher os enunciados",
@@ -60,12 +62,10 @@
           "description": "Se o usuario forneceu un comentario, amosarase na lista de declaracións"
         },
         {
-          "description": "Queres que o usuario forneza un resumo explicando as razóns para as súas respostas?",
-          "label": "Amosar resumo"
+          "label": "Amosar resumo",
+          "description": "Queres que o usuario forneza un resumo explicando as razóns para as súas respostas?"
         }
-      ],
-      "label": "Configuración do comportamento",
-      "description": "Estas opcións permitiranche controlar o comportamento."
+      ]
     },
     {
       "label": "Adaptación local",
@@ -75,8 +75,8 @@
           "default": "Escribe as túas razóns para tales respostas"
         },
         {
-          "default": "Recursos",
-          "label": "Etiqueta para o botón «Recursos»"
+          "label": "Etiqueta para o botón «Recursos»",
+          "default": "Recursos"
         },
         {
           "label": "Etiqueta para o botón \"Reiniciar\"",
@@ -103,12 +103,12 @@
           "default": "Retroalimentación"
         },
         {
-          "default": "Enviar",
-          "label": "Texto amosado no botón \"Enviar\" ao crear un documento"
+          "label": "Texto amosado no botón \"Enviar\" ao crear un documento",
+          "default": "Enviar"
         },
         {
-          "default": "Gardado!",
-          "label": "Texto amosado despois de enviar"
+          "label": "Texto amosado despois de enviar",
+          "default": "Gardado!"
         },
         {
           "label": "Cabeceira na pantalla emerxente \"Reiniciar\"",
@@ -136,6 +136,14 @@
           "default": "Seleccionar todo"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Cabeceira das declaracións na táboa de declaracións",
           "default": "Declaracións"
         },
@@ -160,10 +168,6 @@
           "default": "URL"
         },
         {
-          "label": "Etiqueta cando non se atopan recursos",
-          "default": "Non hai recursos"
-        },
-        {
           "label": "Cabeceira para \"Comentario de resumo\"",
           "default": "Comentario do resumo"
         },
@@ -174,6 +178,7 @@
       ]
     },
     {
+      "label": "Accesibilidade",
       "fields": [
         {
           "label": "Empregado no canto da icona «Comentario»",
@@ -202,8 +207,8 @@
           "default": "Elemento arrastrable"
         },
         {
-          "description": "As variables dispoñibles son :index",
           "label": "Etiqueta para 'Zona de solta' para lectores de pantalla",
+          "description": "As variables dispoñibles son :index",
           "default": "Área de solta #:index"
         },
         {
@@ -226,9 +231,9 @@
           "default": "Priorizado"
         },
         {
+          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre",
           "description": "As variables dispoñibles son :startPosition, :listLength e :listName",
-          "default": "Levaches un elemento na posición :startPosition de :listLength na lista :listName.",
-          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre"
+          "default": "Levaches un elemento na posición :startPosition de :listLength na lista :listName."
         },
         {
           "label": "Mensaxe lida ao lector de pantalla cando o arrastre se move dentro da mesma lista",
@@ -268,8 +273,7 @@
           "label": "Mensaxe lida ao lector de pantalla antes de entrar na sección coas declaracións",
           "default": "Para interactuar coa seguinte sección, algúns lectores de pantalla requiren que esteas no modo de foco"
         }
-      ],
-      "label": "Accesibilidade"
+      ]
     }
   ]
 }

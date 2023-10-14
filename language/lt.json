@@ -68,6 +68,7 @@
       ]
     },
     {
+      "label": "Localize",
       "fields": [
         {
           "label": "Placeholder for the text boxes",
@@ -86,8 +87,8 @@
           "default": "Add alternative"
         },
         {
-          "default": "Continue",
-          "label": "Label for the \"Continue\"-button in the restart dialog"
+          "label": "Label for the \"Continue\"-button in the restart dialog",
+          "default": "Continue"
         },
         {
           "label": "Label for the \"Cancel\"-button in the restart dialog",
@@ -117,8 +118,7 @@
           "label": "Placeholder for the summary box",
           "default": "Give a brief summary in your own words"
         }
-      ],
-      "label": "Localize"
+      ]
     },
     {
       "label": "Resource report",
@@ -134,6 +134,14 @@
         {
           "label": "Label on \"Select all\" button",
           "default": "Select all"
+        },
+        {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
         },
         {
           "label": "Statement header in statement table",
@@ -158,10 +166,6 @@
         {
           "label": "Url header in resource table",
           "default": "Url"
-        },
-        {
-          "label": "Label when no resources are found",
-          "default": "No resources"
         },
         {
           "label": "Header for summary comment",

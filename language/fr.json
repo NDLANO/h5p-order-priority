@@ -136,6 +136,14 @@
           "default": "Select all"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Statement header in statement table",
           "default": "Statements"
         },
@@ -158,10 +166,6 @@
         {
           "label": "Url header in resource table",
           "default": "Url"
-        },
-        {
-          "label": "Label when no resources are found",
-          "default": "No resources"
         },
         {
           "label": "Header for summary comment",

@@ -341,9 +341,17 @@ const Surface = () => {
    * @returns {object} Statements.
    */
   const sendExportValues = () => {
+    const prioritizedStatements = [];
+    state.prioritizedStatements
+      .filter((id) => !state.remainingStatements.includes(id))
+      .forEach((id) => {
+        prioritizedStatements.push(
+          state.statements.find((statement) => statement.id === id)
+        );
+      });
+
     return {
-      statements: state.statements,
-      prioritizedStatements: state.prioritizedStatements
+      prioritizedStatements: prioritizedStatements
     };
   };
 

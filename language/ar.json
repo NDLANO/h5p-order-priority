@@ -136,6 +136,14 @@
           "default": "اختيار الكل"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "رأس العبارات في جدول العبارات",
           "default": "العبارات"
         },
@@ -158,10 +166,6 @@
         {
           "label": "رأس روابط الإنترنت في جدول الموارد",
           "default": "روابط الإنترنت"
-        },
-        {
-          "label": "تسمية عدم وجود هناك موارد",
-          "default": "الموارد غير موجودة"
         },
         {
           "label": "رأس \"تعليقات الملخص\"",

@@ -136,6 +136,14 @@
           "default": "Velg alt"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Overskrift i \"Påstand\"-kolonnen,",
           "default": "Påstand"
         },
@@ -158,10 +166,6 @@
         {
           "label": "Overskrift i 'Lenke'-kolonnen",
           "default": "Lenke"
-        },
-        {
-          "label": "Tekst når ingen ressurser er registrert",
-          "default": "Ingen ressurser"
         },
         {
           "label": "Overskrift for \"Oppsummering kommentar\"",

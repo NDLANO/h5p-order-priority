@@ -32,12 +32,8 @@ const Main = (props) => {
     );
     resourceList.attach(resourceContainer.current);
 
-    // Set defaults to resource attributes
-    const defaultParams = { title: '', url: '', introduction: '' };
     const callback = () => {
-      return resourcesList.params.resourceList.map((resource) => {
-        return ({ ...defaultParams, ...resource });
-      });
+      return resourcesList.params.resourceList;
     };
 
     collectExportValues('resources', callback);

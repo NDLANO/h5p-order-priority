@@ -136,6 +136,14 @@
           "default": "Chagua yote"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Kichwa cha kauli katika jedwali la kauli",
           "default": "Kauli"
         },
@@ -158,10 +166,6 @@
         {
           "label": "Kichwa cha vipataji rasilimali sawa katika jedwali la rasilimali",
           "default": "Url"
-        },
-        {
-          "label": "Lebo wakati hakuna rasilimali zinazopatikana",
-          "default": "Hakuna rasilimali"
         },
         {
           "label": "Kichwa cha \"Maoni ya muhtasari\"",

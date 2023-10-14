@@ -37,7 +37,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
     this.resetTask = this.resetTask.bind(this);
 
     this.translations = Object.assign({}, {
-      summary: 'Summary',
+      headerSummary: 'Summary',
       typeYourReasonsForSuchAnswers: 'Elaborate on your decision',
       resources: 'Resources',
       save: 'Save',

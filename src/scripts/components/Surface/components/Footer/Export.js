@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
-import { escapeHTML, stripHTML } from '@services/utils.js';
+import { escapeHTML, purifyHTML } from '@services/utils.js';
 import './Export.scss';
 
 /**
@@ -14,84 +14,86 @@ const Export = () => {
     translate
   } = context;
   const exportContainer = useRef();
-  let exportDocument;
-  let exportObject;
+
   const [showExportPage, toggleShowExportPage] = useState(false);
 
-  /**
-   * Collect and group values displayed in export page.
-   * @returns {object} Values displayed in export page.
-   */
-  const getExportObject = () => {
-    const {
-      params: {
-        header,
-        description = '',
-      },
-      behaviour: {
-        provideSummary = true,
-      },
-      translations,
-      collectExportValues,
-    } = context;
+  const getInputFields = () => {
+    const fields = [];
 
-    const {
-      resources = [],
-      summary,
-      userInput
-    } = collectExportValues();
+    const params = context.params;
+    const exportValues = context.collectExportValues();
 
-    return Object.assign({}, translations, {
-      mainTitle: header,
-      description: stripHTML(description),
-      hasResources: resources.length > 0,
-      hasSummaryComment: summary && summary.length !== 0,
-      summaryComment: summary,
-      useSummary: provideSummary,
-      resources: resources,
-      sortedStatementList: userInput.prioritizedStatements
-        .map((statement) => userInput.statements[statement])
-        .filter((statement) => statement.touched === true)
-        .map((statement) => {
-          return {
-            comment: statement.comment || '',
-            title: statement.statement,
-          };
-        })
+    // Instructions
+    const instructions = [];
+    if (params.description) {
+      instructions.push({
+        description: translate('headerTaskDescription'),
+        value: purifyHTML(params.description).replace(/\n\n/g, '\n')
+      });
+    }
+
+    instructions.push({
+      description:
+        purifyHTML(params.summaryHeader) || translate('headerSummary'),
+      value: purifyHTML(params.summaryInstruction).replace(/\n\n/g, '\n')
     });
-  };
 
-  /**
-   * Create preview of what will be exported.
-   * @returns {object} Mustache render output.
-   */
-  const getExportPreview = () => {
-    const documentExportTemplate =
-            '<div class="export-preview">' +
-            '<div class="page-header" role="heading" tabindex="-1">' +
-            ' <div class="page-title h1">{{mainTitle}}</div>' +
-            '</div>' +
-            '<div class="page-description">{{description}}</div>' +
-            '<table class="export-preview-table">' +
-            '<tr class="export-preview-table-row"><th class="export-preview-table-head">{{headerStatement}}</th><th class="export-preview-table-head">{{headerComment}}</th></tr>' +
-            '{{#sortedStatementList}}<tr class="export-preview-table-row><td>{{title}}</td><td>{{comment}}</td></tr>{{/sortedStatementList}}' +
-            '</table>' +
-            '{{#useSummary}}' +
-            '{{#hasSummaryComment}}' +
-            '<div class="h2">{{labelSummaryComment}}</div>' +
-            '<p>{{summaryComment}}</p>' +
-            '{{/hasSummaryComment}}' +
-            '{{/useSummary}}' +
-            '{{#hasResources}}' +
-            '<div class="h2">{{header}}</div>' +
-            '<table class="export-preview-table">' +
-            '<tr class="export-preview-table-row"><th class="export-preview-table-head">{{headerTitle}}</th><th class="export-preview-table-head">{{headerIntro}}</th><th class="export-preview-table-head">{{headerUrl}}</th></tr>' +
-            '{{#resources}}<tr class="export-preview-table-row"><td>{{title}}</td><td>{{introduction}}</td><td>{{url}}</td></tr>{{/resources}}' +
-            '</table>' +
-            '{{/hasResources}}' +
-            '</div>';
+    instructions.push({
+      description: translate('labelSummaryComment'),
+      value: purifyHTML(exportValues.summary) || translate('labelNoSummaryComment')
+    });
 
-    return Mustache.render(documentExportTemplate, exportObject);
+    fields.push({
+      title: translate('headerIntro'),
+      inputArray: instructions
+    });
+
+    // Resources
+    if (exportValues.resources?.length) {
+      const resources = exportValues.resources.map((resource) => {
+        const url = resource.url ?
+          `${translate('headerUrl')}: ${purifyHTML(resource.url)}` :
+          undefined;
+
+        return {
+          description: purifyHTML(resource.title),
+          value: [purifyHTML(resource.introduction), purifyHTML(url)]
+            .filter((entry) => !!entry)
+            .join('\n')
+        };
+      });
+
+      if (resources.length) {
+        fields.push({
+          title: translate('header'),
+          inputArray: resources
+        });
+      }
+    }
+
+    // Statements
+    if (exportValues.userInput.prioritizedStatements.length) {
+      const statements = exportValues.userInput.prioritizedStatements
+        .map((statement, index) => {
+          const value = statement.comment.length ?
+            `${translate('headerComment')}: ${purifyHTML(statement.comment)}` :
+            '';
+
+          return {
+            description: `${index + 1} ${purifyHTML(statement.statement)}`,
+            value: value
+          };
+        });
+
+      if (statements.length) {
+        fields.push({
+          title: translate('headerStatement'),
+          inputArray: statements
+        });
+      }
+    }
+
+    return fields;
   };
 
   /**
@@ -102,26 +104,39 @@ const Export = () => {
       translate,
     } = context;
 
-    exportObject = getExportObject();
+    const inputFields = getInputFields();
 
     context.triggerXAPIScored(0, 0, 'completed');
 
-    exportDocument = new H5P.ExportPage(
-      escapeHTML(exportObject.mainTitle),
-      getExportPreview(),
+    const exportDocument = new H5P.DocumentExportPage.CreateDocument(
+      {
+        title: 'TODO',
+        a11yFriendlyTitle: 'TODO ARIA',
+        description: 'TODO: DESCRIPTION',
+        createDocumentLabel: 'TODO: DOC',
+        exportTextLabel: escapeHTML(translate('export')),
+        submitTextLabel: escapeHTML(translate('submitText')),
+        submitSuccessTextLabel: escapeHTML(translate('submitConfirmedText')),
+        selectAllTextLabel: escapeHTML(translate('selectAll')),
+      },
+      purifyHTML(context.params.header) || '',
       H5PIntegration.reportingIsEnabled || false,
-      escapeHTML(translate('submitText')),
-      escapeHTML(translate('submitConfirmedText')),
-      escapeHTML(translate('selectAll')),
-      escapeHTML(translate('export')),
-      context.getLibraryFilePath('exportTemplate.docx'),
-      exportObject
+      inputFields,
+      { inputArray: [] }
     );
-    exportDocument.getElement().prependTo(exportContainer.current);
-    exportDocument.$exportCloseButton.get(0).onclick = () => toggleShowExportPage(false);
+
+    exportDocument.attach(exportContainer.current);
+
+    const closeButton = exportContainer.current.querySelector('.joubel-export-page-close');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        toggleShowExportPage(false);
+      });
+    }
 
     toggleShowExportPage(true);
-    H5P.$window.on('resize', () => exportDocument.trigger('resize'));
+
+    context.on('resize', () => exportDocument.trigger('resize'));
   };
 
   return (

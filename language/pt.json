@@ -136,6 +136,14 @@
           "default": "Selecionar tudo"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Cabeçalho da afirmação na tabela de afirmações",
           "default": "Afirmações"
         },
@@ -160,10 +168,6 @@
           "default": "Url"
         },
         {
-          "label": "Notificação quando nenhum recurso for encontrado",
-          "default": "Sem recursos"
-        },
-        {
           "label": "Cabeçalho para \"Comentário de resumo\"",
           "default": "Comentário de resumo"
         },
@@ -174,6 +178,7 @@
       ]
     },
     {
+      "label": "Acessibilidade",
       "fields": [
         {
           "label": "Adicionar comentário",
@@ -198,8 +203,8 @@
           "default": "Área de soltura vazia #:index"
         },
         {
-          "default": "Artigo arrastável",
-          "label": "Notificação 'artigo arrastável' para os leitores de ecrã"
+          "label": "Notificação 'artigo arrastável' para os leitores de ecrã",
+          "default": "Artigo arrastável"
         },
         {
           "label": "Notificação 'Ponto de Aterragem' para os leitores de ecrã",
@@ -268,8 +273,7 @@
           "label": "Mensagem lida para o leitor de ecrã antes de entrar na secção com as afirmações",
           "default": "Para interagir com a próxima secção, alguns leitores de ecrã exigem que esteja no modo de foco"
         }
-      ],
-      "label": "Acessibilidade"
+      ]
     }
   ]
 }

@@ -136,6 +136,14 @@
           "default": "Seleccionar todo"
         },
         {
+          "label": "Summary header",
+          "default": "Summary"
+        },
+        {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Encabezado de declaración en tabla de declaraciones",
           "default": "Declaraciones"
         },
@@ -160,10 +168,6 @@
           "default": "URL"
         },
         {
-          "label": "Etiqueta cuando no se encontraron recursos",
-          "default": "No hay recursos"
-        },
-        {
           "label": "Encabezado para comentario de resumen",
           "default": "Comentario del Resumen"
         },
@@ -174,10 +178,11 @@
       ]
     },
     {
+      "label": "Accesibilidad",
       "fields": [
         {
-          "default": "Añadir comentario",
-          "label": "Se utiliza en lugar del icono \"Comentario\""
+          "label": "Se utiliza en lugar del icono \"Comentario\"",
+          "default": "Añadir comentario"
         },
         {
           "label": "Usado en lugar del icono 'Cerrar'",
@@ -268,8 +273,7 @@
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",
           "default": "Para interactuar con la siguiente sección, algunos lectores de pantalla requieren que esté en modo de foco"
         }
-      ],
-      "label": "Accesibilidad"
+      ]
     }
   ]
 }

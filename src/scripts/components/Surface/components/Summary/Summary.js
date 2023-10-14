@@ -31,7 +31,7 @@ const Summary = () => {
       className={classnames('h5p-order-priority-summary')}
     >
       <div className={'summary-header'}>
-        {summaryHeader ? summaryHeader : translate('summary')}
+        {summaryHeader ? summaryHeader : translate('headerSummary')}
       </div>
       {summaryInstruction && (
         <div className={'h5p-order-priority-summary-instruction'}>
