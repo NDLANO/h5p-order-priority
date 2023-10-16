@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { Fragment, useCallback, useReducer, useEffect } from 'react';
+import React, { Fragment, useCallback, useReducer, useEffect, useRef } from 'react';
 import {
   DndContext,
   DragOverlay,
@@ -362,10 +362,22 @@ const Surface = () => {
     translate,
   } = context;
 
-  registerReset(() => {
-    dispatch({ type: 'reset' });
-  });
-  collectExportValues('userInput', sendExportValues);
+  const effectCalled = useRef(false);
+
+  // componentDidMount pseudo equivalent
+  useEffect(() => {
+    if (effectCalled.current) {
+      return; // Guard to work around strict mode
+    }
+
+    effectCalled.current = true;
+
+    registerReset(() => {
+      dispatch({ type: 'reset' });
+    });
+    collectExportValues('userInput', sendExportValues);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * Get details for list that is provided for screen readers.

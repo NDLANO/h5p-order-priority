@@ -18,7 +18,16 @@ const Main = (props) => {
     resources: resourcesList,
   } = props;
 
+  const effectCalled = useRef(false);
+
+  // componentDidMount pseudo equivalent
   useEffect(() => {
+    if (effectCalled.current) {
+      return; // Guard to work around strict mode
+    }
+
+    effectCalled.current = true;
+
     if (!resourcesList.params.resourceList.length) {
       return; // Nothing to do
     }
@@ -37,7 +46,8 @@ const Main = (props) => {
     };
 
     collectExportValues('resources', callback);
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <article>
