@@ -2,20 +2,17 @@ import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { useOrderPriority } from '@context/OrderPriorityContext.js';
-import Popover from '@components/Popover/Popover.js';
 import './Comment.scss';
 
 const Comment = React.forwardRef((props, inputRef) => {
 
-  const [showPopover, togglePopover] = useState(false);
+  const [textareaShown, toggleTextarea] = useState(false);
   const [comment, setComment] = useState(props.comment);
-  const [previousFocusElement, setPreviousFocusElement] = useState(null);
 
   const context = useOrderPriority();
 
   useEffect(() => {
-    if ( showPopover ) {
-      setPreviousFocusElement(document.activeElement);
+    if ( textareaShown ) {
       setComment(props.comment || '');
       setTimeout(() => inputRef.current && inputRef.current.focus(), 0);
     }
@@ -25,13 +22,15 @@ const Comment = React.forwardRef((props, inputRef) => {
   // Adding props will lead to infinite render loops. This useEffect will
   // be removed anyway when popover is replaced
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [showPopover, comment, inputRef]);
+  }, [textareaShown, comment, inputRef]);
 
   const handleToggle = () => {
-    if (props.onClick) {
-      return props.onClick();
+    if (!props.onClick) {
+      return;
     }
-    togglePopover(!showPopover);
+    toggleTextarea(!textareaShown);
+
+    return props.onClick();
   };
 
   const handleKeyDown = (event) => {
@@ -42,43 +41,21 @@ const Comment = React.forwardRef((props, inputRef) => {
 
   return (
     <div className={'h5p-order-priority-comment'}>
-      <Popover
-        handleClose={handleToggle}
-        lastActiveElement={previousFocusElement}
-        show={showPopover}
-        classnames={context.activeBreakpoints}
-        header={context.translations.feedback}
-        close={context.translations.close}
-        popoverContent={(
-          <textarea
-            className='h5p-order-priority-comment-textarea'
-            ref={inputRef}
-            placeholder={context.translations.typeYourReasonsForSuchAnswers}
-            value={comment}
-            aria-label={context.translations.typeYourReasonsForSuchAnswers}
-            onChange={(event) => setComment(event.currentTarget.value)}
-            onKeyDown={handleKeyDown}
-            rows={3}
-          />
-        )}
+      <button
+        aria-expanded={textareaShown}
+        onClick={handleToggle}
+        className={'h5p-order-priority-action'}
+        tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? '-1' : '0'}
+        onKeyDown={handleKeyDown}
       >
-        <button
-          aria-haspopup={props.showCommentInPopup}
-          aria-expanded={showPopover}
-          onClick={handleToggle}
-          className={'h5p-order-priority-action'}
-          tabIndex={props.showCommentInPopup === false && props.comment !== null && props.comment.length > 0 ? '-1' : '0'}
-          onKeyDown={handleKeyDown}
-        >
-          <span
-            className={classnames('h5p-ri', {
-              'hri-comment-empty': !props.comment || props.comment.length === 0,
-              'hri-comment-full': props.comment && props.comment.length > 0,
-            })}
-          />
-          <span className="visible-hidden">{context.translations.addComment}</span>
-        </button>
-      </Popover>
+        <span
+          className={classnames('h5p-ri', {
+            'hri-comment-empty': !props.comment || props.comment.length === 0,
+            'hri-comment-full': props.comment && props.comment.length > 0,
+          })}
+        />
+        <span className="visible-hidden">{context.translations.addComment}</span>
+      </button>
     </div>
   );
 });
