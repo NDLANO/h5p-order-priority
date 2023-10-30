@@ -50,12 +50,12 @@ const Main = (props) => {
   }, []);
 
   return (
-    <article>
+    <article className={'h5p-order-priority-article'}>
       <div
         className={'h5p-order-priority-header'}
       >{header}</div>
       <div
-        className={'h5p-order-priority-surface'}
+        className={'h5p-order-priority-surface-main'}
       >
         <div
           className={'h5p-order-priority-surface-info'}

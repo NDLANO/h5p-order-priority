@@ -547,7 +547,7 @@ const Surface = () => {
     return (
       <Fragment>
         <DndContext
-          className="h5p-order-prioritySurface" // TODO: Fix camel case, take care of DOM!
+          className="h5p-order-priority-surface"
           onDragEnd={handleDragEnd}
           onDragOver={onDragUpdate}
           onDragStart={handleDragStart}
@@ -719,9 +719,9 @@ const Surface = () => {
   };
 
   return (
-    <div>
+    <div className='h5p-order-priority-surface-body'>
       <div
-        className="h5p-order-prioritySurface" // TODO: Fix camel case, take care of DOM!
+        className="h5p-order-priority-surface"
         onTouchStart={() => {}} //silly call to make it work in Apple products
       >
         <p className={'visible-hidden'}>

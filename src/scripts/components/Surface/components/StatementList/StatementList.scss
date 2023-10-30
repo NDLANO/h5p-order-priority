@@ -6,7 +6,7 @@
 }
 
 .h5p-order-priority-draggable-element,
-.h5p-order-priority-draggable-element > div {
+.h5p-order-priority-draggable-element > div { // TODO: THIS FEELS MASSIVELY WEIRD! Check when fixing Draggable layout
   flex-grow: 1;
   display: flex;
 

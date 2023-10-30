@@ -9,35 +9,6 @@
 
   .h5p-order-priority-reset-modal-buttons {
     padding: 0.8rem;
-
-    .popover-button {
-      cursor: pointer;
-      font-weight: 600;
-      font-size: inherit;
-
-      &.continue {
-        @extend %h5p-order-priority-button;
-        color: #fff;
-        background-color: #1f1f1f;
-        margin-right: 1rem;
-
-        &:hover,
-        &:focus,
-        &:active {
-          color: #fff;
-        }
-
-        &:focus {
-          background-color: #000000;
-        }
-      }
-
-      &.cancel {
-        border: 0;
-        background-color: transparent;
-        color: #2071e3;
-      }
-    }
   }
 }
 

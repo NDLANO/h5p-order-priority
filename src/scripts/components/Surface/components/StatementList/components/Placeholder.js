@@ -17,7 +17,7 @@ const Placeholder = ({
   isDraggingOver = false,
 }) => {
   return (
-    <div>
+    <div className='h5p-order-priority-draggable-element-segments'>
       <PriorityNumber
         displayIndex={displayIndex}
       />

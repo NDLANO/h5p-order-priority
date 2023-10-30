@@ -1,11 +1,11 @@
 @use "@styles/base/base_extendors";
 
-.h5p-order-priority-surface {
+.h5p-order-priority-surface-main {
   @extend %h5p-order-priority;
   margin: 1.5rem;
 }
 
-.h5p-order-prioritySurface { // TODO: Fix camel case, take care of DOM!
+.h5p-order-priority-surface {
   clear: both;
 
   .h5p-order-priority-dropzone-wrapper{
