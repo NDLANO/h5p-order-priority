@@ -32,34 +32,6 @@ export class StatementDataObject {
 }
 
 /**
- * Debounce function that...
- * @param {function} func Function to debounce.
- * @param {number} delayMS Delay in ms.
- * @param {boolean} immediate If true, call immediately.
- * @returns {function} Debounced funcion.
- */
-export const debounce = (func, delayMS, immediate) => {
-  let timeout;
-  return ((...theArgs) => {
-    const context = this, args = theArgs;
-
-    const later = () => {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    };
-
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, delayMS);
-    if (callNow) {
-      func.apply(context, args);
-    }
-  });
-};
-
-/**
  * Decode HTML.
  * @param {string} html HTML text.
  * @returns {string} Text decoded from HTML.

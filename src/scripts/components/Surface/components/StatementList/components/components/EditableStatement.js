@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import PropsTypes from 'prop-types';
 import classnames from 'classnames';
-import { debounce } from '@services/utils.js';
 import './EditableStatement.scss';
 
 const EditableStatement = (props) => {
@@ -37,7 +36,7 @@ const EditableStatement = (props) => {
         onBlur={() => {
           props.onChanged(inputRef.current.value);
         }}
-        onChange={debounce(() => props.onChanged(inputRef.current.value), 200)}
+        onChange={() => props.onChanged(inputRef.current.value)}
         id={inputId}
         type={'textarea'}
       />
