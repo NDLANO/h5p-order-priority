@@ -35,7 +35,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "mini-css-extract-plugin": "^2.7.6",
     "prop-types": "^15.8.1",
-    "react-tiny-popover": "^7.2.4",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.68.0",
     "sass-loader": "^13.3.2",
@@ -53,8 +52,7 @@
     "he": "^1.2.0",
     "html-react-parser": "^4.2.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-tiny-popover": "^7.2.4"
+    "react-dom": "^18.2.0"
   },
   "browserslist": "> 0.5%, last 3 versions, Firefox ESR, not dead"
 }

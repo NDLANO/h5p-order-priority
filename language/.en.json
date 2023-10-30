@@ -112,7 +112,7 @@
         },
         {
           "label": "Header in 'Restart' popover",
-          "default": "Confirm"
+          "default": "Are you sure you wish to restart?"
         },
         {
           "label": "Placeholder for the summary box",

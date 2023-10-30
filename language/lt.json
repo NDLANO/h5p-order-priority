@@ -112,7 +112,7 @@
         },
         {
           "label": "Header in 'Restart' popover",
-          "default": "Confirm"
+          "default": "Ar tikrai norite paleisti iš naujo?"
         },
         {
           "label": "Placeholder for the summary box",

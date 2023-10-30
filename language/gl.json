@@ -112,7 +112,7 @@
         },
         {
           "label": "Cabeceira na pantalla emerxente \"Reiniciar\"",
-          "default": "Confirmar"
+          "default": "Estás seguro de que queres reiniciar?"
         },
         {
           "label": "Texto por defecto para a caixa do resumo",

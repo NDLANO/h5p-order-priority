@@ -112,7 +112,7 @@
         },
         {
           "label": "Encabezado en la ventana emergente 'Reiniciar'",
-          "default": "Confirmar"
+          "default": "Estás seguro de que queres reiniciar?"
         },
         {
           "label": "Texto por defecto para la caja de resumen",

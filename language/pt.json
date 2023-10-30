@@ -112,7 +112,7 @@
         },
         {
           "label": "Cabeçalho no popover 'Reiniciar",
-          "default": "Confirmar"
+          "default": "Tem certeza de que deseja reiniciar?"
         },
         {
           "label": "Marcador de posição para a caixa de resumo",

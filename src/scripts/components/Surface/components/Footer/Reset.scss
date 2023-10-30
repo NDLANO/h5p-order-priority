@@ -57,3 +57,18 @@
     color: inherit;
   }
 }
+
+@media (prefers-reduced-motion) {
+  .h5p-confirmation-dialog-background {
+    .h5p-confirmation-dialog-popup.restart {
+      -webkit-transition: none;
+      transition: none;
+    }
+
+    &.hiding {
+      .h5p-confirmation-dialog-popup.restart {
+        opacity: 0;
+      }
+    }
+  }
+}

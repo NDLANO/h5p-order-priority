@@ -112,7 +112,7 @@
         },
         {
           "label": "Overskrift i 'Start på nytt'-dialogboks",
-          "default": "Bekreft nullstilling"
+          "default": "Er du sikker på at du vil starte på nytt?"
         },
         {
           "label": "Midlertidig tekst for sammendrag tekstfeltet",

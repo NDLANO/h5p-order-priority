@@ -222,7 +222,7 @@
         "name": "confirm",
         "type": "text",
         "label": "Header in 'Restart' popover",
-        "default": "Confirm"
+        "default": "Are you sure you wish to restart?"
       },
       {
         "name": "giveABriefSummary",
