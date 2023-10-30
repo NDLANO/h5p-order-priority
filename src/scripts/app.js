@@ -59,7 +59,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
       feedback: 'Feedback',
       submitText: 'Submit',
       submitConfirmedText: 'Saved!',
-      confirm: 'Confirm',
+      confirm: 'Are you sure you wish to restart?',
       continue: 'Continue',
       cancel: 'Cancel',
       droparea: 'Droparea :num',
