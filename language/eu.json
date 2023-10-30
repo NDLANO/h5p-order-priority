@@ -132,10 +132,6 @@
           "default": "Hautatu guztiak"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "\"Baliabide\" taularen gaineko goiburua",
           "default": "Baliabideak"
-        },
-        {
-          "label": "Izenburuaren goiburua baliabideen taulan",
-          "default": "Izenburua"
         },
         {
           "label": "Baliabideen taulako sarrerako goiburua",

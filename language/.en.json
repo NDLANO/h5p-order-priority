@@ -132,10 +132,6 @@
           "default": "Select all"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "Header above the \"Resource\" table",
           "default": "Resources"
-        },
-        {
-          "label": "Title header in resource table",
-          "default": "Title"
         },
         {
           "label": "Intro header in resource table",

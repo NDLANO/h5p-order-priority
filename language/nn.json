@@ -132,10 +132,6 @@
           "default": "Velg alt"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "Overskrift over \"Ressurser\"-tabellen",
           "default": "Ressurser"
-        },
-        {
-          "label": "Overskrift i 'Tittel'-kolonnen",
-          "default": "Tittel"
         },
         {
           "label": "Overskrift i 'Ingress'-kolonnen",

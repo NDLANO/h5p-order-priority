@@ -132,10 +132,6 @@
           "default": "Chagua yote"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "Kichwa juu ya jedwali la \"Rasilimali\"",
           "default": "Rasilimali"
-        },
-        {
-          "label": "Kichwa cha mada katika jedwali la rasilimali",
-          "default": "Mada"
         },
         {
           "label": "Kichwa cha utangulizi katika jedwali la rasilimali",

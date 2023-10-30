@@ -227,10 +227,10 @@
     ]
   },
   {
-    "label": "Resource report",
-    "importance": "low",
     "name": "resourceReport",
     "type": "group",
+    "label": "Resource report",
+    "importance": "low",
     "common": true,
     "fields": [
       {
@@ -250,12 +250,6 @@
         "type": "text",
         "label": "Label on \"Select all\" button",
         "default": "Select all"
-      },
-      {
-        "name": "headerSummary",
-        "type": "text",
-        "label": "Summary header",
-        "default": "Summary"
       },
       {
         "name": "headerTaskDescription",
@@ -280,12 +274,6 @@
         "type": "text",
         "label": "Header above the \"Resource\" table",
         "default": "Resources"
-      },
-      {
-        "name": "headerTitle",
-        "type": "text",
-        "label": "Title header in resource table",
-        "default": "Title"
       },
       {
         "name": "headerIntro",

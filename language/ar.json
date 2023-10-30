@@ -132,10 +132,6 @@
           "default": "اختيار الكل"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "الرأس أعلى جدول ”الموارد\"",
           "default": "الموارد"
-        },
-        {
-          "label": "رأس العنوان في جدول الموارد",
-          "default": "العنوان"
         },
         {
           "label": "رأس المقدمة في جدول الموارد",

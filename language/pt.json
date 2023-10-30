@@ -132,10 +132,6 @@
           "default": "Selecionar tudo"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "Cabeçalho acima da tabela Recurso",
           "default": "Recursos"
-        },
-        {
-          "label": "Cabeçalho do título na tabela de recursos",
-          "default": "Título"
         },
         {
           "label": "Cabeçalho de introdução na tabela de recursos",

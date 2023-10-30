@@ -132,10 +132,6 @@
           "default": "Seleccionar todo"
         },
         {
-          "label": "Summary header",
-          "default": "Summary"
-        },
-        {
           "label": "Task description",
           "default": "Task description"
         },
@@ -150,10 +146,6 @@
         {
           "label": "Encabezado encima de la tabla \"Recursos\"",
           "default": "Recursos"
-        },
-        {
-          "label": "Encabezado de título en tabla de recursos",
-          "default": "Título"
         },
         {
           "label": "Encabezado de Introducción en tabla de recursos",
