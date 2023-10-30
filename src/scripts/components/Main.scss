@@ -8,10 +8,12 @@
 }
 
 .h5p-order-priority-surface-info {
-  display: flex;
   align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: flex-end;
 
   .h5p-resource-list-wrapper {
-    margin: 0 0 0 auto;
+    margin-left: auto;
   }
 }
