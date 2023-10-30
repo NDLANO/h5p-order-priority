@@ -81,6 +81,7 @@ const StatementList = (props) => {
           isDragging={isDragging}
           attributes={attributes}
           listeners={listeners}
+          translate={translate.bind(this)}
         />
       );
     }
@@ -116,6 +117,7 @@ const StatementList = (props) => {
           isDragging={isDragging}
           attributes={attributes}
           listeners={listeners}
+          translate={translate.bind(this)}
         />
       );
     }
@@ -164,7 +166,7 @@ const StatementList = (props) => {
         'h5p-dnd-draggable--dragging': isDragging
       })}
     >
-      <li
+      <div
         className={'h5p-order-priority-draggable-container'}
       >
         <div
@@ -177,7 +179,7 @@ const StatementList = (props) => {
         >
           {handleStatementType(isDragging, attributes, listeners)}
         </div>
-      </li>
+      </div>
     </div>
   );
 };

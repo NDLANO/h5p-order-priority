@@ -512,6 +512,7 @@ const Surface = () => {
           isDragging={true}
           attributes={null}
           listeners={null}
+          translate={translate.bind(this)}
         />
       </div>
     );

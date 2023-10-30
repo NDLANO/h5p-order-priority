@@ -18,6 +18,7 @@ import UnEditableStatement from './components/UnEditableStatement.js';
  * @param {boolean} params.enableCommentDisplay True, if user can comment.
  * @param {function} params.onCommentChange Callback when comment was changed.
  * @param {function} params.onCommentBlur Callback when comment lost focus.
+ * @param {function} params.translate Translate function.
  * @param {object} params.inputRef React input field reference.
  * @param {object} params.draggableProps Props for draggable.
  * @param {object} params.attributes DIV attributes.
@@ -36,7 +37,8 @@ const Prioritized = ({
   inputRef,
   draggableProps,
   attributes,
-  listeners
+  listeners,
+  translate
 }) => {
 
   return (
@@ -58,6 +60,7 @@ const Prioritized = ({
               statement={statement.statement}
               onChanged={onStatementChange}
               idBase={statement.id}
+              translate={translate}
             />
           )}
           {enableEditing !== true && (

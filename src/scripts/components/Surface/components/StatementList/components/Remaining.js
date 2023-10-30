@@ -27,6 +27,7 @@ const Remaining = (props) => {
         statement={statement.statement}
         onChanged={onStatementChange}
         idBase={statement.id}
+        translate={props.translate}
       />
     );
   }
@@ -57,6 +58,7 @@ const Remaining = (props) => {
 Remaining.propTypes = {
   statement: PropTypes.object,
   onStatementChange: PropTypes.func,
+  translate: PropTypes.func,
   enableEditing: PropTypes.bool,
   attributes: PropTypes.object,
   listeners: PropTypes.object,

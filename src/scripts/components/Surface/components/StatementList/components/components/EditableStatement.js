@@ -23,7 +23,7 @@ const EditableStatement = (props) => {
   };
 
   const id = 'es_' + props.idBase;
-  const inputId = 'input_' + id;
+  const inputId = `input_${H5P.createUUID()}_` + id;
   return (
     <div
       className={'h5p-order-priority-editable-container'}
@@ -39,6 +39,7 @@ const EditableStatement = (props) => {
         onChange={() => props.onChanged(inputRef.current.value)}
         id={inputId}
         type={'textarea'}
+        aria-label={props.translate('statement')}
       />
     </div>
   );
@@ -47,6 +48,7 @@ const EditableStatement = (props) => {
 EditableStatement.propTypes = {
   statement: PropsTypes.string,
   onChanged: PropsTypes.func,
+  translate: PropsTypes.func,
   idBase: PropsTypes.oneOfType([
     PropsTypes.string,
     PropsTypes.number,

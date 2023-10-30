@@ -392,6 +392,12 @@
         "type": "text",
         "label": "Message read to the screen reader before entering the section with the statements",
         "default": "To interact with the next section some screen readers require you to be in focus mode"
+      },
+      {
+        "name": "statement",
+        "type": "text",
+        "label": "Statement",
+        "default": "Statement"
       }
     ]
   }

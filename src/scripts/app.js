@@ -75,6 +75,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
       draggableItemWasDropped: 'Draggable item :itemId was dropped.',
       draggingWasCancelled: 'Dragging was cancelled. Draggable item :itemId was dropped.',
       userInfoAboutFocusMode: 'To interact with the next section some screen readers require you to be in focus mode',
+      statement: 'Statement',
     }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 
     this.on('resize', () => {

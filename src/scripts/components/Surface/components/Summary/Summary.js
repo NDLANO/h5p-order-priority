@@ -39,7 +39,6 @@ const Summary = () => {
         </div>
       )}
       <textarea
-        id={'summary'}
         placeholder={translate('giveABriefSummary')}
         value={comment}
         onChange={(event) => setComment(event.target.value)}
