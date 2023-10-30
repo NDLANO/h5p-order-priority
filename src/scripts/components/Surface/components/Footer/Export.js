@@ -106,7 +106,8 @@ const Export = () => {
 
     const inputFields = getInputFields();
 
-    context.triggerXAPIScored(0, 0, 'completed');
+    /* Score of 1 is stupid but workaround for task completion in moodle */
+    context.triggerXAPIScored(1, 1, 'completed');
 
     const exportDocument = new H5P.DocumentExportPage.CreateDocument(
       {
