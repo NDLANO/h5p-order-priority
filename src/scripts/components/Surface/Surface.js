@@ -605,19 +605,19 @@ const Surface = () => {
               },
               onDragEnd({ active, over }) {
                 if (over) {
-                  // TODO: Check why cryptic IDs were used and how to make this better
+                  // TODO: Check why cryptic IDs were used and how to make this better when fixing DnDKit
                   return translate('draggableItemWasDroppedOver')
                     .replace(/:itemId/, active.id)
                     .replace(/:droppableId/, over.id);
                 }
                 else {
-                  // TODO: Check why cryptic IDs were used and how to make this better
+                  // TODO: Check why cryptic IDs were used and how to make this better when fixing DnDKit
                   return translate('draggableItemWasDropped')
                     .replace(/:itemId/, active.id);
                 }
               },
               onDragCancel({ active }) {
-                // TODO: Check why cryptic IDs were used and how to make this better
+                // TODO: Check why cryptic IDs were used and how to make this better when fixing DnDKit
                 return translate('draggingWasCancelled')
                   .replace(/:itemId/, active.id);
               },

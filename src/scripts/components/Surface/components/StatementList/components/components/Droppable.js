@@ -16,7 +16,7 @@ const Droppable = ({ id, children, isDropDisabled }) => {
     disabled: isDropDisabled,
   });
 
-  // TODO: Shouldn't isOver react to the parent container?
+  // TODO: Shouldn't isOver react to the parent container? Fix with DnDKit fix
 
   return (
     <div

@@ -152,7 +152,7 @@ const StatementList = (props) => {
     animateLayoutChanges,
   });
 
-  // TODO: transform seems to always be `null`!?
+  // TODO: transform seems to always be `null`!? Fix with DnDKit fix
   const style = {
     transform: CSS.Translate.toString(transform),
     transition
