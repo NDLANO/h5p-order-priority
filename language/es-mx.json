@@ -121,6 +121,10 @@
         {
           "label": "Document export description",
           "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
       ]
     },

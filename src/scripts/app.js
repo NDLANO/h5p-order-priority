@@ -51,6 +51,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
       giveABriefSummary: 'Give a brief summary in your own words',
       documentExport: 'Document export',
       documentExportDescription: 'On this page you can choose to export your answers.',
+      noStatements: 'No statements to prioritize were set!',
       createDocument: 'Create document',
       export: 'Export',
       selectAll: 'Select all',

@@ -535,6 +535,14 @@ const Surface = () => {
    * @returns {object} JSX element.
    */
   const handleSurface = () => {
+    if (!state.prioritizedStatements.length) {
+      return (
+        <p>
+          { translate('noStatements') }
+        </p>
+      );
+    }
+
     return (
       <Fragment>
         <DndContext

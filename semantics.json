@@ -235,6 +235,12 @@
         "type": "text",
         "label": "Document export description",
         "default": "On this page you can choose to export your answers."
+      },
+      {
+        "name": "noStatements",
+        "type": "text",
+        "label": "No statements set",
+        "default": "No statements to prioritize were set!"
       }
     ]
   },
