@@ -223,6 +223,18 @@
         "type": "text",
         "label": "Placeholder for the summary box",
         "default": "Give a brief summary in your own words"
+      },
+      {
+        "name": "documentExport",
+        "type": "text",
+        "label": "Document export",
+        "default": "Document export"
+      },
+      {
+        "name": "documentExportDescription",
+        "type": "text",
+        "label": "Document export description",
+        "default": "On this page you can choose to export your answers."
       }
     ]
   },
@@ -347,6 +359,27 @@
         "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
         "label": "Message read to the screen reader when drag is moved to another list",
         "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
+      },
+      {
+        "name": "draggableItemWasDroppedOver",
+        "type": "text",
+        "description": "Available variables are :itemId and :droppableId.",
+        "label": "Message read to the screen reader when draggable is dropped over dropzone",
+        "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+      },
+      {
+        "name": "draggableItemWasDropped",
+        "type": "text",
+        "description": "Available variable is :itemId.",
+        "label": "Message read to the screen reader when draggable is dropped",
+        "default": "Draggable item :itemId was dropped."
+      },
+      {
+        "name": "draggingWasCancelled",
+        "type": "text",
+        "description": "Available variable is :itemId.",
+        "label": "Message read to the screen reader when dragging was cancelled",
+        "default": "Draggable item :itemId was dropped."
       },
       {
         "name": "userInfoAboutFocusMode",

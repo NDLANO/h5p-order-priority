@@ -113,6 +113,14 @@
         {
           "label": "حيز مخصص لمربع الملخص",
           "default": "قدّم ملخصاً موجزًا بكلماتك"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
         }
       ]
     },
@@ -195,6 +203,21 @@
           "description": "المتغيرات المتاحة :startListName، و:startPosition، و:startListLength، و:endPosition، و:destinationListName، و:destinationPosition، و :destinationListLength",
           "label": "قراءة الرسالة على قارئ الشاشة عند انتقال السحب إلى قائمة أخرى",
           "default": "لقد نقلت العنصر من القائمة :startListName في الموضع :startPosition :startListLength إلى القائمة :destinationListName في الموضع :destinationPosition :destinationListLength"
+        },
+        {
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "قراءة الرسالة على قارئ الشاشة قبل دخول القسم الذي يتضمن العبارات",

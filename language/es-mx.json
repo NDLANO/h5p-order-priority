@@ -113,6 +113,14 @@
         {
           "label": "Texto por defecto para la caja de resumen",
           "default": "Haz un breve resumen con tus propias palabras"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
         }
       ]
     },
@@ -195,6 +203,21 @@
           "description": "Las variables disponibles son :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition y :destinationListLength",
           "label": "Mensaje leído en el lector de pantalla cuando el arrastre se mueve a otra lista",
           "default": "Has movido el elemento de la lista :startListName en la posición :startPosition de :startListLength a la lista :destinationListName en la posición :destinationPosition de :destinationListLength"
+        },
+        {
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",

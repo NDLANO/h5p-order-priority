@@ -596,13 +596,21 @@ const Surface = () => {
               },
               onDragEnd({ active, over }) {
                 if (over) {
-                  return `Draggable item ${active.id} was dropped over droppable area ${over.id}`;
+                  // TODO: Check why cryptic IDs were used and how to make this better
+                  return translate('draggableItemWasDroppedOver')
+                    .replace(/:itemId/, active.id)
+                    .replace(/:droppableId/, over.id);
                 }
-
-                return `Draggable item ${active.id} was dropped.`;
+                else {
+                  // TODO: Check why cryptic IDs were used and how to make this better
+                  return translate('draggableItemWasDropped')
+                    .replace(/:itemId/, active.id);
+                }
               },
               onDragCancel({ active }) {
-                return `Dragging was cancelled. Draggable item ${active.id} was dropped.`;
+                // TODO: Check why cryptic IDs were used and how to make this better
+                return translate('draggingWasCancelled')
+                  .replace(/:itemId/, active.id);
               },
             },
           }}

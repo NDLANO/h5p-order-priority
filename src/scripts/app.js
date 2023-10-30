@@ -49,6 +49,8 @@ export default class OrderPriority extends H5P.EventDispatcher {
       submitConfirmedText: 'Saved!',
       confirm: 'Are you sure you wish to restart?',
       giveABriefSummary: 'Give a brief summary in your own words',
+      documentExport: 'Document export',
+      documentExportDescription: 'On this page you can choose to export your answers.',
       createDocument: 'Create document',
       export: 'Export',
       selectAll: 'Select all',
@@ -68,6 +70,9 @@ export default class OrderPriority extends H5P.EventDispatcher {
       dragMoveInDifferentList: 'You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength',
       dragCancelled: 'Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName',
       dropInDifferentList: 'You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName',
+      draggableItemWasDroppedOver: 'Draggable item :itemId was dropped over droppable area :droppableId.',
+      draggableItemWasDropped: 'Draggable item :itemId was dropped.',
+      draggingWasCancelled: 'Dragging was cancelled. Draggable item :itemId was dropped.',
       userInfoAboutFocusMode: 'To interact with the next section some screen readers require you to be in focus mode',
     }, this.params.l10n, this.params.resourceReport, this.params.accessibility);
 

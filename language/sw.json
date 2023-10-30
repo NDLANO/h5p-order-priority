@@ -113,6 +113,14 @@
         {
           "label": "Kishikanafasi cha sanduku la muhtasari",
           "default": "Toa muhtasari mfupi kwa maneno yako mwenyewe"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
         }
       ]
     },
@@ -195,6 +203,21 @@
           "description": "Vigezo vinavyopatikana ni :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition na :destinationListLength",
           "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa inahamishwa hadi orodha nyingine",
           "default": "Umehamisha kipengee kutoka kwenye orodha :startListNamekatika nafasi:startPosition kati ya:startListLength hadi orodha:destinationListNamekatika nafasi :destinationPositionkati ya :destinationListLength"
+        },
+        {
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Ujumbe unaosomeka kwa msomaji wa skrini kabla ya kuingia sehemu yenye kauli hizo",

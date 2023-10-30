@@ -113,6 +113,14 @@
         {
           "label": "Midlertidig tekst for sammendrag tekstfeltet",
           "default": "Gi et kort sammendrag med egne ord"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
         }
       ]
     },
@@ -195,6 +203,21 @@
           "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
           "label": "Message read to the screen reader when drag is moved to another list",
           "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
+        },
+        {
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
+        },
+        {
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Message read to the screen reader before entering the section with the statements",

@@ -110,10 +110,10 @@ const Export = () => {
 
     const exportDocument = new H5P.DocumentExportPage.CreateDocument(
       {
-        title: 'TODO',
-        a11yFriendlyTitle: 'TODO ARIA',
-        description: 'TODO: DESCRIPTION',
-        createDocumentLabel: 'TODO: DOC',
+        title: escapeHTML(translate('documentExport')),
+        a11yFriendlyTitle: escapeHTML(translate('documentExport')),
+        description: escapeHTML(translate('documentExportDescription')),
+        createDocumentLabel: escapeHTML(translate('continue')),
         exportTextLabel: escapeHTML(translate('export')),
         submitTextLabel: escapeHTML(translate('submitText')),
         submitSuccessTextLabel: escapeHTML(translate('submitConfirmedText')),
