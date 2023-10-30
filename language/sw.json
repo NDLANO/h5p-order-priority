@@ -99,10 +99,6 @@
           "default": "Mabadiliko yote yatapotea. Una uhakika unataka kuendelea?"
         },
         {
-          "label": "Kichwa katika umaskini wa \"Maoni\"",
-          "default": "Maoni"
-        },
-        {
           "label": "Maandishi yaliyoonyeshwa katika kitufe cha ‘Wasilisha' wakati wa kuunda waraka",
           "default": "Wasilisha"
         },
@@ -185,36 +181,8 @@
           "default": "Ongeza maoni"
         },
         {
-          "label": "Funga",
-          "default": "Funga"
-        },
-        {
-          "label": "Buruta",
-          "default": "Buruta"
-        },
-        {
-          "label": "Lebo ya 'eneo la kushuka' kwa wasomaji skrini",
-          "description": "Vigezo vinavyopatikana ni:index",
-          "default": "Eneo la kushuka #:index"
-        },
-        {
-          "label": "Lebo ya 'eneo la kushuka' kwa wasomaji skrini",
-          "description": "Vigezo vinavyopatikana ni:index",
-          "default": "Eneo la kushuka tupu #:index"
-        },
-        {
           "label": "Lebo ya 'kitu kinachoweza kuburutwa' kwa visomaji skrini",
           "default": "Kitu cha kuburutwa"
-        },
-        {
-          "label": "Lebo ya 'eneo la kushuka' kwa wasomaji skrini",
-          "description": "Vigezo vinavyopatikana ni:index",
-          "default": "Eneo la kushuka #:index"
-        },
-        {
-          "label": "Lebo ya 'eneo la kushuka lenye thamani' kwa wasomaji skrini",
-          "description": "Vigezo vinavyopatikana ni:index na:statement",
-          "default": "Eneo la kushuka # :indexlenye thamani::statement"
         },
         {
           "label": "Jina la safu wima ya kauli",
@@ -227,11 +195,6 @@
           "default": "Iliyopewa kipaumbele"
         },
         {
-          "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa inaanza",
-          "description": "Vigezo vinavyopatikana ni:startPosition, :listLength na:listName",
-          "default": "Umeinua kitu katika nafasi:startPosition kati ya:listLength katika:listName orodha."
-        },
-        {
           "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa inahamishwa ndani ya orodha hiyo",
           "description": "Vigezo vinavyopatikana ni:startPosition, :endPosition na:listLength",
           "default": "Umehamisha kitu kutoka nafasi yake :startPositionhadi nafasi :endPosition kati ya :listLength"
@@ -240,30 +203,6 @@
           "description": "Vigezo vinavyopatikana ni :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition na :destinationListLength",
           "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa inahamishwa hadi orodha nyingine",
           "default": "Umehamisha kipengee kutoka kwenye orodha :startListNamekatika nafasi:startPosition kati ya:startListLength hadi orodha:destinationListNamekatika nafasi :destinationPositionkati ya :destinationListLength"
-        },
-        {
-          "label": "Ujumbe uliosomwa kwa msomaji skrini wakati buruta iko juu ya eneo ambalo haliwezi kudondoshwa",
-          "default": "Kwa sasa hauburuti juu ya eneo linaloweza kudondoshwa"
-        },
-        {
-          "description": "Vigezo vinavyopatikana ni:startPosition, :listLength na:listName",
-          "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa inaanza",
-          "default": "Kuhama imeghairiwa. Bidhaa hiyo imerejea kwenye nafasi yake ya kuanzia :startPositionya:listLengthkatika:listName"
-        },
-        {
-          "description": "Vigezo vinavyopatikana ni:startPosition na:endPosition",
-          "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa imedondoshwa katika orodha hiyo",
-          "default": "Umeacha kipengee. Imehama kutoka nafasi :startPositionhadi:endPosition"
-        },
-        {
-          "description": "Vigezo vinavyopatikana ni:startListName,:startPosition,:destinationListName na:destinationPosition",
-          "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa imeachwa katika orodha nyingine",
-          "default": "Umeacha kipengee. Imehama kutoka nafasi:startPosition katika orodha :startListNamehadi nafasi:destinationPosition katika orodha:destinationListName"
-        },
-        {
-          "description": "Vigezo vinavyopatikana ni:startPosition na:sourceName",
-          "label": "Ujumbe unaosomeka kwa msomaji skrini wakati kuburutwa imedondoshwa katika eneo hilo kama kabla ya kuburutwa",
-          "default": "Umedondosha kitu hicho katika nafasi ile kama ulivyokiinua. Nafasi hiyo ni :startPosition katika:sourceName"
         },
         {
           "label": "Ujumbe unaosomeka kwa msomaji wa skrini kabla ya kuingia sehemu yenye kauli hizo",

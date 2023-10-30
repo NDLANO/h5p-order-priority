@@ -99,10 +99,6 @@
           "default": "Todas as alterações serão perdidas. Tem certeza que deseja continuar?"
         },
         {
-          "label": "Cabeçalho da janela popover 'Comentário",
-          "default": "Feedback"
-        },
-        {
           "label": "Texto exibido no botão 'Enviar' ao criar um documento",
           "default": "Enviar"
         },
@@ -185,36 +181,8 @@
           "default": "Adicionar comentário"
         },
         {
-          "label": "Fechar",
-          "default": "Fechar"
-        },
-        {
-          "label": "Arrastar",
-          "default": "Arrastar"
-        },
-        {
-          "label": "Notificação 'item de soltura' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Área de soltura #:index"
-        },
-        {
-          "label": "Notificação 'item de soltura vazia' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Área de soltura vazia #:index"
-        },
-        {
           "label": "Notificação 'artigo arrastável' para os leitores de ecrã",
           "default": "Artigo arrastável"
-        },
-        {
-          "label": "Notificação 'Ponto de Aterragem' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Ponto de aterragem #:index"
-        },
-        {
-          "label": "Notificação 'Ponto de aterragem com valor' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index e :statement",
-          "default": "Ponto de aterragem #:index com valor: :statement"
         },
         {
           "label": "Nome da coluna de afirmações",
@@ -227,11 +195,6 @@
           "default": "Priorizado"
         },
         {
-          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
-          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
-          "default": "Tirou um artigo na posição :startPosition de :listLength na lista :listName."
-        },
-        {
           "label": "Mensagem lida para o leitor de ecrã quando ao arrastar permanece dentro da mesma lista",
           "description": "As variáveis disponíveis são :startPosition, :endPosition e :listLength",
           "default": "Moveu o artigo da posição :startPosition para a posição :endPosition de :listLength"
@@ -240,30 +203,6 @@
           "description": "As variáveis disponíveis são :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition e :destinationListLength",
           "label": "Mensagem lida para o leitor de ecrã quando ao arrastar permanece dentro da mesma lista",
           "default": "Moveu o artigo da lista :startListName na posição :startPosition de :startListLength para a lista :destinationListName na posição :destinationPosition de :destinationListLength"
-        },
-        {
-          "label": "Mensagem lida para o leitor de ecrã ao arrastar sobre uma área que não pode ser solta",
-          "default": "De momento, não está arrastar sobre uma área arrastável e soltável"
-        },
-        {
-          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
-          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
-          "default": "Movimento cancelado. O artigo retornou à sua posição inicial :startPosition de :listLength em :listName"
-        },
-        {
-          "description": "As variáveis disponíveis são :startPosition e :endPosition",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto na mesma lista",
-          "default": "Soltou o artigo. O item foi movido da posição :startPosition para :endPosition"
-        },
-        {
-          "description": "As variáveis disponíveis são :startListName, :startPosition, :destinationListName e :destinationPosition",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto numa lista diferente",
-          "default": "Soltou o artigo. O item foi movido da posição :startPosition na lista :startListName para a posição :destinationPosition na lista :destinationListName"
-        },
-        {
-          "description": "As variáveis disponíveis são :startPosition e :sourceName",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto no mesmo local antes do arrasto",
-          "default": "Soltou o artigo na mesma posição em que pegou. A posição é :startPosition em :sourceName"
         },
         {
           "label": "Mensagem lida para o leitor de ecrã antes de entrar na secção com as afirmações",

@@ -99,10 +99,6 @@
           "default": "Se perderán todos los cambios. ¿Seguro que quiere continuar?"
         },
         {
-          "label": "Encabezado en la ventana emergente 'Comentario'",
-          "default": "Retroalimentación"
-        },
-        {
           "label": "Texto mostrado en botón 'Enviar' cuando se crea un documento",
           "default": "Enviar"
         },
@@ -185,36 +181,8 @@
           "default": "Añadir comentario"
         },
         {
-          "label": "Usado en lugar del icono 'Cerrar'",
-          "default": "Cerrar"
-        },
-        {
-          "label": "Usado en lugar del icono \"Arrastrar\"",
-          "default": "Arrastrar"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación #:index"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación vacía' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación vacía #:index"
-        },
-        {
           "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla",
           "default": "Elemento arrastrable"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación #:index"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación con valor' para lectores de pantalla",
-          "description": "Las variables disponibles son :index y :statement",
-          "default": "Área de colocación #:index con valor: :statement"
         },
         {
           "label": "Nombre de la columna de declaraciones",
@@ -227,11 +195,6 @@
           "default": "Priorizadas"
         },
         {
-          "label": "Mensaje leído al lector de pantalla cuando se inicia el arrastre",
-          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
-          "default": "Has levantado un elemento en la posición :startPosition de :listLength en la lista :listName."
-        },
-        {
           "label": "Mensaje leído en el lector de pantalla cuando se mueve el elemento arrastrado dentro de la misma lista",
           "description": "Las variables disponibles son :startPosition, :endPosition y :listLength",
           "default": "Has movido el elemento de la posición :startPosition a la posición :endPosition de :listLength"
@@ -240,30 +203,6 @@
           "description": "Las variables disponibles son :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition y :destinationListLength",
           "label": "Mensaje leído en el lector de pantalla cuando el arrastre se mueve a otra lista",
           "default": "Has movido el elemento de la lista :startListName en la posición :startPosition de :startListLength a la lista :destinationListName en la posición :destinationPosition de :destinationListLength"
-        },
-        {
-          "label": "Mensaje leído en el lector de pantalla cuando se arrastra sobre un área en la que no se puede colocar",
-          "default": "En este momento no estás arrastrando sobre una área de colocación"
-        },
-        {
-          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
-          "label": "Mensaje leído en el lector de pantalla cuando comienza el arrastre",
-          "default": "Movimiento cancelado. El elemento ha vuelto a su posición inicial: posición de :startPosition de :listLength en :listName"
-        },
-        {
-          "description": "Las variables disponibles son :startPosition y :endPosition",
-          "label": "Mensaje leído en el lector de pantalla cuando se suelta el arrastre en la misma lista",
-          "default": "Has soltado el elemento. Se ha movido de la posición :startPosition a :endPosition"
-        },
-        {
-          "description": "Las variables disponibles son :startListName, :startPosition, :destinationListName y :destinationPosition",
-          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en una lista diferente",
-          "default": "Has dejado caer el elemento. Se ha movido de la posición :startPosition en la lista :startListName a la posición :destinationPosition en la lista :destinationListName"
-        },
-        {
-          "description": "Las variables disponibles son :startPosition y :sourceName",
-          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en la misma ubicación que antes del arrastre",
-          "default": "Has soltado el elemento en la misma posición en la que lo levantaste. La posición es :startPosition en :sourceName"
         },
         {
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",

@@ -99,10 +99,6 @@
           "default": "جميع تغييرات البيانات ستفقد. هل أنت متأكد أنك ترغب في أن تستمر؟"
         },
         {
-          "label": "رأس في عنصر ”التعليقات“ المنبثق",
-          "default": "ملاحظات"
-        },
-        {
           "label": "النص المعروض بزر ”إرسال“ عند إنشاء وثيقة",
           "default": "إرسال"
         },
@@ -185,36 +181,8 @@
           "default": "إضافة تعليق"
         },
         {
-          "label": "إغلاق",
-          "default": "إغلاق"
-        },
-        {
-          "label": "سحب",
-          "default": "سحب"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة الإفلات #:index"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات الفارغة“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة إفلات فارغة #:index"
-        },
-        {
           "label": "تسمية ”العنصر القابل للسحب“ لقارئ الشاشة",
           "default": "عنصر قابل للسحب"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة إفلات #:index"
-        },
-        {
-          "label": "تسمية ”منقطة إفلات بها قيمة“ لقارئ الشاشة",
-          "description": "البدائل المتاحة هي :index و :statement",
-          "default": "منطقة إفلات:indexبها قيمة: :statement"
         },
         {
           "label": "اسم عمود العبارات",
@@ -227,11 +195,6 @@
           "default": "ذو الأولوية"
         },
         {
-          "label": "قراءة الرسالة على قارئ الشاشة عند بدء السحب",
-          "description": "المتغيرات المتاحة :startPosition، و:listLength، و :listName",
-          "default": "لقد رفعت عنصراً في موضع :startPosition :listLength في :listName القائمة."
-        },
-        {
           "label": "قراءة الرسالة على قارئ الشاشة عند انتقال السحب ضمن القائمة ذاتها",
           "description": "المتغيرات المتاحة :startPosition، و:endPosition، و :listLength",
           "default": "لقد نقلت العنصر من الموضع :startPositionإلى الموضع :endPosition :listLength"
@@ -240,30 +203,6 @@
           "description": "المتغيرات المتاحة :startListName، و:startPosition، و:startListLength، و:endPosition، و:destinationListName، و:destinationPosition، و :destinationListLength",
           "label": "قراءة الرسالة على قارئ الشاشة عند انتقال السحب إلى قائمة أخرى",
           "default": "لقد نقلت العنصر من القائمة :startListName في الموضع :startPosition :startListLength إلى القائمة :destinationListName في الموضع :destinationPosition :destinationListLength"
-        },
-        {
-          "label": "قراءة الرسالة على قارئ الشاشة عند وجود السحب فوق منطقة لا يمكن الإفلات فيها",
-          "default": "أنت تسحب فوق منطقة لا تسمح بالإفلات"
-        },
-        {
-          "description": "المتغيرات المتاحة :startPosition، و:listLength، و :listName",
-          "label": "قراءة الرسالة على قارئ الشاشة عند بدء السحب",
-          "default": "أُلغيَت الحركة. أُرجع العنصر إلى موضع البدء :startPosition من :listLength في :listName"
-        },
-        {
-          "description": "المتغيرات المتاحة هي :startPosition و :endPosition",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في القائمة ذاتها",
-          "default": "لقد أفلت العنصر. لقد انتقل من الموضع :startPosition إلى :endPosition"
-        },
-        {
-          "description": "المتغيرات المتاحة هي :startListName، و :startPosition، و :destinationListName، و :destinationPosition",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في قائمة مختلفة",
-          "default": "لقد أفلت العنصر. لقد انتقل من الموضع :startPosition في القائمة :startListName إلى الموضع :destinationPosition في القائمة :destinationListName"
-        },
-        {
-          "description": "المتغيرات المتاحة هي :startPosition و :sourceName",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في الموقع ذاته كما قبل السحب",
-          "default": "لقد أفلت العنصر في الموقع ذاته الذي رفعته فيه. الموضع هو :startPosition في :sourceName"
         },
         {
           "label": "قراءة الرسالة على قارئ الشاشة قبل دخول القسم الذي يتضمن العبارات",
