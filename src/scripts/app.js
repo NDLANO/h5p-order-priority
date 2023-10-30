@@ -71,7 +71,6 @@ export default class OrderPriority extends H5P.EventDispatcher {
       labelNoSummaryComment: 'No summary',
       sourceName: 'Statements',
       destinationName: 'Prioritized',
-      dragHandleInstructions: 'Press space bar to start a drag.\n  When dragging you can use the arrow keys to move the item around and escape to cancel.\n  Some screen readers may require you to be in focus mode or to use your pass through key\n',
       dragStartInstructions: 'You have lifted an item in position :startPosition of :listLength in the :listName list.',
       dragMoveInSameList: 'You have moved the item from position :startPosition to position :endPosition of :listLength',
       dragMoveInDifferentList: 'You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength',

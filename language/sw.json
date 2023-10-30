@@ -217,10 +217,6 @@
           "default": "Eneo la kushuka # :indexlenye thamani::statement"
         },
         {
-          "label": "Maelezo juu ya jinsi ya kuanza kuburutwa kwa wasomaji skrini",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
-        },
-        {
           "label": "Jina la safu wima ya kauli",
           "description": "Hii ni safu wima yenye kauli unazotoa",
           "default": "Kauli"

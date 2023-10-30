@@ -217,10 +217,6 @@
           "default": "منطقة إفلات:indexبها قيمة: :statement"
         },
         {
-          "label": "وصف السحب لقارئ الشاشة",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
-        },
-        {
           "label": "اسم عمود العبارات",
           "description": "هذا هو العمود الذي يتضمن العبارات التي تقدمها",
           "default": "العبارات"

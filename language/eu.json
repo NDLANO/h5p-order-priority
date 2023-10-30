@@ -217,10 +217,6 @@
           "default": "Arrastatzeko areak #:index duen balioa: :statement"
         },
         {
-          "label": "Pantaila-irakurleentzako arrastatzea nola abiarazteko deskribapena",
-          "default": "Sakatu zuriune-barra arrastatzen hasteko.\nArrastatzean gezi-teklak erabil ditzakezu elementua mugitzeko eta ESC tekla uzteko.\nPantaila-irakurle batzuek fokatze moduan egotea edo bere laster-tekla erabiltzea eska dezakete\n"
-        },
-        {
           "label": "Adierazpenen zutabearen izena",
           "description": "Zuk ematen dituzun adierazpenak dituen zutabea da",
           "default": "Adierazpenak"

@@ -217,10 +217,6 @@
           "default": "Dropzone #:index with value: :statement"
         },
         {
-          "label": "Description on how to start a drag for screenreaders",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
-        },
-        {
           "label": "Name of the statements column",
           "description": "This is the column with the statements you provide",
           "default": "Statements"

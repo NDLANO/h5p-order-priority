@@ -217,10 +217,6 @@
           "default": "Ponto de aterragem #:index com valor: :statement"
         },
         {
-          "label": "Descrição sobre como iniciar um movimento de arrastar para os leitores de ecrã",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
-        },
-        {
           "label": "Nome da coluna de afirmações",
           "description": "Esta é a coluna com as afirmações que fornece",
           "default": "Afirmações"

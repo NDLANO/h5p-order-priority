@@ -217,10 +217,6 @@
           "default": "Área de colocación #:index con valor: :statement"
         },
         {
-          "label": "Descripción de como iniciar un arrastre para lectores de pantalla",
-          "default": "Presione la barra espaciadora para iniciar un arrastre.\nAl arrastrar, puede usar las teclas de flecha para mover el elemento y ESC para cancelar.\nAlgunos lectores de pantalla pueden requerir que esté en modo de foco o que use su tecla de acceso directo\n"
-        },
-        {
           "label": "Nombre de la columna de declaraciones",
           "description": "Esta es la columna con las declaraciones que proporcionas",
           "default": "Declaraciones"
