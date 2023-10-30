@@ -96,21 +96,21 @@
         "name": "enableRetry",
         "type": "boolean",
         "label": "Enable retry?",
-        "description": "Tick off this if you want the user to be able to retry",
+        "description": "Tick off this if you want the user to be able to retry.",
         "default": true
       },
       {
         "name": "prepopulate",
         "type": "boolean",
         "label": "Pre-populate the statements",
-        "description": "The user starts off with the statements already ordered",
+        "description": "The user starts off with the statements already ordered.",
         "default": false
       },
       {
         "name": "randomizeStatements",
         "type": "boolean",
         "label": "Randomize the statements",
-        "description": "Will randomize the pre-populated statements",
+        "description": "Will randomize the pre-populated statements.",
         "default": false,
         "widget": "showWhen",
         "showWhen": {
@@ -132,21 +132,21 @@
         "name": "allowAddingOfStatements",
         "type": "boolean",
         "label": "Allow users to add their own statements",
-        "description": "Lets the user add their own statements",
+        "description": "Lets the user add their own statements.",
         "default": false
       },
       {
         "name": "displayCommentsBelowStatement",
         "type": "boolean",
         "label": "Display the provided comments below the statement",
-        "description": "If the user has provided a comment, this is shown in the statements list",
+        "description": "If the user has provided a comment, this is shown in the statements list.",
         "default": true
       },
       {
         "name": "provideSummary",
         "type": "boolean",
         "label": "Show summary",
-        "description": "Do you want the user to provide a summary explaining the reasons for his/her answers",
+        "description": "Do you want the user to provide a summary explaining the reasons for his/her answers.",
         "default": true
       }
     ]
@@ -336,27 +336,27 @@
         "name": "sourceName",
         "type": "text",
         "label": "Name of the statements column",
-        "description": "This is the column with the statements you provide",
+        "description": "This is the column with the statements you provide.",
         "default": "Statements"
       },
       {
         "name": "destinationName",
         "type": "text",
         "label": "Name of the prioritized column",
-        "description": "This is the column where the statements are put in an order",
+        "description": "This is the column where the statements are put in an order.",
         "default": "Prioritized"
       },
       {
         "name": "dragMoveInSameList",
         "type": "text",
         "label": "Message read to the screen reader when drag is moved within the same list",
-        "description": "Available variables are :startPosition, :endPosition and :listLength",
+        "description": "Available variables are :startPosition, :endPosition and :listLength.",
         "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
       },
       {
         "name": "dragMoveInDifferentList",
         "type": "text",
-        "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
+        "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength.",
         "label": "Message read to the screen reader when drag is moved to another list",
         "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
       },
