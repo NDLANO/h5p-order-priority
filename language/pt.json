@@ -99,10 +99,6 @@
           "default": "Todas as alterações serão perdidas. Tem certeza que deseja continuar?"
         },
         {
-          "label": "Cabeçalho da janela popover 'Comentário",
-          "default": "Feedback"
-        },
-        {
           "label": "Texto exibido no botão 'Enviar' ao criar um documento",
           "default": "Enviar"
         },
@@ -112,11 +108,23 @@
         },
         {
           "label": "Cabeçalho no popover 'Reiniciar",
-          "default": "Confirmar"
+          "default": "Tem certeza de que deseja reiniciar?"
         },
         {
           "label": "Marcador de posição para a caixa de resumo",
           "default": "Faça um breve resumo em palavras suas"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
       ]
     },
@@ -136,6 +144,10 @@
           "default": "Selecionar tudo"
         },
         {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Cabeçalho da afirmação na tabela de afirmações",
           "default": "Afirmações"
         },
@@ -148,20 +160,12 @@
           "default": "Recursos"
         },
         {
-          "label": "Cabeçalho do título na tabela de recursos",
-          "default": "Título"
-        },
-        {
           "label": "Cabeçalho de introdução na tabela de recursos",
           "default": "Introdução"
         },
         {
           "label": "Cabeçalho de URL na tabela de recursos",
           "default": "Url"
-        },
-        {
-          "label": "Notificação quando nenhum recurso for encontrado",
-          "default": "Sem recursos"
         },
         {
           "label": "Cabeçalho para \"Comentário de resumo\"",
@@ -174,46 +178,15 @@
       ]
     },
     {
+      "label": "Acessibilidade",
       "fields": [
         {
           "label": "Adicionar comentário",
           "default": "Adicionar comentário"
         },
         {
-          "label": "Fechar",
-          "default": "Fechar"
-        },
-        {
-          "label": "Arrastar",
-          "default": "Arrastar"
-        },
-        {
-          "label": "Notificação 'item de soltura' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Área de soltura #:index"
-        },
-        {
-          "label": "Notificação 'item de soltura vazia' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Área de soltura vazia #:index"
-        },
-        {
-          "default": "Artigo arrastável",
-          "label": "Notificação 'artigo arrastável' para os leitores de ecrã"
-        },
-        {
-          "label": "Notificação 'Ponto de Aterragem' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index",
-          "default": "Ponto de aterragem #:index"
-        },
-        {
-          "label": "Notificação 'Ponto de aterragem com valor' para os leitores de ecrã",
-          "description": "As variáveis disponíveis são :index e :statement",
-          "default": "Ponto de aterragem #:index com valor: :statement"
-        },
-        {
-          "label": "Descrição sobre como iniciar um movimento de arrastar para os leitores de ecrã",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
+          "label": "Notificação 'artigo arrastável' para os leitores de ecrã",
+          "default": "Artigo arrastável"
         },
         {
           "label": "Nome da coluna de afirmações",
@@ -226,11 +199,6 @@
           "default": "Priorizado"
         },
         {
-          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
-          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
-          "default": "Tirou um artigo na posição :startPosition de :listLength na lista :listName."
-        },
-        {
           "label": "Mensagem lida para o leitor de ecrã quando ao arrastar permanece dentro da mesma lista",
           "description": "As variáveis disponíveis são :startPosition, :endPosition e :listLength",
           "default": "Moveu o artigo da posição :startPosition para a posição :endPosition de :listLength"
@@ -241,35 +209,25 @@
           "default": "Moveu o artigo da lista :startListName na posição :startPosition de :startListLength para a lista :destinationListName na posição :destinationPosition de :destinationListLength"
         },
         {
-          "label": "Mensagem lida para o leitor de ecrã ao arrastar sobre uma área que não pode ser solta",
-          "default": "De momento, não está arrastar sobre uma área arrastável e soltável"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "As variáveis disponíveis são :startPosition, :listLength e :listName",
-          "label": "Mensagem lida pelo leitor de ecrã quando o movimento de arrastar é iniciado",
-          "default": "Movimento cancelado. O artigo retornou à sua posição inicial :startPosition de :listLength em :listName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "As variáveis disponíveis são :startPosition e :endPosition",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto na mesma lista",
-          "default": "Soltou o artigo. O item foi movido da posição :startPosition para :endPosition"
-        },
-        {
-          "description": "As variáveis disponíveis são :startListName, :startPosition, :destinationListName e :destinationPosition",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto numa lista diferente",
-          "default": "Soltou o artigo. O item foi movido da posição :startPosition na lista :startListName para a posição :destinationPosition na lista :destinationListName"
-        },
-        {
-          "description": "As variáveis disponíveis são :startPosition e :sourceName",
-          "label": "Mensagem lida para o leitor de ecrã quando o item arrastado é solto no mesmo local antes do arrasto",
-          "default": "Soltou o artigo na mesma posição em que pegou. A posição é :startPosition em :sourceName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Mensagem lida para o leitor de ecrã antes de entrar na secção com as afirmações",
           "default": "Para interagir com a próxima secção, alguns leitores de ecrã exigem que esteja no modo de foco"
         }
-      ],
-      "label": "Acessibilidade"
+      ]
     }
   ]
 }

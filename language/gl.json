@@ -35,10 +35,12 @@
       ]
     },
     {
+      "label": "Configuración do comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento.",
       "fields": [
         {
-          "description": "Marca isto se queres que o usuario poida tentar de novo",
-          "label": "Activar tentar de novo?"
+          "label": "Activar tentar de novo?",
+          "description": "Marca isto se queres que o usuario poida tentar de novo"
         },
         {
           "label": "Pre-encher os enunciados",
@@ -60,12 +62,10 @@
           "description": "Se o usuario forneceu un comentario, amosarase na lista de declaracións"
         },
         {
-          "description": "Queres que o usuario forneza un resumo explicando as razóns para as súas respostas?",
-          "label": "Amosar resumo"
+          "label": "Amosar resumo",
+          "description": "Queres que o usuario forneza un resumo explicando as razóns para as súas respostas?"
         }
-      ],
-      "label": "Configuración do comportamento",
-      "description": "Estas opcións permitiranche controlar o comportamento."
+      ]
     },
     {
       "label": "Adaptación local",
@@ -75,8 +75,8 @@
           "default": "Escribe as túas razóns para tales respostas"
         },
         {
-          "default": "Recursos",
-          "label": "Etiqueta para o botón «Recursos»"
+          "label": "Etiqueta para o botón «Recursos»",
+          "default": "Recursos"
         },
         {
           "label": "Etiqueta para o botón \"Reiniciar\"",
@@ -99,24 +99,32 @@
           "default": "Perderanse todos os cambios. Estás seguro de que queres continuar?"
         },
         {
-          "label": "Cabeceira na pantalla emerxente \"Comentario\"",
-          "default": "Retroalimentación"
+          "label": "Texto amosado no botón \"Enviar\" ao crear un documento",
+          "default": "Enviar"
         },
         {
-          "default": "Enviar",
-          "label": "Texto amosado no botón \"Enviar\" ao crear un documento"
-        },
-        {
-          "default": "Gardado!",
-          "label": "Texto amosado despois de enviar"
+          "label": "Texto amosado despois de enviar",
+          "default": "Gardado!"
         },
         {
           "label": "Cabeceira na pantalla emerxente \"Reiniciar\"",
-          "default": "Confirmar"
+          "default": "Estás seguro de que queres reiniciar?"
         },
         {
           "label": "Texto por defecto para a caixa do resumo",
           "default": "Fornece un breve resumo nas túas propias palabras"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
       ]
     },
@@ -136,6 +144,10 @@
           "default": "Seleccionar todo"
         },
         {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Cabeceira das declaracións na táboa de declaracións",
           "default": "Declaracións"
         },
@@ -148,20 +160,12 @@
           "default": "Recursos"
         },
         {
-          "label": "Título da cabeceira da táboa de recursos",
-          "default": "Título"
-        },
-        {
           "label": "Encabezado de introdución na táboa de recursos",
           "default": "Introdución"
         },
         {
           "label": "Encabezado de Url na táboa de recursos",
           "default": "URL"
-        },
-        {
-          "label": "Etiqueta cando non se atopan recursos",
-          "default": "Non hai recursos"
         },
         {
           "label": "Cabeceira para \"Comentario de resumo\"",
@@ -174,46 +178,15 @@
       ]
     },
     {
+      "label": "Accesibilidade",
       "fields": [
         {
           "label": "Empregado no canto da icona «Comentario»",
           "default": "Engadir comentario"
         },
         {
-          "label": "Empregado no canto da icona «Pechar»",
-          "default": "Pechar"
-        },
-        {
-          "label": "Empregado no canto da icona «Arrastrar»",
-          "default": "Arrastrar"
-        },
-        {
-          "label": "Etiqueta para 'Zona de solta' para lectores de pantalla",
-          "description": "As variables dispoñibles son :index",
-          "default": "Área de solta #:index"
-        },
-        {
-          "label": "Etiqueta para 'Zona de solta baleira' para lectores de pantalla",
-          "description": "As variables dispoñibles son :index",
-          "default": "Área de solta baleira #:index"
-        },
-        {
           "label": "Etiqueta para 'Elemento arrastrable' para lectores de pantalla",
           "default": "Elemento arrastrable"
-        },
-        {
-          "description": "As variables dispoñibles son :index",
-          "label": "Etiqueta para 'Zona de solta' para lectores de pantalla",
-          "default": "Área de solta #:index"
-        },
-        {
-          "label": "Etiqueta para 'Zona de solta con valor' para lectores de pantalla",
-          "description": "As variables dispoñibles son :index e :statement",
-          "default": "Área de solta #:index con valor: :statement"
-        },
-        {
-          "label": "Descrición de como iniciar un arrastre para lectores de pantalla",
-          "default": "Preme a barra de espazo para iniciar un arrastre. Ao arrastrar, podes usar as teclas de frecha para mover o elemento e ESC para cancelar. \nÉ posible que algúns lectores de pantalla requiran que esteas no modo de enfoque ou que uses a túa tecla de paso\n"
         },
         {
           "label": "Nome da columna de declaracións",
@@ -226,11 +199,6 @@
           "default": "Priorizado"
         },
         {
-          "description": "As variables dispoñibles son :startPosition, :listLength e :listName",
-          "default": "Levaches un elemento na posición :startPosition de :listLength na lista :listName.",
-          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre"
-        },
-        {
           "label": "Mensaxe lida ao lector de pantalla cando o arrastre se move dentro da mesma lista",
           "description": "As variables dispoñibles son :startPosition, :endPosition e :listLength",
           "default": "Moviches o elemento da posición :startPosition á posición :endPosition de :listLength"
@@ -241,35 +209,25 @@
           "default": "Moviches o elemento da lista :startListName na posición :startPosition de :startListLength á lista :destinationListName na posición :destinationPosition de :destinationListLength"
         },
         {
-          "label": "Mensaxe lida ao lector de pantalla cando o arrastre está sobre unha área na que non se pode soltar",
-          "default": "Actualmente non estás arrastrando sobre unha área na que se poida soltar"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "As variables dispoñibles son :startPosition, :listLength e :listName",
-          "label": "Mensaxe lida ao lector de pantalla cando se inicia o arrastre",
-          "default": "Movemento cancelado. O elemento volveu á súa posición inicial :startPosition de :listLength en :listName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "As variables dispoñibles son :startPosition e :endPosition",
-          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta na mesma lista",
-          "default": "Soltaches o elemento. Moveuse da posición :startPosition a :endPosition"
-        },
-        {
-          "description": "As variables dispoñibles son :startListName, :startPosition, :destinationListName e :destinationPosition",
-          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta nunha lista diferente",
-          "default": "Soltaches o elemento. Moveuse da posición :startPosition na lista :startListName á posición :destinationPosition na lista :destinationListName"
-        },
-        {
-          "description": "As variables dispoñibles son :startPosition e :sourceName",
-          "label": "Mensaxe lida ao lector de pantalla cando o arrastre se solta no mesmo lugar que antes de arrastrar",
-          "default": "Soltaches o elemento na mesma posición na que o levantaches. A posición é :startPosition en :sourceName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Mensaxe lida ao lector de pantalla antes de entrar na sección coas declaracións",
           "default": "Para interactuar coa seguinte sección, algúns lectores de pantalla requiren que esteas no modo de foco"
         }
-      ],
-      "label": "Accesibilidade"
+      ]
     }
   ]
 }

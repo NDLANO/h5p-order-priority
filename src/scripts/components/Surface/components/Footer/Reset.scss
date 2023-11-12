@@ -1,0 +1,45 @@
+@use "@styles/base/base_extendors";
+
+.h5p-order-priority-reset-modal {
+  background-color: white;
+  padding: 1rem;
+  max-width: 85vw;
+  display: inline-flex;
+  flex-flow: column;
+
+  .h5p-order-priority-reset-modal-buttons {
+    padding: 0.8rem;
+  }
+}
+
+.h5p-order-priority-button-restart {
+  @extend %h5p-order-priority-button;
+  background-color: #507AA4;
+  border: 2px solid #CCCCCC;
+
+  &:hover,
+  &:focus {
+    background-color: #363636;
+    color: inherit;
+  }
+
+  &:active {
+    background-color: #000000;
+    color: inherit;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  .h5p-confirmation-dialog-background {
+    .h5p-confirmation-dialog-popup.restart {
+      -webkit-transition: none;
+      transition: none;
+    }
+
+    &.hiding {
+      .h5p-confirmation-dialog-popup.restart {
+        opacity: 0;
+      }
+    }
+  }
+}

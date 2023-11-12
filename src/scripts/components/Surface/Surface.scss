@@ -1,0 +1,46 @@
+@use "@styles/base/base_extendors";
+
+.h5p-order-priority-surface-main {
+  @extend %h5p-order-priority;
+  margin: 1.5rem;
+}
+
+.h5p-order-priority-surface {
+  clear: both;
+
+  .h5p-order-priority-dropzone-wrapper{
+    &.hover {
+      background-color: #e0e7f0;
+    }
+
+    .h5p-dnd-draggable {
+      cursor: 'grab';
+      opacity: 1;
+
+      &.h5p-dnd-draggable--dragging {
+        opacity: 0;
+      }
+    }
+  }
+
+  .h5p-large-tablet-size &,
+  .h5p-large-size &{
+      display: flex;
+      flex-flow: row;
+  }
+}
+
+.h5p-order-priority-dropzone {
+  @extend %h5p-order-priority-columns;
+  background-color: rgba(227, 227, 227, 0.25);
+}
+
+.h5p-order-priority-select-list {
+  @extend %h5p-order-priority-columns;
+  border: 0;
+
+  .h5p-large-tablet-size &,
+  .h5p-large-size & {
+    margin-left: 0.75rem;
+  }
+}

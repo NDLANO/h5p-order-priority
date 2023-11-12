@@ -28,21 +28,21 @@
     "importance": "high",
     "expanded": true,
     "fields": [
-        {
-          "name": "statementsList",
-          "type": "list",
-          "label": "Statements",
-          "importance": "high",
-          "entity": "statement",
-          "optional": true,
-          "min": 1,
-          "field": {
-            "name": "text",
-            "type": "text",
-            "label": "Statement"
-          }
+      {
+        "name": "statementsList",
+        "type": "list",
+        "label": "Statements",
+        "importance": "high",
+        "entity": "statement",
+        "optional": true,
+        "min": 1,
+        "field": {
+          "name": "text",
+          "type": "text",
+          "label": "Statement"
         }
-      ]
+      }
+    ]
   },
   {
     "name": "summaryHeader",
@@ -96,21 +96,21 @@
         "name": "enableRetry",
         "type": "boolean",
         "label": "Enable retry?",
-        "description": "Tick off this if you want the user to be able to retry",
+        "description": "Tick off this if you want the user to be able to retry.",
         "default": true
       },
       {
         "name": "prepopulate",
         "type": "boolean",
         "label": "Pre-populate the statements",
-        "description": "The user starts off with the statements already ordered",
+        "description": "The user starts off with the statements already ordered.",
         "default": false
       },
       {
         "name": "randomizeStatements",
         "type": "boolean",
         "label": "Randomize the statements",
-        "description": "Will randomize the pre-populated statements",
+        "description": "Will randomize the pre-populated statements.",
         "default": false,
         "widget": "showWhen",
         "showWhen": {
@@ -132,21 +132,21 @@
         "name": "allowAddingOfStatements",
         "type": "boolean",
         "label": "Allow users to add their own statements",
-        "description": "Lets the user add their own statements",
+        "description": "Lets the user add their own statements.",
         "default": false
       },
       {
         "name": "displayCommentsBelowStatement",
         "type": "boolean",
         "label": "Display the provided comments below the statement",
-        "description": "If the user has provided a comment, this is shown in the statements list",
+        "description": "If the user has provided a comment, this is shown in the statements list.",
         "default": true
       },
       {
         "name": "provideSummary",
         "type": "boolean",
         "label": "Show summary",
-        "description": "Do you want the user to provide a summary explaining the reasons for his/her answers",
+        "description": "Do you want the user to provide a summary explaining the reasons for his/her answers.",
         "default": true
       }
     ]
@@ -201,12 +201,6 @@
         "default": "All the changes will be lost. Are you sure you wish to continue?"
       },
       {
-        "name": "feedback",
-        "type": "text",
-        "label": "Header in 'Comment' popover",
-        "default": "Feedback"
-      },
-      {
         "name": "submitText",
         "type": "text",
         "label": "Text displayed in 'Submit'-button when creating a document",
@@ -222,21 +216,39 @@
         "name": "confirm",
         "type": "text",
         "label": "Header in 'Restart' popover",
-        "default": "Confirm"
+        "default": "Are you sure you wish to restart?"
       },
       {
         "name": "giveABriefSummary",
         "type": "text",
         "label": "Placeholder for the summary box",
         "default": "Give a brief summary in your own words"
+      },
+      {
+        "name": "documentExport",
+        "type": "text",
+        "label": "Document export",
+        "default": "Document export"
+      },
+      {
+        "name": "documentExportDescription",
+        "type": "text",
+        "label": "Document export description",
+        "default": "On this page you can choose to export your answers."
+      },
+      {
+        "name": "noStatements",
+        "type": "text",
+        "label": "No statements set",
+        "default": "No statements to prioritize were set!"
       }
     ]
   },
   {
-    "label": "Resource report",
-    "importance": "low",
     "name": "resourceReport",
     "type": "group",
+    "label": "Resource report",
+    "importance": "low",
     "common": true,
     "fields": [
       {
@@ -258,6 +270,12 @@
         "default": "Select all"
       },
       {
+        "name": "headerTaskDescription",
+        "type": "text",
+        "label": "Task description",
+        "default": "Task description"
+      },
+      {
         "name": "headerStatement",
         "type": "text",
         "label": "Statement header in statement table",
@@ -276,12 +294,6 @@
         "default": "Resources"
       },
       {
-        "name": "headerTitle",
-        "type": "text",
-        "label": "Title header in resource table",
-        "default": "Title"
-      },
-      {
         "name": "headerIntro",
         "type": "text",
         "label": "Intro header in resource table",
@@ -290,14 +302,8 @@
       {
         "name": "headerUrl",
         "type": "text",
-        "label": "Url header in resource table",
-        "default": "Url"
-      },
-      {
-        "name": "labelNoResources",
-        "type": "text",
-        "label": "Label when no resources are found",
-        "default": "No resources"
+        "label": "URL header in resource table",
+        "default": "URL"
       },
       {
         "name": "labelSummaryComment",
@@ -327,132 +333,71 @@
         "default": "Add comment"
       },
       {
-        "name": "close",
-        "type": "text",
-        "label": "Used instead of 'Close'-icon",
-        "default": "Close"
-      },
-      {
-        "name": "drag",
-        "type": "text",
-        "label": "Used instead of 'Drag'-icon",
-        "default": "Drag"
-      },
-      {
-        "name": "droparea",
-        "type": "text",
-        "label": "'Droparea' label for screenreaders",
-        "description": "Available variables are :index",
-        "default": "Droparea #:index"
-      },
-      {
-        "name": "emptydroparea",
-        "type": "text",
-        "label": "'Empty droparea' label for screenreaders",
-        "description": "Available variables are :index",
-        "default": "Empty droparea #:index"
-      },
-      {
         "name": "draggableItem",
         "type": "text",
         "label": "'Draggable item' label for screenreaders",
         "default": "Draggable item"
       },
       {
-        "name": "dropzone",
-        "type": "text",
-        "label": "'Dropzone' label for screenreaders",
-        "description": "Available variables are :index",
-        "default": "Dropzone #:index"
-      },
-      {
-        "name": "dropzoneWithValue",
-        "type": "text",
-        "label": "'Dropzone with value' label for screenreaders",
-        "description": "Available variables are :index and :statement",
-        "default": "Dropzone #:index with value: :statement"
-      },
-      {
-        "name": "dragHandleInstructions",
-        "type": "text",
-        "widget": "textarea",
-        "label": "Description on how to start a drag for screenreaders",
-        "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
-      },
-      {
         "name": "sourceName",
         "type": "text",
         "label": "Name of the statements column",
-        "description": "This is the column with the statements you provide",
+        "description": "This is the column with the statements you provide.",
         "default": "Statements"
       },
       {
         "name": "destinationName",
         "type": "text",
         "label": "Name of the prioritized column",
-        "description": "This is the column where the statements are put in an order",
+        "description": "This is the column where the statements are put in an order.",
         "default": "Prioritized"
-      },
-      {
-        "name": "dragStartInstructions",
-        "type": "text",
-        "label": "Message read to the screen reader when drag starts",
-        "description": "Available variables are :startPosition, :listLength and :listName",
-        "default": "You have lifted an item in position :startPosition of :listLength in the :listName list."
       },
       {
         "name": "dragMoveInSameList",
         "type": "text",
         "label": "Message read to the screen reader when drag is moved within the same list",
-        "description": "Available variables are :startPosition, :endPosition and :listLength",
+        "description": "Available variables are :startPosition, :endPosition and :listLength.",
         "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
       },
       {
         "name": "dragMoveInDifferentList",
         "type": "text",
-        "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength",
+        "description": "Available variables are :startListName, :startPosition, :startListLength, :endPosition, :destinationListName, :destinationPosition and :destinationListLength.",
         "label": "Message read to the screen reader when drag is moved to another list",
         "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
       },
       {
-        "name": "dragMoveNoDropTarget",
+        "name": "draggableItemWasDroppedOver",
         "type": "text",
-        "label": "Message read to the screen reader when drag is over an area that cannot be dropped on",
-        "default": "You are currently not dragging over a droppable area"
+        "description": "Available variables are :itemId and :droppableId.",
+        "label": "Message read to the screen reader when draggable is dropped over dropzone",
+        "default": "Draggable item :itemId was dropped over droppable area :droppableId."
       },
       {
-        "name": "dragCancelled",
+        "name": "draggableItemWasDropped",
         "type": "text",
-        "description": "Available variables are :startPosition, :listLength and :listName",
-        "label": "Message read to the screen reader when drag starts",
-        "default": "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName"
+        "description": "Available variable is :itemId.",
+        "label": "Message read to the screen reader when draggable is dropped",
+        "default": "Draggable item :itemId was dropped."
       },
       {
-        "name": "dropInSameList",
+        "name": "draggingWasCancelled",
         "type": "text",
-        "description": "Available variables are :startPosition and :endPosition",
-        "label": "Message read to the screen reader when drag is dropped in the same list",
-        "default": "You have dropped the item. It has moved from position :startPosition to :endPosition"
-      },
-      {
-        "name": "dropInDifferentList",
-        "type": "text",
-        "description": "Available variables are :startListName, :startPosition, :destinationListName and :destinationPosition",
-        "label": "Message read to the screen reader when drag is dropped in a different list",
-        "default": "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName"
-      },
-      {
-        "name": "dropInSameLocation",
-        "type": "text",
-        "description": "Available variables are :startPosition and :sourceName",
-        "label": "Message read to the screen reader when drag is dropped in the same location as before the drag",
-        "default": "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName"
+        "description": "Available variable is :itemId.",
+        "label": "Message read to the screen reader when dragging was cancelled",
+        "default": "Draggable item :itemId was dropped."
       },
       {
         "name": "userInfoAboutFocusMode",
         "type": "text",
         "label": "Message read to the screen reader before entering the section with the statements",
         "default": "To interact with the next section some screen readers require you to be in focus mode"
+      },
+      {
+        "name": "statement",
+        "type": "text",
+        "label": "Statement",
+        "default": "Statement"
       }
     ]
   }

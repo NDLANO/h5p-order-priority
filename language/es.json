@@ -68,6 +68,7 @@
       ]
     },
     {
+      "label": "Adaptación local",
       "fields": [
         {
           "label": "Texto por defecto para las cajas de texto",
@@ -98,10 +99,6 @@
           "default": "Se perderán todos los cambios. ¿Seguro que quieres continuar?"
         },
         {
-          "label": "Encabezado en la ventana emergente 'Comentario'",
-          "default": "Retroalimentación"
-        },
-        {
           "label": "Texto mostrado en botón 'Enviar' cuando se crea un documento",
           "default": "Enviar"
         },
@@ -111,16 +108,28 @@
         },
         {
           "label": "Encabezado en la ventana emergente 'Reiniciar'",
-          "default": "Confirmar"
+          "default": "¿Estás segura de que quieres reiniciar?"
         },
         {
           "label": "Texto por defecto para la caja de resumen",
           "default": "Haz un breve resumen con tus propias palabras"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
-      ],
-      "label": "Adaptación local"
+      ]
     },
     {
+      "label": "Informe de recursos",
       "fields": [
         {
           "label": "Etiqueta para el botón \"Crear documento\"",
@@ -135,8 +144,12 @@
           "default": "Seleccionar todo"
         },
         {
-          "default": "Declaraciones",
-          "label": "Encabezado de declaración en tabla de declaraciones"
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
+          "label": "Encabezado de declaración en tabla de declaraciones",
+          "default": "Declaraciones"
         },
         {
           "label": "Encabezado de comentario en la tabla de declaraciones",
@@ -147,20 +160,12 @@
           "default": "Recursos"
         },
         {
-          "label": "Encabezado de título en tabla de recursos",
-          "default": "Título"
-        },
-        {
           "label": "Encabezado de Introducción en tabla de recursos",
           "default": "Introducción"
         },
         {
           "label": "Encabezado de URL en tabla de recursos",
           "default": "URL"
-        },
-        {
-          "label": "Etiqueta cuando no se encontraron recursos",
-          "default": "No hay recursos"
         },
         {
           "label": "Encabezado para comentario de resumen",
@@ -170,50 +175,18 @@
           "label": "Etiqueta cuando no se ha proporcionado ningún resumen",
           "default": "No hay resumen"
         }
-      ],
-      "label": "Informe de recursos"
+      ]
     },
     {
+      "label": "Accesibilidad",
       "fields": [
         {
           "label": "Se utiliza en lugar del icono \"Comentario\"",
           "default": "Añadir comentario"
         },
         {
-          "label": "Usado en lugar del icono 'Cerrar'",
-          "default": "Cerrar"
-        },
-        {
-          "label": "Usado en lugar del icono \"Arrastrar\"",
-          "default": "Arrastrar"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación #:index"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación vacía' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación vacía #:index"
-        },
-        {
-          "default": "Elemento arrastrable",
-          "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación' para lectores de pantalla",
-          "description": "Las variables disponibles son :index",
-          "default": "Área de colocación #:index"
-        },
-        {
-          "label": "Etiqueta de 'Área de colocación con valor' para lectores de pantalla",
-          "description": "Las variables disponibles son :index y :statement",
-          "default": "Área de colocación #:index con valor: :statement"
-        },
-        {
-          "label": "Descripción de como iniciar un arrastre para lectores de pantalla",
-          "default": "Presione la barra espaciadora para iniciar un arrastre.\nAl arrastrar, puede usar las teclas de flecha para mover el elemento y ESC para cancelar.\nAlgunos lectores de pantalla pueden requerir que esté en modo de foco o que use su tecla de acceso directo\n"
+          "label": "Etiqueta \"Elemento arrastrable\" para lectores de pantalla",
+          "default": "Elemento arrastrable"
         },
         {
           "label": "Nombre de la columna de declaraciones",
@@ -221,14 +194,9 @@
           "default": "Declaraciones"
         },
         {
-          "default": "Priorizadas",
           "label": "Nombre de la columna priorizada",
-          "description": "Esta es la columna donde se ordenan las declaraciones"
-        },
-        {
-          "label": "Mensaje leído al lector de pantalla cuando se inicia el arrastre",
-          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
-          "default": "Has levantado un elemento en la posición :startPosition de :listLength en la lista :listName."
+          "description": "Esta es la columna donde se ordenan las declaraciones",
+          "default": "Priorizadas"
         },
         {
           "label": "Mensaje leído en el lector de pantalla cuando se mueve el elemento arrastrado dentro de la misma lista",
@@ -241,35 +209,25 @@
           "default": "Has movido el elemento de la lista :startListName en la posición :startPosition de :startListLength a la lista :destinationListName en la posición :destinationPosition de :destinationListLength"
         },
         {
-          "label": "Mensaje leído en el lector de pantalla cuando se arrastra sobre un área en la que no se puede colocar",
-          "default": "En este momento no estás arrastrando sobre una área de colocación"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "Las variables disponibles son :startPosition, :listLength y :listName",
-          "label": "Mensaje leído en el lector de pantalla cuando comienza el arrastre",
-          "default": "Movimiento cancelado. El elemento ha vuelto a su posición inicial: posición de inicio de: longitud de lista en: nombre de lista"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "Las variables disponibles son :startPosition y :endPosition",
-          "label": "Mensaje leído en el lector de pantalla cuando se suelta el arrastre en la misma lista",
-          "default": "Has soltado el elemento. Se ha movido de la posición :startPosition a :endPosition"
-        },
-        {
-          "description": "Las variables disponibles son :startListName, :startPosition, :destinationListName y :destinationPosition",
-          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en una lista diferente",
-          "default": "Has dejado caer el elemento. Se ha movido de la posición :startPosition en la lista :startListName a la posición :destinationPosition en la lista :destinationListName"
-        },
-        {
-          "description": "Las variables disponibles son :startPosition y :sourceName",
-          "label": "Mensaje leído en el lector de pantalla cuando el arrastre se suelta en la misma ubicación que antes del arrastre",
-          "default": "Has soltado el elemento en la misma posición en la que lo levantaste. La posición es :startPosition en :sourceName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",
           "default": "Para interactuar con la siguiente sección, algunos lectores de pantalla requieren que esté en modo de foco"
         }
-      ],
-      "label": "Accesibilidad"
+      ]
     }
   ]
 }

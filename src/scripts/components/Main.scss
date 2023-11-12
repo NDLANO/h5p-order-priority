@@ -1,0 +1,19 @@
+.h5p-order-priority-header {
+  background-color: #507AA4;
+  margin: 0;
+  padding: 1.3125rem;
+  color: white;
+  font-weight: normal;
+  font-size: 1.25rem;
+}
+
+.h5p-order-priority-surface-info {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: flex-end;
+
+  .h5p-resource-list-wrapper {
+    margin-left: auto;
+  }
+}

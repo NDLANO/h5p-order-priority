@@ -1,0 +1,13 @@
+.h5p-order-priority-drag-element {
+  border-right: 0.0625rem solid #e6e6e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8125rem;
+  padding: 0 0.625rem;
+  color: #535c69;
+
+  &:hover {
+    cursor: grab;
+  }
+}

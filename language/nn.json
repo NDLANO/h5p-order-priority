@@ -99,10 +99,6 @@
           "default": "Alle dine endringer vil bli tapt. Er du sikker på at du vil fortsette?"
         },
         {
-          "label": "Overskrift i 'Kommentar'-dialogboks",
-          "default": "Kommentar"
-        },
-        {
           "label": "Tekst som vises i 'Lagre'-knappen når man oppretter et dokument",
           "default": "Lagre"
         },
@@ -112,11 +108,23 @@
         },
         {
           "label": "Overskrift i 'Start på nytt'-dialogboks",
-          "default": "Bekreft nullstilling"
+          "default": "Er du sikker på at du vil starte på nytt?"
         },
         {
           "label": "Midlertidig tekst for sammendrag tekstfeltet",
           "default": "Gi et kort sammendrag med egne ord"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
       ]
     },
@@ -136,6 +144,10 @@
           "default": "Velg alt"
         },
         {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Overskrift i \"Påstand\"-kolonnen,",
           "default": "Påstand"
         },
@@ -148,20 +160,12 @@
           "default": "Ressurser"
         },
         {
-          "label": "Overskrift i 'Tittel'-kolonnen",
-          "default": "Tittel"
-        },
-        {
           "label": "Overskrift i 'Ingress'-kolonnen",
           "default": "Ingress"
         },
         {
           "label": "Overskrift i 'Lenke'-kolonnen",
           "default": "Lenke"
-        },
-        {
-          "label": "Tekst når ingen ressurser er registrert",
-          "default": "Ingen ressurser"
         },
         {
           "label": "Overskrift for \"Oppsummering kommentar\"",
@@ -181,40 +185,8 @@
           "default": "Legg til kommentar"
         },
         {
-          "label": "Brukt istedenfor 'Lukk' ikonet",
-          "default": "Lukk"
-        },
-        {
-          "label": "Brukt istedenfor 'Dra' ikonet",
-          "default": "Dra"
-        },
-        {
-          "label": "'Slippområde' etikett for skjermleser",
-          "description": "Tilgjengelige variabler er :index",
-          "default": "Slippområde #:index"
-        },
-        {
-          "label": "'Empty droparea' etikett for skjermleser",
-          "description": "Tilgjengelige variabler er :index",
-          "default": "Tomt slippområde #:index"
-        },
-        {
           "label": "'Flyttbar element' etikett for skjermleser",
           "default": "Flyttbar element"
-        },
-        {
-          "label": "'Droppsone' etikett for skjermleser",
-          "description": "Tilgjengelige variabler er :index",
-          "default": "Droppsone #:index"
-        },
-        {
-          "label": "'Droppsone med verdi' etikett for skjermleser",
-          "description": "Tilgjengelige variabler er :index og :statement",
-          "default": "Droppsone #:index med verdi: :statement"
-        },
-        {
-          "label": "Description on how to start a drag for screenreaders",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
         },
         {
           "label": "Name of the statements column",
@@ -227,11 +199,6 @@
           "default": "Prioritized"
         },
         {
-          "label": "Message read to the screen reader when drag starts",
-          "description": "Available variables are :startPosition, :listLength and :listName",
-          "default": "You have lifted an item in position :startPosition of :listLength in the :listName list."
-        },
-        {
           "label": "Message read to the screen reader when drag is moved within the same list",
           "description": "Available variables are :startPosition, :endPosition and :listLength",
           "default": "You have moved the item from position :startPosition to position :endPosition of :listLength"
@@ -242,28 +209,19 @@
           "default": "You have moved the item from list :startListName in position :startPosition of :startListLength to list :destinationListName in position :destinationPosition of :destinationListLength"
         },
         {
-          "label": "Message read to the screen reader when drag is over an area that cannot be dropped on",
-          "default": "You are currently not dragging over a droppable area"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "Available variables are :startPosition, :listLength and :listName",
-          "label": "Message read to the screen reader when drag starts",
-          "default": "Movement cancelled. The item has returned to its starting position :startPosition of :listLength in :listName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "Available variables are :startPosition and :endPosition",
-          "label": "Message read to the screen reader when drag is dropped in the same list",
-          "default": "You have dropped the item. It has moved from position :startPosition to :endPosition"
-        },
-        {
-          "description": "Available variables are :startListName, :startPosition, :destinationListName and :destinationPosition",
-          "label": "Message read to the screen reader when drag is dropped in a different list",
-          "default": "You have dropped the item. It has moved from position :startPosition in list :startListName to position :destinationPosition in list :destinationListName"
-        },
-        {
-          "description": "Available variables are :startPosition and :sourceName",
-          "label": "Message read to the screen reader when drag is dropped in the same location as before the drag",
-          "default": "You have dropped the item in the same position as you lifted it. The position is :startPosition in :sourceName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Message read to the screen reader before entering the section with the statements",

@@ -1,0 +1,37 @@
+@use "@styles/base/base_variables" as bv;
+
+.h5p-order-priority-add {
+  border: 1px solid #dbe2e8;
+  border-radius: bv.$borderRadius;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  padding: 0.25rem;
+  background-color: #ffffff;
+
+  &:hover {
+    .h5p-order-priority-add-wrapper {
+      background-color: #ffffff;
+    }
+  }
+
+  &:active {
+    .h5p-order-priority-add-wrapper {
+      background-color: #ebf0ff;
+    }
+  }
+
+  .h5p-order-priority-add-wrapper {
+    display: flex;
+    border-radius: bv.$borderRadius;
+    background-color: rgba(219,226,232,0.25);
+    color: #363636;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 0.25rem 0.625rem;
+  }
+
+  .h5p-ri {
+    margin-right: 0.5rem;
+  }
+}

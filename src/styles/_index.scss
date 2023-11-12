@@ -1,30 +1,6 @@
 @forward "base/base_variables";
 @forward "base/base_extendors";
-@forward "base/base_functions";
 @use "base/base_extendors";
-@use "base/base_functions" as OPFunction;
-
-@forward "components/Main";
-@forward "components/Surface";
-@forward "components/Export";
-@forward "components/Reset";
-@forward "components/Placeholder";
-@forward "components/Footer";
-@forward "components/Summary";
-@forward "components/StatementList";
-@forward "components/StatementCommon";
-@forward "components/Comment";
-@forward "components/DragArrow";
-@forward "components/Popover";
-@forward "components/PriorityNumber";
-@forward "components/AddStatement";
-@forward "components/EditableStatement";
-
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
-  display:block;
-}
 
 .h5p-order-priority {
   @extend %h5p-order-priority;
@@ -42,17 +18,13 @@ article, aside, details, figcaption, figure, footer, header, main, menu, nav, se
   font-weight: normal;
 }
 
-.hidden {
-  display: none !important;
-}
-
 .visible-hidden {
-  clip: rect(OPFunction.pxToRem(1px), OPFunction.pxToRem(1px), OPFunction.pxToRem(1px), 1px);
-  height: OPFunction.pxToRem(1px);
+  clip: rect(0.0625rem, 0.0625rem, 0.0625rem, 1px);
+  height: 0.0625rem;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
-  width: OPFunction.pxToRem(1px);
+  width: 0.0625rem;
 }
 
 .visible-hidden:focus {

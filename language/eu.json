@@ -68,6 +68,7 @@
       ]
     },
     {
+      "label": "Lokalizatu",
       "fields": [
         {
           "label": "Testu-koadroetarako behin behineko testua",
@@ -98,10 +99,6 @@
           "default": "Aldaketa guztiak galduko dira. Ziur jarraitu nahi duzula?"
         },
         {
-          "label": "Goiburua \"Iruzkin\" leihoan",
-          "default": "Iritzia"
-        },
-        {
           "label": "Dokumentu bat sortzean 'Bidali' botoian bistaratzen den testua",
           "default": "Bidali"
         },
@@ -111,16 +108,28 @@
         },
         {
           "label": "\"Berrabiarazi\" leihoaren goiburua",
-          "default": "Berretsi"
+          "default": "Ziur berrabiarazi nahi duzula?"
         },
         {
           "label": "Laburpen-koadroaren behin behineko testua",
           "default": "Eman laburpen txiki bat zure hitzekin"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
-      ],
-      "label": "Lokalizatu"
+      ]
     },
     {
+      "label": "Baliabideen txostena",
       "fields": [
         {
           "label": "\"Sortu dokumentua\" botoiaren etiketa",
@@ -135,6 +144,10 @@
           "default": "Hautatu guztiak"
         },
         {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "Adierazpenen goiburua adierazpen-taulan",
           "default": "Adierazpenak"
         },
@@ -147,20 +160,12 @@
           "default": "Baliabideak"
         },
         {
-          "label": "Izenburuaren goiburua baliabideen taulan",
-          "default": "Izenburua"
-        },
-        {
           "label": "Baliabideen taulako sarrerako goiburua",
           "default": "Sarrera"
         },
         {
           "label": "Baliabideen taulako URL goiburua",
           "default": "URL"
-        },
-        {
-          "label": "Baliabiderik aurkitzen ez deneko etiketa",
-          "default": "Baliabiderik ez"
         },
         {
           "label": "Laburpenaren iruzkinaren goiburua",
@@ -170,8 +175,7 @@
           "label": "Etiketa laburpenik ematen ez denean",
           "default": "Laburpenik ez"
         }
-      ],
-      "label": "Baliabideen txostena"
+      ]
     },
     {
       "label": "Irisgarritasuna",
@@ -181,40 +185,8 @@
           "default": "Gehitu iruzkina"
         },
         {
-          "label": "\"Itxi\" ikonoaren ordez erabiltzen da",
-          "default": "Itxi"
-        },
-        {
-          "label": "\"Arrastatu\" ikonoaren ordez erabiltzen da",
-          "default": "Arrastatu"
-        },
-        {
-          "label": "'Jaregiteko area' etiketa pantaila-irakurleentzako",
-          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
-          "default": "Jaregiteko area #:index"
-        },
-        {
-          "label": "'Jaregiteko area hutsik' etiketa pantaila-irakurleentzako",
-          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
-          "default": "Jaregiteko area hutsik #:index"
-        },
-        {
           "label": "'Elementu arrastagarria' etiketa pantaila-irakurleentzako",
           "default": "Elementu arrastagarria"
-        },
-        {
-          "label": "'Arrastatzeko area' etiketa pantaila-irakurleentzako",
-          "description": "Eskuragarri dauden aldagaiak hauek dira :index",
-          "default": "Arrastatzeko area #:index"
-        },
-        {
-          "label": "'Balioa duen arrastatzeko area' etiketa pantaila-irakurleentzako",
-          "description": "Eskuragarri dauden aldagaiak :index eta :statement dira",
-          "default": "Arrastatzeko areak #:index duen balioa: :statement"
-        },
-        {
-          "label": "Pantaila-irakurleentzako arrastatzea nola abiarazteko deskribapena",
-          "default": "Sakatu zuriune-barra arrastatzen hasteko.\nArrastatzean gezi-teklak erabil ditzakezu elementua mugitzeko eta ESC tekla uzteko.\nPantaila-irakurle batzuek fokatze moduan egotea edo bere laster-tekla erabiltzea eska dezakete\n"
         },
         {
           "label": "Adierazpenen zutabearen izena",
@@ -227,11 +199,6 @@
           "default": "Lehenetsiak"
         },
         {
-          "label": "Arrastatzea hasten denean pantaila-irakurlean irakurritako mezua",
-          "description": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName",
-          "default": "Elementu bat altxatu duzu :listName zerrendako :listLength-ren :startPosition posizioan."
-        },
-        {
           "label": "Pantaila-irakurleari irakurritako mezua arrastaketzea zerrenda berean mugitzen denean",
           "description": "Eskuragarri dauden aldagaiak :startPosition, :endPosition eta :listLength dira",
           "default": "Elementua :startPosition posiziotik :listLength-ren :endPosition posiziora eraman duzu"
@@ -242,28 +209,19 @@
           "default": "Eraman duzu :startListName zerrendako :startListLength-ko :startPosition posizioan dagoen elementua :destinationListName zerrendaren :destinationListLength-ko :destinationPosition posiziora"
         },
         {
-          "label": "Pantaila-irakurleari irakurtzen zaion mezua arrastatzea jaregin ezin den eremu baten gainean dagoenean",
-          "default": "Une honetan ez zara arrastatzen ari jaregin daitekeen eremu batean"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName dira",
-          "label": "Eskuragarri dauden aldagaiak :startPosition, :listLength eta :listName dira",
-          "default": "Mugimendua bertan behera utzi da. Elementua :listName :listLength-ko :startPosition hasierako posiziora itzuli da"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "Eskuragarri dauden aldagaiak :startPosition eta :endPosition dira",
-          "label": "Pantaila-irakurleari irakurritako mezua arrastatutakoa zerrenda berean jaregiten denean",
-          "default": "Elementua jaregin duzu. :startPosition posiziotik :endPosition-era eraman da"
-        },
-        {
-          "description": "Aldagai erabilgarri hauek dira :startListName, :startPosition, :destinationListName eta :destinationPosition",
-          "label": "Pantaila-irakurleari irakurritako mezua arrastatutakoa beste zerrenda batean jaregiten denean",
-          "default": "Elementua jaregin duzu. :startListName zerrendako :startPosition posiziotik :destinationListName zerrendako :destinationPosition posiziora mugitu da"
-        },
-        {
-          "description": "Eskuragarri dauden aldagaiak :startPosition eta :sourceName dira",
-          "label": "Pantaila-irakurleari irakurritako mezua arrastatu aurretik zegoen toki berean jaregiten denean",
-          "default": "Elementua altxatu duzun posizio berean jaregin duzu. :sourceName-ko :startPosition posizioa da"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "Pantaila-irakurleari irakurritako mezua adierazpenak dituen atalean sartu aurretik",

@@ -12,13 +12,13 @@
     "eslint-config-ndla-h5p",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:jsdoc/recommended"
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "requireConfigFile": false,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
       "jsx": true
     },
     "sourceType": "module",
@@ -27,11 +27,17 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "jsdoc": {
+      "preferredTypes": {
+        "Function": "function"
+      }
     }
   },
   "plugins": [
     "react",
-    "jsx-a11y"
+    "jsx-a11y",
+    "jsdoc"
   ],
   "rules": {
     "valid-jsdoc": "off",

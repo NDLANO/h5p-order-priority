@@ -1,0 +1,16 @@
+.h5p-order-priority-draggable-container {
+  display: flex;
+  align-items: stretch;
+  margin: 0.5rem auto;
+  position: relative;
+}
+
+.h5p-order-priority-draggable-element,
+.h5p-order-priority-draggable-element > div { // TODO: THIS FEELS MASSIVELY WEIRD! Check when fixing Draggable layout
+  flex-grow: 1;
+  display: flex;
+
+  &.h5p-order-priority-no-transform {
+    transform: none;
+  }
+}

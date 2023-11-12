@@ -99,10 +99,6 @@
           "default": "جميع تغييرات البيانات ستفقد. هل أنت متأكد أنك ترغب في أن تستمر؟"
         },
         {
-          "label": "رأس في عنصر ”التعليقات“ المنبثق",
-          "default": "ملاحظات"
-        },
-        {
           "label": "النص المعروض بزر ”إرسال“ عند إنشاء وثيقة",
           "default": "إرسال"
         },
@@ -112,11 +108,23 @@
         },
         {
           "label": "رأس جزء ”إعادة البدء“ المنبثق",
-          "default": "تأكيد"
+          "default": "هل أنت متأكد أنك تريد إعادة تشغيل؟"
         },
         {
           "label": "حيز مخصص لمربع الملخص",
           "default": "قدّم ملخصاً موجزًا بكلماتك"
+        },
+        {
+          "label": "Document export",
+          "default": "Document export"
+        },
+        {
+          "label": "Document export description",
+          "default": "On this page you can choose to export your answers."
+        },
+        {
+          "label": "No statements set",
+          "default": "No statements to prioritize were set!"
         }
       ]
     },
@@ -136,6 +144,10 @@
           "default": "اختيار الكل"
         },
         {
+          "label": "Task description",
+          "default": "Task description"
+        },
+        {
           "label": "رأس العبارات في جدول العبارات",
           "default": "العبارات"
         },
@@ -148,20 +160,12 @@
           "default": "الموارد"
         },
         {
-          "label": "رأس العنوان في جدول الموارد",
-          "default": "العنوان"
-        },
-        {
           "label": "رأس المقدمة في جدول الموارد",
           "default": "المقدمة"
         },
         {
           "label": "رأس روابط الإنترنت في جدول الموارد",
           "default": "روابط الإنترنت"
-        },
-        {
-          "label": "تسمية عدم وجود هناك موارد",
-          "default": "الموارد غير موجودة"
         },
         {
           "label": "رأس \"تعليقات الملخص\"",
@@ -181,40 +185,8 @@
           "default": "إضافة تعليق"
         },
         {
-          "label": "إغلاق",
-          "default": "إغلاق"
-        },
-        {
-          "label": "سحب",
-          "default": "سحب"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة الإفلات #:index"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات الفارغة“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة إفلات فارغة #:index"
-        },
-        {
           "label": "تسمية ”العنصر القابل للسحب“ لقارئ الشاشة",
           "default": "عنصر قابل للسحب"
-        },
-        {
-          "label": "تسمية ”منطقة الإفلات“ لقارئ الشاشة",
-          "description": "المتغيرات المتاحة :index",
-          "default": "منطقة إفلات #:index"
-        },
-        {
-          "label": "تسمية ”منقطة إفلات بها قيمة“ لقارئ الشاشة",
-          "description": "البدائل المتاحة هي :index و :statement",
-          "default": "منطقة إفلات:indexبها قيمة: :statement"
-        },
-        {
-          "label": "وصف السحب لقارئ الشاشة",
-          "default": "Press space bar to start a drag.\nWhen dragging you can use the arrow keys to move the item around and escape to cancel.\nSome screen readers may require you to be in focus mode or to use your pass through key\n"
         },
         {
           "label": "اسم عمود العبارات",
@@ -227,11 +199,6 @@
           "default": "ذو الأولوية"
         },
         {
-          "label": "قراءة الرسالة على قارئ الشاشة عند بدء السحب",
-          "description": "المتغيرات المتاحة :startPosition، و:listLength، و :listName",
-          "default": "لقد رفعت عنصراً في موضع :startPosition :listLength في :listName القائمة."
-        },
-        {
           "label": "قراءة الرسالة على قارئ الشاشة عند انتقال السحب ضمن القائمة ذاتها",
           "description": "المتغيرات المتاحة :startPosition، و:endPosition، و :listLength",
           "default": "لقد نقلت العنصر من الموضع :startPositionإلى الموضع :endPosition :listLength"
@@ -242,28 +209,19 @@
           "default": "لقد نقلت العنصر من القائمة :startListName في الموضع :startPosition :startListLength إلى القائمة :destinationListName في الموضع :destinationPosition :destinationListLength"
         },
         {
-          "label": "قراءة الرسالة على قارئ الشاشة عند وجود السحب فوق منطقة لا يمكن الإفلات فيها",
-          "default": "أنت تسحب فوق منطقة لا تسمح بالإفلات"
+          "description": "Available variables are :itemId and :droppableId.",
+          "label": "Message read to the screen reader when draggable is dropped over dropzone",
+          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
         },
         {
-          "description": "المتغيرات المتاحة :startPosition، و:listLength، و :listName",
-          "label": "قراءة الرسالة على قارئ الشاشة عند بدء السحب",
-          "default": "أُلغيَت الحركة. أُرجع العنصر إلى موضع البدء :startPosition من :listLength في :listName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when draggable is dropped",
+          "default": "Draggable item :itemId was dropped."
         },
         {
-          "description": "المتغيرات المتاحة هي :startPosition و :endPosition",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في القائمة ذاتها",
-          "default": "لقد أفلت العنصر. لقد انتقل من الموضع :startPosition إلى :endPosition"
-        },
-        {
-          "description": "المتغيرات المتاحة هي :startListName، و :startPosition، و :destinationListName، و :destinationPosition",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في قائمة مختلفة",
-          "default": "لقد أفلت العنصر. لقد انتقل من الموضع :startPosition في القائمة :startListName إلى الموضع :destinationPosition في القائمة :destinationListName"
-        },
-        {
-          "description": "المتغيرات المتاحة هي :startPosition و :sourceName",
-          "label": "قراءة الرسالة على قارئ الشاشة عند إسقاط السحب في الموقع ذاته كما قبل السحب",
-          "default": "لقد أفلت العنصر في الموقع ذاته الذي رفعته فيه. الموضع هو :startPosition في :sourceName"
+          "description": "Available variable is :itemId.",
+          "label": "Message read to the screen reader when dragging was cancelled",
+          "default": "Draggable item :itemId was dropped."
         },
         {
           "label": "قراءة الرسالة على قارئ الشاشة قبل دخول القسم الذي يتضمن العبارات",
