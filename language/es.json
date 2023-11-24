@@ -119,12 +119,12 @@
           "default": "Document export"
         },
         {
-          "label": "Document export description",
-          "default": "On this page you can choose to export your answers."
+          "label": "Descripción de la exportación del documento",
+          "default": "En esta página puede optar por exportar sus respuestas."
         },
         {
-          "label": "No statements set",
-          "default": "No statements to prioritize were set!"
+          "label": "No se han establecido declaraciones",
+          "default": "¡No se han establecido declaraciones que priorizar!"
         }
       ]
     },
@@ -144,8 +144,8 @@
           "default": "Seleccionar todo"
         },
         {
-          "label": "Task description",
-          "default": "Task description"
+          "label": "Descripción de la tarea",
+          "default": "Descripción de la tarea"
         },
         {
           "label": "Encabezado de declaración en tabla de declaraciones",
@@ -209,19 +209,19 @@
           "default": "Has movido el elemento de la lista :startListName en la posición :startPosition de :startListLength a la lista :destinationListName en la posición :destinationPosition de :destinationListLength"
         },
         {
-          "description": "Available variables are :itemId and :droppableId.",
-          "label": "Message read to the screen reader when draggable is dropped over dropzone",
-          "default": "Draggable item :itemId was dropped over droppable area :droppableId."
+          "description": "Las variables disponibles son: itemId y: droppableId.",
+          "label": "Mensaje leído en el lector de pantalla cuando el elemento arrastrable se suelta sobre la zona de colocación",
+          "default": "El elemento arrastrable: itemId se soltó sobre el área desplegable: droppableId."
         },
         {
-          "description": "Available variable is :itemId.",
-          "label": "Message read to the screen reader when draggable is dropped",
-          "default": "Draggable item :itemId was dropped."
+          "description": "La variable disponible es: itemId.",
+          "label": "Mensaje leído en el lector de pantalla cuando se suelta el elemento arrastrable",
+          "default": "Se soltó el elemento arrastrable: itemId."
         },
         {
-          "description": "Available variable is :itemId.",
-          "label": "Message read to the screen reader when dragging was cancelled",
-          "default": "Draggable item :itemId was dropped."
+          "description": "La variable disponible es: itemId.",
+          "label": "Mensaje leído en el lector de pantalla cuando se canceló el arrastre",
+          "default": "Se soltó el elemento arrastrable: itemId."
         },
         {
           "label": "Mensaje leído al lector de pantalla antes de entrar en la sección con las declaraciones",
