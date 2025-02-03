@@ -83,8 +83,8 @@
           "default": "Restart"
         },
         {
-          "label": "Label for the \"Showwadsad Solution\"-button",
-          "default": "Show Solution"
+          "label": "Label for the \"Show solution\"-button",
+          "default": "Show solution"
         },
         {
           "label": "Label for the \"Add alternative\"-button",
