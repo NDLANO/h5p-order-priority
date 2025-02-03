@@ -26,6 +26,21 @@
       "label": "Laburpen jarraibidea"
     },
     {
+      "label": "Sample solution",
+      "description": "You can optionally add a sample solution that's shown after the student created a text. It's called sample solution because there probably is not only one solution.",
+      "fields": [
+        {
+          "label": "Introduction",
+          "description": "You can optionally leave the students some explanations about your example. The explanation will only show up if you add an example, too.",
+          "placeholder": "Please remember that you were not expected to come up with the exact same solution. It's just a good example."
+        },
+        {
+          "label": "Sample solution text",
+          "description": "The student will see a \"Show solution\" button after submitting if you provide some text here."
+        }
+      ]
+    },
+    {
       "label": "Baliabideak",
       "fields": [
         {
@@ -89,6 +104,10 @@
         {
           "label": "Berrabiarazi elkarrizketa-koadroko \"Jarraitu\" botoiaren etiketa",
           "default": "Jarraitu"
+        },
+        {
+          "label": "Label for the \"Show solution\"-button",
+          "default": "Show solution"
         },
         {
           "label": "Berrabiarazi elkarrizketa-koadroko \"Utzi\" botoiari etiketa",
@@ -226,6 +245,10 @@
         {
           "label": "Pantaila-irakurleari irakurritako mezua adierazpenak dituen atalean sartu aurretik",
           "default": "Hurrengo atalarekin elkar eragiteko, pantaila-irakurle batzuek foku moduan egotea eskatzen dute"
+        },
+        {
+          "label": "Statement",
+          "default": "Statement"
         }
       ]
     }
