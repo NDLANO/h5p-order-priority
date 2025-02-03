@@ -5,12 +5,14 @@ import Surface from '@components/Surface/Surface.js';
 import Footer from '@components/Surface/components/Footer/Footer.js';
 import '@assets/fonts/H5PReflectionFont.scss';
 import SolutionDisplay from '@components/Surface/components/SolutionDisplay.js';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import './Main.scss';
 
 const Main = (props) => {
   const resourceContainer = useRef();
   const [solution, setSolution] = useState(null);
   const [isFooterVisible, setIsFooterVisible] = useState(true); // State to control footer visibility
+  const context = useOrderPriority();
 
   const {
     id,
@@ -71,6 +73,7 @@ const Main = (props) => {
 
       // Hide the footer
       setIsFooterVisible(false);
+      context.trigger('resize');
     }
     else {
       console.warn('No solution available.');
