@@ -1,13 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import PropTypes from 'prop-types';
 import Surface from '@components/Surface/Surface.js';
 import Footer from '@components/Surface/components/Footer/Footer.js';
 import '@assets/fonts/H5PReflectionFont.scss';
+import SolutionDisplay from '@components/Surface/components/SolutionDisplay.js';
+import { useOrderPriority } from '@context/OrderPriorityContext.js';
 import './Main.scss';
 
 const Main = (props) => {
   const resourceContainer = useRef();
+  const [solution, setSolution] = useState(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(true); // State to control footer visibility
+  const context = useOrderPriority();
 
   const {
     id,
@@ -16,9 +21,15 @@ const Main = (props) => {
     header,
     description = '',
     resources: resourcesList,
+    showSolution,
   } = props;
 
   const effectCalled = useRef(false);
+
+  // Check if solution is available
+  const hasSolution = props.solution.sample && props.solution.introduction &&
+    !props.solution.sample.includes('<div>&nbsp;</div>') ||
+    !props.solution.introduction.includes('<div>&nbsp;</div>');
 
   // componentDidMount pseudo equivalent
   useEffect(() => {
@@ -49,6 +60,26 @@ const Main = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleShowSolution = () => {
+    const solutionData = showSolution();
+    if (solutionData) {
+      setSolution(solutionData);
+
+      // Disable all input elements
+      const inputs = document.querySelectorAll('input, select, textarea, button');
+      inputs.forEach((input) => {
+        input.disabled = true;
+      });
+
+      // Hide the footer
+      setIsFooterVisible(false);
+      context.trigger('resize');
+    }
+    else {
+      console.warn('No solution available.');
+    }
+  };
+
   return (
     <article className={'h5p-order-priority-article'}>
       <div
@@ -69,7 +100,8 @@ const Main = (props) => {
         </div>
         <Surface />
       </div>
-      <Footer/>
+      {solution && <SolutionDisplay solution={solution} />}
+      {isFooterVisible && <Footer showSolution={handleShowSolution} hasSolution={hasSolution} />} {/* Conditionally render the Footer */}
     </article>
   );
 };
@@ -81,6 +113,9 @@ Main.propTypes = {
   description: PropTypes.string,
   collectExportValues: PropTypes.func,
   resources: PropTypes.object,
+  showSolution: PropTypes.func,
+  translations: PropTypes.object,
+  solution: PropTypes.object, // Add this prop
 };
 
 export default Main;

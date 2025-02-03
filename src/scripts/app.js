@@ -43,6 +43,8 @@ export default class OrderPriority extends H5P.EventDispatcher {
       restart: 'Restart',
       add: 'Add alternative',
       continue: 'Continue',
+      showSolution: 'Show solution',
+      headerSolution: 'Solution',
       cancel: 'Cancel',
       ifYouContinueAllYourChangesWillBeLost: 'All the changes will be lost. Are you sure you wish to continue?',
       submitText: 'Submit',
@@ -98,10 +100,20 @@ export default class OrderPriority extends H5P.EventDispatcher {
             id={this.contentId}
             language={this.language}
             collectExportValues={this.collectExportValues}
+            showSolution={this.getSampleSolution.bind(this)} // Pass showSolution to Main component
           />
         </React.StrictMode>
       </OrderPriorityProvider>
     );
+  }
+
+  /**
+   * Get sample solution if available.
+   * @returns {object|null} Sample solution.
+   */
+  getSampleSolution() {
+    const { sample, introduction } = this.params.solution;
+    return sample ? { sample, explanation: introduction || '' } : null;
   }
 
   /**
@@ -168,7 +180,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
    * @param {number} ratio Container ratio.
    */
   addBreakPoints(wrapper, ratio = getRatio(this.container)) {
-    if ( ratio === this.currentRatio) {
+    if (ratio === this.currentRatio) {
       return;
     }
 

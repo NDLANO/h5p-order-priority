@@ -26,6 +26,21 @@
       "label": "Instruksjoner til oppsummeringen"
     },
     {
+      "label": "Sample solution",
+      "description": "You can optionally add a sample solution that's shown after the student created a text. It's called sample solution because there probably is not only one solution.",
+      "fields": [
+        {
+          "label": "Introduction",
+          "description": "You can optionally leave the students some explanations about your example. The explanation will only show up if you add an example, too.",
+          "placeholder": "Please remember that you were not expected to come up with the exact same solution. It's just a good example."
+        },
+        {
+          "label": "Sample solution text",
+          "description": "The student will see a \"Show solution\" button after submitting if you provide some text here."
+        }
+      ]
+    },
+    {
       "label": "Ressurser",
       "fields": [
         {
@@ -89,6 +104,10 @@
         {
           "label": "Tekst på \"Fortsett\"-knappen i \"Start på nytt\"-dialogboksen",
           "default": "Fortsett"
+        },
+        {
+          "label": "Label for the \"Show solution\"-button",
+          "default": "Show solution"
         },
         {
           "label": "Tekst på \"Avbryt\"-knappen i \"Start på nytt\"-dialogboksen",
@@ -226,6 +245,10 @@
         {
           "label": "Message read to the screen reader before entering the section with the statements",
           "default": "To interact with the next section some screen readers require you to be in focus mode"
+        },
+        {
+          "label": "Statement",
+          "default": "Statement"
         }
       ]
     }

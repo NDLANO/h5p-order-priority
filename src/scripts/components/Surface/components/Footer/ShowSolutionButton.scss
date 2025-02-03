@@ -1,0 +1,19 @@
+@use "@styles/base/base_extendors";
+
+.h5p-order-priority-button-show-solution {
+  @extend %h5p-order-priority-button;
+  background-color: #507AA4;
+  border: 2px solid #CCCCCC;
+  margin-left: 0.3125rem;
+
+  &:hover,
+  &:focus {
+    background-color: #363636;
+    color: inherit;
+  }
+
+  &:active {
+    background-color: #000000;
+    color: inherit;
+  }
+}
