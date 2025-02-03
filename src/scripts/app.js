@@ -100,7 +100,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
             id={this.contentId}
             language={this.language}
             collectExportValues={this.collectExportValues}
-            showSolution={this.showSolution.bind(this)} // Pass showSolution to Main component
+            showSolution={this.getSampleSolution.bind(this)} // Pass showSolution to Main component
           />
         </React.StrictMode>
       </OrderPriorityProvider>
@@ -108,16 +108,12 @@ export default class OrderPriority extends H5P.EventDispatcher {
   }
 
   /**
-   * Show solution if available.
+   * Get sample solution if available.
+   * @returns {object|null} Sample solution.
    */
-  showSolution() {
-    if (typeof this.params.solution.sample !== 'undefined' && this.params.solution.sample !== '') {
-      return {
-        sample: this.params.solution.sample,
-        explanation: this.params.solution.introduction || '',
-      };
-    }
-    return null;
+  getSampleSolution() {
+    const { sample, introduction } = this.params.solution;
+    return sample ? { sample, explanation: introduction || '' } : null;
   }
 
   /**

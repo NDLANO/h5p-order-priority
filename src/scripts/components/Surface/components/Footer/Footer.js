@@ -6,6 +6,9 @@ import './Footer.scss';
 
 /**
  * Functional container for export, reset, and show solution logic.
+ * @param {object} root0 - The props object.
+ * @param {function} root0.showSolution - Function to show the solution.
+ * @param {boolean} root0.hasSolution - Flag indicating if there is a solution.
  * @returns {object} JSX element.
  */
 const Footer = ({ showSolution, hasSolution }) => {

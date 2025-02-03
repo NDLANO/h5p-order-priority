@@ -6,6 +6,7 @@ import './ShowSolutionButton.scss';
 /**
  * Show Solution button component.
  * @param {object} props Component props.
+ * @param {function} props.showSolution Function to show the solution.
  * @returns {object} JSX element.
  */
 const ShowSolutionButton = ({ showSolution }) => {

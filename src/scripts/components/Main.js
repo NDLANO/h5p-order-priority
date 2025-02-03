@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Surface from '@components/Surface/Surface.js';
 import Footer from '@components/Surface/components/Footer/Footer.js';
 import '@assets/fonts/H5PReflectionFont.scss';
-import SolutionDisplay from '@components/Surface/components/SolutionDisplay.js'
+import SolutionDisplay from '@components/Surface/components/SolutionDisplay.js';
 import './Main.scss';
 
 const Main = (props) => {
@@ -27,7 +27,7 @@ const Main = (props) => {
   // Check if solution is available
   const hasSolution = props.solution.sample && props.solution.introduction &&
     !props.solution.sample.includes('<div>&nbsp;</div>') ||
-    !props.solution.introduction.includes('<div>&nbsp;</div>')
+    !props.solution.introduction.includes('<div>&nbsp;</div>');
 
   // componentDidMount pseudo equivalent
   useEffect(() => {
@@ -65,14 +65,15 @@ const Main = (props) => {
 
       // Disable all input elements
       const inputs = document.querySelectorAll('input, select, textarea, button');
-      inputs.forEach(input => {
+      inputs.forEach((input) => {
         input.disabled = true;
       });
 
       // Hide the footer
       setIsFooterVisible(false);
-    } else {
-      console.error('No solution available.');
+    }
+    else {
+      console.warn('No solution available.');
     }
   };
 

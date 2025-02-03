@@ -7,10 +7,11 @@ import { useOrderPriority } from '@context/OrderPriorityContext.js';
 /**
  * Solution Display component.
  * @param {object} props Component props.
+ * @param {object} props.solution Solution object.
  * @returns {object} JSX element.
  */
 const SolutionDisplay = ({ solution }) => {
-  const { translations } = useOrderPriority()
+  const { translations } = useOrderPriority();
 
   return (
     <div className="h5p-order-priority-solution-outer-container">
