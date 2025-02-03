@@ -236,8 +236,8 @@
       {
         "name": "showSolution",
         "type": "text",
-        "label": "Label for the \"Show Solution\"-button",
-        "default": "Show Solution"
+        "label": "Label for the \"Show solution\"-button",
+        "default": "Show solution"
       },
       {
         "name": "cancel",
