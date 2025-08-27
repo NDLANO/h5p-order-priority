@@ -22,9 +22,10 @@ import './Surface.scss';
 
 /**
  * Surface component.
+ * @param {object} props React props.
  * @returns {object} JSX element.
  */
-const Surface = () => {
+const Surface = (props) => {
   const context = useOrderPriority();
 
   const isDroppingOnAlreadyPrioritizedStatement = (draggedElement) => {
@@ -729,7 +730,7 @@ const Surface = () => {
         </p>
         {handleSurface()}
       </div>
-      {provideSummary === true && <Summary />}
+      {provideSummary === true && <Summary disabled={props.disabled} />}
     </div>
   );
 };

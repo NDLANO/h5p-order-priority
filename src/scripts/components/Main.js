@@ -11,7 +11,8 @@ import './Main.scss';
 const Main = (props) => {
   const resourceContainer = useRef();
   const [solution, setSolution] = useState(null);
-  const [isFooterVisible, setIsFooterVisible] = useState(true); // State to control footer visibility
+  const [disableSurface, setDisableSurface] = useState(false);
+  const [hideSolutionButton, setHideSolutionButton] = useState(false);
   const context = useOrderPriority();
 
   const {
@@ -23,6 +24,12 @@ const Main = (props) => {
     resources: resourcesList,
     showSolution,
   } = props;
+
+  context.registerReset(() => {
+    setSolution(null);
+    setHideSolutionButton(false);
+    setDisableSurface(false);
+  });
 
   const effectCalled = useRef(false);
 
@@ -64,15 +71,9 @@ const Main = (props) => {
     const solutionData = showSolution();
     if (solutionData) {
       setSolution(solutionData);
+      setDisableSurface(true);
+      setHideSolutionButton(true);
 
-      // Disable all input elements
-      const inputs = document.querySelectorAll('input, select, textarea, button');
-      inputs.forEach((input) => {
-        input.disabled = true;
-      });
-
-      // Hide the footer
-      setIsFooterVisible(false);
       context.trigger('resize');
     }
     else {
@@ -98,16 +99,16 @@ const Main = (props) => {
             </div>
           )}
         </div>
-        <Surface />
+        <Surface disabled={disableSurface}/>
       </div>
       {solution && <SolutionDisplay solution={solution} />}
-      {isFooterVisible && <Footer showSolution={handleShowSolution} hasSolution={hasSolution} />} {/* Conditionally render the Footer */}
+      <Footer showSolution={handleShowSolution} hasSolution={hasSolution && !hideSolutionButton} />
     </article>
   );
 };
 
 Main.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   language: PropTypes.string,
   header: PropTypes.string,
   description: PropTypes.string,

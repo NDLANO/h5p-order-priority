@@ -16,4 +16,9 @@
     background-color: #000000;
     color: inherit;
   }
+
+  &.hri-show-solution::before {
+    font-family: "H5PFontAwesome4",sans-serif;
+    content: "\f06e";
+  }
 }

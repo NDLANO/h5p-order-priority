@@ -6,9 +6,10 @@ import './Summary.scss';
 
 /**
  * Component for displaying summary.
+ * @param {boolean} disabled If true, the summary input will be disabled.
  * @returns {object} JSX element.
  */
-const Summary = () => {
+const Summary = ({ disabled }) => {
 
   const context = useOrderPriority();
   const [comment, setComment] = useState('');
@@ -44,6 +45,7 @@ const Summary = () => {
         value={comment}
         onChange={(event) => setComment(event.target.value)}
         aria-label={translate('giveABriefSummary')}
+        disabled={disabled}
       />
     </div>
   );
