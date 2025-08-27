@@ -25,9 +25,17 @@ const Main = (props) => {
     showSolution,
   } = props;
 
+  // Workaround to make DnDKit elements non-interactive
+  const toggleDnDKitDOMElements = (disabled) => {
+    document.querySelectorAll('.h5p-dnd-draggable').forEach((element) => {
+      element.classList.toggle('disabled', disabled);
+    });
+  };
+
   context.registerReset(() => {
     setSolution(null);
     setHideSolutionButton(false);
+    toggleDnDKitDOMElements(false);
     setDisableSurface(false);
   });
 
@@ -72,6 +80,7 @@ const Main = (props) => {
     if (solutionData) {
       setSolution(solutionData);
       setDisableSurface(true);
+      toggleDnDKitDOMElements(true);
       setHideSolutionButton(true);
 
       context.trigger('resize');
