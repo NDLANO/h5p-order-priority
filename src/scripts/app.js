@@ -44,7 +44,7 @@ export default class OrderPriority extends H5P.EventDispatcher {
       add: 'Add alternative',
       continue: 'Continue',
       showSolution: 'Show solution',
-      headerSolution: 'Solution',
+      headerSolution: 'Sample solution',
       cancel: 'Cancel',
       ifYouContinueAllYourChangesWillBeLost: 'All the changes will be lost. Are you sure you wish to continue?',
       submitText: 'Submit',

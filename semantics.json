@@ -240,6 +240,12 @@
         "default": "Show solution"
       },
       {
+        "name": "headerSolution",
+        "type": "text",
+        "label": "Label for the sample solution header",
+        "default": "Sample solution"
+      },
+      {
         "name": "cancel",
         "type": "text",
         "label": "Label for the \"Cancel\"-button in the restart dialog",

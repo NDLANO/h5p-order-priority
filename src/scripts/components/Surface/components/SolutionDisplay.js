@@ -16,7 +16,7 @@ const SolutionDisplay = ({ solution }) => {
   return (
     <div className="h5p-order-priority-solution-outer-container">
       <div className="h5p-order-priority-solution-header">
-        {translations.headerSolution || 'Solution'}
+        {translations.headerSolution || 'Sample solution'}
       </div>
       <div className="h5p-order-priority-solution-container">
         {solution.explanation && (

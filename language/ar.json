@@ -110,6 +110,10 @@
           "default": "Show solution"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Sample solution"
+        },
+        {
           "label": "تسمية لزر ”الإلغاء“ في نافذة الإعادة",
           "default": "الإلغاء"
         },

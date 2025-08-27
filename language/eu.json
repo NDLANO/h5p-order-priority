@@ -110,6 +110,10 @@
           "default": "Show solution"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Adibidezko emaitza"
+        },
+        {
           "label": "Berrabiarazi elkarrizketa-koadroko \"Utzi\" botoiari etiketa",
           "default": "Utzi"
         },

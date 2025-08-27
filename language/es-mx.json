@@ -110,6 +110,10 @@
           "default": "Show solution"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Solución de muestra"
+        },
+        {
           "label": "Etiqueta para el botón \"Cancelar\" en el diálogo de reinicio",
           "default": "Cancelar"
         },

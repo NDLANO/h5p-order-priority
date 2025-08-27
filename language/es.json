@@ -110,6 +110,10 @@
           "default": "Cancelar"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Solución de muestra"
+        },
+        {
           "label": "Label for the \"Show solution\"-button",
           "default": "Show solution"
         },

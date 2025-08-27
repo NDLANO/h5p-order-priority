@@ -110,6 +110,10 @@
           "default": "Show solution"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Sample solution"
+        },
+        {
           "label": "Tekst på \"Avbryt\"-knappen i \"Start på nytt\"-dialogboksen",
           "default": "Avbryt"
         },

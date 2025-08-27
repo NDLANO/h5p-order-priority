@@ -110,6 +110,10 @@
           "default": "Show solution"
         },
         {
+          "label": "Label for the sample solution header",
+          "default": "Sample solution"
+        },
+        {
           "label": "Label for the \"Cancel\"-button in the restart dialog",
           "default": "Cancel"
         },
