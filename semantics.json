@@ -101,7 +101,7 @@
         "type": "text",
         "label": "Sample solution text",
         "importance": "low",
-        "description": "The student will see a \"Show solution\" button after submitting if you provide some text here.",
+        "description": "The student will see a \"Show solution\" button if you provide some text here.",
         "optional": true,
         "widget": "html",
         "enterMode": "div",
