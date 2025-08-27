@@ -20,6 +20,10 @@
       &.h5p-dnd-draggable--dragging {
         opacity: 0;
       }
+
+      &.disabled {
+        pointer-events: none;
+      }
     }
   }
 

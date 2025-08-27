@@ -74,4 +74,9 @@
   &.hri-restart::before {
     content: "\e90e";
   }
+
+  &.hri-show-solution::before {
+    font-family: "H5PFontAwesome4",sans-serif;
+    content: "\f06e";
+  }
 }

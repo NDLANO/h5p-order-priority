@@ -36,7 +36,7 @@
         },
         {
           "label": "Sample solution text",
-          "description": "The student will see a \"Show solution\" button after submitting if you provide some text here."
+          "description": "The student will see a \"Show solution\" button if you provide some text here."
         }
       ]
     },
@@ -108,6 +108,10 @@
         {
           "label": "Label for the \"Show solution\"-button",
           "default": "Show solution"
+        },
+        {
+          "label": "Label for the sample solution header",
+          "default": "Sample solution"
         },
         {
           "label": "تسمية لزر ”الإلغاء“ في نافذة الإعادة",

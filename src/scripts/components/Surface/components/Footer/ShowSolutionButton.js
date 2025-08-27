@@ -18,6 +18,7 @@ const ShowSolutionButton = ({ showSolution }) => {
       onClick={showSolution}
       className="h5p-order-priority-footer-button h5p-order-priority-button-show-solution"
     >
+      <span className={'h5p-ri hri-show-solution'} />
       {translations.showSolution}
     </button>
   );
