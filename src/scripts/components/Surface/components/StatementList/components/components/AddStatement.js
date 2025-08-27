@@ -10,7 +10,8 @@ import './AddStatement.scss';
 const AddStatement = (props) => {
   const {
     translations,
-    onClick
+    onClick,
+    disabled
   } = props;
 
   return (
@@ -18,6 +19,7 @@ const AddStatement = (props) => {
       type={'button'}
       className={'h5p-order-priority-add'}
       onClick={onClick}
+      disabled={disabled}
     >
       <span className='h5p-order-priority-add-wrapper'>
         <span className={'h5p-ri hri-pencil'} />
@@ -30,6 +32,7 @@ const AddStatement = (props) => {
 AddStatement.propTypes = {
   translations: PropTypes.object,
   onClick: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 export default AddStatement;

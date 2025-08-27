@@ -639,6 +639,7 @@ const Surface = (props) => {
                     })
                   }
                   translations={context.translations}
+                  disabled={props.disabled}
                 />
               ) : null
             }
@@ -687,6 +688,7 @@ const Surface = (props) => {
                         })
                       }
                       translations={context.translations}
+                      disabled={props.disabled}
                     />
                   ) : null
               }
