@@ -1,6 +1,6 @@
 {
   "name": "h5p-order-priority",
-  "version": "0.10.6",
+  "version": "0.10.7",
   "description": "Reflect on statements and put then in an ordered/prioritized list",
   "main": "index.js",
   "scripts": {
