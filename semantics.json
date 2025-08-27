@@ -71,8 +71,7 @@
     "name": "solution",
     "type": "group",
     "label": "Sample solution",
-    "importance": "high",
-    "expanded": true,
+    "importance": "medium",
     "description": "You can optionally add a sample solution that's shown after the student created a text. It's called sample solution because there probably is not only one solution.",
     "fields": [
       {
