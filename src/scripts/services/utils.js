@@ -121,6 +121,8 @@ export const getDnDId = (element) => {
  * @returns {object} Sanitized parameters.
  */
 export const sanitizeParams = (params) => {
+  params.resources = params.resources || { params: { resourceList: [] } };
+
   const filterResourceList = (element) => {
     return Object.keys(element).length && typeof element === 'object';
   };

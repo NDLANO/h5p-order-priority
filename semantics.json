@@ -123,7 +123,7 @@
         "label": "Resources",
         "importance": "medium",
         "options": [
-          "H5P.ResourceList 1.0"
+          "H5P.ResourceList 1.1"
         ],
         "description": "Optional links to resources."
       }
