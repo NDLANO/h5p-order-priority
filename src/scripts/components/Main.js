@@ -42,9 +42,9 @@ const Main = (props) => {
   const effectCalled = useRef(false);
 
   // Check if solution is available
-  const hasSolution = props.solution.sample && props.solution.introduction &&
-    !props.solution.sample.includes('<div>&nbsp;</div>') ||
-    !props.solution.introduction.includes('<div>&nbsp;</div>');
+  const hasSolution = props.solution?.sample && props.solution?.introduction &&
+    !props.solution?.sample.includes('<div>&nbsp;</div>') ||
+    !props.solution?.introduction.includes('<div>&nbsp;</div>');
 
   // componentDidMount pseudo equivalent
   useEffect(() => {
